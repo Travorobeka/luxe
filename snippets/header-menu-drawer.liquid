@@ -30,26 +30,26 @@
           {%- assign aspect_ratio = section.settings.mb_drawer_product_images_aspect_ratio | default: '1/1' -%}
           {%- assign border_radius = section.settings.mb_drawer_product_images_radius | default: 8 -%}
           {%- for i in (1..product_count) -%}
-            {%- assign source = section.settings["mb_drawer_product_image_#{i}_source"] | default: 'upload' -%}
+            {%- assign source = section.settings['mb_drawer_product_image_' | append: i | append: '_source'] | default: 'upload' -%}
             <div class="m-menu-drawer__product-image-item m:flex m:flex-col m:items-center" style="width: 80px;">
               <div class="m-menu-drawer__product-image-wrapper" style="overflow: hidden; border-radius: {{ border_radius }}px; aspect-ratio: {{ aspect_ratio }}; width: 100%; background: #f5f5f5;">
                 {%- case source -%}
                   {%- when 'upload' -%}
-                    {%- assign img = section.settings["mb_drawer_product_image_#{i}_upload"] -%}
+                    {%- assign img = section.settings['mb_drawer_product_image_' | append: i | append: '_upload'] -%}
                     {%- if img != blank -%}
                       <img src="{{ img | image_url: width: 160 }}" alt="Drawer product image {{ i }}" style="width: 100%; height: auto; object-fit: cover;" loading="lazy" />
                     {%- else -%}
                       <div style="width:100%;height:0;padding-bottom:100%;background:#eee;"></div>
                     {%- endif -%}
                   {%- when 'product' -%}
-                    {%- assign product = section.settings["mb_drawer_product_image_#{i}_product"] -%}
+                    {%- assign product = section.settings['mb_drawer_product_image_' | append: i | append: '_product'] -%}
                     {%- if product != blank and all_products[product] and all_products[product].featured_image != blank -%}
                       <img src="{{ all_products[product].featured_image | image_url: width: 160 }}" alt="{{ all_products[product].title | escape }}" style="width: 100%; height: auto; object-fit: cover;" loading="lazy" />
                     {%- else -%}
                       <div style="width:100%;height:0;padding-bottom:100%;background:#eee;"></div>
                     {%- endif -%}
                   {%- when 'collection' -%}
-                    {%- assign collection = section.settings["mb_drawer_product_image_#{i}_collection"] -%}
+                    {%- assign collection = section.settings['mb_drawer_product_image_' | append: i | append: '_collection'] -%}
                     {%- if collection != blank and collections[collection] and collections[collection].products.size > 0 and collections[collection].products.first.featured_image != blank -%}
                       <img src="{{ collections[collection].products.first.featured_image | image_url: width: 160 }}" alt="{{ collections[collection].products.first.title | escape }}" style="width: 100%; height: auto; object-fit: cover;" loading="lazy" />
                     {%- else -%}
@@ -59,9 +59,9 @@
                     <div style="width:100%;height:0;padding-bottom:100%;background:#eee;"></div>
                 {%- endcase -%}
               </div>
-              {%- assign label = section.settings["mb_drawer_product_image_#{i}_label"] -%}
+              {%- assign label = section.settings['mb_drawer_product_image_' | append: i | append: '_label'] -%}
               {%- if label != blank -%}
-                <span class="m-menu-drawer__product-image-label" style="font-size: {{ section.settings["mb_drawer_product_image_#{i}_label_size"] | default: 16 }}px; font-weight: {{ section.settings["mb_drawer_product_image_#{i}_label_weight"] | default: 500 }}; color: {{ section.settings["mb_drawer_product_image_#{i}_label_color"] | default: '#222' }}; margin-top: 6px; text-align: center; display: block;">
+                <span class="m-menu-drawer__product-image-label" style="font-size: {{ section.settings['mb_drawer_product_image_' | append: i | append: '_label_size'] | default: 16 }}px; font-weight: {{ section.settings['mb_drawer_product_image_' | append: i | append: '_label_weight'] | default: 500 }}; color: {{ section.settings['mb_drawer_product_image_' | append: i | append: '_label_color'] | default: '#222' }}; margin-top: 6px; text-align: center; display: block;">
                   {{ label }}
                 </span>
               {%- endif -%}
