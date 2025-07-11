@@ -228,7 +228,8 @@
           {% comment %} Accordion toggle icon logic for both levels (inline, no macro) {% endcomment %}
           {% assign icon_type = section.settings.mb_menu_sub_toggle_icon_type | default: 'built-in' %}
           {% assign icon_placement = section.settings.mb_menu_sub_toggle_icon_placement | default: 'outside' %}
-          {% assign submenu_behavior = section.settings.mb_menu_submenu_behavior | default: 'slide' %}
+          {% comment %} Only accordion (dropdown) submenu behavior is supported. Remove slide logic. {% endcomment %}
+          {% assign submenu_behavior = 'dropdown' %}
 
           {% capture render_toggle_icon %}
             {% if icon_type == 'custom' and section.settings.mb_menu_sub_toggle_icon_svg != blank %}
@@ -279,79 +280,41 @@
               <span class="m-menu-mobile__toggle-button" data-toggle-submenu="1" style="{% if section.settings.mb_menu_sub_toggle_icon_pos == 'left' %}order:-1;margin-right:8px;{% else %}order:1;margin-left:8px;{% endif %}">{{ render_toggle_icon }}</span>
             {% endif %}
             {% if has_submenu %}
-              {% if submenu_behavior == 'dropdown' %}
-                <div class="m-megamenu-mobile m-megamenu-mobile--level-1 m-dropdown">
-                  <div class="m-megamenu-mobile__wrapper">
-                    <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
-                      {% for child in link.links %}
-                        <li class="m-menu-mobile__item" data-url="{{ link.url }}">
-                          <a
-                            href="{{ child.url }}"
-                            class="m-menu-mobile__link"
-                            style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }};"
-                            {% if child.url contains '#' %}data-toggle-submenu="2"{% endif %}
-                          >
-                            {% if child.links != blank and icon_placement == 'inside' %}
-                              <span>{{ child.title }}</span>
-                              <span class="m-menu-mobile__toggle-button" data-toggle-submenu="2" style="{% if section.settings.mb_menu_sub_toggle_icon_pos == 'left' %}order:-1;margin-right:8px;{% else %}order:1;margin-left:8px;{% endif %}">{{ render_toggle_icon }}</span>
-                            {% else %}
-                              <span>{{ child.title }}</span>
-                            {% endif %}
-                          </a>
-                          {% if child.links != blank and icon_placement == 'outside' %}
-                            <span class="m-menu-mobile__toggle-button" data-toggle-submenu="2" style="{% if section.settings.mb_menu_sub_toggle_icon_pos == 'left' %}order:-1;margin-right:8px;{% else %}order:1;margin-left:8px;{% endif %}">{{ render_toggle_icon }}</span>
-                          {% endif %}
-                          {% if child.links != blank %}
-                            <div class="m-megamenu-mobile m-megamenu-mobile--level-2 m-dropdown">
-                              <div class="m-megamenu-mobile__wrapper">
-                                <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
-                                  {% render 'mega-menu-link' for child.links as link %}
-                                </ul>
-                              </div>
-                            </div>
-                          {% endif %}
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-              {% else %}
-                <div class="m-megamenu-mobile m-megamenu-mobile--level-1" style="transition: all {{ section.settings.mb_menu_sub_anim_duration | default: 300 }}ms {{ section.settings.mb_menu_sub_anim_easing | default: 'ease' }};">
-                  <div class="m-megamenu-mobile__wrapper">
-                    <button class="m-menu-mobile__back-button" data-level="1">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 17"><path fill="currentColor" d="M8.12109 15.9141c-.21093.1875-.41015.1875-.59765 0L.175781 8.53125c-.210937-.1875-.210937-.375 0-.5625L7.52344.585938c.1875-.1875.38672-.1875.59765 0l.70313.703122c.1875.1875.1875.38672 0 .59766L3.375 7.33594h11.9883c.2812 0 .4219.14062.4219.42187v.98438c0 .28125-.1407.42187-.4219.42187H3.375l5.44922 5.44924c.1875.2109.1875.4101 0 .5976l-.70313.7032z"/></svg>
-                      <span>{{ link.title }}</span>
-                    </button>
-                    <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
-                      {% for child in link.links %}
-                        <li class="m-menu-mobile__item" data-url="{{ link.url }}">
-                          <a
-                            href="{{ child.url }}"
-                            class="m-menu-mobile__link"
-                            style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }};"
-                            {% if child.url contains '#' %}data-toggle-submenu="2"{% endif %}
-                          >
+              <div class="m-megamenu-mobile m-megamenu-mobile--level-1 m-dropdown">
+                <div class="m-megamenu-mobile__wrapper">
+                  <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
+                    {% for child in link.links %}
+                      <li class="m-menu-mobile__item" data-url="{{ link.url }}">
+                        <a
+                          href="{{ child.url }}"
+                          class="m-menu-mobile__link"
+                          style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }};"
+                          {% if child.url contains '#' %}data-toggle-submenu="2"{% endif %}
+                        >
+                          {% if child.links != blank and icon_placement == 'inside' %}
                             <span>{{ child.title }}</span>
-                          </a>
-                          {% if child.links != blank %}
-                            <div class="m-megamenu-mobile m-megamenu-mobile--level-2" style="transition: all {{ section.settings.mb_menu_sub_anim_duration | default: 300 }}ms {{ section.settings.mb_menu_sub_anim_easing | default: 'ease' }};">
-                              <div class="m-megamenu-mobile__wrapper">
-                                <button class="m-menu-mobile__back-button" data-level="2">
-                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 17"><path fill="currentColor" d="M8.12109 15.9141c-.21093.1875-.41015.1875-.59765 0L.175781 8.53125c-.210937-.1875-.210937-.375 0-.5625L7.52344.585938c.1875-.1875.38672-.1875.59765 0l.70313.703122c.1875.1875.1875.38672 0 .59766L3.375 7.33594h11.9883c.2812 0 .4219.14062.4219.42187v.98438c0 .28125-.1407.42187-.4219.42187H3.375l5.44922 5.44924c.1875.2109.1875.4101 0 .5976l-.70313.7032z"/></svg>
-                                  <span>{{ child.title }}</span>
-                                </button>
-                                <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
-                                  {% render 'mega-menu-link' for child.links as link %}
-                                </ul>
-                              </div>
-                            </div>
+                            <span class="m-menu-mobile__toggle-button" data-toggle-submenu="2" style="{% if section.settings.mb_menu_sub_toggle_icon_pos == 'left' %}order:-1;margin-right:8px;{% else %}order:1;margin-left:8px;{% endif %}">{{ render_toggle_icon }}</span>
+                          {% else %}
+                            <span>{{ child.title }}</span>
                           {% endif %}
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
+                        </a>
+                        {% if child.links != blank and icon_placement == 'outside' %}
+                          <span class="m-menu-mobile__toggle-button" data-toggle-submenu="2" style="{% if section.settings.mb_menu_sub_toggle_icon_pos == 'left' %}order:-1;margin-right:8px;{% else %}order:1;margin-left:8px;{% endif %}">{{ render_toggle_icon }}</span>
+                        {% endif %}
+                        {% if child.links != blank %}
+                          <div class="m-megamenu-mobile m-megamenu-mobile--level-2 m-dropdown">
+                            <div class="m-megamenu-mobile__wrapper">
+                              <ul class="m-submenu-mobile" style="font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px; color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }}; padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
+                                {% render 'mega-menu-link' for child.links as link %}
+                              </ul>
+                            </div>
+                          </div>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
                 </div>
-              {% endif %}
+              </div>
             {% endif %}
           </li>
         {% else %}

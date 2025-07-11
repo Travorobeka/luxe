@@ -2767,10 +2767,9 @@
         "id": "mb_menu_submenu_behavior",
         "label": "Submenu display behavior",
         "options": [
-          { "value": "dropdown", "label": "Dropdown (accordion)" },
-          { "value": "slide", "label": "Open as new sub-menu (slide)" }
+          { "value": "dropdown", "label": "Dropdown (accordion)" }
         ],
-        "default": "slide"
+        "default": "dropdown"
       },
       {
         "type": "select",
