@@ -2,9 +2,7 @@
 
 /* Mobile menu submenu border color transition */
 .m-accordion--item-content {
-  border-color: transparent !important;
   transition: border-color 0.3s;
 }
 .m-accordion--item-content.open {
-  border-color: var(--mb-menu-sub-border-color, #e5e5e5) !important;
 }
