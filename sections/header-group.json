@@ -133,7 +133,7 @@
         "mb_menu_btn_padding_v": 12,
         "mb_menu_btn_padding_h": 16,
         "mb_menu_btn_spacing": 12,
-        "mb_menu_sub_toggle_icon": "plus",
+        "mb_menu_sub_toggle_icon": "caret",
         "mb_menu_sub_toggle_icon_pos": "right",
         "mb_menu_sub_anim_duration": 300,
         "mb_menu_sub_anim_easing": "ease",
