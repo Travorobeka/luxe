@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header",
@@ -55,7 +64,7 @@
             "show_currency_switcher": false,
             "show_country_selector": true,
             "show_language_switcher": true,
-            "alert_message": "<span>Open Doors To A World Of Fashion  |  <a class=\"m-link-underline\" href=\"#\">Discover More<\/a><span><\/span><\/span>"
+            "alert_message": "<span>Open Doors To A World Of Fashion  |  <a class=\"m-link-underline\" href=\"#\">Discover More</a><span></span></span>"
           }
         }
       },
@@ -81,6 +90,7 @@
         "logo_max_width": 145,
         "sticky_logo_max_width": 145,
         "mobile_logo_max_width": 110,
+        "main_menu": "main-menu",
         "secondary_menu": "",
         "mobile_menu": "",
         "uppercase_parent_level": false,
@@ -93,9 +103,43 @@
         "show_currency_switcher": false,
         "show_country_selector": false,
         "show_language_switcher": false,
+        "mb_drawer_width": 80,
+        "mb_drawer_padding_x": 24,
+        "mb_drawer_padding_y": 24,
+        "mb_drawer_animation_duration": 300,
+        "mb_drawer_animation_easing": "ease-in-out",
         "mb_show_currency_switcher": false,
         "mb_show_country_selector": true,
-        "mb_show_language_switcher": true
+        "mb_show_language_switcher": true,
+        "mb_drawer_icon_size": 44,
+        "mb_drawer_icon_weight": "2",
+        "mb_drawer_icon_animation_style": "fade",
+        "mb_drawer_icon_animate": true,
+        "mb_drawer_hamburger_icon_type": "classic",
+        "mb_drawer_hamburger_icon_svg": "<svg></svg>",
+        "mb_drawer_close_icon_type": "x",
+        "mb_drawer_close_icon_svg": "<svg></svg>",
+        "mb_menu_btn_bg": "#eeeeee",
+        "mb_menu_btn_bg_hover": "#f5f5f5",
+        "mb_menu_btn_border_color": "#e5e5e5",
+        "mb_menu_btn_border_width": 1,
+        "mb_menu_btn_radius": 8,
+        "mb_menu_btn_font_family": "roboto_n4",
+        "mb_menu_btn_font_size": 16,
+        "mb_menu_btn_font_weight": "500",
+        "mb_menu_btn_font_style": "normal",
+        "mb_menu_btn_letter_spacing": 0.2,
+        "mb_menu_btn_text_transform": "none",
+        "mb_menu_btn_padding_v": 12,
+        "mb_menu_btn_padding_h": 16,
+        "mb_menu_btn_spacing": 12,
+        "mb_menu_sub_toggle_icon": "plus",
+        "mb_menu_sub_toggle_icon_pos": "right",
+        "mb_menu_sub_anim_duration": 300,
+        "mb_menu_sub_anim_easing": "ease",
+        "mb_menu_sub_font_size": 14,
+        "mb_menu_sub_font_color": "#222222",
+        "mb_menu_sub_indent": 16
       }
     }
   },
