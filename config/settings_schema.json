@@ -2786,6 +2786,61 @@
         "id": "mb_menu_sub_toggle_icon_svg",
         "label": "Custom submenu toggle SVG (if selected)",
         "default": "<svg></svg>"
+      },
+      {
+        "type": "header",
+        "content": "Mobile menu accordion style"
+      },
+      {
+        "type": "color",
+        "id": "mb_accordion_bg",
+        "label": "Accordion background color",
+        "default": "#fff"
+      },
+      {
+        "type": "range",
+        "id": "mb_accordion_padding_v",
+        "label": "Accordion vertical padding (px)",
+        "min": 0,
+        "max": 32,
+        "step": 1,
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "mb_accordion_padding_h",
+        "label": "Accordion horizontal padding (px)",
+        "min": 0,
+        "max": 32,
+        "step": 1,
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "mb_accordion_radius",
+        "label": "Accordion border radius (px)",
+        "min": 0,
+        "max": 32,
+        "step": 1,
+        "default": 8
+      },
+      {
+        "type": "select",
+        "id": "mb_accordion_icon_style",
+        "label": "Accordion icon style",
+        "options": [
+          { "value": "caret", "label": "Caret" },
+          { "value": "arrow", "label": "Arrow" },
+          { "value": "plus", "label": "Plus" },
+          { "value": "custom", "label": "Custom SVG" }
+        ],
+        "default": "caret"
+      },
+      {
+        "type": "textarea",
+        "id": "mb_accordion_icon_svg",
+        "label": "Custom SVG for accordion icon (if selected)",
+        "default": ""
       }
     ]
   }
