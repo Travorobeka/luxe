@@ -80,13 +80,18 @@
       </ul>
       {% render 'mega-menu-customer', section: section %}
       {%- assign secondary_menu = section.settings.mb_drawer_secondary_menu -%}
+      {% if section.settings.mb_drawer_secondary_layout contains 'grid' %}
+        {% assign secondary_menu_display = 'grid' %}
+      {% else %}
+        {% assign secondary_menu_display = 'flex' %}
+      {% endif %}
       {% if secondary_menu != blank and linklists[secondary_menu] and linklists[secondary_menu].links.size > 0 %}
         <ul
           class="m-menu-drawer__secondary-menu"
           style="
             margin-top: 24px;
             gap: {{ section.settings.mb_drawer_secondary_gap | default: 12 }}px;
-            display: {{ section.settings.mb_drawer_secondary_layout contains 'grid' ? 'grid' : 'flex' }};
+            display: {{ secondary_menu_display }};
             flex-direction: column;
             grid-template-columns: {% if section.settings.mb_drawer_secondary_layout == 'grid-2' %}repeat(2, 1fr){% elsif section.settings.mb_drawer_secondary_layout == 'grid-3' %}repeat(3, 1fr){% else %}none{% endif %};
             background: {{ section.settings.mb_drawer_secondary_bg_color | default: '#fff' }};
