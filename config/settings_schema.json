@@ -2840,7 +2840,7 @@
         "type": "textarea",
         "id": "mb_accordion_icon_svg",
         "label": "Custom SVG for accordion icon (if selected)",
-        "default": ""
+        "default": "<svg width=\"16\" height=\"16\" xmlns=\"http://www.w3.org/2000/svg\"></svg>"
       }
     ]
   }
