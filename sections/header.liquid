@@ -1410,7 +1410,111 @@
       "step": 1,
       "unit": "px",
       "default": 12
-    }
+    },
+    {
+      "type": "header",
+      "content": "Drawer Product Images"
+    },
+    {
+      "type": "checkbox",
+      "id": "mb_drawer_product_images_enable",
+      "label": "Enable product images section in drawer",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "mb_drawer_product_images_count",
+      "label": "Number of products to display",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "mb_drawer_product_images_aspect_ratio",
+      "label": "Product image aspect ratio",
+      "options": [
+        { "value": "1/1", "label": "Square (1:1)" },
+        { "value": "3/4", "label": "Vertical (3:4)" },
+        { "value": "4/3", "label": "Horizontal (4:3)" },
+        { "value": "16/9", "label": "Wide (16:9)" },
+        { "value": "original", "label": "Original" }
+      ],
+      "default": "1/1"
+    },
+    {
+      "type": "range",
+      "id": "mb_drawer_product_images_radius",
+      "label": "Product image border radius (px)",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    // Product image slots (repeat for 1-4)
+    {
+      "type": "header",
+      "content": "Product Image 1"
+    },
+    {
+      "type": "select",
+      "id": "mb_drawer_product_image_1_source",
+      "label": "Image source",
+      "options": [
+        { "value": "upload", "label": "Upload image" },
+        { "value": "product", "label": "Product" },
+        { "value": "collection", "label": "Collection" }
+      ],
+      "default": "upload"
+    },
+    {
+      "type": "image_picker",
+      "id": "mb_drawer_product_image_1_upload",
+      "label": "Upload image"
+    },
+    {
+      "type": "product",
+      "id": "mb_drawer_product_image_1_product",
+      "label": "Select product"
+    },
+    {
+      "type": "collection",
+      "id": "mb_drawer_product_image_1_collection",
+      "label": "Select collection (first product will be used)"
+    },
+    {
+      "type": "text",
+      "id": "mb_drawer_product_image_1_label",
+      "label": "Label text"
+    },
+    {
+      "type": "range",
+      "id": "mb_drawer_product_image_1_label_size",
+      "label": "Label font size (px)",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "mb_drawer_product_image_1_label_weight",
+      "label": "Label font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "mb_drawer_product_image_1_label_color",
+      "label": "Label color",
+      "default": "#222222"
+    },
+    // ... Repeat for Product Image 2, 3, 4 (change id and header accordingly) ...
   ],
   "blocks": [
     {
