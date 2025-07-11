@@ -81,7 +81,18 @@
       {% render 'mega-menu-customer', section: section %}
       {%- assign secondary_menu = section.settings.mb_drawer_secondary_menu -%}
       {% if secondary_menu != blank and linklists[secondary_menu] and linklists[secondary_menu].links.size > 0 %}
-        <ul class="m-menu-drawer__secondary-menu" style="margin-top: 24px; gap: {{ section.settings.mb_drawer_secondary_gap | default: 12 }}px; display: flex; flex-direction: column;">
+        <ul
+          class="m-menu-drawer__secondary-menu"
+          style="
+            margin-top: 24px;
+            gap: {{ section.settings.mb_drawer_secondary_gap | default: 12 }}px;
+            display: {{ section.settings.mb_drawer_secondary_layout contains 'grid' ? 'grid' : 'flex' }};
+            flex-direction: column;
+            grid-template-columns: {% if section.settings.mb_drawer_secondary_layout == 'grid-2' %}repeat(2, 1fr){% elsif section.settings.mb_drawer_secondary_layout == 'grid-3' %}repeat(3, 1fr){% else %}none{% endif %};
+            background: {{ section.settings.mb_drawer_secondary_bg_color | default: '#fff' }};
+            padding: 0;
+          "
+        >
           {% for link in linklists[secondary_menu].links %}
             <li>
               <a href="{{ link.url }}" class="m-menu-drawer__secondary-link" style="
@@ -90,6 +101,7 @@
                 font-weight: {{ section.settings.mb_drawer_secondary_font_weight | default: 400 }};
                 text-transform: {{ section.settings.mb_drawer_secondary_text_transform | default: 'none' }};
                 letter-spacing: {{ section.settings.mb_drawer_secondary_letter_spacing | default: 0.2 }}px;
+                font-size: {{ section.settings.mb_drawer_secondary_font_size | default: 16 }}px;
                 padding: {{ section.settings.mb_drawer_secondary_padding_v | default: 10 }}px {{ section.settings.mb_drawer_secondary_padding_h | default: 16 }}px;
                 display: block;
               ">
