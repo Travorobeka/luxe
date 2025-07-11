@@ -79,7 +79,7 @@
         {% endfor %}
       </ul>
       {% render 'mega-menu-customer', section: section %}
-      {%- assign secondary_menu = section.settings.secondary_menu -%}
+      {%- assign secondary_menu = section.settings.mb_drawer_secondary_menu -%}
       {% if secondary_menu != blank and linklists[secondary_menu] and linklists[secondary_menu].links.size > 0 %}
         <ul class="m-menu-drawer__secondary-menu" style="margin-top: 24px; gap: {{ section.settings.mb_drawer_secondary_gap | default: 12 }}px; display: flex; flex-direction: column;">
           {% for link in linklists[secondary_menu].links %}
