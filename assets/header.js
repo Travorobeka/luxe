@@ -92,3 +92,10 @@ class MHeader extends HTMLElement {
   }
 }
 customElements.define("m-header", MHeader);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileMenuAccordion = document.querySelector('.m-menu-drawer__navigation.m-footer--accordion');
+  if (mobileMenuAccordion && window.MinimogLibs && window.MinimogLibs.Accordion) {
+    new window.MinimogLibs.Accordion(mobileMenuAccordion, { presetContentHeight: true, onload: true });
+  }
+});
