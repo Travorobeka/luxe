@@ -61,6 +61,7 @@
             </div>
             {% if link.links != blank %}
               <div class="m-accordion--item-content" style="
+                --mb-menu-sub-border-color: {{ section.settings.mb_menu_sub_border_color | default: '#e5e5e5' }};
                 margin-top: {{ section.settings.mb_menu_sub_top_offset | default: 8 }}px;
                 background: {{ section.settings.mb_menu_sub_bg | default: '#fff' }};
                 border: {{ section.settings.mb_menu_sub_border_width | default: 1 }}px solid transparent;
