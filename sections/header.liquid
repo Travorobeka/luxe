@@ -1064,66 +1064,56 @@
     },
     {
       "type": "header",
-      "content": "Mobile menu main button style"
-    },
-    {
-      "type": "color",
-      "id": "mb_menu_btn_bg",
-      "label": "Button background color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "mb_menu_btn_bg_hover",
-      "label": "Button background color (hover)",
-      "default": "#f5f5f5"
-    },
-    {
-      "type": "color",
-      "id": "mb_menu_btn_border_color",
-      "label": "Button border color",
-      "default": "#e5e5e5"
+      "content": "Mobile menu submenu indentation"
     },
     {
       "type": "range",
-      "id": "mb_menu_btn_border_width",
-      "label": "Button border width",
+      "id": "mb_menu_sub_indent",
+      "label": "Submenu left indentation",
       "min": 0,
-      "max": 4,
+      "max": 48,
       "step": 1,
       "unit": "px",
-      "default": 1
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu customization"
     },
     {
       "type": "range",
-      "id": "mb_menu_btn_radius",
-      "label": "Button border radius",
+      "id": "mb_menu_padding_v",
+      "label": "Menu vertical padding",
       "min": 0,
-      "max": 24,
+      "max": 32,
       "step": 1,
       "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "font_picker",
-      "id": "mb_menu_btn_font_family",
-      "label": "Button font family",
-      "default": "roboto_n4"
+      "default": 12
     },
     {
       "type": "range",
-      "id": "mb_menu_btn_font_size",
-      "label": "Button font size",
+      "id": "mb_menu_padding_h",
+      "label": "Menu horizontal padding",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mb_menu_font_size",
+      "label": "Menu font size",
       "min": 12,
-      "max": 20,
+      "max": 24,
       "step": 1,
       "unit": "px",
       "default": 16
     },
     {
       "type": "select",
-      "id": "mb_menu_btn_font_weight",
-      "label": "Button font weight",
+      "id": "mb_menu_font_weight",
+      "label": "Menu font weight",
       "options": [
         { "value": "400", "label": "Regular" },
         { "value": "500", "label": "Medium" },
@@ -1132,138 +1122,38 @@
       "default": "500"
     },
     {
-      "type": "select",
-      "id": "mb_menu_btn_font_style",
-      "label": "Button font style",
-      "options": [
-        { "value": "normal", "label": "Normal" },
-        { "value": "italic", "label": "Italic" }
-      ],
-      "default": "normal"
-    },
-    {
       "type": "range",
-      "id": "mb_menu_btn_letter_spacing",
-      "label": "Button letter spacing",
+      "id": "mb_menu_radius",
+      "label": "Menu border radius",
       "min": 0,
-      "max": 4,
-      "step": 0.1,
-      "unit": "px",
-      "default": 0.2
-    },
-    {
-      "type": "select",
-      "id": "mb_menu_btn_text_transform",
-      "label": "Button text transform",
-      "options": [
-        { "value": "none", "label": "None" },
-        { "value": "uppercase", "label": "Uppercase" },
-        { "value": "capitalize", "label": "Capitalize" }
-      ],
-      "default": "none"
-    },
-    {
-      "type": "range",
-      "id": "mb_menu_btn_padding_v",
-      "label": "Button vertical padding",
-      "min": 8,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "range",
-      "id": "mb_menu_btn_padding_h",
-      "label": "Button horizontal padding",
-      "min": 8,
       "max": 24,
       "step": 1,
       "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "mb_menu_btn_spacing",
-      "label": "Spacing between buttons",
-      "min": 8,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "header",
-      "content": "Mobile menu submenu (accordion) style"
-    },
-    {
-      "type": "select",
-      "id": "mb_menu_sub_toggle_icon",
-      "label": "Submenu toggle icon",
-      "options": [
-        { "value": "plus", "label": "+ / -" },
-        { "value": "caret", "label": "Caret" },
-        { "value": "arrow", "label": "Arrow" }
-      ],
-      "default": "plus"
-    },
-    {
-      "type": "select",
-      "id": "mb_menu_sub_toggle_icon_pos",
-      "label": "Toggle icon position",
-      "options": [
-        { "value": "right", "label": "Right (default)" },
-        { "value": "left", "label": "Left" }
-      ],
-      "default": "right"
-    },
-    {
-      "type": "range",
-      "id": "mb_menu_sub_anim_duration",
-      "label": "Submenu animation duration",
-      "min": 100,
-      "max": 500,
-      "step": 10,
-      "unit": "ms",
-      "default": 300
-    },
-    {
-      "type": "select",
-      "id": "mb_menu_sub_anim_easing",
-      "label": "Submenu animation easing",
-      "options": [
-        { "value": "ease", "label": "Ease" },
-        { "value": "ease-in", "label": "Ease-in" },
-        { "value": "ease-out", "label": "Ease-out" },
-        { "value": "linear", "label": "Linear" }
-      ],
-      "default": "ease"
-    },
-    {
-      "type": "range",
-      "id": "mb_menu_sub_font_size",
-      "label": "Submenu font size",
-      "min": 12,
-      "max": 18,
-      "step": 1,
-      "unit": "px",
-      "default": 14
+      "default": 8
     },
     {
       "type": "color",
-      "id": "mb_menu_sub_font_color",
-      "label": "Submenu font color",
-      "default": "#222"
+      "id": "mb_menu_bg",
+      "label": "Menu background color",
+      "default": "#fff"
     },
     {
-      "type": "range",
-      "id": "mb_menu_sub_indent",
-      "label": "Submenu left indentation",
-      "min": 12,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "default": 16
+      "type": "select",
+      "id": "mb_menu_accordion_icon_style",
+      "label": "Accordion icon style",
+      "options": [
+        { "value": "caret", "label": "Caret" },
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "plus", "label": "+ / -" },
+        { "value": "custom", "label": "Custom SVG" }
+      ],
+      "default": "caret"
+    },
+    {
+      "type": "textarea",
+      "id": "mb_menu_accordion_icon_svg",
+      "label": "Accordion custom SVG (if selected)",
+      "default": "<svg></svg>"
     }
   ],
   "blocks": [

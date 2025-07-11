@@ -29,15 +29,17 @@
           <li class="m-accordion--item">
             <div class="m-accordion--item-button m-menu-mobile__link"
               style="
-                background: {{ section.settings.mb_accordion_bg | default: '#fff' }};
-                padding: {{ section.settings.mb_accordion_padding_v | default: 12 }}px {{ section.settings.mb_accordion_padding_h | default: 16 }}px;
-                border-radius: {{ section.settings.mb_accordion_radius | default: 8 }}px;
+                background: {{ section.settings.mb_menu_bg | default: '#fff' }};
+                padding: {{ section.settings.mb_menu_padding_v | default: 12 }}px {{ section.settings.mb_menu_padding_h | default: 16 }}px;
+                border-radius: {{ section.settings.mb_menu_radius | default: 8 }}px;
+                font-size: {{ section.settings.mb_menu_font_size | default: 16 }}px;
+                font-weight: {{ section.settings.mb_menu_font_weight | default: 500 }};
                 display: flex; align-items: center; justify-content: space-between;
               "
             >
               <span>{{ link.title }}</span>
               <span class="m-accordion--item-icon">
-                {% case section.settings.mb_accordion_icon_style %}
+                {% case section.settings.mb_menu_accordion_icon_style %}
                   {% when 'caret' %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   {% when 'arrow' %}
@@ -45,7 +47,7 @@
                   {% when 'plus' %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4V12M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   {% when 'custom' %}
-                    {{ section.settings.mb_accordion_icon_svg }}
+                    {{ section.settings.mb_menu_accordion_icon_svg }}
                   {% else %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 {% endcase %}
@@ -55,7 +57,7 @@
               <div class="m-accordion--item-content">
                 <ul class="m-link-lists">
                   {% for child in link.links %}
-                    <li class="m-link-lists--item">
+                    <li class="m-link-lists--item" style="padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
                       <a href="{{ child.url }}" class="m-link">{{ child.title }}</a>
                     </li>
                   {% endfor %}
