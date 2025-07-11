@@ -26,33 +26,49 @@
     ">
       <ul class="m-menu-drawer__navigation m-menu-mobile m-footer--accordion">
         {% for link in linklists[menu].links %}
-          <li class="m-accordion--item">
+          <li class="m-accordion--item" style="margin-bottom: {{ section.settings.mb_menu_btn_spacing | default: 12 }}px;">
             <div class="m-accordion--item-button m-menu-mobile__link"
               style="
-                background: {{ section.settings.mb_accordion_bg | default: '#fff' }};
-                padding: {{ section.settings.mb_accordion_padding_v | default: 12 }}px {{ section.settings.mb_accordion_padding_h | default: 16 }}px;
-                border-radius: {{ section.settings.mb_accordion_radius | default: 8 }}px;
+                background: {{ section.settings.mb_menu_btn_bg | default: '#fff' }};
+                border: {{ section.settings.mb_menu_btn_border_width | default: 1 }}px solid {{ section.settings.mb_menu_btn_border_color | default: '#e5e5e5' }};
+                border-radius: {{ section.settings.mb_menu_btn_radius | default: 8 }}px;
+                font-family: {{ section.settings.mb_menu_btn_font_family | default: 'roboto_n4' }};
+                font-size: {{ section.settings.mb_menu_btn_font_size | default: 16 }}px;
+                font-weight: {{ section.settings.mb_menu_btn_font_weight | default: 500 }};
+                font-style: {{ section.settings.mb_menu_btn_font_style | default: 'normal' }};
+                letter-spacing: {{ section.settings.mb_menu_btn_letter_spacing | default: 0.2 }}px;
+                text-transform: {{ section.settings.mb_menu_btn_text_transform | default: 'none' }};
+                padding: {{ section.settings.mb_menu_btn_padding_v | default: 12 }}px {{ section.settings.mb_menu_btn_padding_h | default: 16 }}px;
                 display: flex; align-items: center; justify-content: space-between;
+                transition: background 0.2s;
               "
+              onmouseover="this.style.background='{{ section.settings.mb_menu_btn_bg_hover | default: '#f5f5f5' }}'"
+              onmouseout="this.style.background='{{ section.settings.mb_menu_btn_bg | default: '#fff' }}'"
             >
               <span>{{ link.title }}</span>
-              <span class="m-accordion--item-icon">
-                {% case section.settings.mb_accordion_icon_style %}
+              <span class="m-accordion--item-icon" style="color: {{ section.settings.mb_menu_sub_toggle_icon_color | default: '#222' }};">
+                {% case section.settings.mb_menu_sub_toggle_icon %}
                   {% when 'caret' %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   {% when 'arrow' %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   {% when 'plus' %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4V12M4 8H12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  {% when 'custom' %}
-                    {{ section.settings.mb_accordion_icon_svg }}
                   {% else %}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 {% endcase %}
               </span>
             </div>
             {% if link.links != blank %}
-              <div class="m-accordion--item-content">
+              <div class="m-accordion--item-content" style="
+                background: {{ section.settings.mb_menu_sub_bg | default: '#fff' }};
+                border: {{ section.settings.mb_menu_sub_border_width | default: 1 }}px solid {{ section.settings.mb_menu_sub_border_color | default: '#e5e5e5' }};
+                border-radius: {{ section.settings.mb_menu_sub_border_radius | default: 8 }}px;
+                font-size: {{ section.settings.mb_menu_sub_font_size | default: 14 }}px;
+                color: {{ section.settings.mb_menu_sub_font_color | default: '#222' }};
+                font-weight: {{ section.settings.mb_menu_sub_font_weight | default: 400 }};
+                transition: background 0.2s;
+              ">
                 <ul class="m-link-lists">
                   {% for child in link.links %}
                     <li class="m-link-lists--item" style="padding-left: {{ section.settings.mb_menu_sub_indent | default: 16 }}px;">
