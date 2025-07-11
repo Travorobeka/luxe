@@ -94,14 +94,13 @@
             display: {{ secondary_menu_display }};
             flex-direction: column;
             grid-template-columns: {% if section.settings.mb_drawer_secondary_layout == 'grid-2' %}repeat(2, 1fr){% elsif section.settings.mb_drawer_secondary_layout == 'grid-3' %}repeat(3, 1fr){% else %}none{% endif %};
-            background: {{ section.settings.mb_drawer_secondary_bg_color | default: '#fff' }};
+            background: {{ section.settings.mb_drawer_secondary_bg_color | default: '#FBF7F0' }};
             padding: 0;
           "
         >
           {% for link in linklists[secondary_menu].links %}
             <li>
               <a href="{{ link.url }}" class="m-menu-drawer__secondary-link" style="
-                font-family: {{ section.settings.mb_drawer_secondary_font_family | default: 'roboto_n4' }};
                 color: {{ section.settings.mb_drawer_secondary_font_color | default: '#222' }};
                 font-weight: {{ section.settings.mb_drawer_secondary_font_weight | default: 400 }};
                 text-transform: {{ section.settings.mb_drawer_secondary_text_transform | default: 'none' }};
