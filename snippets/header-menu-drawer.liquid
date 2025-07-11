@@ -79,6 +79,26 @@
         {% endfor %}
       </ul>
       {% render 'mega-menu-customer', section: section %}
+      {%- assign secondary_menu = section.settings.secondary_menu -%}
+      {% if secondary_menu != blank and linklists[secondary_menu] and linklists[secondary_menu].links.size > 0 %}
+        <ul class="m-menu-drawer__secondary-menu" style="margin-top: 24px; gap: {{ section.settings.mb_drawer_secondary_gap | default: 12 }}px; display: flex; flex-direction: column;">
+          {% for link in linklists[secondary_menu].links %}
+            <li>
+              <a href="{{ link.url }}" class="m-menu-drawer__secondary-link" style="
+                font-family: {{ section.settings.mb_drawer_secondary_font_family | default: 'roboto_n4' }};
+                color: {{ section.settings.mb_drawer_secondary_font_color | default: '#222' }};
+                font-weight: {{ section.settings.mb_drawer_secondary_font_weight | default: 400 }};
+                text-transform: {{ section.settings.mb_drawer_secondary_text_transform | default: 'none' }};
+                letter-spacing: {{ section.settings.mb_drawer_secondary_letter_spacing | default: 0.2 }}px;
+                padding: {{ section.settings.mb_drawer_secondary_padding_v | default: 10 }}px {{ section.settings.mb_drawer_secondary_padding_h | default: 16 }}px;
+                display: block;
+              ">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     </div>
   </div>
 </div>
