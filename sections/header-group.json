@@ -159,7 +159,7 @@
         "mb_drawer_product_images_count": 2,
         "mb_drawer_product_images_aspect_ratio": "1/1",
         "mb_drawer_product_images_radius": 8,
-        "mb_drawer_product_image_1_source": "collection",
+        "mb_drawer_product_image_1_source": "upload",
         "mb_drawer_product_image_1_upload": "shopify://shop_images/womens-dress-wear-minimal-4-middle.jpg",
         "mb_drawer_product_image_1_product": "",
         "mb_drawer_product_image_1_collection": "frontpage",
