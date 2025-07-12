@@ -28,6 +28,8 @@
         {%- assign layout = section.settings.mb_drawer_product_images_layout | default: 'row' -%}
         {%- assign alignment = section.settings.mb_drawer_product_images_alignment | default: 'center' -%}
         {%- assign product_count = section.settings.mb_drawer_product_images_count | default: 1 -%}
+        {%- assign padding_top = section.settings.mb_drawer_product_images_padding_top | default: 0 -%}
+        {%- assign padding_bottom = section.settings.mb_drawer_product_images_padding_bottom | default: 24 -%}
         <div class="m-menu-drawer__product-images m-drawer-product-images-custom
           {% if layout == 'row' %}
             m:flex m:gap-4 m:mb-6
@@ -51,7 +53,8 @@
             {% elsif alignment == 'right' %} m:justify-items-end
             {% else %} m:justify-items-start
             {% endif %}
-          {% endif %}">
+          {% endif %}"
+          style="padding-top: {{ padding_top }}px; padding-bottom: {{ padding_bottom }}px;">
           {%- assign aspect_ratio = section.settings.mb_drawer_product_images_aspect_ratio | default: '1/1' -%}
           {%- assign border_radius = section.settings.mb_drawer_product_images_radius | default: 8 -%}
           {%- for i in (1..product_count) -%}
