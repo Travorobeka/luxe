@@ -26,12 +26,32 @@
     ">
       {%- if section.settings.mb_drawer_product_images_enable -%}
         {%- assign layout = section.settings.mb_drawer_product_images_layout | default: 'row' -%}
-        <div class="m-menu-drawer__product-images
-          {% if layout == 'row' %} m:flex m:gap-4 m:mb-6
-          {% elsif layout == 'column' %} m:flex m:flex-col m:gap-4 m:mb-6
-          {% elsif layout == 'grid' %} m:grid m:grid-cols-2 m:gap-4 m:mb-6
+        {%- assign alignment = section.settings.mb_drawer_product_images_alignment | default: 'center' -%}
+        {%- assign product_count = section.settings.mb_drawer_product_images_count | default: 1 -%}
+        <div class="m-menu-drawer__product-images m-drawer-product-images-custom
+          {% if layout == 'row' %}
+            m:flex m:gap-4 m:mb-6
+            {% if alignment == 'center' %} m:justify-center
+            {% elsif alignment == 'right' %} m:justify-end
+            {% else %} m:justify-start
+            {% endif %}
+          {% elsif layout == 'column' %}
+            m:flex m:flex-col m:gap-4 m:mb-6
+            {% if alignment == 'center' %} m:items-center
+            {% elsif alignment == 'right' %} m:items-end
+            {% else %} m:items-start
+            {% endif %}
+          {% elsif layout == 'grid' %}
+            m:grid m:gap-4 m:mb-6
+            {% if product_count == 4 %} m:grid-cols-2
+            {% elsif product_count == 3 or product_count == 2 %} m:grid-cols-2
+            {% else %} m:grid-cols-1
+            {% endif %}
+            {% if alignment == 'center' %} m:justify-items-center
+            {% elsif alignment == 'right' %} m:justify-items-end
+            {% else %} m:justify-items-start
+            {% endif %}
           {% endif %}">
-          {%- assign product_count = section.settings.mb_drawer_product_images_count | default: 1 -%}
           {%- assign aspect_ratio = section.settings.mb_drawer_product_images_aspect_ratio | default: '1/1' -%}
           {%- assign border_radius = section.settings.mb_drawer_product_images_radius | default: 8 -%}
           {%- for i in (1..product_count) -%}
