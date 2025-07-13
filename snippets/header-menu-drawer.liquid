@@ -207,7 +207,7 @@
           justify-content: {{ section.settings.mb_drawer_bottom_icon_alignment | default: 'center' }};
         ">
           {%- if section.settings.mb_drawer_show_account -%}
-            <a href="/account" class="m-menu-drawer__icon-link" title="Account">
+            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="m-menu-drawer__icon-link" title="Account">
               {%- if section.settings.mb_drawer_account_icon != blank -%}
                 <img src="{{ section.settings.mb_drawer_account_icon | image_url: width: 64 }}" alt="Account" style="width: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; height: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; object-fit: contain;" />
               {%- else -%}
