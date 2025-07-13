@@ -463,4 +463,13 @@ class SiteNav {
   };
 }
 
-// Removed event listener for .m-menu-drawer__icon-link as Drawer Bottom Icons & Social Media Icons are removed
+// Ensure account icon in drawer always redirects
+if (document.querySelector('.m-menu-drawer')) {
+  document.querySelector('.m-menu-drawer').addEventListener('click', function(e) {
+    const iconLink = e.target.closest('.m-menu-drawer__icon-link');
+    if (iconLink && iconLink.getAttribute('href')) {
+      window.location.href = iconLink.getAttribute('href');
+      e.stopPropagation();
+    }
+  });
+}
