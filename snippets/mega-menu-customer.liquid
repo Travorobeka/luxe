@@ -1,7 +1,7 @@
 <div class="m-menu-customer">
   {% if shop.customer_accounts_enabled or shop.customer_accounts_optional %}
-    <div class="m-menu-customer__wrapper">
-      <div class="m-menu-customer__label">{{ 'customer.account.title' | t }}</div>
+    <div class="m-menu-customer__wrapper" style="padding: {{ section.settings.mb_drawer_account_padding_v | default: 12 }}px {{ section.settings.mb_drawer_account_padding_h | default: 16 }}px; gap: {{ section.settings.mb_drawer_account_gap | default: 12 }}px;">
+      <div class="m-menu-customer__label" style="font-size: {{ section.settings.mb_drawer_account_label_size | default: 18 }}px; font-weight: {{ section.settings.mb_drawer_account_label_weight | default: 500 }};">{{ 'customer.account.title' | t }}</div>
       {% if customer %}
         <a href="{{ routes.account_url }}" class="m-menu-customer__name">
           <svg
@@ -47,13 +47,5 @@
         render 'language-switcher', box_size: '', pos: 'top'
       endif
     -%}
-  </div>
-  {% comment %} Custom My Account row for mobile drawer with icon, /login, and label inline {% endcomment %}
-  <div class="m-menu-customer__account-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-    <span class="m-menu-customer__account-icon" style="display: flex; align-items: center;">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.25A7.75 7.75 0 0112 15.75a7.75 7.75 0 017.5 3.5"/></svg>
-    </span>
-    <a href="/account/login" class="m-menu-customer__account-path" style="color: #888; font-size: 14px; text-decoration: none; margin-right: 6px;">/login</a>
-    <a href="/account" class="m-menu-customer__account-label" style="color: #222; font-size: 16px; font-weight: 500; text-decoration: none;">My Account</a>
   </div>
 </div>
