@@ -214,8 +214,10 @@
           </svg>
         </a>
       </div>
-      {% render 'language-switcher' %}
-      {% render 'currency-switcher' %}
+      <div class="m-menu-drawer__locale-row" style="display: flex; gap: 1.5rem; align-items: center; justify-content: center; margin-top: 1.5rem;">
+        {% render 'language-switcher' %}
+        {% render 'currency-switcher' %}
+      </div>
     </div>
   </div>
 </div>
