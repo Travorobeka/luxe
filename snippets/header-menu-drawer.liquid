@@ -223,17 +223,10 @@
               </svg>
             </a>
           {%- endif -%}
-          {%- if section.settings.mb_drawer_show_language_switcher -%}
-            <a href="#language-switcher" class="m-menu-drawer__icon-link" title="Language" style="width: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; height: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; display: flex; align-items: center; justify-content: center;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.mb_drawer_show_currency_switcher -%}
-            <a href="#currency-switcher" class="m-menu-drawer__icon-link" title="Currency" style="width: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; height: {{ section.settings.mb_drawer_bottom_icon_size | default: 24 }}px; display: flex; align-items: center; justify-content: center;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </a>
-          {%- endif -%}
         </div>
+        {% render 'country-selector' %}
+        {% render 'currency-switcher' %}
+        {% render 'language-switcher' %}
         {%- if section.settings.mb_drawer_show_social_icons -%}
         <div class="m-menu-drawer__social-icons" style="
           display: flex;
