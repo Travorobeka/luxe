@@ -190,7 +190,12 @@
         {% assign icon_variant = section.settings.mb_drawer_social_icon_variant %}
         {% assign icon_shape_style = '' %}
         {% if icon_style == 'circle' or icon_style == 'square' %}
-          {% assign icon_shape_style = 'background:' | append: icon_bg | append: '; border-radius:' | append: icon_style == 'circle' | default: false | if: '50%', '0' %} }
+          {% if icon_style == 'circle' %}
+            {% assign border_radius = '50%' %}
+          {% else %}
+            {% assign border_radius = '0' %}
+          {% endif %}
+          {% assign icon_shape_style = 'background:' | append: icon_bg | append: '; border-radius:' | append: border_radius %}
         {% endif %}
         {% if section.settings.mb_drawer_social_facebook_url != '/' and section.settings.mb_drawer_social_facebook_url != '' %}
           <a href="{{ section.settings.mb_drawer_social_facebook_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-icon {{ icon_style }}" style="width: {{ icon_size }}px; height: {{ icon_size }}px; {{ icon_shape_style }} display: flex; align-items: center; justify-content: center;">
