@@ -3,28 +3,7 @@
   {{ 'customer.account.title' | t }}
 {%- endcapture -%}
 {% render 'page-title', title: page_title %}
-<div class="m-account{% if settings.account_card_style != 'none' %} m-account--card-{{ settings.account_card_style }}{% endif %}"
-     style="padding: {{ settings.account_section_padding | default: 24 }}px;">
-  <div class="m-account__inline-header">
-    <span class="m-account__icon">
-      {% case settings.account_icon_type %}
-        {% when 'alt' %}
-          {% render 'icon-account-alt', size: settings.account_icon_size, weight: settings.account_icon_weight %}
-        {% when 'custom' %}
-          <span style="display:inline-block;width:{{ settings.account_icon_size | default: 28 }}px;height:{{ settings.account_icon_size | default: 28 }}px;">{{ settings.account_icon_custom_svg }}</span>
-        {% else %}
-          {% render 'icon-account', size: settings.account_icon_size, weight: settings.account_icon_weight %}
-      {% endcase %}
-    </span>
-    {% if customer %}
-      <span class="m-account__user">{{ customer.name }}</span>
-      <a href="{{ routes.account_logout_url }}" class="m-account__link">{{ 'customer.account.log_out' | t }}</a>
-    {% else %}
-      <a href="/account/login" class="m-account__link">{{ 'customer.login.title' | t }}</a>
-      <span class="m-account__divider">|</span>
-      <a href="/account/register" class="m-account__link">{{ 'customer.register.title' | t }}</a>
-    {% endif %}
-  </div>
+<div class="m-account">
 <div class="container-fluid">
   {% render 'customer-navs' %}
   <div class="m-account__content">
