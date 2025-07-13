@@ -262,41 +262,6 @@ class Megamenu {
     this.domNodes.headerMobile.classList.add("header-drawer-open");
     this.domNodes.menuDrawer.style.transform = 'translateX(0)';
     this.open = true;
-    // Focus trap
-    const drawerWrapper = this.domNodes.menuDrawer.querySelector('.m-menu-drawer__wrapper');
-    if (drawerWrapper && (window.themeSettings?.mb_drawer_focus_trap ?? true)) {
-      drawerWrapper.focus();
-      const trapTabHandler = function(e) {
-        if (e.key === 'Tab') {
-          const focusable = drawerWrapper.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-          if (e.shiftKey) {
-            if (document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            }
-          } else {
-            if (document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          }
-        }
-        if (e.key === 'Escape') {
-          this.closeMenu();
-        }
-      }.bind(this);
-      drawerWrapper.addEventListener('keydown', trapTabHandler);
-      this._drawerTrapTab = trapTabHandler;
-    }
-    // Reduced motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (window.themeSettings?.mb_drawer_reduce_motion ?? false)) {
-      this.domNodes.menuDrawer.style.transition = 'none';
-    } else {
-      const easing = window.themeSettings?.mb_drawer_animation_easing || 'ease-in-out';
-      this.domNodes.menuDrawer.style.transition = `transform 0.3s ${easing}`;
-    }
     // Show close icon
     const btn = this.domNodes.hamburgerButtons;
     btn.setAttribute('data-active', 'true');
@@ -326,12 +291,6 @@ class Megamenu {
       if (hamburgerIcon && closeIcon) {
         hamburgerIcon.style.display = 'block';
         closeIcon.style.display = 'none';
-      }
-      // Remove focus trap
-      const drawerWrapper = menuDrawer.querySelector('.m-menu-drawer__wrapper');
-      if (drawerWrapper && this._drawerTrapTab) {
-        drawerWrapper.removeEventListener('keydown', this._drawerTrapTab);
-        this._drawerTrapTab = null;
       }
     }, this.transitionDuration);
     this.open = false;
