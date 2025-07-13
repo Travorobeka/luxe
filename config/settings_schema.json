@@ -2788,7 +2788,7 @@
         "id": "account_icon_custom_svg",
         "label": "Custom SVG Code",
         "info": "Paste your SVG code here. Only used if 'Custom SVG' is selected.",
-        "default": ""
+        "default": "<!-- Paste your SVG code here -->"
       },
       {
         "type": "range",
