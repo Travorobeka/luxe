@@ -205,59 +205,7 @@
         </ul>
       {% endif %}
       <!-- BEGIN: Drawer Bottom Icons & Social Links -->
-      <div class="m-menu-drawer__bottom-icons" style="
-        display: flex;
-        flex-direction: column;
-        align-items: {{ section.settings.mb_drawer_bottom_icon_alignment | default: 'center' }};
-        margin-top: 32px;
-      ">
-        <div class="m-menu-drawer__bottom-row" style="
-          display: flex;
-          gap: {{ section.settings.mb_drawer_bottom_icon_gap | default: 16 }}px;
-          justify-content: {{ section.settings.mb_drawer_bottom_icon_alignment | default: 'center' }};
-        ">
-          {%- comment -%}
-          Account icon removed as per request. No My Account section or icon will be rendered here.
-          {%- endcomment -%}
-        </div>
-        {% render 'country-selector' %}
-        {% render 'currency-switcher' %}
-        {% render 'language-switcher' %}
-        {%- if section.settings.mb_drawer_show_social_icons -%}
-        <div class="m-menu-drawer__social-icons" style="
-          display: flex;
-          gap: {{ section.settings.mb_drawer_social_icon_gap | default: 12 }}px;
-          margin-top: 18px;
-          justify-content: {{ section.settings.mb_drawer_bottom_icon_alignment | default: 'center' }};
-        ">
-          {%- if section.settings.mb_drawer_show_instagram and section.settings.mb_drawer_instagram_url != blank -%}
-            <a href="{{ section.settings.mb_drawer_instagram_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-link" title="Instagram" style="color: {{ section.settings.mb_drawer_social_icon_color | default: '#222' }}; width: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px; height: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.mb_drawer_show_facebook and section.settings.mb_drawer_facebook_url != blank -%}
-            <a href="{{ section.settings.mb_drawer_facebook_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-link" title="Facebook" style="color: {{ section.settings.mb_drawer_social_icon_color | default: '#222' }}; width: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px; height: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a4 4 0 0 0-4 4v3H7v4h4v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.mb_drawer_show_tiktok and section.settings.mb_drawer_tiktok_url != blank -%}
-            <a href="{{ section.settings.mb_drawer_tiktok_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-link" title="TikTok" style="color: {{ section.settings.mb_drawer_social_icon_color | default: '#222' }}; width: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px; height: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 17a5 5 0 1 1 5-5V3h4a5 5 0 0 0 5 5"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.mb_drawer_show_youtube and section.settings.mb_drawer_youtube_url != blank -%}
-            <a href="{{ section.settings.mb_drawer_youtube_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-link" title="YouTube" style="color: {{ section.settings.mb_drawer_social_icon_color | default: '#222' }}; width: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px; height: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><polygon points="10 9 15 12 10 15 10 9"/></svg>
-            </a>
-          {%- endif -%}
-          {%- if section.settings.mb_drawer_show_whatsapp and section.settings.mb_drawer_whatsapp_url != blank -%}
-            <a href="{{ section.settings.mb_drawer_whatsapp_url }}" target="_blank" rel="noopener" class="m-menu-drawer__social-link" title="WhatsApp" style="color: {{ section.settings.mb_drawer_social_icon_color | default: '#222' }}; width: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px; height: {{ section.settings.mb_drawer_social_icon_size | default: 20 }}px;">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.05 16.54A9 9 0 1 0 12 21a8.94 8.94 0 0 0 4.84-1.41l3.71 1-1-3.71A8.94 8.94 0 0 0 21.05 16.54z"/><path d="M16.24 7.76a4 4 0 0 1-5.66 5.66"/></svg>
-            </a>
-          {%- endif -%}
-        </div>
-        {%- endif -%}
-      </div>
+      <!-- Removed account, language, and currency icons section as requested -->
       <!-- END: Drawer Bottom Icons & Social Links -->
     </div>
   </div>
