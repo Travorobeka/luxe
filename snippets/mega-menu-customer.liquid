@@ -1,1 +1,9 @@
-
+{% if shop.customer_accounts_enabled or shop.customer_accounts_optional %}
+  <div class="m-menu-customer-inline" style="display: flex; align-items: center; gap: 12px; margin: 24px 0; justify-content: flex-start;">
+    <span class="m-menu-customer__icon" style="display: flex; align-items: center;">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+    </span>
+    <a href="{{ routes.account_login_url }}" class="m-menu-customer__login" style="text-decoration: none; color: #222; font-weight: 500;">{{ 'customer.login.title' | t }}</a>
+    <a href="{{ routes.account_register_url }}" class="m-menu-customer__register" style="text-decoration: none; color: #222; font-weight: 500;">{{ 'customer.register.title' | t }}</a>
+  </div>
+{% endif %}
