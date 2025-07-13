@@ -181,9 +181,8 @@
         </a>
       </div>
       <!-- Help Section End -->
-      <div class="m-menu-drawer__social-section" style="margin: 16px 0 0 0; display: flex; justify-content: center;">
-        {% render 'social-media-links', size: 'm-svg-icon--custom', extra_classes: section.settings.mb_drawer_social_icon_type, icon_size: section.settings.mb_drawer_social_icon_size, icon_weight: section.settings.mb_drawer_social_icon_weight %}
-      </div>
+      
+      {%- comment -%} Social media icons section removed {%- endcomment -%}
       {% render 'mega-menu-customer', section: section %}
       {%- assign secondary_menu = section.settings.mb_drawer_secondary_menu -%}
       {% if section.settings.mb_drawer_secondary_layout contains 'grid' %}
