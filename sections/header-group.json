@@ -159,7 +159,7 @@
         "mb_drawer_product_images_count": 4,
         "mb_drawer_product_images_aspect_ratio": "1/1",
         "mb_drawer_product_images_radius": 8,
-        "mb_drawer_product_images_layout": "column",
+        "mb_drawer_product_images_layout": "grid",
         "mb_drawer_product_images_alignment": "left",
         "mb_drawer_product_images_padding_top": 0,
         "mb_drawer_product_images_padding_bottom": 24,
