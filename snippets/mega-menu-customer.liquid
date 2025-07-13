@@ -18,20 +18,44 @@
           {{- 'customer.account.log_out' | t -}}
         </a>
       {% else %}
-        <a
-          href="{{ routes.account_login_url }}"
-          class="m-button m-button--primary m-signin-button"
-          data-tab="signin"
-        >
-          {{ 'layout.customer.log_in' | t }}
-        </a>
-        <a
-          href="{{ routes.account_register_url }}"
-          class="m-button m-button--secondary m-register-button"
-          data-tab="register"
-        >
-          {{ 'customer.register.title' | t }}
-        </a>
+        <div class="m-menu-customer__auth-inline" style="display: flex; flex-direction: row; gap: {{ section.settings.mb_drawer_auth_btn_gap | default: 12 }}px;">
+          <a
+            href="{{ routes.account_login_url }}"
+            class="m-button m-button--primary m-signin-button"
+            data-tab="signin"
+            style="
+              background: {{ section.settings.mb_drawer_auth_btn_bg | default: '#fff' }};
+              color: {{ section.settings.mb_drawer_auth_btn_text_color | default: '#222' }};
+              border-radius: {{ section.settings.mb_drawer_auth_btn_radius | default: 8 }}px;
+              font-size: {{ section.settings.mb_drawer_auth_btn_font_size | default: 16 }}px;
+              font-weight: {{ section.settings.mb_drawer_auth_btn_font_weight | default: 500 }};
+              padding: {{ section.settings.mb_drawer_auth_btn_padding_v | default: 10 }}px {{ section.settings.mb_drawer_auth_btn_padding_h | default: 18 }}px;
+              display: inline-block;
+              text-align: center;
+              min-width: 0;
+            "
+          >
+            {{ 'layout.customer.log_in' | t }}
+          </a>
+          <a
+            href="{{ routes.account_register_url }}"
+            class="m-button m-button--secondary m-register-button"
+            data-tab="register"
+            style="
+              background: {{ section.settings.mb_drawer_auth_btn_bg | default: '#fff' }};
+              color: {{ section.settings.mb_drawer_auth_btn_text_color | default: '#222' }};
+              border-radius: {{ section.settings.mb_drawer_auth_btn_radius | default: 8 }}px;
+              font-size: {{ section.settings.mb_drawer_auth_btn_font_size | default: 16 }}px;
+              font-weight: {{ section.settings.mb_drawer_auth_btn_font_weight | default: 500 }};
+              padding: {{ section.settings.mb_drawer_auth_btn_padding_v | default: 10 }}px {{ section.settings.mb_drawer_auth_btn_padding_h | default: 18 }}px;
+              display: inline-block;
+              text-align: center;
+              min-width: 0;
+            "
+          >
+            {{ 'customer.register.title' | t }}
+          </a>
+        </div>
       {% endif %}
     </div>
   {% endif %}
