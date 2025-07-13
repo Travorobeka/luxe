@@ -37,20 +37,12 @@
             {% elsif alignment == 'right' %} m:justify-end
             {% else %} m:justify-start
             {% endif %}
-          {% elsif layout == 'column' %}
-            m:flex m:flex-col m:gap-4 m:mb-6
-            {% if alignment == 'center' %} m:items-center
-            {% elsif alignment == 'right' %} m:items-end
-            {% else %} m:items-start
-            {% endif %}
           {% elsif layout == 'grid' %}
             m:grid m:gap-4 m:mb-6 m:grid-cols-2
             {% if alignment == 'center' %} m:justify-items-center
             {% elsif alignment == 'right' %} m:justify-items-end
             {% else %} m:justify-items-start
             {% endif %}
-          {% elsif layout == 'carousel' %}
-            m:flex m:gap-4 m:mb-6 m:overflow-x-auto m:scrollbar-hide
           {% endif %}"
           style="padding-top: {{ padding_top }}px; padding-bottom: {{ padding_bottom }}px;">
           {%- assign aspect_ratio = section.settings.mb_drawer_product_images_aspect_ratio | default: '1/1' -%}
