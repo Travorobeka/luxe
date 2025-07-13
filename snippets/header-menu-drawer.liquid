@@ -13,8 +13,18 @@
     position: absolute; inset: 0; z-index: 0;
     background-color: #fff;
   "></div>
-  <div class="m-menu-drawer__backdrop"></div>
-  <div class="m-menu-drawer__wrapper">
+  <div class="m-menu-drawer__backdrop" 
+    {% if section.settings.mb_drawer_backdrop_enable %}aria-hidden="false"{% else %}aria-hidden="true"{% endif %}
+    style="
+      display: {% if section.settings.mb_drawer_backdrop_enable %}block{% else %}none{% endif %};
+      background: {{ section.settings.mb_drawer_backdrop_color | default: '#000' }};
+      opacity: {{ section.settings.mb_drawer_backdrop_opacity | default: 60 | divided_by: 100.0 }};
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      transition: opacity 0.3s;
+    "></div>
+  <div class="m-menu-drawer__wrapper" tabindex="-1" role="dialog" aria-modal="true">
     <!-- Custom close button removed: all close icon customizations will be applied to the hamburger/close icon in the header -->
     <div class="m-menu-drawer__content" style="
       padding-left: {{ section.settings.mb_drawer_padding_x | default: 24 }}px;

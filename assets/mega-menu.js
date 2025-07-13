@@ -260,9 +260,43 @@ class Megamenu {
     document.documentElement.classList.add("prevent-scroll");
     this.domNodes.menuDrawer.classList.add("open");
     this.domNodes.headerMobile.classList.add("header-drawer-open");
-    // Always slide from left
     this.domNodes.menuDrawer.style.transform = 'translateX(0)';
     this.open = true;
+    // Focus trap
+    const drawerWrapper = this.domNodes.menuDrawer.querySelector('.m-menu-drawer__wrapper');
+    if (drawerWrapper && (window.themeSettings?.mb_drawer_focus_trap ?? true)) {
+      drawerWrapper.focus();
+      const trapTabHandler = function(e) {
+        if (e.key === 'Tab') {
+          const focusable = drawerWrapper.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+        if (e.key === 'Escape') {
+          this.closeMenu();
+        }
+      }.bind(this);
+      drawerWrapper.addEventListener('keydown', trapTabHandler);
+      this._drawerTrapTab = trapTabHandler;
+    }
+    // Reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (window.themeSettings?.mb_drawer_reduce_motion ?? false)) {
+      this.domNodes.menuDrawer.style.transition = 'none';
+    } else {
+      const easing = window.themeSettings?.mb_drawer_animation_easing || 'ease-in-out';
+      this.domNodes.menuDrawer.style.transition = `transform 0.3s ${easing}`;
+    }
     // Show close icon
     const btn = this.domNodes.hamburgerButtons;
     btn.setAttribute('data-active', 'true');
@@ -276,7 +310,6 @@ class Megamenu {
 
   closeMenu() {
     const { menuDrawer, menu, megaMenuMobile, hamburgerButtons } = this.domNodes;
-    // Always hide to the left
     menuDrawer.style.transform = 'translateX(-100%)';
     setTimeout(() => {
       megaMenuMobile.forEach((container) => {
@@ -287,14 +320,18 @@ class Megamenu {
       document.documentElement.classList.remove("prevent-scroll");
       this.domNodes.headerMobile.classList.remove("header-drawer-open");
       hamburgerButtons.classList.remove("active");
-      // Close search
-      // Show hamburger icon
       hamburgerButtons.setAttribute('data-active', 'false');
       const hamburgerIcon = hamburgerButtons.querySelector('.m-hamburger-icon[data-state="hamburger"]');
       const closeIcon = hamburgerButtons.querySelector('.m-hamburger-icon[data-state="close"]');
       if (hamburgerIcon && closeIcon) {
         hamburgerIcon.style.display = 'block';
         closeIcon.style.display = 'none';
+      }
+      // Remove focus trap
+      const drawerWrapper = menuDrawer.querySelector('.m-menu-drawer__wrapper');
+      if (drawerWrapper && this._drawerTrapTab) {
+        drawerWrapper.removeEventListener('keydown', this._drawerTrapTab);
+        this._drawerTrapTab = null;
       }
     }, this.transitionDuration);
     this.open = false;
