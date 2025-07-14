@@ -104,6 +104,37 @@
         "show_wishlist_icon": false
       }
     },
+    "social-media-footer": {
+      "type": "social-media-footer",
+      "settings": {
+        "title": "Follow Us",
+        "description": "Stay connected with us on social media",
+        "container": "container-fluid",
+        "alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "icon_size": 24,
+        "icon_weight": "normal",
+        "icon_spacing": 15,
+        "icon_color": "#000000",
+        "icon_hover_color": "#666666",
+        "background_color": "transparent",
+        "border_width": 0,
+        "border_color": "#000000",
+        "border_radius": 0,
+        "show_facebook": true,
+        "show_instagram": true,
+        "show_twitter": true,
+        "show_linkedin": false,
+        "show_youtube": false,
+        "show_tiktok": false,
+        "show_pinterest": false,
+        "show_whatsapp": false,
+        "show_spotify": false
+      }
+    },
     "age-verifier-popup": {
       "type": "age-verifier-popup",
       "blocks": {
@@ -144,6 +175,7 @@
   },
   "order": [
     "footer",
+    "social-media-footer",
     "mobile-sticky-bar",
     "age-verifier-popup"
   ]
