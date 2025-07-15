@@ -186,8 +186,24 @@
     justify-content: {{ section.settings.footer_bottom_alignment }};
   }
 
+  .footer-bottom-{{ footer_id }}.footer-bottom-left-right {
+    justify-content: space-between;
+  }
+
+  .footer-bottom-group-{{ footer_id }} {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .footer-bottom-group-{{ footer_id }}.footer-bottom-group-left-right {
+    justify-content: space-between;
+  }
+
   .footer-copyright-{{ footer_id }} {
     font-size: {{ section.settings.copyright_size }}px;
+    text-align: left;
   }
 
   .footer-payment-{{ footer_id }} {
@@ -195,11 +211,7 @@
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
-  }
-
-  .footer-payment-{{ footer_id }} svg {
-    width: {{ section.settings.payment_icon_size }}px;
-    height: auto;
+    justify-content: flex-end;
   }
 
   .footer-newsletter-{{ footer_id }} {
@@ -320,12 +332,6 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-  }
-
-  .footer-bottom-group-{{ footer_id }} {
-    display: flex;
-    align-items: center;
-    gap: 20px;
   }
 
   @media screen and (max-width: 767px) {
@@ -691,12 +697,11 @@
     </div>
 
     {% comment %} Footer Bottom {% endcomment %}
-    <div class="footer-bottom-{{ footer_id }}">
-      <div class="footer-bottom-group-{{ footer_id }}">
+    <div class="footer-bottom-{{ footer_id }}{% if section.settings.footer_bottom_alignment == 'left-right' %} footer-bottom-left-right{% endif %}">
+      <div class="footer-bottom-group-{{ footer_id }}{% if section.settings.footer_bottom_alignment == 'left-right' %} footer-bottom-group-left-right{% endif %}">
         <div class="footer-copyright-{{ footer_id }}">
           {{ section.settings.copyright_text }}
         </div>
-
         {% if section.settings.show_payment_icons %}
           <div class="footer-payment-{{ footer_id }}">
             {% for type in shop.enabled_payment_types %}
@@ -1722,7 +1727,8 @@
         { "value": "flex-start", "label": "Left" },
         { "value": "center", "label": "Center" },
         { "value": "flex-end", "label": "Right" },
-        { "value": "space-between", "label": "Space between" }
+        { "value": "space-between", "label": "Space between" },
+        { "value": "left-right", "label": "Left/Right (Copyright left, Payment icons right)" }
       ],
       "default": "space-between"
     }
