@@ -30,23 +30,14 @@
 
   .ai-footer-grid-{{ ai_gen_id }} {
     display: grid;
-    {% if block.settings.column_width_mode == 'custom' %}
-      grid-template-columns: {{ block.settings.custom_column_widths }};
-    {% elsif block.settings.column_width_mode == 'fluid' %}
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    {% else %}
-      grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
-    {% endif %}
-    gap: {{ block.settings.column_gap_desktop | default: block.settings.column_spacing }}px;
-    justify-content: {{ block.settings.column_horizontal_align }};
-    align-items: {{ block.settings.column_vertical_align }};
+    grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
+    gap: {{ block.settings.column_spacing }}px;
     margin-bottom: {{ block.settings.section_spacing }}px;
   }
 
   .ai-footer-column-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
-    padding: {{ block.settings.column_padding_desktop }}px;
   }
 
   .ai-footer-title-{{ ai_gen_id }} {
@@ -1859,73 +1850,6 @@
         { "value": "space-around", "label": "Space around" }
       ],
       "default": "left"
-    },
-    {
-      "type": "header",
-      "content": "Advanced Column Layout (Desktop)"
-    },
-    {
-      "type": "select",
-      "id": "column_width_mode",
-      "label": "Column width mode",
-      "options": [
-        { "value": "even", "label": "Even (default)" },
-        { "value": "custom", "label": "Custom (set below)" },
-        { "value": "fluid", "label": "Fluid (auto-fit)" }
-      ],
-      "default": "even"
-    },
-    {
-      "type": "text",
-      "id": "custom_column_widths",
-      "label": "Custom column widths (comma separated, e.g. 2fr,1fr,1fr,auto)",
-      "default": "1fr,1fr,1fr,1fr",
-      "info": "Only used if mode is 'custom'. Use CSS grid syntax."
-    },
-    {
-      "type": "select",
-      "id": "column_horizontal_align",
-      "label": "Column horizontal alignment",
-      "options": [
-        { "value": "start", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "end", "label": "Right" },
-        { "value": "space-between", "label": "Space between" },
-        { "value": "space-around", "label": "Space around" }
-      ],
-      "default": "start"
-    },
-    {
-      "type": "select",
-      "id": "column_vertical_align",
-      "label": "Column vertical alignment",
-      "options": [
-        { "value": "start", "label": "Top" },
-        { "value": "center", "label": "Center" },
-        { "value": "end", "label": "Bottom" },
-        { "value": "stretch", "label": "Stretch" }
-      ],
-      "default": "start"
-    },
-    {
-      "type": "range",
-      "id": "column_gap_desktop",
-      "label": "Column gap (desktop)",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "column_padding_desktop",
-      "label": "Column padding (desktop)",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "unit": "px",
-      "default": 0
     }
   ],
   "presets": [

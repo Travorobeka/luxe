@@ -1,98 +1,59 @@
-(function() {
-  const menuToggles = document.querySelectorAll('.footer__menu-toggle');
-  menuToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(event) {
-      const menuId = this.getAttribute('aria-controls');
-      const menu = document.getElementById(menuId);
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      menu.classList.toggle('active');
-      event.stopPropagation && event.stopPropagation();
-      if (this.querySelector('.plus-icon') && this.querySelector('.dash-icon')) {
-        const nowExpanded = this.getAttribute('aria-expanded') === 'true';
-        if (nowExpanded) {
-          this.querySelector('.plus-icon').style.display = 'none';
-          this.querySelector('.dash-icon').style.display = 'inline-block';
-        } else {
-          this.querySelector('.plus-icon').style.display = 'inline-block';
-          this.querySelector('.dash-icon').style.display = 'none';
-        }
-      }
-    });
-  });
-  const menuHeadings = document.querySelectorAll('.footer__menu-heading');
-  menuHeadings.forEach(heading => {
-    heading.addEventListener('click', function(event) {
-      const wrapper = this.closest('.footer__menu-wrapper');
-      const toggle = wrapper.querySelector('.footer__menu-toggle');
-      if (window.innerWidth <= 767) {
-        if (toggle && (event.target === toggle || toggle.contains(event.target) || this.contains(event.target))) {
-          toggle.click();
-        }
-      }
-    });
-  });
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 767) {
-      document.querySelectorAll('.footer__nav').forEach(menu => {
-        menu.classList.add('active');
+class MFooter extends HTMLElement {
+  constructor() {
+    super();
+    this.init();
+  }
+
+  init() {
+    const mobileStickyBar = document.querySelector(".m-mobile-sticky-bar");
+
+    // Set mobile sticky bar height for enhanced footer
+    if (mobileStickyBar) {
+      this.setMobileStickyBarHeight(mobileStickyBar);
+      
+      // Listen for resize events
+      window.addEventListener('resize', () => {
+        this.setMobileStickyBarHeight(mobileStickyBar);
       });
-      document.querySelectorAll('.footer__menu-toggle').forEach(toggle => {
-        toggle.setAttribute('aria-expanded', 'true');
+      
+      // Legacy mobile event support
+      document.addEventListener("matchMobile", () => {
+        this.setMobileStickyBarHeight(mobileStickyBar);
+      });
+      
+      document.addEventListener("unmatchMobile", () => {
+        this.setMobileStickyBarHeight(mobileStickyBar);
       });
     }
-    document.querySelectorAll('.footer__menu-toggle').forEach(toggle => {
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
-        if (isExpanded) {
-          toggle.querySelector('.plus-icon').style.display = 'none';
-          toggle.querySelector('.dash-icon').style.display = 'inline-block';
-        } else {
-          toggle.querySelector('.plus-icon').style.display = 'inline-block';
-          toggle.querySelector('.dash-icon').style.display = 'none';
-        }
-      }
-    });
-  });
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.footer__menu-toggle').forEach(toggle => {
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
-        if (isExpanded) {
-          toggle.querySelector('.plus-icon').style.display = 'none';
-          toggle.querySelector('.dash-icon').style.display = 'inline-block';
-        } else {
-          toggle.querySelector('.plus-icon').style.display = 'inline-block';
-          toggle.querySelector('.dash-icon').style.display = 'none';
-        }
-      }
-    });
-  });
-  function setMenuAndIconState() {
-    const isMobile = window.innerWidth <= 767;
-    document.querySelectorAll('.footer__menu-wrapper').forEach(wrapper => {
-      const toggle = wrapper.querySelector('.footer__menu-toggle');
-      const menu = wrapper.querySelector('.footer__nav');
-      if (!toggle || !menu) return;
-      if (isMobile) {
-        menu.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.add('active');
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
-        if (isExpanded) {
-          toggle.querySelector('.plus-icon').style.display = 'none';
-          toggle.querySelector('.dash-icon').style.display = 'inline-block';
-        } else {
-          toggle.querySelector('.plus-icon').style.display = 'inline-block';
-          toggle.querySelector('.dash-icon').style.display = 'none';
-        }
-      }
-    });
   }
-  document.addEventListener('DOMContentLoaded', setMenuAndIconState);
-  window.addEventListener('resize', setMenuAndIconState);
-})();
+
+  setMobileStickyBarHeight(mobileStickyBar) {
+    document.documentElement.style.setProperty(
+      "--mobile-sticky-bar-height", 
+      `${mobileStickyBar.offsetHeight}px`
+    );
+  }
+}
+
+// Support both old and enhanced footer systems
+customElements.define("m-footer", MFooter);
+
+// Enhanced footer specific functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Add any global footer enhancements here
+  const footers = document.querySelectorAll('[class*="footer-"]');
+  
+  footers.forEach(footer => {
+    // Add enhanced footer class for styling hooks
+    footer.classList.add('enhanced-footer');
+    
+    // Support for smooth scrolling to footer
+    const footerLinks = document.querySelectorAll('a[href="#footer"]');
+    footerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        footer.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  });
+});
