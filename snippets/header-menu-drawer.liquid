@@ -248,10 +248,10 @@
       <!-- Currency and Language Selectors Start -->
       <div class="m-menu-drawer__localization m:flex m:flex-row m:justify-center m:items-center m:gap-3 m:mt-6">
         {% if section.settings.mb_show_currency_switcher %}
-          {% render 'currency-switcher' %}
+          {% render 'currency-switcher', pos: 'top' %}
         {% endif %}
         {% if section.settings.mb_show_language_switcher %}
-          {% render 'language-switcher' %}
+          {% render 'language-switcher', pos: 'top' %}
         {% endif %}
       </div>
       <!-- Currency and Language Selectors End -->
