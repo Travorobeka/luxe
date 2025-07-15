@@ -30,38 +30,23 @@
 
   .ai-footer-grid-{{ ai_gen_id }} {
     display: grid;
-    {% case block.settings.column_width_mode %}
-      {% when 'even' %}
-        grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
-      {% when 'custom' %}
-        grid-template-columns:
-          {% if block.settings.columns == '2' %}
-            {{ block.settings.column1_width }} {{ block.settings.column2_width }};
-          {% elsif block.settings.columns == '3' %}
-            {{ block.settings.column1_width }} {{ block.settings.column2_width }} {{ block.settings.column3_width }};
-          {% else %}
-            {{ block.settings.column1_width }} {{ block.settings.column2_width }} {{ block.settings.column3_width }} {{ block.settings.column4_width }};
-          {% endif %}
-      {% when 'auto' %}
-        grid-template-columns: repeat({{ block.settings.columns }}, auto);
-      {% when 'fluid' %}
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      {% else %}
-        grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
-    {% endcase %}
-    gap: {{ block.settings.column_spacing }}px;
-    margin-bottom: {{ block.settings.section_spacing }}px;
+    {% if block.settings.column_width_mode == 'custom' %}
+      grid-template-columns: {{ block.settings.custom_column_widths }};
+    {% elsif block.settings.column_width_mode == 'fluid' %}
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    {% else %}
+      grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
+    {% endif %}
+    gap: {{ block.settings.column_gap_desktop | default: block.settings.column_spacing }}px;
     justify-content: {{ block.settings.column_horizontal_align }};
     align-items: {{ block.settings.column_vertical_align }};
+    margin-bottom: {{ block.settings.section_spacing }}px;
   }
-  .ai-footer-column-{{ ai_gen_id }}:nth-child(1) { padding: {{ block.settings.column1_padding }}px; }
-  .ai-footer-column-{{ ai_gen_id }}:nth-child(2) { padding: {{ block.settings.column2_padding }}px; }
-  .ai-footer-column-{{ ai_gen_id }}:nth-child(3) { padding: {{ block.settings.column3_padding }}px; }
-  .ai-footer-column-{{ ai_gen_id }}:nth-child(4) { padding: {{ block.settings.column4_padding }}px; }
 
   .ai-footer-column-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
+    padding: {{ block.settings.column_padding_desktop }}px;
   }
 
   .ai-footer-title-{{ ai_gen_id }} {
@@ -1885,35 +1870,17 @@
       "label": "Column width mode",
       "options": [
         { "value": "even", "label": "Even (default)" },
-        { "value": "custom", "label": "Custom (set per column)" },
-        { "value": "auto", "label": "Auto (content-based)" },
-        { "value": "fluid", "label": "Fluid (auto-fit/minmax)" }
+        { "value": "custom", "label": "Custom (set below)" },
+        { "value": "fluid", "label": "Fluid (auto-fit)" }
       ],
       "default": "even"
     },
     {
       "type": "text",
-      "id": "column1_width",
-      "label": "Column 1 width (e.g. 1fr, 200px, 20%)",
-      "default": "1fr"
-    },
-    {
-      "type": "text",
-      "id": "column2_width",
-      "label": "Column 2 width",
-      "default": "1fr"
-    },
-    {
-      "type": "text",
-      "id": "column3_width",
-      "label": "Column 3 width",
-      "default": "1fr"
-    },
-    {
-      "type": "text",
-      "id": "column4_width",
-      "label": "Column 4 width",
-      "default": "1fr"
+      "id": "custom_column_widths",
+      "label": "Custom column widths (comma separated, e.g. 2fr,1fr,1fr,auto)",
+      "default": "1fr,1fr,1fr,1fr",
+      "info": "Only used if mode is 'custom'. Use CSS grid syntax."
     },
     {
       "type": "select",
@@ -1942,38 +1909,22 @@
     },
     {
       "type": "range",
-      "id": "column1_padding",
-      "label": "Column 1 padding (px)",
+      "id": "column_gap_desktop",
+      "label": "Column gap (desktop)",
       "min": 0,
-      "max": 60,
+      "max": 100,
       "step": 2,
-      "default": 0
+      "unit": "px",
+      "default": 40
     },
     {
       "type": "range",
-      "id": "column2_padding",
-      "label": "Column 2 padding (px)",
+      "id": "column_padding_desktop",
+      "label": "Column padding (desktop)",
       "min": 0,
       "max": 60,
       "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "column3_padding",
-      "label": "Column 3 padding (px)",
-      "min": 0,
-      "max": 60,
-      "step": 2,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "column4_padding",
-      "label": "Column 4 padding (px)",
-      "min": 0,
-      "max": 60,
-      "step": 2,
+      "unit": "px",
       "default": 0
     }
   ],
