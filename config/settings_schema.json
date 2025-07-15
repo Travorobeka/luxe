@@ -2339,6 +2339,12 @@
         "type": "text",
         "id": "social_line_label",
         "label": "Line label"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_tiktok_url",
+        "label": "TikTok URL",
+        "default": "https://www.tiktok.com/"
       }
     ]
   },
