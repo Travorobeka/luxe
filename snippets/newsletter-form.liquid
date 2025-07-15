@@ -25,18 +25,18 @@
   assign formId = 'ContactSubscribe-' | append: custom_id
   assign button_type = button_type | default: 'text'
   assign button_style = button_style | default: 'm-button--blank'
-  {%- assign layout = layout | default: block.settings.newsletter_layout -%}
-  {%- assign align = align | default: block.settings.newsletter_align -%}
-  {%- assign bg_image = bg_image | default: block.settings.newsletter_bg_image -%}
-  {%- assign show_name = show_name | default: block.settings.newsletter_show_name -%}
-  {%- assign button_icon = button_icon | default: block.settings.newsletter_button_icon -%}
-  {%- assign button_custom_svg = button_custom_svg | default: block.settings.newsletter_button_custom_svg -%}
-  {%- assign button_inside_input = button_inside_input | default: block.settings.newsletter_button_inside_input -%}
-  {%- assign input_style = input_style | default: block.settings.newsletter_input_style -%}
-  {%- assign button_style = button_style | default: block.settings.newsletter_button_style -%}
-  {%- assign success_message = success_message | default: block.settings.newsletter_success_message -%}
-  {%- assign error_message = error_message | default: block.settings.newsletter_error_message -%}
 %}
+{%- assign layout = layout | default: block.settings.newsletter_layout -%}
+{%- assign align = align | default: block.settings.newsletter_align -%}
+{%- assign bg_image = bg_image | default: block.settings.newsletter_bg_image -%}
+{%- assign show_name = show_name | default: block.settings.newsletter_show_name -%}
+{%- assign button_icon = button_icon | default: block.settings.newsletter_button_icon -%}
+{%- assign button_custom_svg = button_custom_svg | default: block.settings.newsletter_button_custom_svg -%}
+{%- assign button_inside_input = button_inside_input | default: block.settings.newsletter_button_inside_input -%}
+{%- assign input_style = input_style | default: block.settings.newsletter_input_style -%}
+{%- assign button_style = button_style | default: block.settings.newsletter_button_style -%}
+{%- assign success_message = success_message | default: block.settings.newsletter_success_message -%}
+{%- assign error_message = error_message | default: block.settings.newsletter_error_message -%}
 
 <div class="m-newsletter-form m-newsletter-form--{{ style | default: 'bordered' }} {{ extra_classes }}">
   {% form 'customer', id: formId %}
