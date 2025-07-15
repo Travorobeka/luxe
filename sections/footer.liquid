@@ -13,10 +13,12 @@
           {% if block.settings.company_display_option == 'title_only' or block.settings.company_display_option == 'both' %}
             <h3 class="footer__title footer__company-title">{{ block.settings.company_title }}</h3>
           {% endif %}
-          {% if block.settings.company_logo != blank and (block.settings.company_display_option == 'logo_only' or block.settings.company_display_option == 'both') %}
-            <div class="footer__company-logo" style="text-align: {{ block.settings.company_logo_align }}; margin: {{ block.settings.company_logo_margin }}px 0; padding: 16px;">
-              <img src="{{ block.settings.company_logo | img_url: 'master' }}" alt="{{ block.settings.company_title }}" style="max-width: {{ block.settings.company_logo_size }}px; height: auto; border-radius: {{ block.settings.company_logo_border_radius }}px; display: inline-block;">
-            </div>
+          {% if block.settings.company_logo != blank %}
+            {% if block.settings.company_display_option == 'logo_only' or block.settings.company_display_option == 'both' %}
+              <div class="footer__company-logo" style="text-align: {{ block.settings.company_logo_align }}; margin: {{ block.settings.company_logo_margin }}px 0; padding: 16px;">
+                <img src="{{ block.settings.company_logo | img_url: 'master' }}" alt="{{ block.settings.company_title }}" style="max-width: {{ block.settings.company_logo_size }}px; height: auto; border-radius: {{ block.settings.company_logo_border_radius }}px; display: inline-block;">
+              </div>
+            {% endif %}
           {% endif %}
           <div class="footer__company-info">
             {{ block.settings.company_info }}
