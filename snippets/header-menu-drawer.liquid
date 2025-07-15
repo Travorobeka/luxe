@@ -245,6 +245,16 @@
           {% endfor %}
         </ul>
       {% endif %}
+      <!-- Currency and Language Selectors Start -->
+      <div class="m-menu-drawer__localization m:flex m:flex-col m:items-center m:gap-2 m:mt-6">
+        {% if section.settings.mb_show_currency_switcher %}
+          {% render 'currency-switcher' %}
+        {% endif %}
+        {% if section.settings.mb_show_language_switcher %}
+          {% render 'language-switcher' %}
+        {% endif %}
+      </div>
+      <!-- Currency and Language Selectors End -->
     </div>
   </div>
 </div>
