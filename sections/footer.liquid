@@ -413,10 +413,12 @@
               {% if block.settings.display_option == 'title_only' or block.settings.display_option == 'both' %}
                 <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }}">{{ block.settings.title }}</h3>
               {% endif %}
-              {% if block.settings.logo != blank and (block.settings.display_option == 'logo_only' or block.settings.display_option == 'both') %}
-                <div class="footer-company-logo-{{ footer_id }}">
-                  <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.title }}">
-                </div>
+              {% if block.settings.logo != blank %}
+                {% if block.settings.display_option == 'logo_only' or block.settings.display_option == 'both' %}
+                  <div class="footer-company-logo-{{ footer_id }}">
+                    <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                  </div>
+                {% endif %}
               {% endif %}
               <div class="footer-company-info-{{ footer_id }}">
                 {{ block.settings.info }}
