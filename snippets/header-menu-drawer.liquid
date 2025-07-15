@@ -181,8 +181,30 @@
         </a>
       </div>
       <!-- Help Section End -->
-      <div class="m-menu-drawer__social-media m:flex m:justify-center m:mt-4">
-        {% render 'social-media-links', extra_classes: 'm:justify-center' %}
+      <div class="m-menu-drawer__social-media m:flex m:justify-center m:mt-4"
+        style="
+          padding: {{ section.settings.mb_drawer_social_section_padding_v | default: 8 }}px {{ section.settings.mb_drawer_social_section_padding_h | default: 0 }}px;
+        "
+      >
+        {% if section.settings.mb_drawer_show_social_icons %}
+          {% render 'social-media-links',
+            extra_classes: 'm:justify-center',
+            show_facebook: section.settings.mb_drawer_show_facebook,
+            show_instagram: section.settings.mb_drawer_show_instagram,
+            show_twitter: section.settings.mb_drawer_show_twitter,
+            show_pinterest: section.settings.mb_drawer_show_pinterest,
+            show_youtube: section.settings.mb_drawer_show_youtube,
+            show_tiktok: section.settings.mb_drawer_show_tiktok,
+            show_linkedin: section.settings.mb_drawer_show_linkedin,
+            show_whatsapp: section.settings.mb_drawer_show_whatsapp,
+            icon_size: section.settings.mb_drawer_social_icon_size,
+            icon_weight: section.settings.mb_drawer_social_icon_weight,
+            icon_height: section.settings.mb_drawer_social_icon_height,
+            icon_color: section.settings.mb_drawer_social_icon_color,
+            icon_color_hover: section.settings.mb_drawer_social_icon_color_hover,
+            icon_gap: section.settings.mb_drawer_social_icon_gap
+          %}
+        {% endif %}
       </div>
       
       {% render 'mega-menu-customer', section: section %}
