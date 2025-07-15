@@ -1,0 +1,9 @@
+{%- comment -%}
+  Enhanced Footer Payment Icons Block
+  Implements all payment icon features/settings from footer.md
+{%- endcomment -%}
+<div class="footer-enhanced__payment-icons">
+  {% for type in shop.enabled_payment_types %}
+    {{ type | payment_type_svg_tag: class: 'footer-enhanced__payment-icon', style: 'width:' | append: block.settings.icon_size | append: 'px;' }}
+  {% endfor %}
+</div> 

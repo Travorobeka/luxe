@@ -1,0 +1,25 @@
+{%- comment -%}
+  Enhanced Footer Newsletter Block
+  Implements all newsletter features/settings from footer.md
+{%- endcomment -%}
+<div class="footer-enhanced__newsletter" style="{% if block.settings.bg_image != blank %}background-image:url('{{ block.settings.bg_image | img_url: 'master' }}');background-size:cover;background-position:center;{% endif %}">
+  <h3 class="footer-enhanced__newsletter-title">{{ block.settings.title }}</h3>
+  <p class="footer-enhanced__newsletter-text">{{ block.settings.text }}</p>
+  {% form 'customer' %}
+    {% if form.errors %}
+      <div class="footer-enhanced__newsletter-error">{{ block.settings.error_message | default: form.errors | default_errors }}</div>
+    {% endif %}
+    {% if form.posted_successfully? %}
+      <div class="footer-enhanced__newsletter-success">{{ block.settings.success_message }}</div>
+    {% else %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="footer-enhanced__newsletter-form">
+        {% if block.settings.show_name %}
+          <input type="text" name="contact[first_name]" class="footer-enhanced__newsletter-input" placeholder="Your name">
+        {% endif %}
+        <input type="email" name="contact[email]" class="footer-enhanced__newsletter-input" placeholder="{{ block.settings.placeholder }}" required>
+        <button type="submit" class="footer-enhanced__newsletter-button">{{ block.settings.button_text }}</button>
+      </div>
+    {% endif %}
+  {% endform %}
+</div> 

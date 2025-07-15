@@ -1,0 +1,12 @@
+{%- comment -%}
+  Enhanced Footer Menu Block
+  Implements all menu features/settings from footer.md
+{%- endcomment -%}
+<div class="footer-enhanced__menu">
+  <h3 class="footer-enhanced__menu-title">{{ block.settings.title }}</h3>
+  <ul class="footer-enhanced__menu-list {% if block.settings.dropdown_animation != 'none' %}{{ block.settings.dropdown_animation }}{% endif %}">
+    {% for link in linklists[block.settings.menu].links %}
+      <li class="footer-enhanced__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div> 
