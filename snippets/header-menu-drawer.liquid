@@ -181,6 +181,9 @@
         </a>
       </div>
       <!-- Help Section End -->
+      <div class="m-menu-drawer__social-media m:flex m:justify-center m:mt-4">
+        {% render 'social-media-links', extra_classes: 'm:justify-center' %}
+      </div>
       
       {% render 'mega-menu-customer', section: section %}
       {%- assign secondary_menu = section.settings.mb_drawer_secondary_menu -%}
