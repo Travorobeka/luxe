@@ -90,7 +90,7 @@
         "menu3": "",
         "show_menu3": true,
         "menu3_title": "",
-        "show_contact": false,
+        "show_contact": true,
         "contact_title": "Contact Us",
         "contact_info": "<p>123 Main Street<br/>City, State 12345<br/>Phone: (555) 123-4567<br/>Email: info@example.com</p>",
         "show_social_icons": true,
