@@ -208,8 +208,8 @@
         "mb_drawer_social_youtube_url": "shopify://pages/my-order",
         "mb_drawer_social_icon_size": 20,
         "mb_drawer_social_icon_weight": 2,
-        "mb_drawer_social_icon_type": "default",
-        "mb_drawer_social_icon_variant": "outline",
+        "mb_drawer_social_icon_type": "circle",
+        "mb_drawer_social_icon_variant": "fill",
         "mb_drawer_social_icon_color": "#222222",
         "mb_drawer_social_icon_bg": "#ffffff"
       }
