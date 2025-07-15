@@ -495,7 +495,20 @@
           "id": "open_default",
           "label": "Open by default",
           "default": true
-        }
+        },
+        { "type": "select", "id": "newsletter_layout", "label": "Newsletter layout", "options": [ { "value": "row", "label": "Horizontal" }, { "value": "column", "label": "Vertical" }, { "value": "boxed", "label": "Boxed/Card" }, { "value": "centered", "label": "Centered" }, { "value": "inline", "label": "Inline with text" }, { "value": "split", "label": "Split (image/text)" } ], "default": "row" },
+        { "type": "checkbox", "id": "newsletter_show_name", "label": "Show name field", "default": false },
+        { "type": "select", "id": "newsletter_align", "label": "Newsletter alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
+        { "type": "image_picker", "id": "newsletter_bg_image", "label": "Newsletter background image" },
+        { "type": "text", "id": "newsletter_success_message", "label": "Custom success message", "default": "Thank you for subscribing to our newsletter!" },
+        { "type": "text", "id": "newsletter_error_message", "label": "Custom error message", "default": "There was an error. Please try again." },
+        { "type": "select", "id": "newsletter_input_style", "label": "Input style", "options": [ { "value": "rounded", "label": "Rounded" }, { "value": "square", "label": "Square" }, { "value": "pill", "label": "Pill" } ], "default": "rounded" },
+        { "type": "select", "id": "newsletter_button_style", "label": "Button style", "options": [ { "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }, { "value": "ghost", "label": "Ghost" } ], "default": "solid" },
+        { "type": "select", "id": "newsletter_button_icon", "label": "Button icon", "options": [ { "value": "none", "label": "None" }, { "value": "arrow", "label": "Arrow" }, { "value": "plus", "label": "Plus" }, { "value": "custom", "label": "Custom SVG" } ], "default": "none" },
+        { "type": "text", "id": "newsletter_button_custom_svg", "label": "Custom SVG (inline, no <svg> tag)", "default": "<path d='M5 10h10m0 0l-4-4m4 4l-4 4' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>" },
+        { "type": "checkbox", "id": "newsletter_button_inside_input", "label": "Show button inside text field", "default": false },
+        { "type": "range", "id": "newsletter_section_padding", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Newsletter section padding", "default": 20 },
+        { "type": "range", "id": "newsletter_section_margin", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Newsletter section margin", "default": 0 }
       ]
     },
     {
