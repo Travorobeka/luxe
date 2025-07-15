@@ -39,21 +39,43 @@ class MFooter extends HTMLElement {
 customElements.define("m-footer", MFooter);
 
 // Enhanced footer specific functionality
+// --- Dynamic Responsive Breakpoints for Footer Grid ---
 document.addEventListener('DOMContentLoaded', function() {
-  // Add any global footer enhancements here
-  const footers = document.querySelectorAll('[class*="footer-"]');
-  
-  footers.forEach(footer => {
-    // Add enhanced footer class for styling hooks
-    footer.classList.add('enhanced-footer');
-    
-    // Support for smooth scrolling to footer
-    const footerLinks = document.querySelectorAll('a[href="#footer"]');
-    footerLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        footer.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+  const footerGrids = document.querySelectorAll('[class*="footer-grid-"][data-responsive-breakpoints]');
+
+  function parseBreakpoints(breakpointsStr) {
+    // Example: "1200:4,900:3,600:2" => [{width:1200,cols:4},...]
+    return breakpointsStr.split(',').map(bp => {
+      const [width, cols] = bp.split(':');
+      return { width: parseInt(width.trim(), 10), cols: parseInt(cols.trim(), 10) };
+    }).sort((a, b) => b.width - a.width); // Descending order
+  }
+
+  function applyResponsiveColumns(grid, breakpoints) {
+    const width = window.innerWidth;
+    let applied = false;
+    for (const bp of breakpoints) {
+      if (width <= bp.width) {
+        grid.style.gridTemplateColumns = `repeat(${bp.cols}, 1fr)`;
+        applied = true;
+      }
+    }
+    if (!applied && grid.dataset.defaultColumns) {
+      grid.style.gridTemplateColumns = grid.dataset.defaultColumns;
+    }
+  }
+
+  footerGrids.forEach(grid => {
+    const breakpointsStr = grid.getAttribute('data-responsive-breakpoints');
+    const breakpoints = parseBreakpoints(breakpointsStr);
+    // Store the default columns style
+    grid.dataset.defaultColumns = grid.style.gridTemplateColumns;
+
+    function updateGridColumns() {
+      applyResponsiveColumns(grid, breakpoints);
+    }
+
+    window.addEventListener('resize', updateGridColumns);
+    updateGridColumns();
   });
 });

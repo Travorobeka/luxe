@@ -81,3 +81,30 @@
     padding-bottom: calc(var(--mobile-sticky-bar-height, 0px) + 30px);
   }
 }
+
+.footer-grid[data-responsive-breakpoints] {
+  /* JS will parse and apply breakpoints for column count */
+}
+.footer-column {
+  box-sizing: border-box;
+  min-width: 0;
+  /* Allow for per-column padding and alignment via inline styles */
+}
+.footer-grid {
+  align-items: stretch;
+}
+@media screen and (max-width: 1200px) {
+  .footer-grid[data-responsive-breakpoints*="1200:4"] {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media screen and (max-width: 900px) {
+  .footer-grid[data-responsive-breakpoints*="900:3"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer-grid[data-responsive-breakpoints*="600:2"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

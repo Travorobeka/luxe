@@ -524,10 +524,24 @@
       </div>
     {% endif %}
 
-    <div class="footer-grid-{{ footer_id }}">
-      {% comment %} Company Information Column {% endcomment %}
-      {% if section.settings.show_company_info %}
-        <div class="footer-column-{{ footer_id }}">
+    <div class="footer-grid-{{ footer_id }}" style="
+      grid-template-columns: {% if section.settings.column_widths != blank %}{{ section.settings.column_widths }}{% else %}repeat({{ section.settings.columns }}, 1fr){% endif %};
+      {% if section.settings.equal_height_columns %}align-items: stretch;{% endif %}
+    "
+      data-responsive-breakpoints="{{ section.settings.responsive_breakpoints }}"
+    >
+      {%- assign col_alignments = section.settings.column_alignments | split: ',' -%}
+      {%- assign col_valigns = section.settings.column_vertical_alignments | split: ',' -%}
+      {%- assign col_paddings = section.settings.column_paddings | split: ',' -%}
+      {%- assign col_count = section.settings.columns | plus: 0 -%}
+      {%- assign col_index = 0 -%}
+      {%- if section.settings.show_company_info -%}
+        <div class="footer-column-{{ footer_id }}" style="
+          justify-content: {{ col_valigns[col_index] | default: 'flex-start' }};
+          align-items: {{ col_alignments[col_index] | default: 'flex-start' }};
+          padding: {{ col_paddings[col_index] | default: '10px' }};
+          height: 100%;
+        ">
           {% if section.settings.company_display_option == 'title_only' or section.settings.company_display_option == 'both' %}
             <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }}">{{ section.settings.company_title }}</h3>
           {% endif %}
@@ -584,16 +598,19 @@
             {% endif %}
           </div>
         </div>
-      {% endif %}
-
-      {% comment %} Menu Columns {% endcomment %}
-      {% for i in (1..3) %}
-        {% assign menu_key = 'menu' | append: i %}
-        {% assign menu_title_key = 'menu' | append: i | append: '_title' %}
-        {% assign show_menu_key = 'show_menu' | append: i %}
-        
-        {% if section.settings[menu_key] != blank and section.settings[show_menu_key] %}
-          <div class="footer-column-{{ footer_id }}">
+        {%- assign col_index = col_index | plus: 1 -%}
+      {%- endif -%}
+      {%- for i in (1..3) -%}
+        {%- assign menu_key = 'menu' | append: i -%}
+        {%- assign menu_title_key = 'menu' | append: i | append: '_title' -%}
+        {%- assign show_menu_key = 'show_menu' | append: i -%}
+        {%- if section.settings[menu_key] != blank and section.settings[show_menu_key] -%}
+          <div class="footer-column-{{ footer_id }}" style="
+            justify-content: {{ col_valigns[col_index] | default: 'flex-start' }};
+            align-items: {{ col_alignments[col_index] | default: 'flex-start' }};
+            padding: {{ col_paddings[col_index] | default: '10px' }};
+            height: 100%;
+          ">
             <div class="footer-menu-wrapper-{{ footer_id }}">
               {% assign menu_display_title = section.settings[menu_title_key] | default: linklists[section.settings[menu_key]].title %}
               
@@ -636,12 +653,16 @@
               </ul>
             </div>
           </div>
-        {% endif %}
-      {% endfor %}
-
-      {% comment %} Contact Column {% endcomment %}
-      {% if section.settings.show_contact %}
-        <div class="footer-column-{{ footer_id }}">
+          {%- assign col_index = col_index | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if section.settings.show_contact -%}
+        <div class="footer-column-{{ footer_id }}" style="
+          justify-content: {{ col_valigns[col_index] | default: 'flex-start' }};
+          align-items: {{ col_alignments[col_index] | default: 'flex-start' }};
+          padding: {{ col_paddings[col_index] | default: '10px' }};
+          height: 100%;
+        ">
           <div class="footer-menu-wrapper-{{ footer_id }}">
             <div class="footer-menu-heading-{{ footer_id }}">
               <h3 class="footer-title-{{ footer_id }}">{{ section.settings.contact_title }}</h3>
@@ -679,7 +700,7 @@
             </div>
           </div>
         </div>
-      {% endif %}
+      {%- endif -%}
     </div>
 
     {% comment %} Footer Bottom {% endcomment %}
@@ -1717,6 +1738,46 @@
         { "value": "space-between", "label": "Space between" }
       ],
       "default": "space-between"
+    },
+    {
+      "type": "header",
+      "content": "Advanced Column Layout"
+    },
+    {
+      "type": "text",
+      "id": "column_widths",
+      "label": "Column widths (comma separated, e.g. 1fr,2fr,1fr,1fr)",
+      "default": "1fr,1fr,1fr,1fr"
+    },
+    {
+      "type": "text",
+      "id": "column_alignments",
+      "label": "Column horizontal alignments (comma separated, e.g. left,center,right,left)",
+      "default": "left,left,left,left"
+    },
+    {
+      "type": "text",
+      "id": "column_vertical_alignments",
+      "label": "Column vertical alignments (comma separated, e.g. top,center,bottom,stretch)",
+      "default": "top,top,top,top"
+    },
+    {
+      "type": "text",
+      "id": "column_paddings",
+      "label": "Column paddings (comma separated, e.g. 20px 10px,10px 10px,10px 20px,10px 10px)",
+      "default": "20px 10px,10px 10px,10px 20px,10px 10px"
+    },
+    {
+      "type": "checkbox",
+      "id": "equal_height_columns",
+      "label": "Equal height columns (fluid)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "responsive_breakpoints",
+      "label": "Responsive breakpoints (e.g. 1200:4,900:3,600:2)",
+      "default": "1200:4,900:3,600:2"
     }
   ],
   "presets": [
