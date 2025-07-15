@@ -2345,6 +2345,60 @@
         "id": "mb_drawer_social_tiktok_url",
         "label": "TikTok URL",
         "default": "https://www.tiktok.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_pinterest_url",
+        "label": "Pinterest URL",
+        "default": "https://www.pinterest.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_snapchat_url",
+        "label": "Snapchat URL",
+        "default": "https://www.snapchat.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_tumblr_url",
+        "label": "Tumblr URL",
+        "default": "https://www.tumblr.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_vimeo_url",
+        "label": "Vimeo URL",
+        "default": "https://www.vimeo.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_discord_url",
+        "label": "Discord URL",
+        "default": "https://www.discord.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_whatsapp_url",
+        "label": "WhatsApp URL",
+        "default": "https://www.whatsapp.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_spotify_url",
+        "label": "Spotify URL",
+        "default": "https://www.spotify.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_linkedin_url",
+        "label": "LinkedIn URL",
+        "default": "https://www.linkedin.com/"
+      },
+      {
+        "type": "text",
+        "id": "mb_drawer_social_line_url",
+        "label": "Line URL",
+        "default": "https://line.me/"
       }
     ]
   },
