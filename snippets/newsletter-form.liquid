@@ -25,7 +25,6 @@
   assign formId = 'ContactSubscribe-' | append: custom_id
   assign button_type = button_type | default: 'text'
   assign button_style = button_style | default: 'm-button--blank'
-  {%- comment -%} Add support for new settings: layout, align, bg image, name field, button icon, input style, custom messages, etc. {%- endcomment -%}
   {%- assign layout = layout | default: block.settings.newsletter_layout -%}
   {%- assign align = align | default: block.settings.newsletter_align -%}
   {%- assign bg_image = bg_image | default: block.settings.newsletter_bg_image -%}
