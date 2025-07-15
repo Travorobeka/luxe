@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -5,8 +14,8 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "container_width": 1200,
-        "columns": "4",
+        "container_width": 1000,
+        "columns": "3",
         "columns_mobile": "1",
         "column_spacing": 40,
         "section_spacing": 40,
@@ -21,9 +30,9 @@
         "text_size": 14,
         "copyright_size": 12,
         "show_newsletter": true,
-        "newsletter_title": "Let's get in touch",
-        "newsletter_text": "Sign up for our newsletter and receive 10% off your first order",
-        "newsletter_placeholder": "Enter your email",
+        "newsletter_title": "Subscribe to our newsletter",
+        "newsletter_text": "Sign up for exclusive offers, original stories, events and more.",
+        "newsletter_placeholder": "Your email address",
         "newsletter_button_text": "Subscribe",
         "newsletter_layout": "row",
         "newsletter_title_transform": "none",
@@ -34,7 +43,7 @@
         "newsletter_input_style": "rounded",
         "newsletter_button_style": "solid",
         "newsletter_button_icon": "none",
-        "newsletter_button_custom_svg": "<path d='M5 10h10m0 0l-4-4m4 4l-4 4' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
+        "newsletter_button_custom_svg": "",
         "newsletter_button_inside_input": false,
         "newsletter_section_padding": 20,
         "newsletter_section_margin": 0,
@@ -47,8 +56,8 @@
         "newsletter_button_color": "#ffffff",
         "newsletter_button_hover_bg": "#333333",
         "newsletter_border_radius": 5,
-        "show_company_info": true,
-        "company_title": "Our Store",
+        "show_company_info": false,
+        "company_title": "About Us",
         "company_info": "<p>We're dedicated to providing quality products and exceptional service to our customers.</p>",
         "company_display_option": "title_only",
         "company_logo_size": 150,
@@ -59,7 +68,7 @@
         "company_title_weight": "500",
         "company_title_size": 18,
         "menu_icon": "arrow",
-        "menu_icon_custom_svg": "<path d='M5 10h10m0 0l-4-4m4 4l-4 4' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
+        "menu_icon_custom_svg": "",
         "menu_dropdown_animation": "none",
         "menu_padding_y": 4,
         "menu_padding_x": 0,
@@ -74,16 +83,16 @@
         "menu_title_size": 18,
         "menu1": "footer",
         "show_menu1": true,
-        "menu1_title": "Quick Links",
-        "menu2": "main-menu",
+        "menu1_title": "",
+        "menu2": "information",
         "show_menu2": true,
-        "menu2_title": "Company",
+        "menu2_title": "",
         "menu3": "",
-        "show_menu3": false,
+        "show_menu3": true,
         "menu3_title": "",
         "show_contact": true,
         "contact_title": "Contact Us",
-        "contact_info": "<p>123 Main Street<br>City, State 12345<br>Phone: (555) 123-4567<br>Email: info@example.com</p>",
+        "contact_info": "<p>123 Main Street<br/>City, State 12345<br/>Phone: (555) 123-4567<br/>Email: info@example.com</p>",
         "show_social_icons": true,
         "social_icon_size": 36,
         "social_icon_inner_size": 18,
@@ -94,7 +103,7 @@
         "social_hover_bg_color": "#000000",
         "social_hover_icon_color": "#ffffff",
         "social_hover_transition": 0.2,
-        "social_hover_scale": 1.0,
+        "social_hover_scale": 1,
         "social_hover_rotate": 0,
         "show_facebook": true,
         "facebook_link": "",
@@ -106,7 +115,7 @@
         "pinterest_link": "",
         "show_youtube": true,
         "youtube_link": "",
-        "copyright_text": "<p>&copy; 2024 MINIMOG. All rights reserved.</p>",
+        "copyright_text": "<p>© 2024 Your Store. All rights reserved.</p>",
         "show_payment_icons": true,
         "payment_icon_size": 30,
         "footer_bottom_alignment": "space-between"
