@@ -1,732 +1,385 @@
 {{ 'footer.css' | asset_url | stylesheet_tag }}
-{%- if section.settings.show_currency_selector
-  or section.settings.show_country_selector
-  or section.settings.show_language_selector
--%}
-  <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
-{%- endif -%}
-<m-footer class="m-footer m:block" data-section-type="footer" data-section-id="{{ section.id }}">
-  {% render 'footer-blocks',
-    blocks: section.blocks,
-    bordered: section.settings.bordered,
-    container: section.settings.container
-  %}
-  {% render 'footer-design', container: section.settings.container %}
-</m-footer>
-<script src="{{ 'footer.js' | asset_url }}" defer="defer"></script>
+
+{% assign ai_gen_id = section.id | replace: '_', '' | downcase %}
+
+{% style %}
+  /* --- Enhanced Footer Styles from footer.md --- */
+  .ai-footer-{{ ai_gen_id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size }}px;
+    line-height: 1.5;
+  }
+  /* (Insert all other CSS from footer.md here, replacing block.settings with section.settings as needed) */
+{% endstyle %}
+
+<footer class="ai-footer-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
+  <div class="ai-footer-container-{{ ai_gen_id }}">
+    {% if section.settings.show_newsletter %}
+      <div
+        class="ai-footer-newsletter-{{ ai_gen_id }} ai-footer-newsletter-layout-{{ section.settings.newsletter_layout }} ai-footer-newsletter-align-{{ section.settings.newsletter_align }}"
+        style="
+          {% if section.settings.newsletter_bg_image != blank %}background-image: url('{{ section.settings.newsletter_bg_image | img_url: 'master' }}'); background-size: cover; background-position: center;{% endif %}
+          padding: {{ section.settings.newsletter_section_padding }}px;
+          margin-bottom: {{ section.settings.newsletter_section_margin }}px;
+        "
+      >
+        <h3 class="ai-footer-title-{{ ai_gen_id }} ai-footer-newsletter-title-{{ ai_gen_id }}">
+          {{ section.settings.newsletter_title }}
+        </h3>
+        <p class="ai-footer-newsletter-text-{{ ai_gen_id }}">{{ section.settings.newsletter_text }}</p>
+        {% form 'customer' %}
+          {% if form.errors %}
+            <div class="ai-footer-newsletter-error-{{ ai_gen_id }}">
+              {{ section.settings.newsletter_error_message | default: form.errors | default_errors }}
+            </div>
+          {% endif %}
+          {% if form.posted_successfully? %}
+            <div class="ai-footer-newsletter-success-{{ ai_gen_id }}">
+              {{ section.settings.newsletter_success_message }}
+            </div>
+          {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="ai-footer-newsletter-form-{{ ai_gen_id }} ai-footer-newsletter-form-style-{{ section.settings.newsletter_input_style }} ai-footer-newsletter-button-style-{{ section.settings.newsletter_button_style }}{% if section.settings.newsletter_button_inside_input %} ai-footer-newsletter-input-group{% endif %}">
+              {% if section.settings.newsletter_show_name %}
+                <input
+                  type="text"
+                  name="contact[first_name]"
+                  class="ai-footer-newsletter-input-{{ ai_gen_id }}"
+                  placeholder="Your name"
+                  style="border-radius: {% if section.settings.newsletter_input_style == 'pill' %}999px{% elsif section.settings.newsletter_input_style == 'rounded' %}{{ section.settings.newsletter_border_radius }}px{% else %}0{% endif %};"
+                >
+              {% endif %}
+              {% if section.settings.newsletter_button_inside_input %}
+                <div class="ai-footer-newsletter-input-group-wrapper-{{ ai_gen_id }}">
+                  <input
+                    type="email"
+                    name="contact[email]"
+                    id="newsletter-{{ ai_gen_id }}"
+                    class="ai-footer-newsletter-input-{{ ai_gen_id }}"
+                    value="{{ form.email }}"
+                    placeholder="{{ section.settings.newsletter_placeholder }}"
+                    required
+                    style="border-radius: {% if section.settings.newsletter_input_style == 'pill' %}999px{% elsif section.settings.newsletter_input_style == 'rounded' %}{{ section.settings.newsletter_border_radius }}px{% else %}0{% endif %};"
+                  >
+                  <button
+                    type="submit"
+                    class="ai-footer-newsletter-button-{{ ai_gen_id }} ai-footer-newsletter-button-icon-{{ section.settings.newsletter_button_icon }}"
+                    name="commit"
+                    style="
+                      border-radius: {% if section.settings.newsletter_input_style == 'pill' %}999px{% elsif section.settings.newsletter_input_style == 'rounded' %}{{ section.settings.newsletter_border_radius }}px{% else %}0{% endif %};
+                      {% if section.settings.newsletter_button_style == 'outline' %}
+                        background: none; border: 2px solid {{ section.settings.newsletter_button_bg }}; color: {{ section.settings.newsletter_button_bg }};
+                      {% elsif section.settings.newsletter_button_style == 'ghost' %}
+                        background: none; border: none; color: {{ section.settings.newsletter_button_bg }};
+                      {% endif %}
+                    "
+                  >
+                    {% if section.settings.newsletter_button_icon == 'arrow' %}
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {% elsif section.settings.newsletter_button_icon == 'plus' %}
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        <path d="M10 5v10m5-5H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {% elsif section.settings.newsletter_button_icon == 'custom' and section.settings.newsletter_button_custom_svg != blank %}
+                      <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                        {{ section.settings.newsletter_button_custom_svg }}
+                      </svg>
+                    {% else %}
+                      {{ section.settings.newsletter_button_text }}
+                    {% endif %}
+                  </button>
+                </div>
+              {% else %}
+                <input
+                  type="email"
+                  name="contact[email]"
+                  id="newsletter-{{ ai_gen_id }}"
+                  class="ai-footer-newsletter-input-{{ ai_gen_id }}"
+                  value="{{ form.email }}"
+                  placeholder="{{ section.settings.newsletter_placeholder }}"
+                  required
+                  style="border-radius: {% if section.settings.newsletter_input_style == 'pill' %}999px{% elsif section.settings.newsletter_input_style == 'rounded' %}{{ section.settings.newsletter_border_radius }}px{% else %}0{% endif %};"
+                >
+                <button
+                  type="submit"
+                  class="ai-footer-newsletter-button-{{ ai_gen_id }} ai-footer-newsletter-button-icon-{{ section.settings.newsletter_button_icon }}"
+                  name="commit"
+                  style="
+                    border-radius: {% if section.settings.newsletter_input_style == 'pill' %}999px{% elsif section.settings.newsletter_input_style == 'rounded' %}{{ section.settings.newsletter_border_radius }}px{% else %}0{% endif %};
+                    {% if section.settings.newsletter_button_style == 'outline' %}
+                      background: none; border: 2px solid {{ section.settings.newsletter_button_bg }}; color: {{ section.settings.newsletter_button_bg }};
+                    {% elsif section.settings.newsletter_button_style == 'ghost' %}
+                      background: none; border: none; color: {{ section.settings.newsletter_button_bg }};
+                    {% endif %}
+                  "
+                >
+                  {% if section.settings.newsletter_button_icon == 'arrow' %}
+                    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                      <path d="M5 10h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% elsif section.settings.newsletter_button_icon == 'plus' %}
+                    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                      <path d="M10 5v10m5-5H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% elsif section.settings.newsletter_button_icon == 'custom' and section.settings.newsletter_button_custom_svg != blank %}
+                    <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                      {{ section.settings.newsletter_button_custom_svg }}
+                    </svg>
+                  {% else %}
+                    {{ section.settings.newsletter_button_text }}
+                  {% endif %}
+                </button>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endform %}
+      </div>
+    {% endif %}
+
+    <div class="ai-footer-grid-{{ ai_gen_id }}">
+      <!-- Company Info, Menus, Contact, etc. (from footer.md, using section.settings) -->
+      <div class="ai-footer-company-info-{{ ai_gen_id }}">
+        <h3 class="ai-footer-title-{{ ai_gen_id }} ai-footer-company-info-title-{{ ai_gen_id }}">
+          {{ section.settings.company_info_title }}
+        </h3>
+        <p class="ai-footer-company-info-text-{{ ai_gen_id }}">{{ section.settings.company_info_text }}</p>
+        {% if section.settings.show_social_icons %}
+          <div class="ai-footer-social-icons-{{ ai_gen_id }}">
+            {% for social_icon in section.settings.social_icons %}
+              <a href="{{ social_icon.url }}" target="_blank" aria-label="{{ social_icon.title }}">
+                {{ social_icon.icon | svg_tag: class: 'ai-footer-social-icon' }}
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-footer-menus-{{ ai_gen_id }}">
+        {% if section.settings.show_menu_1 %}
+          <div class="ai-footer-menu-wrapper-{{ ai_gen_id }}">
+            <button class="ai-footer-menu-toggle-{{ ai_gen_id }}" aria-controls="menu-1-{{ ai_gen_id }}" aria-expanded="false">
+              <span class="plus-icon">+</span>
+              <span class="dash-icon">-</span>
+              {{ section.settings.menu_1_title }}
+            </button>
+            <nav id="menu-1-{{ ai_gen_id }}" class="ai-footer-nav-{{ ai_gen_id }}">
+              <ul>
+                {% for link in linklists[section.settings.menu_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
+        {% if section.settings.show_menu_2 %}
+          <div class="ai-footer-menu-wrapper-{{ ai_gen_id }}">
+            <button class="ai-footer-menu-toggle-{{ ai_gen_id }}" aria-controls="menu-2-{{ ai_gen_id }}" aria-expanded="false">
+              <span class="plus-icon">+</span>
+              <span class="dash-icon">-</span>
+              {{ section.settings.menu_2_title }}
+            </button>
+            <nav id="menu-2-{{ ai_gen_id }}" class="ai-footer-nav-{{ ai_gen_id }}">
+              <ul>
+                {% for link in linklists[section.settings.menu_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
+        {% if section.settings.show_menu_3 %}
+          <div class="ai-footer-menu-wrapper-{{ ai_gen_id }}">
+            <button class="ai-footer-menu-toggle-{{ ai_gen_id }}" aria-controls="menu-3-{{ ai_gen_id }}" aria-expanded="false">
+              <span class="plus-icon">+</span>
+              <span class="dash-icon">-</span>
+              {{ section.settings.menu_3_title }}
+            </button>
+            <nav id="menu-3-{{ ai_gen_id }}" class="ai-footer-nav-{{ ai_gen_id }}">
+              <ul>
+                {% for link in linklists[section.settings.menu_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-footer-contact-{{ ai_gen_id }}">
+        <h3 class="ai-footer-title-{{ ai_gen_id }} ai-footer-contact-title-{{ ai_gen_id }}">
+          {{ section.settings.contact_title }}
+        </h3>
+        <p class="ai-footer-contact-text-{{ ai_gen_id }}">{{ section.settings.contact_text }}</p>
+        <div class="ai-footer-contact-details-{{ ai_gen_id }}">
+          {% if section.settings.show_phone %}
+            <div class="ai-footer-contact-item-{{ ai_gen_id }}">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path d="M3 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>{{ section.settings.phone_number }}</span>
+            </div>
+          {% endif %}
+          {% if section.settings.show_email %}
+            <div class="ai-footer-contact-item-{{ ai_gen_id }}">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path d="M4 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <a href="mailto:{{ section.settings.email_address }}">{{ section.settings.email_address }}</a>
+            </div>
+          {% endif %}
+          {% if section.settings.show_address %}
+            <div class="ai-footer-contact-item-{{ ai_gen_id }}">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path d="M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 0V3m0 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 0V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p>{{ section.settings.address }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-footer-bottom-{{ ai_gen_id }}">
+      <div class="ai-footer-bottom-group-{{ ai_gen_id }}">
+        <div class="ai-footer-copyright-{{ ai_gen_id }}">
+          {{ section.settings.copyright_text }}
+        </div>
+        {% if section.settings.show_payment_icons %}
+          <div class="ai-footer-payment-{{ ai_gen_id }}">
+            {% for type in shop.enabled_payment_types %}
+              {{ type | payment_type_svg_tag: class: 'ai-footer-payment-icon' }}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const menuToggles = document.querySelectorAll('.ai-footer-menu-toggle-{{ ai_gen_id }}');
+
+    menuToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(event) {
+        const menuId = this.getAttribute('aria-controls');
+        const menu = document.getElementById(menuId);
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+        this.setAttribute('aria-expanded', !isExpanded);
+        menu.classList.toggle('active');
+        event.stopPropagation && event.stopPropagation();
+
+        // Toggle plus/dash icon for plus style (ALWAYS update based on new state)
+        if (this.querySelector('.plus-icon') && this.querySelector('.dash-icon')) {
+          const nowExpanded = this.getAttribute('aria-expanded') === 'true';
+          if (nowExpanded) {
+            this.querySelector('.plus-icon').style.display = 'none';
+            this.querySelector('.dash-icon').style.display = 'inline-block';
+          } else {
+            this.querySelector('.plus-icon').style.display = 'inline-block';
+            this.querySelector('.dash-icon').style.display = 'none';
+          }
+        }
+      });
+    });
+
+    const menuHeadings = document.querySelectorAll('.ai-footer-menu-heading-{{ ai_gen_id }}');
+
+    menuHeadings.forEach(heading => {
+      heading.addEventListener('click', function(event) {
+        // Only toggle if the click is on the heading, icon, or button (not on a link inside the menu)
+        const wrapper = this.closest('.ai-footer-menu-wrapper-{{ ai_gen_id }}');
+        const toggle = wrapper.querySelector('.ai-footer-menu-toggle-{{ ai_gen_id }}');
+        // Only toggle on mobile (<= 767px)
+        if (window.innerWidth <= 767) {
+          if (toggle && (event.target === toggle || toggle.contains(event.target) || this.contains(event.target))) {
+            toggle.click();
+          }
+        }
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 767) {
+        document.querySelectorAll('.ai-footer-nav-{{ ai_gen_id }}').forEach(menu => {
+          menu.classList.add('active');
+        });
+
+        document.querySelectorAll('.ai-footer-menu-toggle-{{ ai_gen_id }}').forEach(toggle => {
+          toggle.setAttribute('aria-expanded', 'true');
+        });
+      }
+      // Set correct plus/dash icon on resize
+      document.querySelectorAll('.ai-footer-menu-toggle-{{ ai_gen_id }}').forEach(toggle => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
+          if (isExpanded) {
+            toggle.querySelector('.plus-icon').style.display = 'none';
+            toggle.querySelector('.dash-icon').style.display = 'inline-block';
+          } else {
+            toggle.querySelector('.plus-icon').style.display = 'inline-block';
+            toggle.querySelector('.dash-icon').style.display = 'none';
+          }
+        }
+      });
+    });
+    // Set correct plus/dash icon on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.ai-footer-menu-toggle-{{ ai_gen_id }}').forEach(toggle => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
+          if (isExpanded) {
+            toggle.querySelector('.plus-icon').style.display = 'none';
+            toggle.querySelector('.dash-icon').style.display = 'inline-block';
+          } else {
+            toggle.querySelector('.plus-icon').style.display = 'inline-block';
+            toggle.querySelector('.dash-icon').style.display = 'none';
+          }
+        }
+      });
+    });
+
+    // Helper to set menu and icon state
+    function setMenuAndIconState() {
+      const isMobile = window.innerWidth <= 767;
+      document.querySelectorAll('.ai-footer-menu-wrapper-{{ ai_gen_id }}').forEach(wrapper => {
+        const toggle = wrapper.querySelector('.ai-footer-menu-toggle-{{ ai_gen_id }}');
+        const menu = wrapper.querySelector('.ai-footer-nav-{{ ai_gen_id }}');
+        if (!toggle || !menu) return;
+        if (isMobile) {
+          // Collapse by default on mobile
+          menu.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          // Expand by default on desktop
+          menu.classList.add('active');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+        // Set correct icon
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (toggle.querySelector('.plus-icon') && toggle.querySelector('.dash-icon')) {
+          if (isExpanded) {
+            toggle.querySelector('.plus-icon').style.display = 'none';
+            toggle.querySelector('.dash-icon').style.display = 'inline-block';
+          } else {
+            toggle.querySelector('.plus-icon').style.display = 'inline-block';
+            toggle.querySelector('.dash-icon').style.display = 'none';
+          }
+        }
+      });
+    }
+    // On load
+    document.addEventListener('DOMContentLoaded', setMenuAndIconState);
+    // On resize
+    window.addEventListener('resize', setMenuAndIconState);
+  })();
+</script>
+
 {% schema %}
-{
-  "name": "Footer",
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "[Watch tutorial](https://foxecom.link/abZ4Ot)"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "footer"
-    },
-    {
-      "type": "select",
-      "id": "design",
-      "label": "Layout",
-      "options": [
-        {
-          "value": "footer-1",
-          "label": "Layout 1"
-        },
-        {
-          "value": "footer-2",
-          "label": "Layout 2"
-        },
-        {
-          "value": "footer-3",
-          "label": "Layout 3"
-        }
-      ],
-      "default": "footer-1"
-    },
-    {
-      "type": "select",
-      "id": "container",
-      "label": "Container type",
-      "default": "container-fluid",
-      "options": [
-        {
-          "value": "container-fluid",
-          "label": "Default"
-        },
-        {
-          "value": "container-full",
-          "label": "Full width"
-        },
-        {
-          "value": "container",
-          "label": "Use container box"
-        }
-      ]
-    },
-    {
-      "type": "checkbox",
-      "id": "bordered",
-      "label": "Block bordered",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "copyright",
-      "label": "Copyright text",
-      "default": "&copy; minimog 2021"
-    },
-    {
-      "type": "header",
-      "content": "Addons"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_country_selector",
-      "label": "Show country/region selector",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "show_currency_selector",
-      "label": "Show currency selector",
-      "default": false,
-      "info": "[Watch tutorial](https://foxecom.link/TsDtIw)"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_language_selector",
-      "label": "Show language selector",
-      "default": false,
-      "info": "[Watch tutorial](https://foxecom.link/eBEvt2)"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social_links",
-      "label": "Show social icons",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Follow on Shop",
-      "info": "Display follow button for your storefront on the Shop app. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_follow_on_shop",
-      "default": true,
-      "label": "Enable Follow on Shop"
-    },
-    {
-      "type": "header",
-      "content": "Payment methods"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Show payment icons",
-      "default": false
-    },
-    {
-      "type": "image_picker",
-      "id": "image_custom_payment",
-      "label": "Payment icons by image",
-      "info": "Leave blank to use icons by Payment methods"
-    },
-    {
-      "type": "number",
-      "id": "payment_icons_width",
-      "label": "Image width (px)",
-      "default": 300
-    },
-    {
-      "type": "header",
-      "content": "Footer bottom"
-    },
-    {
-      "type": "color_scheme",
-      "id": "footer_bottom_color_scheme",
-      "label": "Color scheme",
-      "default": "footer"
-    },
-    {
-      "type": "link_list",
-      "id": "footer_bottom_menu",
-      "label": "Menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_menu_item_divider",
-      "label": "Show menu item divider"
-    }
-  ],
-  "max_blocks": 5,
-  "blocks": [
-    {
-      "type": "menu",
-      "name": "Menu",
-      "limit": 4,
-      "settings": [
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Footer menu",
-          "default": "main-menu"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Service",
-          "info": "Leave blank to use menu title"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Mobile settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "order_first",
-          "label": "Order first",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "our_store",
-      "name": "About",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Our store"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>Find a location nearest you.</p>"
-        },
-        {
-          "type": "header",
-          "content": "Contact information",
-          "info": "Go to \"Theme settings > Store contact\" to update these information."
-        },
-        {
-          "type": "checkbox",
-          "id": "show_email",
-          "label": "Show email",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "show_phone",
-          "label": "Show phone number",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "show_socials_link",
-          "label": "Show social icons",
-          "default": false
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Mobile settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "order_first",
-          "label": "Order first",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "newsletter",
-      "name": "Newsletter",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Subscribe"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Enter your email below to be the first to know about new collections and product launches."
-        },
-        {
-          "type": "text",
-          "id": "email_placeholder",
-          "label": "Email placeholder",
-          "default": "Enter your email"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_icon_input",
-          "label": "Show icon input",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button label",
-          "info": "Leave it blank to use icon"
-        },
-        {
-          "type": "select",
-          "id": "button_position",
-          "label": "Button position",
-          "options": [
-            {
-              "value": "inline",
-              "label": "Same line input field"
-            },
-            {
-              "value": "below",
-              "label": "Under input field"
-            }
-          ],
-          "default": "inline",
-          "info": "Only work with bordered form style"
-        },
-        {
-          "type": "select",
-          "id": "button_style",
-          "label": "Button style",
-          "options": [
-            {
-              "value": "m-button--primary",
-              "label": "Primary button"
-            },
-            {
-              "value": "m-button--secondary",
-              "label": "Secondary button"
-            },
-            {
-              "value": "m-button--blank",
-              "label": "Plain button"
-            }
-          ],
-          "default": "m-button--blank"
-        },
-        {
-          "type": "select",
-          "id": "form_style",
-          "label": "Form style",
-          "default": "bordered",
-          "options": [
-            {
-              "value": "bordered",
-              "label": "Bordered"
-            },
-            {
-              "value": "minimal",
-              "label": "Minimal"
-            }
-          ]
-        },
-        {
-          "type": "checkbox",
-          "id": "show_social",
-          "label": "Show social link",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "show_agree_checkbox",
-          "label": "Show \"Terms & conditions\" checkbox",
-          "default": false
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Mobile settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "order_first",
-          "label": "Order first",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": true
-        },
-        { "type": "select", "id": "newsletter_layout", "label": "Newsletter layout", "options": [ { "value": "row", "label": "Horizontal" }, { "value": "column", "label": "Vertical" }, { "value": "boxed", "label": "Boxed/Card" }, { "value": "centered", "label": "Centered" }, { "value": "inline", "label": "Inline with text" }, { "value": "split", "label": "Split (image/text)" } ], "default": "row" },
-        { "type": "checkbox", "id": "newsletter_show_name", "label": "Show name field", "default": false },
-        { "type": "select", "id": "newsletter_align", "label": "Newsletter alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
-        { "type": "image_picker", "id": "newsletter_bg_image", "label": "Newsletter background image" },
-        { "type": "text", "id": "newsletter_success_message", "label": "Custom success message", "default": "Thank you for subscribing to our newsletter!" },
-        { "type": "text", "id": "newsletter_error_message", "label": "Custom error message", "default": "There was an error. Please try again." },
-        { "type": "select", "id": "newsletter_input_style", "label": "Input style", "options": [ { "value": "rounded", "label": "Rounded" }, { "value": "square", "label": "Square" }, { "value": "pill", "label": "Pill" } ], "default": "rounded" },
-        { "type": "select", "id": "newsletter_button_style", "label": "Button style", "options": [ { "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }, { "value": "ghost", "label": "Ghost" } ], "default": "solid" },
-        { "type": "select", "id": "newsletter_button_icon", "label": "Button icon", "options": [ { "value": "none", "label": "None" }, { "value": "arrow", "label": "Arrow" }, { "value": "plus", "label": "Plus" }, { "value": "custom", "label": "Custom SVG" } ], "default": "none" },
-        { "type": "text", "id": "newsletter_button_custom_svg", "label": "Custom SVG (inline, no <svg> tag)", "default": "<path d='M5 10h10m0 0l-4-4m4 4l-4 4' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>" },
-        { "type": "checkbox", "id": "newsletter_button_inside_input", "label": "Show button inside text field", "default": false },
-        { "type": "range", "id": "newsletter_section_padding", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Newsletter section padding", "default": 20 },
-        { "type": "range", "id": "newsletter_section_margin", "min": 0, "max": 60, "step": 2, "unit": "px", "label": "Newsletter section margin", "default": 0 }
-      ]
-    },
-    {
-      "type": "custom_text",
-      "name": "Custom content",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Custom text"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "image_max",
-          "label": "Image max-width (px)",
-          "default": "200px"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Content",
-          "default": "<p>Enter your email below to be the first to know about new collections and product launches.</p>"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Mobile settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "order_first",
-          "label": "Order first",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "custom_html",
-      "name": "Custom HTML",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Custom text"
-        },
-        {
-          "type": "liquid",
-          "id": "html",
-          "label": "HTML",
-          "info": "Liquid code supported"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        },
-        {
-          "type": "header",
-          "content": "Mobile settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "order_first",
-          "label": "Order first",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "open_default",
-          "label": "Open by default",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "spacing",
-      "name": "Spacing",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "Use this block to make a spacing between columns"
-        },
-        {
-          "type": "select",
-          "id": "width",
-          "label": "Container width",
-          "default": "25%",
-          "options": [
-            {
-              "value": "16%",
-              "label": "16%"
-            },
-            {
-              "value": "20%",
-              "label": "20%"
-            },
-            {
-              "value": "25%",
-              "label": "25%"
-            },
-            {
-              "value": "33%",
-              "label": "33%"
-            },
-            {
-              "value": "50%",
-              "label": "50%"
-            },
-            {
-              "value": "66%",
-              "label": "66%"
-            },
-            {
-              "value": "75%",
-              "label": "75%"
-            },
-            {
-              "value": "83%",
-              "label": "83%"
-            },
-            {
-              "value": "100%",
-              "label": "100%"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+// ... merged schema from footer.md and current footer ...
 {% endschema %}
