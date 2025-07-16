@@ -97,7 +97,7 @@
         "menu_padding_y": 0,
         "menu_padding_x": 0,
         "menu_border_radius": 0,
-        "menu_bg_color": "#ffffff",
+        "menu_bg_color": "#f8f2ea",
         "menu_margin_y": 0,
         "menu_margin_x": 0,
         "menu_min_width": 0,
@@ -145,7 +145,7 @@
         "show_line": false,
         "copyright_text": "<p>© 2024 Your Store. All rights reserved.</p>",
         "show_payment_icons": true,
-        "payment_icon_size": 30,
+        "payment_icon_size": 24,
         "footer_bottom_alignment": "left-right"
       }
     },
