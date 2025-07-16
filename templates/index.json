@@ -455,7 +455,7 @@
       ],
       "custom_css": [
         ".m-scrolling-promotion-section {border-width: 1px 0 1px 0; border-color: rgb(var(--color-border));}",
-        "@media (max-width: 767px) {.m-promotion__text {font-size: 10px; } .m-promotion__item img {--image-height: 70px; } .m-section-py {padding-top: 15px; padding-bottom: 15px; }}"
+        "@media (max-width: 767px) {.m-promotion__text {font-size: 16px; } .m-promotion__item img {--image-height: 70px; } .m-section-py {padding-top: 15px; padding-bottom: 15px; }}"
       ],
       "settings": {
         "container": "w-full",
