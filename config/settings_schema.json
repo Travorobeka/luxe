@@ -327,6 +327,10 @@
         "content": "MAIN HEADING CUSTOMIZATION"
       },
       {
+        "type": "paragraph",
+        "content": "Enterprise-level typography controls for main headings including advanced styling options"
+      },
+      {
         "type": "range",
         "id": "main_heading_font_size",
         "label": "Main Heading Font Size",
@@ -386,8 +390,90 @@
         "unit": "px"
       },
       {
+        "type": "select",
+        "id": "main_heading_text_transform",
+        "label": "Main Heading Text Transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "main_heading_text_decoration",
+        "label": "Main Heading Text Decoration",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "underline",
+            "label": "Underline"
+          },
+          {
+            "value": "overline",
+            "label": "Overline"
+          },
+          {
+            "value": "line-through",
+            "label": "Line Through"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "main_heading_text_shadow",
+        "label": "Main Heading Text Shadow",
+        "default": "none",
+        "placeholder": "2px 2px 4px rgba(0,0,0,0.3)",
+        "info": "CSS text-shadow property (e.g., '2px 2px 4px rgba(0,0,0,0.3)')"
+      },
+      {
+        "type": "range",
+        "id": "main_heading_mobile_scale",
+        "label": "Main Heading Mobile Scale",
+        "default": 0.8,
+        "min": 0.5,
+        "max": 1.2,
+        "step": 0.05,
+        "unit": "x",
+        "info": "Scale factor for mobile font size"
+      },
+      {
+        "type": "range",
+        "id": "main_heading_tablet_scale",
+        "label": "Main Heading Tablet Scale",
+        "default": 0.9,
+        "min": 0.6,
+        "max": 1.1,
+        "step": 0.05,
+        "unit": "x",
+        "info": "Scale factor for tablet font size"
+      },
+      {
         "type": "header",
         "content": "SUB HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enterprise-level typography controls for sub headings including advanced styling options"
       },
       {
         "type": "range",
@@ -443,6 +529,303 @@
         "max": 5,
         "step": 0.1,
         "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "sub_heading_text_transform",
+        "label": "Sub Heading Text Transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "sub_heading_text_decoration",
+        "label": "Sub Heading Text Decoration",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "underline",
+            "label": "Underline"
+          },
+          {
+            "value": "overline",
+            "label": "Overline"
+          },
+          {
+            "value": "line-through",
+            "label": "Line Through"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "sub_heading_text_shadow",
+        "label": "Sub Heading Text Shadow",
+        "default": "none",
+        "placeholder": "1px 1px 2px rgba(0,0,0,0.2)",
+        "info": "CSS text-shadow property (e.g., '1px 1px 2px rgba(0,0,0,0.2)')"
+      },
+      {
+        "type": "range",
+        "id": "sub_heading_mobile_scale",
+        "label": "Sub Heading Mobile Scale",
+        "default": 0.8,
+        "min": 0.5,
+        "max": 1.2,
+        "step": 0.05,
+        "unit": "x",
+        "info": "Scale factor for mobile font size"
+      },
+      {
+        "type": "range",
+        "id": "sub_heading_tablet_scale",
+        "label": "Sub Heading Tablet Scale",
+        "default": 0.9,
+        "min": 0.6,
+        "max": 1.1,
+        "step": 0.05,
+        "unit": "x",
+        "info": "Scale factor for tablet font size"
+      },
+      {
+        "type": "header",
+        "content": "BODY TEXT CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enterprise-level typography controls for body text and small headings"
+      },
+      {
+        "type": "range",
+        "id": "body_text_font_size",
+        "label": "Body Text Font Size",
+        "default": 16,
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "info": "Used for body text, captions, and small headings"
+      },
+      {
+        "type": "select",
+        "id": "body_text_font_weight",
+        "label": "Body Text Font Weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "body_text_line_height",
+        "label": "Body Text Line Height",
+        "default": 1.5,
+        "min": 1.0,
+        "max": 2.5,
+        "step": 0.1,
+        "unit": "x"
+      },
+      {
+        "type": "range",
+        "id": "body_text_letter_spacing",
+        "label": "Body Text Letter Spacing",
+        "default": 0,
+        "min": -1,
+        "max": 3,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "body_text_text_transform",
+        "label": "Body Text Transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "TYPOGRAPHY PRESETS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Quick typography style presets for different brand aesthetics"
+      },
+      {
+        "type": "select",
+        "id": "typography_preset",
+        "label": "Typography Preset",
+        "default": "custom",
+        "options": [
+          {
+            "value": "custom",
+            "label": "Custom (Use individual settings)"
+          },
+          {
+            "value": "modern_minimal",
+            "label": "Modern Minimal"
+          },
+          {
+            "value": "elegant_serif",
+            "label": "Elegant Serif"
+          },
+          {
+            "value": "bold_impact",
+            "label": "Bold Impact"
+          },
+          {
+            "value": "clean_corporate",
+            "label": "Clean Corporate"
+          },
+          {
+            "value": "creative_artistic",
+            "label": "Creative Artistic"
+          }
+        ],
+        "info": "Preset will override individual settings when selected"
+      },
+      {
+        "type": "header",
+        "content": "ADVANCED TYPOGRAPHY OPTIONS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enterprise-level typography optimization and accessibility features"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_fluid_typography",
+        "label": "Enable Fluid Typography",
+        "default": false,
+        "info": "Automatically scale typography based on viewport width"
+      },
+      {
+        "type": "range",
+        "id": "fluid_typography_min_width",
+        "label": "Fluid Typography Min Width",
+        "default": 320,
+        "min": 280,
+        "max": 480,
+        "step": 20,
+        "unit": "px",
+        "info": "Minimum viewport width for fluid scaling"
+      },
+      {
+        "type": "range",
+        "id": "fluid_typography_max_width",
+        "label": "Fluid Typography Max Width",
+        "default": 1200,
+        "min": 1000,
+        "max": 1600,
+        "step": 50,
+        "unit": "px",
+        "info": "Maximum viewport width for fluid scaling"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_typography_optimization",
+        "label": "Enable Typography Optimization",
+        "default": true,
+        "info": "Optimize font loading and rendering performance"
+      },
+      {
+        "type": "select",
+        "id": "font_display_strategy",
+        "label": "Font Display Strategy",
+        "default": "swap",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "block",
+            "label": "Block"
+          },
+          {
+            "value": "swap",
+            "label": "Swap (Recommended)"
+          },
+          {
+            "value": "fallback",
+            "label": "Fallback"
+          },
+          {
+            "value": "optional",
+            "label": "Optional"
+          }
+        ],
+        "info": "Controls how fonts are displayed while loading"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_accessibility_features",
+        "label": "Enable Accessibility Features",
+        "default": true,
+        "info": "Respect user preferences for reduced motion and contrast"
+      },
+      {
+        "type": "range",
+        "id": "accessibility_min_contrast",
+        "label": "Minimum Contrast Ratio",
+        "default": 4.5,
+        "min": 3.0,
+        "max": 7.0,
+        "step": 0.1,
+        "unit": ":1",
+        "info": "WCAG AA requires 4.5:1 for normal text"
       },
       {
         "type": "header",

@@ -46,6 +46,35 @@
   assign main_heading_letter_spacing = settings.main_heading_letter_spacing | default: 0
   assign sub_heading_letter_spacing = settings.sub_heading_letter_spacing | default: 0
   
+  # Get advanced typography settings
+  assign main_heading_text_transform = settings.main_heading_text_transform | default: 'none'
+  assign main_heading_text_decoration = settings.main_heading_text_decoration | default: 'none'
+  assign main_heading_text_shadow = settings.main_heading_text_shadow | default: 'none'
+  assign main_heading_mobile_scale = settings.main_heading_mobile_scale | default: 0.8
+  assign main_heading_tablet_scale = settings.main_heading_tablet_scale | default: 0.9
+  
+  assign sub_heading_text_transform = settings.sub_heading_text_transform | default: 'none'
+  assign sub_heading_text_decoration = settings.sub_heading_text_decoration | default: 'none'
+  assign sub_heading_text_shadow = settings.sub_heading_text_shadow | default: 'none'
+  assign sub_heading_mobile_scale = settings.sub_heading_mobile_scale | default: 0.8
+  assign sub_heading_tablet_scale = settings.sub_heading_tablet_scale | default: 0.9
+  
+  assign body_text_font_size = settings.body_text_font_size | default: 16
+  assign body_text_font_weight = settings.body_text_font_weight | default: 400
+  assign body_text_line_height = settings.body_text_line_height | default: 1.5
+  assign body_text_letter_spacing = settings.body_text_letter_spacing | default: 0
+  assign body_text_text_transform = settings.body_text_text_transform | default: 'none'
+  
+  # Typography presets
+  assign typography_preset = settings.typography_preset | default: 'custom'
+  assign enable_fluid_typography = settings.enable_fluid_typography | default: false
+  assign fluid_typography_min_width = settings.fluid_typography_min_width | default: 320
+  assign fluid_typography_max_width = settings.fluid_typography_max_width | default: 1200
+  assign enable_typography_optimization = settings.enable_typography_optimization | default: true
+  assign font_display_strategy = settings.font_display_strategy | default: 'swap'
+  assign enable_accessibility_features = settings.enable_accessibility_features | default: true
+  assign accessibility_min_contrast = settings.accessibility_min_contrast | default: 4.5
+  
   # Map legacy H1-H6 letter spacing to new three-tier system for backward compatibility
   assign h1_letter_spacing = main_heading_letter_spacing
   assign h2_letter_spacing = main_heading_letter_spacing
@@ -193,18 +222,18 @@
   	
   	/* Main Heading Variables */
   	--font-main-heading-desktop: {{ main_heading_font_size }}px;
-  	--font-main-heading-tablet: {{ main_heading_font_size | times: 0.80 | floor }}px;
-  	--font-main-heading-mobile: {{ main_heading_font_size | times: 0.70 | floor }}px;
+  	--font-main-heading-tablet: {{ main_heading_font_size | times: main_heading_tablet_scale | floor }}px;
+  	--font-main-heading-mobile: {{ main_heading_font_size | times: main_heading_mobile_scale | floor }}px;
   	
   	/* Sub Heading Variables */
   	--font-sub-heading-desktop: {{ sub_heading_font_size }}px;
-  	--font-sub-heading-tablet: {{ sub_heading_font_size | times: 0.85 | floor }}px;
-  	--font-sub-heading-mobile: {{ sub_heading_font_size | times: 0.75 | floor }}px;
+  	--font-sub-heading-tablet: {{ sub_heading_font_size | times: sub_heading_tablet_scale | floor }}px;
+  	--font-sub-heading-mobile: {{ sub_heading_font_size | times: sub_heading_mobile_scale | floor }}px;
   	
   	/* Body Text Variables */
-  	--font-body-text-desktop: {{ body_font_size }}px;
-  	--font-body-text-tablet: {{ body_font_size }}px;
-  	--font-body-text-mobile: {{ body_font_size }}px;
+  	--font-body-text-desktop: {{ body_text_font_size }}px;
+  	--font-body-text-tablet: {{ body_text_font_size }}px;
+  	--font-body-text-mobile: {{ body_text_font_size }}px;
   	
   	/* Legacy H1-H6 Variables for Backward Compatibility */
   	--font-h1-desktop: {{ h1_font_size }}px;
@@ -230,7 +259,7 @@
   	--font-weight-body: {{ body_font_weight }};
   	--font-weight-main-heading: {{ main_heading_font_weight }};
   	--font-weight-sub-heading: {{ sub_heading_font_weight }};
-  	--font-weight-body-text: {{ body_font_weight }};
+  	--font-weight-body-text: {{ body_text_font_weight }};
   	
   	/* Legacy H1-H6 Font Weights for Backward Compatibility */
   	--font-weight-h1: {{ h1_font_weight }};
@@ -247,8 +276,8 @@
   	--line-height-main-heading-ratio: {{ main_heading_line_height }};
   	--line-height-sub-heading: {{ sub_heading_font_size | times: sub_heading_line_height | round }}px;
   	--line-height-sub-heading-ratio: {{ sub_heading_line_height }};
-  	--line-height-body-text: {{ body_font_size | times: body_line_height | round }}px;
-  	--line-height-body-text-ratio: {{ body_line_height }};
+  	--line-height-body-text: {{ body_text_font_size | times: body_text_line_height | round }}px;
+  	--line-height-body-text-ratio: {{ body_text_line_height }};
   	
   	/* Legacy H1-H6 Line Heights for Backward Compatibility */
   	--line-height-h1: {{ h1_font_size | times: h1_line_height | round }}px;
@@ -268,7 +297,36 @@
   	--letter-spacing-body: {{ body_letter_spacing }}px;
   	--letter-spacing-main-heading: {{ main_heading_letter_spacing }}px;
   	--letter-spacing-sub-heading: {{ sub_heading_letter_spacing }}px;
-  	--letter-spacing-body-text: {{ body_letter_spacing }}px;
+  	--letter-spacing-body-text: {{ body_text_letter_spacing }}px;
+  	
+  	/* ADVANCED TYPOGRAPHY STYLES */
+  	--text-transform-main-heading: {{ main_heading_text_transform }};
+  	--text-decoration-main-heading: {{ main_heading_text_decoration }};
+  	--text-shadow-main-heading: {{ main_heading_text_shadow }};
+  	--text-transform-sub-heading: {{ sub_heading_text_transform }};
+  	--text-decoration-sub-heading: {{ sub_heading_text_decoration }};
+  	--text-shadow-sub-heading: {{ sub_heading_text_shadow }};
+  	--text-transform-body-text: {{ body_text_text_transform }};
+  	
+  	/* RESPONSIVE SCALING */
+  	--main-heading-mobile-scale: {{ main_heading_mobile_scale }};
+  	--main-heading-tablet-scale: {{ main_heading_tablet_scale }};
+  	--sub-heading-mobile-scale: {{ sub_heading_mobile_scale }};
+  	--sub-heading-tablet-scale: {{ sub_heading_tablet_scale }};
+  	
+  	/* FLUID TYPOGRAPHY */
+  	--enable-fluid-typography: {{ enable_fluid_typography }};
+  	--fluid-typography-min-width: {{ fluid_typography_min_width }}px;
+  	--fluid-typography-max-width: {{ fluid_typography_max_width }}px;
+  	
+  	/* PERFORMANCE & ACCESSIBILITY */
+  	--font-display-strategy: {{ font_display_strategy }};
+  	--enable-typography-optimization: {{ enable_typography_optimization }};
+  	--enable-accessibility-features: {{ enable_accessibility_features }};
+  	--accessibility-min-contrast: {{ accessibility_min_contrast }};
+  	
+  	/* TYPOGRAPHY PRESET */
+  	--typography-preset: {{ typography_preset }};
   	
   	/* Legacy H1-H6 Letter Spacing for Backward Compatibility */
   	--letter-spacing-h1: {{ h1_letter_spacing }}px;

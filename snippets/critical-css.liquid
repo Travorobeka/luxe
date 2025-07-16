@@ -55,6 +55,9 @@
     letter-spacing: var(--letter-spacing-main-heading);
     font-family: var(--font-stack-header);
     color: rgb(var(--color-heading));
+    text-transform: var(--text-transform-main-heading);
+    text-decoration: var(--text-decoration-main-heading);
+    text-shadow: var(--text-shadow-main-heading);
   }
 
   .sub-heading {
@@ -64,6 +67,9 @@
     letter-spacing: var(--letter-spacing-sub-heading);
     font-family: var(--font-stack-header);
     color: rgb(var(--color-heading));
+    text-transform: var(--text-transform-sub-heading);
+    text-decoration: var(--text-decoration-sub-heading);
+    text-shadow: var(--text-shadow-sub-heading);
   }
 
   .body-text {
@@ -73,6 +79,7 @@
     letter-spacing: var(--letter-spacing-body-text);
     font-family: var(--font-stack-body);
     color: rgb(var(--color-foreground));
+    text-transform: var(--text-transform-body-text);
   }
   h1,
   .h1 {
@@ -155,6 +162,25 @@
     }
     .body-text {
       font-size: calc(((var(--font-body-text-desktop)) / (var(--font-base-size))) * 1rem);
+    }
+    
+    /* Fluid Typography Support for Desktop */
+    @supports (font-size: clamp(1rem, 1rem + 1vw, 2rem)) {
+      .main-heading {
+        font-size: clamp(calc(((var(--font-main-heading-mobile)) / (var(--font-base-size))) * 1rem), 
+                        calc(((var(--font-main-heading-tablet)) / (var(--font-base-size))) * 1rem) + 1vw, 
+                        calc(((var(--font-main-heading-desktop)) / (var(--font-base-size))) * 1rem));
+      }
+      .sub-heading {
+        font-size: clamp(calc(((var(--font-sub-heading-mobile)) / (var(--font-base-size))) * 1rem), 
+                        calc(((var(--font-sub-heading-tablet)) / (var(--font-base-size))) * 1rem) + 0.5vw, 
+                        calc(((var(--font-sub-heading-desktop)) / (var(--font-base-size))) * 1rem));
+      }
+      .body-text {
+        font-size: clamp(calc(((var(--font-body-text-mobile)) / (var(--font-base-size))) * 1rem), 
+                        calc(((var(--font-body-text-tablet)) / (var(--font-base-size))) * 1rem) + 0.25vw, 
+                        calc(((var(--font-body-text-desktop)) / (var(--font-base-size))) * 1rem));
+      }
     }
     
     /* Legacy H1-H6 - Desktop */
