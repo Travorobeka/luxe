@@ -11,11 +11,10 @@
 /* Base Typography Styles */
 body, 
 .body-text {
-  font-family: var(--font-stack-body);
-  font-size: var(--font-base-size);
-  font-weight: var(--font-weight-body);
-  line-height: var(--line-height-body);
-  letter-spacing: var(--letter-spacing-body);
+  font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  font-size: {{ settings.body_size | default: 16 }}px;
+  font-weight: {{ settings.body_weight | default: 400 }};
+  line-height: {{ settings.body_line_height | default: 1.6 }};
 }
 
 /* Heading Styles */
@@ -27,43 +26,64 @@ h1, h2, h3, h4, h5, h6,
 .heading-4,
 .heading-5,
 .heading-6 {
-  font-family: var(--font-stack-header);
-  font-weight: var(--font-weight-heading);
-  line-height: var(--line-height-heading);
-  letter-spacing: var(--letter-spacing-heading);
+  font-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+  font-weight: {{ settings.heading_weight | default: 600 }};
+  line-height: {{ settings.heading_line_height | default: 1.3 }};
   margin: 0 0 1rem 0;
+  color: rgb(var(--color-heading));
 }
 
 /* Individual Heading Sizes */
-h1, .heading-1 { font-size: var(--font-h1-size); }
-h2, .heading-2 { font-size: var(--font-h2-size); }
-h3, .heading-3 { font-size: var(--font-h3-size); }
-h4, .heading-4 { font-size: var(--font-h4-size); }
-h5, .heading-5 { font-size: var(--font-h5-size); }
-h6, .heading-6 { font-size: var(--font-h6-size); }
+h1, .heading-1 { 
+  font-size: {{ settings.h1_size | default: 48 }}px;
+  font-weight: {{ settings.h1_weight | default: 700 }};
+}
+
+h2, .heading-2 { 
+  font-size: {{ settings.h2_size | default: 32 }}px;
+  font-weight: {{ settings.h2_weight | default: 600 }};
+}
+
+h3, .heading-3 { 
+  font-size: {{ settings.h3_size | default: 24 }}px;
+  font-weight: {{ settings.h3_weight | default: 600 }};
+}
+
+h4, .heading-4 { 
+  font-size: {{ settings.h4_size | default: 20 }}px;
+  font-weight: {{ settings.h4_weight | default: 500 }};
+}
+
+h5, .heading-5 { 
+  font-size: {{ settings.h5_size | default: 18 }}px;
+  font-weight: {{ settings.h5_weight | default: 500 }};
+}
+
+h6, .heading-6 { 
+  font-size: {{ settings.h6_size | default: 16 }}px;
+  font-weight: {{ settings.h6_weight | default: 500 }};
+}
 
 /* Responsive Typography */
-{% if settings.enable_responsive_typography %}
 @media screen and (max-width: 767px) {
-  h1, .heading-1 { font-size: calc(var(--font-h1-size) * var(--mobile-scale)); }
-  h2, .heading-2 { font-size: calc(var(--font-h2-size) * var(--mobile-scale)); }
-  h3, .heading-3 { font-size: calc(var(--font-h3-size) * var(--mobile-scale)); }
-  h4, .heading-4 { font-size: calc(var(--font-h4-size) * var(--mobile-scale)); }
-  h5, .heading-5 { font-size: calc(var(--font-h5-size) * var(--mobile-scale)); }
-  h6, .heading-6 { font-size: calc(var(--font-h6-size) * var(--mobile-scale)); }
+  h1, .heading-1 { font-size: calc({{ settings.h1_size | default: 48 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
+  h2, .heading-2 { font-size: calc({{ settings.h2_size | default: 32 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
+  h3, .heading-3 { font-size: calc({{ settings.h3_size | default: 24 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
+  h4, .heading-4 { font-size: calc({{ settings.h4_size | default: 20 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
+  h5, .heading-5 { font-size: calc({{ settings.h5_size | default: 18 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
+  h6, .heading-6 { font-size: calc({{ settings.h6_size | default: 16 }}px * {{ settings.mobile_scale_factor | default: 0.8 }}); }
   
   body, .body-text {
-    font-size: calc(var(--font-base-size) * var(--mobile-scale));
+    font-size: calc({{ settings.body_size | default: 16 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  h1, .heading-1 { font-size: calc(var(--font-h1-size) * 0.9); }
-  h2, .heading-2 { font-size: calc(var(--font-h2-size) * 0.9); }
-  h3, .heading-3 { font-size: calc(var(--font-h3-size) * 0.9); }
-  h4, .heading-4 { font-size: calc(var(--font-h4-size) * 0.95); }
+  h1, .heading-1 { font-size: calc({{ settings.h1_size | default: 48 }}px * 0.9); }
+  h2, .heading-2 { font-size: calc({{ settings.h2_size | default: 32 }}px * 0.9); }
+  h3, .heading-3 { font-size: calc({{ settings.h3_size | default: 24 }}px * 0.9); }
+  h4, .heading-4 { font-size: calc({{ settings.h4_size | default: 20 }}px * 0.95); }
 }
-{% endif %}
 
 /* Utility Classes */
 .text-small { font-size: calc(var(--font-base-size) * 0.875); }
@@ -83,18 +103,65 @@ h6, .heading-6 { font-size: var(--font-h6-size); }
 /* Theme-specific element styling */
 .product-card__title,
 .collection-card__title,
-.article-card__title {
-  font-family: var(--font-stack-header);
-  font-weight: var(--font-weight-heading);
-  line-height: var(--line-height-heading);
+.article-card__title,
+.m-product__title,
+.m-collection-banner__title,
+.m-hero__title,
+.m-section__heading,
+.m-page-header__title {
+  font-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+  font-weight: {{ settings.heading_weight | default: 600 }};
+  line-height: {{ settings.heading_line_height | default: 1.3 }};
+  color: rgb(var(--color-heading));
 }
 
 .product-card__description,
 .collection-card__description,
-.article-card__excerpt {
-  font-family: var(--font-stack-body);
-  font-weight: var(--font-weight-body);
-  line-height: var(--line-height-body);
+.article-card__excerpt,
+.m-product__description,
+.m-section__description,
+.body-content {
+  font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  font-weight: {{ settings.body_weight | default: 400 }};
+  line-height: {{ settings.body_line_height | default: 1.6 }};
+  color: rgb(var(--color-foreground));
+}
+
+/* Product title sizes */
+.m-product__title {
+  font-size: {{ settings.h1_size | default: 48 }}px;
+}
+
+@media screen and (max-width: 767px) {
+  .m-product__title {
+    font-size: calc({{ settings.h1_size | default: 48 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
+  }
+}
+
+/* Section headings */
+.m-section__heading {
+  font-size: {{ settings.h2_size | default: 32 }}px;
+}
+
+@media screen and (max-width: 767px) {
+  .m-section__heading {
+    font-size: calc({{ settings.h2_size | default: 32 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
+  }
+}
+
+/* Card titles */
+.product-card__title,
+.collection-card__title,
+.article-card__title {
+  font-size: {{ settings.h3_size | default: 24 }}px;
+}
+
+@media screen and (max-width: 767px) {
+  .product-card__title,
+  .collection-card__title,
+  .article-card__title {
+    font-size: calc({{ settings.h3_size | default: 24 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
+  }
 }
 
 /* Button typography */
@@ -138,11 +205,25 @@ select {
 }
 
 /* Performance optimizations */
-* {
+body {
   /* Optimize text rendering */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-display: swap; /* Fast font loading */
+}
+
+/* Font loading optimization */
+{{ settings.type_header_font | font_face: font_display: 'swap' }}
+{{ settings.type_body_font | font_face: font_display: 'swap' }}
+
+/* Prevent layout shift during font loading */
+h1, h2, h3, h4, h5, h6,
+.heading,
+.product-card__title,
+.collection-card__title,
+.article-card__title {
+  font-size-adjust: 0.5;
 }
 
 /* Accessibility enhancements */
@@ -163,6 +244,60 @@ select {
   
   body, .body-text {
     font-weight: 500;
+  }
+}
+
+/* Additional theme element styling */
+.m-featured-collection__heading,
+.m-newsletter__heading,
+.m-testimonial__heading,
+.m-blog__heading {
+  font-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+  font-size: {{ settings.h2_size | default: 32 }}px;
+  font-weight: {{ settings.heading_weight | default: 600 }};
+  line-height: {{ settings.heading_line_height | default: 1.3 }};
+  color: rgb(var(--color-heading));
+}
+
+.m-product-card__title,
+.m-collection-card__title {
+  font-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+  font-size: {{ settings.h4_size | default: 20 }}px;
+  font-weight: {{ settings.h4_weight | default: 500 }};
+  line-height: {{ settings.heading_line_height | default: 1.3 }};
+  color: rgb(var(--color-heading));
+}
+
+/* Navigation elements */
+.m-navigation a,
+.m-breadcrumb a,
+.m-footer-menu a {
+  font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  font-weight: {{ settings.body_weight | default: 400 }};
+}
+
+/* Form elements */
+.m-form input,
+.m-form textarea,
+.m-form select,
+.m-newsletter__input {
+  font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+  font-size: {{ settings.body_size | default: 16 }}px;
+  font-weight: {{ settings.body_weight | default: 400 }};
+}
+
+/* Responsive scaling for additional elements */
+@media screen and (max-width: 767px) {
+  .m-featured-collection__heading,
+  .m-newsletter__heading,
+  .m-testimonial__heading,
+  .m-blog__heading {
+    font-size: calc({{ settings.h2_size | default: 32 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
+  }
+  
+  .m-product-card__title,
+  .m-collection-card__title {
+    font-size: calc({{ settings.h4_size | default: 20 }}px * {{ settings.mobile_scale_factor | default: 0.8 }});
   }
 }
 
