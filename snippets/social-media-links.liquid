@@ -48,10 +48,8 @@
   if settings.social_add_utm
     assign utm = '?utm_source=shop&utm_medium=social'
   endif
-  assign icon_size = settings.social_icon_size | default: 32
-  assign display_type = settings.social_icon_display_type | default: 'default'
 -%}
-<div class="social-media-links social-anim--{{ settings.social_icon_hover_animation }} align-{{ settings.social_alignment }} display-{{ display_type }}">
+<div class="social-media-links {{ icon_anim_class }} align-{{ settings.social_alignment }} {{ extra_classes }}" style="{{ icon_gap_style }}">
   <style>
     {% if icon_color_hover %}
       .social-media-links--item:hover svg { color: {{ icon_color_hover }} !important; fill: {{ icon_color_hover }} !important; }
@@ -71,9 +69,10 @@
         href="{{ link }}{{ utm }}"
         rel="noreferrer"
         aria-label="{{ label }}"
-        style="width:{{ icon_size }}px;height:{{ icon_size }}px;"
+        style="{{ icon_bg_style }}"
+        {% if settings.social_enable_tracking %}onclick="window.dataLayer && dataLayer.push({event: 'social_click', social: '{{ platform }}'});"{% endif %}
       >
-        {% render 'social-icon', platform: platform, size: icon_size, display_type: display_type, style: icon_style %}
+        {% render 'social-icon', platform: platform, size: size, style: icon_style %}
         {% if label != blank and show_label %}
           <span class="social-media-links--label">{{ label }}</span>
         {% endif %}
@@ -81,11 +80,11 @@
     {% endif %}
   {% endfor %}
   {% if settings.social_custom_url != blank and settings.social_custom_icon != blank %}
-    <a
+      <a
       target="{{ link_target }}"
-      class="social-media-links--item"
+        class="social-media-links--item"
       href="{{ settings.social_custom_url }}{{ utm }}"
-      rel="noreferrer"
+        rel="noreferrer"
       aria-label="{{ settings.social_custom_label | default: 'Custom' }}"
       style="{{ icon_bg_style }}"
       {% if settings.social_enable_tracking %}onclick="window.dataLayer && dataLayer.push({event: 'social_click', social: 'custom'});"{% endif %}
@@ -93,7 +92,7 @@
       <img src="{{ settings.social_custom_icon | img_url: '32x32' }}" alt="{{ settings.social_custom_label | default: 'Custom' }}" style="width:{{ icon_size | default: 32 }}px;height:auto;" />
       {% if settings.social_custom_label != blank and show_label %}
         <span class="social-media-links--label">{{ settings.social_custom_label }}</span>
-      {% endif %}
-    </a>
+        {% endif %}
+      </a>
   {% endif %}
 </div>
