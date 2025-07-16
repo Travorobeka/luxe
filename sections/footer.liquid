@@ -689,6 +689,7 @@
           {% endif %}
           
           {% unless section.settings.company_logo == blank %}
+            <pre>company_logo: {{ section.settings.company_logo | json }}</pre>
             {% if section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both' %}
             <div class="footer-company-logo-{{ footer_id }}">
               <img
