@@ -11,11 +11,16 @@
     font-weight: var(--font-weight-body);
     font-style: var(--font-style-body);
     color: rgb(var(--color-foreground));
-    font-size: calc(var(--font-base-size, 16) * 1px);
+    font-size: max(var(--min-font-size, 14px), calc(var(--font-base-size, 16) * 1px));
     line-height: calc(var(--base-line-height) * 1px);
     background-color: rgb(var(--color-background));
     position: relative;
     min-height: 100%;
+  }
+
+  .m-high-contrast, .m-high-contrast body {
+    background: #fff !important;
+    color: #000 !important;
   }
 
   body,
@@ -45,11 +50,12 @@
     color: rgb(var(--color-heading));
     line-height: normal;
     letter-spacing: var(--heading-letter-spacing);
+    font-size: max(var(--min-font-size, 14px), inherit);
   }
 
   /* Three-Tier Typography System Classes */
   .main-heading {
-    font-size: calc(((var(--font-main-heading-mobile)) / (var(--font-base-size))) * 1rem);
+    font-size: max(var(--min-font-size, 14px), calc(((var(--font-main-heading-mobile)) / (var(--font-base-size))) * 1rem));
     font-weight: var(--font-weight-main-heading);
     line-height: var(--line-height-main-heading-ratio);
     letter-spacing: var(--letter-spacing-main-heading);
@@ -61,7 +67,7 @@
   }
 
   .sub-heading {
-    font-size: calc(((var(--font-sub-heading-mobile)) / (var(--font-base-size))) * 1rem);
+    font-size: max(var(--min-font-size, 14px), calc(((var(--font-sub-heading-mobile)) / (var(--font-base-size))) * 1rem));
     font-weight: var(--font-weight-sub-heading);
     line-height: var(--line-height-sub-heading-ratio);
     letter-spacing: var(--letter-spacing-sub-heading);
@@ -73,7 +79,7 @@
   }
 
   .body-text {
-    font-size: calc(((var(--font-body-text-mobile)) / (var(--font-base-size))) * 1rem);
+    font-size: max(var(--min-font-size, 14px), calc(((var(--font-body-text-mobile)) / (var(--font-base-size))) * 1rem));
     font-weight: var(--font-weight-body-text);
     line-height: var(--line-height-body-text-ratio);
     letter-spacing: var(--letter-spacing-body-text);

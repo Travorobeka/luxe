@@ -120,6 +120,36 @@
     when 'round'
       assign pcard_radius = 10
   endcase
+
+  # ENTERPRISE TYPOGRAPHY SETTINGS
+  assign enable_dyslexia_friendly_font = settings.enable_dyslexia_friendly_font | default: false
+  assign min_font_size_enforced = settings.min_font_size_enforced | default: 14
+  assign enable_high_contrast_mode = settings.enable_high_contrast_mode | default: false
+  assign fallback_font_stack = settings.fallback_font_stack | default: 'system-ui, Arial, sans-serif'
+  assign typography_custom_css = settings.typography_custom_css | default: ''
+  assign enable_typography_animation = settings.enable_typography_animation | default: false
+  assign typography_animation_style = settings.typography_animation_style | default: 'fade-in'
+
+  # Responsive font sizes
+  assign body_font_size_desktop = settings.body_font_size_desktop | default: body_font_size
+  assign body_font_size_tablet = settings.body_font_size_tablet | default: body_font_size
+  assign body_font_size_mobile = settings.body_font_size_mobile | default: body_font_size
+  assign main_heading_font_size_desktop = settings.main_heading_font_size_desktop | default: main_heading_font_size
+  assign main_heading_font_size_tablet = settings.main_heading_font_size_tablet | default: main_heading_font_size
+  assign main_heading_font_size_mobile = settings.main_heading_font_size_mobile | default: main_heading_font_size
+  assign sub_heading_font_size_desktop = settings.sub_heading_font_size_desktop | default: sub_heading_font_size
+  assign sub_heading_font_size_tablet = settings.sub_heading_font_size_tablet | default: sub_heading_font_size
+  assign sub_heading_font_size_mobile = settings.sub_heading_font_size_mobile | default: sub_heading_font_size
+
+  # Dyslexia-friendly font stack
+  assign dyslexia_font_stack = 'OpenDyslexic, Arial, sans-serif'
+  assign font_stack_body = enable_dyslexia_friendly_font ? dyslexia_font_stack : fallback_font_stack
+
+  # High contrast mode
+  assign high_contrast_class = enable_high_contrast_mode ? 'm-high-contrast' : ''
+
+  # Animation
+  assign animation_class = enable_typography_animation and typography_animation_style != 'none' ? 'm-typography-animate--' | append: typography_animation_style : ''
 %}
 
 {%- style -%}
@@ -364,6 +394,56 @@
 
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'cart.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  :root {
+    --font-body-size-desktop: {{ body_font_size_desktop }}px;
+    --font-body-size-tablet: {{ body_font_size_tablet }}px;
+    --font-body-size-mobile: {{ body_font_size_mobile }}px;
+    --font-main-heading-size-desktop: {{ main_heading_font_size_desktop }}px;
+    --font-main-heading-size-tablet: {{ main_heading_font_size_tablet }}px;
+    --font-main-heading-size-mobile: {{ main_heading_font_size_mobile }}px;
+    --font-sub-heading-size-desktop: {{ sub_heading_font_size_desktop }}px;
+    --font-sub-heading-size-tablet: {{ sub_heading_font_size_tablet }}px;
+    --font-sub-heading-size-mobile: {{ sub_heading_font_size_mobile }}px;
+    --font-stack-body: {{ font_stack_body }};
+    --min-font-size: {{ min_font_size_enforced }}px;
+  }
+  body.{{ high_contrast_class }} {
+    /* Example: override colors for high contrast */
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .m-typography-animate--fade-in { animation: m-fade-in 1s ease; }
+  .m-typography-animate--slide-up { animation: m-slide-up 1s ease; }
+  .m-typography-animate--zoom-in { animation: m-zoom-in 1s ease; }
+  /* Enforce minimum font size */
+  body, h1, h2, h3, h4, h5, h6, .main-heading, .sub-heading, .body-text {
+    font-size: max(var(--min-font-size), 1em);
+  }
+  /* Responsive font sizes */
+  @media (min-width: 1025px) {
+    body { font-size: var(--font-body-size-desktop); }
+    .main-heading { font-size: var(--font-main-heading-size-desktop); }
+    .sub-heading { font-size: var(--font-sub-heading-size-desktop); }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    body { font-size: var(--font-body-size-tablet); }
+    .main-heading { font-size: var(--font-main-heading-size-tablet); }
+    .sub-heading { font-size: var(--font-sub-heading-size-tablet); }
+  }
+  @media (max-width: 767px) {
+    body { font-size: var(--font-body-size-mobile); }
+    .main-heading { font-size: var(--font-main-heading-size-mobile); }
+    .sub-heading { font-size: var(--font-sub-heading-size-mobile); }
+  }
+  /* Typography animation class (for headings, etc.) */
+  .main-heading.{{ animation_class }}, .sub-heading.{{ animation_class }} {
+    /* Animation will be applied via class */
+  }
+  /* Custom CSS for typography */
+  {{ typography_custom_css }}
+{%- endstyle -%}
 
 {%- liquid
   echo 'vendor.css' | asset_url | stylesheet_tag

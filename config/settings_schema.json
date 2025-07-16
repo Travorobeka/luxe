@@ -1012,6 +1012,184 @@
           }
         ],
         "default": "square"
+      },
+      {
+        "type": "header",
+        "content": "ENTERPRISE TYPOGRAPHY FEATURES"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_dyslexia_friendly_font",
+        "label": "Enable Dyslexia-Friendly Font",
+        "default": false,
+        "info": "Switches body font to a dyslexia-friendly typeface for improved accessibility."
+      },
+      {
+        "type": "range",
+        "id": "min_font_size_enforced",
+        "label": "Enforce Minimum Font Size (px)",
+        "default": 14,
+        "min": 10,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "info": "Prevents text from rendering below this size."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_high_contrast_mode",
+        "label": "Enable High Contrast Mode",
+        "default": false,
+        "info": "Overrides color schemes for maximum contrast."
+      },
+      {
+        "type": "header",
+        "content": "Responsive Typography Controls"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size_desktop",
+        "label": "Body Font Size (Desktop)",
+        "default": 16,
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size_tablet",
+        "label": "Body Font Size (Tablet)",
+        "default": 15,
+        "min": 12,
+        "max": 28,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size_mobile",
+        "label": "Body Font Size (Mobile)",
+        "default": 14,
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "main_heading_font_size_desktop",
+        "label": "Main Heading Font Size (Desktop)",
+        "default": 48,
+        "min": 24,
+        "max": 96,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "main_heading_font_size_tablet",
+        "label": "Main Heading Font Size (Tablet)",
+        "default": 36,
+        "min": 18,
+        "max": 72,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "main_heading_font_size_mobile",
+        "label": "Main Heading Font Size (Mobile)",
+        "default": 28,
+        "min": 14,
+        "max": 56,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "sub_heading_font_size_desktop",
+        "label": "Sub Heading Font Size (Desktop)",
+        "default": 32,
+        "min": 16,
+        "max": 64,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "sub_heading_font_size_tablet",
+        "label": "Sub Heading Font Size (Tablet)",
+        "default": 24,
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "sub_heading_font_size_mobile",
+        "label": "Sub Heading Font Size (Mobile)",
+        "default": 18,
+        "min": 10,
+        "max": 36,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "textarea",
+        "id": "typography_custom_css",
+        "label": "Custom CSS for Typography",
+        "placeholder": ".my-class { font-family: ... }",
+        "info": "Advanced: Add custom CSS that only targets typography elements."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_font_subsetting",
+        "label": "Enable Font Subsetting (if supported)",
+        "default": false,
+        "info": "Loads only required font glyphs for performance."
+      },
+      {
+        "type": "text",
+        "id": "fallback_font_stack",
+        "label": "Fallback Font Stack",
+        "default": "system-ui, Arial, sans-serif",
+        "info": "Comma-separated list of fallback fonts."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_typography_animation",
+        "label": "Enable Typography Animation",
+        "default": false,
+        "info": "Animate headings on load or scroll."
+      },
+      {
+        "type": "select",
+        "id": "typography_animation_style",
+        "label": "Typography Animation Style",
+        "default": "fade-in",
+        "options": [
+          { "value": "fade-in", "label": "Fade In" },
+          { "value": "slide-up", "label": "Slide Up" },
+          { "value": "zoom-in", "label": "Zoom In" },
+          { "value": "none", "label": "None" }
+        ],
+        "info": "Select animation style for headings."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_typography_live_preview",
+        "label": "Enable Live Typography Preview (Theme Editor Only)",
+        "default": true,
+        "info": "Preview all typography changes live in the theme editor."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_accessibility_audit_warnings",
+        "label": "Show Accessibility Audit Warnings",
+        "default": true,
+        "info": "Display warnings for potential accessibility issues in typography."
       }
     ]
   },

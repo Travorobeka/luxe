@@ -81,7 +81,3 @@
     padding-bottom: calc(var(--mobile-sticky-bar-height, 0px) + 30px);
   }
 }
-
-.footer-base, .m-footer {
-  font-size: var(--font-base-size, 16px);
-}
