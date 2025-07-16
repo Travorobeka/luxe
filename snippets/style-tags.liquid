@@ -1,115 +1,5 @@
 {% liquid
   assign custom_css = settings.custom_css
-  assign typography_source = settings.typography_source | default: 'shopify'
-
-  # DISRUPTIVE TYPOGRAPHY SETTINGS
-  assign enable_typography_disruption = settings.enable_typography_disruption | default: true
-  assign override_utility_classes = settings.override_utility_classes | default: true
-  assign override_component_styles = settings.override_component_styles | default: true
-  assign override_semantic_elements = settings.override_semantic_elements | default: true
-  assign show_typography_indicators = settings.show_typography_indicators | default: true
-  assign disruption_level = settings.disruption_level | default: 'aggressive'
-  assign force_h1_main_heading = settings.force_h1_main_heading | default: true
-  assign force_h2_main_heading = settings.force_h2_main_heading | default: true
-  assign force_h3_sub_heading = settings.force_h3_sub_heading | default: true
-  assign force_h4_sub_heading = settings.force_h4_sub_heading | default: true
-  assign force_h5_body_text = settings.force_h5_body_text | default: true
-  assign force_h6_body_text = settings.force_h6_body_text | default: true
-  assign preserve_custom_classes = settings.preserve_custom_classes | default: false
-  assign enable_legacy_warnings = settings.enable_legacy_warnings | default: true
-  assign typography_override_css = settings.typography_override_css | default: ''
-
-  # Get font sizes from new three-tier typography system
-  assign body_font_size = settings.body_font_size | default: 16
-  assign main_heading_font_size = settings.main_heading_font_size | default: 42
-  assign sub_heading_font_size = settings.sub_heading_font_size | default: 24
-  
-  # Map legacy H1-H6 settings to new three-tier system for backward compatibility
-  assign h1_font_size = main_heading_font_size
-  assign h2_font_size = main_heading_font_size
-  assign h3_font_size = sub_heading_font_size
-  assign h4_font_size = sub_heading_font_size
-  assign h5_font_size = body_font_size
-  assign h6_font_size = body_font_size
-  
-  # Get font weights from new three-tier typography system
-  assign body_font_weight = settings.body_font_weight | default: 400
-  assign main_heading_font_weight = settings.main_heading_font_weight | default: 700
-  assign sub_heading_font_weight = settings.sub_heading_font_weight | default: 600
-  
-  # Map legacy H1-H6 weights to new three-tier system for backward compatibility
-  assign h1_font_weight = main_heading_font_weight
-  assign h2_font_weight = main_heading_font_weight
-  assign h3_font_weight = sub_heading_font_weight
-  assign h4_font_weight = sub_heading_font_weight
-  assign h5_font_weight = body_font_weight
-  assign h6_font_weight = body_font_weight
-  
-  # Get line heights from new three-tier typography system
-  assign body_line_height = settings.body_line_height | default: 1.6
-  assign main_heading_line_height = settings.main_heading_line_height | default: 1.2
-  assign sub_heading_line_height = settings.sub_heading_line_height | default: 1.3
-  
-  # Map legacy H1-H6 line heights to new three-tier system for backward compatibility
-  assign h1_line_height = main_heading_line_height
-  assign h2_line_height = main_heading_line_height
-  assign h3_line_height = sub_heading_line_height
-  assign h4_line_height = sub_heading_line_height
-  assign h5_line_height = body_line_height
-  assign h6_line_height = body_line_height
-  
-  # Get letter spacing from new three-tier typography system
-  assign body_letter_spacing = settings.body_letter_spacing | default: 0
-  assign main_heading_letter_spacing = settings.main_heading_letter_spacing | default: 0
-  assign sub_heading_letter_spacing = settings.sub_heading_letter_spacing | default: 0
-  
-  # Get advanced typography settings
-  assign main_heading_text_transform = settings.main_heading_text_transform | default: 'none'
-  assign main_heading_text_decoration = settings.main_heading_text_decoration | default: 'none'
-  assign main_heading_text_shadow = settings.main_heading_text_shadow | default: 'none'
-  assign main_heading_mobile_scale = settings.main_heading_mobile_scale | default: 0.8
-  assign main_heading_tablet_scale = settings.main_heading_tablet_scale | default: 0.9
-  
-  assign sub_heading_text_transform = settings.sub_heading_text_transform | default: 'none'
-  assign sub_heading_text_decoration = settings.sub_heading_text_decoration | default: 'none'
-  assign sub_heading_text_shadow = settings.sub_heading_text_shadow | default: 'none'
-  assign sub_heading_mobile_scale = settings.sub_heading_mobile_scale | default: 0.8
-  assign sub_heading_tablet_scale = settings.sub_heading_tablet_scale | default: 0.9
-  
-  assign body_text_font_size = settings.body_text_font_size | default: 16
-  assign body_text_font_weight = settings.body_text_font_weight | default: 400
-  assign body_text_line_height = settings.body_text_line_height | default: 1.5
-  assign body_text_letter_spacing = settings.body_text_letter_spacing | default: 0
-  assign body_text_text_transform = settings.body_text_text_transform | default: 'none'
-  
-  # Typography presets
-  assign typography_preset = settings.typography_preset | default: 'custom'
-  assign enable_fluid_typography = settings.enable_fluid_typography | default: false
-  assign fluid_typography_min_width = settings.fluid_typography_min_width | default: 320
-  assign fluid_typography_max_width = settings.fluid_typography_max_width | default: 1200
-  assign enable_typography_optimization = settings.enable_typography_optimization | default: true
-  assign font_display_strategy = settings.font_display_strategy | default: 'swap'
-  assign enable_accessibility_features = settings.enable_accessibility_features | default: true
-  assign accessibility_min_contrast = settings.accessibility_min_contrast | default: 4.5
-  
-  # Map legacy H1-H6 letter spacing to new three-tier system for backward compatibility
-  assign h1_letter_spacing = main_heading_letter_spacing
-  assign h2_letter_spacing = main_heading_letter_spacing
-  assign h3_letter_spacing = sub_heading_letter_spacing
-  assign h4_letter_spacing = sub_heading_letter_spacing
-  assign h5_letter_spacing = body_letter_spacing
-  assign h6_letter_spacing = body_letter_spacing
-  
-  # Legacy support for existing settings
-  if typography_source == 'shopify'
-    assign font_body_base = settings.type_base_size | default: body_font_size
-    assign body_font_size = font_body_base
-    assign h1_font_size = settings.h1_font_size | default: h1_font_size
-    assign h2_font_size = settings.h2_font_size | default: h2_font_size
-    assign h3_font_size = settings.type_header_base_size | default: h3_font_size
-    assign h4_font_size = settings.h4_font_size | default: h4_font_size
-  endif
-
   assign enable_rtl = settings.enable_rtl
   assign language_support_rtl = settings.language_support_rtl
   if enable_rtl and language_support_rtl != blank
@@ -132,41 +22,10 @@
   endcase
 
   assign pcard_radius = 0
-
   case settings.pcard_corner_radius
     when 'round'
       assign pcard_radius = 10
   endcase
-
-  # ENTERPRISE TYPOGRAPHY SETTINGS
-  assign enable_dyslexia_friendly_font = settings.enable_dyslexia_friendly_font | default: false
-  assign min_font_size_enforced = settings.min_font_size_enforced | default: 14
-  assign enable_high_contrast_mode = settings.enable_high_contrast_mode | default: false
-  assign fallback_font_stack = settings.fallback_font_stack | default: 'system-ui, Arial, sans-serif'
-  assign typography_custom_css = settings.typography_custom_css | default: ''
-  assign enable_typography_animation = settings.enable_typography_animation | default: false
-  assign typography_animation_style = settings.typography_animation_style | default: 'fade-in'
-
-  # Responsive font sizes
-  assign body_font_size_desktop = settings.body_font_size_desktop | default: body_font_size
-  assign body_font_size_tablet = settings.body_font_size_tablet | default: body_font_size
-  assign body_font_size_mobile = settings.body_font_size_mobile | default: body_font_size
-  assign main_heading_font_size_desktop = settings.main_heading_font_size_desktop | default: main_heading_font_size
-  assign main_heading_font_size_tablet = settings.main_heading_font_size_tablet | default: main_heading_font_size
-  assign main_heading_font_size_mobile = settings.main_heading_font_size_mobile | default: main_heading_font_size
-  assign sub_heading_font_size_desktop = settings.sub_heading_font_size_desktop | default: sub_heading_font_size
-  assign sub_heading_font_size_tablet = settings.sub_heading_font_size_tablet | default: sub_heading_font_size
-  assign sub_heading_font_size_mobile = settings.sub_heading_font_size_mobile | default: sub_heading_font_size
-
-  # Dyslexia-friendly font stack
-  assign dyslexia_font_stack = 'OpenDyslexic, Arial, sans-serif'
-  assign font_stack_body = enable_dyslexia_friendly_font ? dyslexia_font_stack : fallback_font_stack
-
-  # High contrast mode
-  assign high_contrast_class = enable_high_contrast_mode ? 'm-high-contrast' : ''
-
-  # Animation
-  assign animation_class = enable_typography_animation and typography_animation_style != 'none' ? 'm-typography-animate--' | append: typography_animation_style : ''
 %}
 
 {%- style -%}
@@ -262,145 +121,13 @@
   	--bg-card-placeholder: rgba(243,243,243,1);
   	--arrow-select-box: url({{ 'ar-down.svg' | asset_url }});
 
-  	/* FONT SIZES - New Three-Tier Typography System */
-  	--font-base-size: {{ body_font_size }}px;
+  	/* FONT SIZES */
+  	--font-base-size: {{ settings.body_size | default: 16 }}px;
   	--font-btn-size: {{ settings.btn_base_size }}px;
   	--font-btn-weight: {{ settings.btn_weight }};
-  	
-  	/* Main Heading Variables */
-  	--font-main-heading-desktop: {{ main_heading_font_size }}px;
-  	--font-main-heading-tablet: {{ main_heading_font_size | times: main_heading_tablet_scale | floor }}px;
-  	--font-main-heading-mobile: {{ main_heading_font_size | times: main_heading_mobile_scale | floor }}px;
-  	
-  	/* Sub Heading Variables */
-  	--font-sub-heading-desktop: {{ sub_heading_font_size }}px;
-  	--font-sub-heading-tablet: {{ sub_heading_font_size | times: sub_heading_tablet_scale | floor }}px;
-  	--font-sub-heading-mobile: {{ sub_heading_font_size | times: sub_heading_mobile_scale | floor }}px;
-  	
-  	/* Body Text Variables */
-  	--font-body-text-desktop: {{ body_text_font_size }}px;
-  	--font-body-text-tablet: {{ body_text_font_size }}px;
-  	--font-body-text-mobile: {{ body_text_font_size }}px;
-  	
-  	/* Legacy H1-H6 Variables for Backward Compatibility */
-  	--font-h1-desktop: {{ h1_font_size }}px;
-  	--font-h1-tablet: {{ h1_font_size | times: 0.70 | floor }}px;
-  	--font-h1-mobile: {{ h1_font_size | times: 0.60 | floor }}px;
-  	--font-h2-desktop: {{ h2_font_size }}px;
-  	--font-h2-tablet: {{ h2_font_size | times: 0.80 | floor }}px;
-  	--font-h2-mobile: {{ h2_font_size | times: 0.70 | floor }}px;
-  	--font-h3-desktop: {{ h3_font_size }}px;
-  	--font-h3-tablet: {{ h3_font_size | times: 0.80 | floor }}px;
-  	--font-h3-mobile: {{ h3_font_size | times: 0.70 | floor }}px;
-  	--font-h4-desktop: {{ h4_font_size }}px;
-  	--font-h4-tablet: {{ h4_font_size | times: 0.80 | floor }}px;
-  	--font-h4-mobile: {{ h4_font_size | times: 0.80 | floor }}px;
-  	--font-h5-desktop: {{ h5_font_size }}px;
-  	--font-h5-tablet: {{ h5_font_size | times: 0.80 | floor }}px;
-  	--font-h5-mobile: {{ h5_font_size | times: 0.80 | floor }}px;
-  	--font-h6-desktop: {{ h6_font_size }}px;
-  	--font-h6-tablet: {{ h6_font_size | times: 0.80 | floor }}px;
-  	--font-h6-mobile: {{ h6_font_size | times: 0.80 | floor }}px;
-  	
-  	/* FONT WEIGHTS - New Three-Tier Typography System */
-  	--font-weight-body: {{ body_font_weight }};
-  	--font-weight-main-heading: {{ main_heading_font_weight }};
-  	--font-weight-sub-heading: {{ sub_heading_font_weight }};
-  	--font-weight-body-text: {{ body_text_font_weight }};
-  	
-  	/* Legacy H1-H6 Font Weights for Backward Compatibility */
-  	--font-weight-h1: {{ h1_font_weight }};
-  	--font-weight-h2: {{ h2_font_weight }};
-  	--font-weight-h3: {{ h3_font_weight }};
-  	--font-weight-h4: {{ h4_font_weight }};
-  	--font-weight-h5: {{ h5_font_weight }};
-  	--font-weight-h6: {{ h6_font_weight }};
-  	
-  	/* LINE HEIGHTS - New Three-Tier Typography System */
-  	--line-height-body: {{ body_font_size | times: body_line_height | round }}px;
-  	--line-height-body-ratio: {{ body_line_height }};
-  	--line-height-main-heading: {{ main_heading_font_size | times: main_heading_line_height | round }}px;
-  	--line-height-main-heading-ratio: {{ main_heading_line_height }};
-  	--line-height-sub-heading: {{ sub_heading_font_size | times: sub_heading_line_height | round }}px;
-  	--line-height-sub-heading-ratio: {{ sub_heading_line_height }};
-  	--line-height-body-text: {{ body_text_font_size | times: body_text_line_height | round }}px;
-  	--line-height-body-text-ratio: {{ body_text_line_height }};
-  	
-  	/* Legacy H1-H6 Line Heights for Backward Compatibility */
-  	--line-height-h1: {{ h1_font_size | times: h1_line_height | round }}px;
-  	--line-height-h1-ratio: {{ h1_line_height }};
-  	--line-height-h2: {{ h2_font_size | times: h2_line_height | round }}px;
-  	--line-height-h2-ratio: {{ h2_line_height }};
-  	--line-height-h3: {{ h3_font_size | times: h3_line_height | round }}px;
-  	--line-height-h3-ratio: {{ h3_line_height }};
-  	--line-height-h4: {{ h4_font_size | times: h4_line_height | round }}px;
-  	--line-height-h4-ratio: {{ h4_line_height }};
-  	--line-height-h5: {{ h5_font_size | times: h5_line_height | round }}px;
-  	--line-height-h5-ratio: {{ h5_line_height }};
-  	--line-height-h6: {{ h6_font_size | times: h6_line_height | round }}px;
-  	--line-height-h6-ratio: {{ h6_line_height }};
-  	
-  	/* LETTER SPACING - New Three-Tier Typography System */
-  	--letter-spacing-body: {{ body_letter_spacing }}px;
-  	--letter-spacing-main-heading: {{ main_heading_letter_spacing }}px;
-  	--letter-spacing-sub-heading: {{ sub_heading_letter_spacing }}px;
-  	--letter-spacing-body-text: {{ body_text_letter_spacing }}px;
-  	
-  	/* ADVANCED TYPOGRAPHY STYLES */
-  	--text-transform-main-heading: {{ main_heading_text_transform }};
-  	--text-decoration-main-heading: {{ main_heading_text_decoration }};
-  	--text-shadow-main-heading: {{ main_heading_text_shadow }};
-  	--text-transform-sub-heading: {{ sub_heading_text_transform }};
-  	--text-decoration-sub-heading: {{ sub_heading_text_decoration }};
-  	--text-shadow-sub-heading: {{ sub_heading_text_shadow }};
-  	--text-transform-body-text: {{ body_text_text_transform }};
-  	
-  	/* RESPONSIVE SCALING */
-  	--main-heading-mobile-scale: {{ main_heading_mobile_scale }};
-  	--main-heading-tablet-scale: {{ main_heading_tablet_scale }};
-  	--sub-heading-mobile-scale: {{ sub_heading_mobile_scale }};
-  	--sub-heading-tablet-scale: {{ sub_heading_tablet_scale }};
-  	
-  	/* FLUID TYPOGRAPHY */
-  	--enable-fluid-typography: {{ enable_fluid_typography }};
-  	--fluid-typography-min-width: {{ fluid_typography_min_width }}px;
-  	--fluid-typography-max-width: {{ fluid_typography_max_width }}px;
-  	
-  	/* PERFORMANCE & ACCESSIBILITY */
-  	--font-display-strategy: {{ font_display_strategy }};
-  	--enable-typography-optimization: {{ enable_typography_optimization }};
-  	--enable-accessibility-features: {{ enable_accessibility_features }};
-  	--accessibility-min-contrast: {{ accessibility_min_contrast }};
-  	
-  	/* TYPOGRAPHY PRESET */
-  	--typography-preset: {{ typography_preset }};
-  	
-  	/* DISRUPTIVE TYPOGRAPHY SETTINGS */
-  	--enable-typography-disruption: {{ enable_typography_disruption }};
-  	--override-utility-classes: {{ override_utility_classes }};
-  	--override-component-styles: {{ override_component_styles }};
-  	--override-semantic-elements: {{ override_semantic_elements }};
-  	--show-typography-indicators: {{ show_typography_indicators }};
-  	--disruption-level: {{ disruption_level }};
-  	--force-h1-main-heading: {{ force_h1_main_heading }};
-  	--force-h2-main-heading: {{ force_h2_main_heading }};
-  	--force-h3-sub-heading: {{ force_h3_sub_heading }};
-  	--force-h4-sub-heading: {{ force_h4_sub_heading }};
-  	--force-h5-body-text: {{ force_h5_body_text }};
-  	--force-h6-body-text: {{ force_h6_body_text }};
-  	--preserve-custom-classes: {{ preserve_custom_classes }};
-  	--enable-legacy-warnings: {{ enable_legacy_warnings }};
-  	
-  	/* Legacy H1-H6 Letter Spacing for Backward Compatibility */
-  	--letter-spacing-h1: {{ h1_letter_spacing }}px;
-  	--letter-spacing-h2: {{ h2_letter_spacing }}px;
-  	--letter-spacing-h3: {{ h3_letter_spacing }}px;
-  	--letter-spacing-h4: {{ h4_letter_spacing }}px;
-  	--letter-spacing-h5: {{ h5_letter_spacing }}px;
-  	--letter-spacing-h6: {{ h6_letter_spacing }}px;
-  	
-  	/* Legacy support */
-  	--heading-letter-spacing: {{ settings.type_header_spacing | default: 0 }}px;
+  	--font-h1-size: {{ settings.h1_size | default: 48 }}px;
+  	--font-h2-size: {{ settings.h2_size | default: 32 }}px;
+  	--font-h3-size: {{ settings.h3_size | default: 24 }}px;
 
    --arrow-down-url: url({{ 'arrow-down.svg' | asset_url }});
    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});
@@ -427,56 +154,6 @@
 
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'cart.css' | asset_url | stylesheet_tag }}</noscript>
-
-{%- style -%}
-  :root {
-    --font-body-size-desktop: {{ body_font_size_desktop }}px;
-    --font-body-size-tablet: {{ body_font_size_tablet }}px;
-    --font-body-size-mobile: {{ body_font_size_mobile }}px;
-    --font-main-heading-size-desktop: {{ main_heading_font_size_desktop }}px;
-    --font-main-heading-size-tablet: {{ main_heading_font_size_tablet }}px;
-    --font-main-heading-size-mobile: {{ main_heading_font_size_mobile }}px;
-    --font-sub-heading-size-desktop: {{ sub_heading_font_size_desktop }}px;
-    --font-sub-heading-size-tablet: {{ sub_heading_font_size_tablet }}px;
-    --font-sub-heading-size-mobile: {{ sub_heading_font_size_mobile }}px;
-    --font-stack-body: {{ font_stack_body }};
-    --min-font-size: {{ min_font_size_enforced }}px;
-  }
-  body.{{ high_contrast_class }} {
-    /* Example: override colors for high contrast */
-    background: #fff !important;
-    color: #000 !important;
-  }
-  .m-typography-animate--fade-in { animation: m-fade-in 1s ease; }
-  .m-typography-animate--slide-up { animation: m-slide-up 1s ease; }
-  .m-typography-animate--zoom-in { animation: m-zoom-in 1s ease; }
-  /* Enforce minimum font size */
-  body, h1, h2, h3, h4, h5, h6, .main-heading, .sub-heading, .body-text {
-    font-size: max(var(--min-font-size), 1em);
-  }
-  /* Responsive font sizes */
-  @media (min-width: 1025px) {
-    body { font-size: var(--font-body-size-desktop); }
-    .main-heading { font-size: var(--font-main-heading-size-desktop); }
-    .sub-heading { font-size: var(--font-sub-heading-size-desktop); }
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
-    body { font-size: var(--font-body-size-tablet); }
-    .main-heading { font-size: var(--font-main-heading-size-tablet); }
-    .sub-heading { font-size: var(--font-sub-heading-size-tablet); }
-  }
-  @media (max-width: 767px) {
-    body { font-size: var(--font-body-size-mobile); }
-    .main-heading { font-size: var(--font-main-heading-size-mobile); }
-    .sub-heading { font-size: var(--font-sub-heading-size-mobile); }
-  }
-  /* Typography animation class (for headings, etc.) */
-  .main-heading.{{ animation_class }}, .sub-heading.{{ animation_class }} {
-    /* Animation will be applied via class */
-  }
-  /* Custom CSS for typography */
-  {{ typography_custom_css }}
-{%- endstyle -%}
 
 {%- liquid
   echo 'vendor.css' | asset_url | stylesheet_tag
@@ -505,12 +182,6 @@
 {%- style -%}
   {%- if custom_css != blank -%}
     {{ custom_css | strip_newlines }}
-  {%- endif -%}
-  
-  {%- comment -%} Custom Typography Override CSS {%- endcomment -%}
-  {%- if typography_override_css != blank -%}
-    /* CUSTOM TYPOGRAPHY OVERRIDES */
-    {{ typography_override_css | strip_newlines }}
   {%- endif -%}
 {%- endstyle -%}
 

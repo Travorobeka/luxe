@@ -20,18 +20,6 @@
     assign body_classes = body_classes | append: ' sf__page-about'
   endif
   
-  # Add typography disruption classes
-  if settings.enable_typography_disruption
-    assign body_classes = body_classes | append: ' typography-disruption-enabled'
-    assign disruption_level = settings.disruption_level | default: 'aggressive'
-    assign body_classes = body_classes | append: ' typography-disruption-' | append: disruption_level
-  else
-    assign body_classes = body_classes | append: ' typography-disruption-disabled'
-  endif
-  
-  if settings.show_typography_indicators and request.design_mode
-    assign body_classes = body_classes | append: ' show-typography-indicators'
-  endif
 %}
 <!doctype html>
 <html
@@ -78,8 +66,6 @@
       render 'critical-css'
 
       echo 'main.css' | asset_url | stylesheet_tag: preload: true
-      echo 'typography-utilities.css' | asset_url | stylesheet_tag
-      echo 'typography-enhanced-utilities.css' | asset_url | stylesheet_tag
 
       render 'style-tags'
     -%}
@@ -127,7 +113,6 @@
       render 'script-tags'
       render 'cookie-banner'
       render 'custom-code-body'
-      render 'typography-presets'
     -%}
 
     <script src="{{ 'product-quick-view.js' | asset_url }}" defer="defer"></script>
