@@ -6,6 +6,54 @@
   assign h2_font_size = settings.h2_font_size
   assign h3_font_size = settings.type_header_base_size
   assign h4_font_size = settings.h4_font_size
+  
+  # Typography Scale and Line Height Settings
+  assign typography_scale = settings.typography_scale
+  assign body_line_height_ratio = settings.body_line_height_ratio | default: 1.6
+  assign heading_line_height_ratio = settings.heading_line_height_ratio | default: 1.2
+  
+  # Calculate typography scale multiplier
+  assign scale_multiplier = 1.2
+  case typography_scale
+    when 'minor_second'
+      assign scale_multiplier = 1.067
+    when 'major_second'
+      assign scale_multiplier = 1.125
+    when 'minor_third'
+      assign scale_multiplier = 1.2
+    when 'major_third'
+      assign scale_multiplier = 1.25
+    when 'perfect_fourth'
+      assign scale_multiplier = 1.333
+    when 'augmented_fourth'
+      assign scale_multiplier = 1.414
+    when 'perfect_fifth'
+      assign scale_multiplier = 1.5
+    when 'golden_ratio'
+      assign scale_multiplier = 1.618
+  endcase
+  
+  # Calculate enhanced font sizes if Google Fonts are enabled
+  if settings.enable_google_fonts and typography_scale != blank
+    assign base_size = font_body_base
+    assign h6_calculated = base_size | times: scale_multiplier | round
+    assign h5_calculated = h6_calculated | times: scale_multiplier | round
+    assign h4_calculated = h5_calculated | times: scale_multiplier | round
+    assign h3_calculated = h4_calculated | times: scale_multiplier | round
+    assign h2_calculated = h3_calculated | times: scale_multiplier | round
+    assign h1_calculated = h2_calculated | times: scale_multiplier | round
+    
+    # Override font sizes with calculated values
+    assign h1_font_size = h1_calculated
+    assign h2_font_size = h2_calculated
+    assign h3_font_size = h3_calculated
+    assign h4_font_size = h4_calculated
+    assign h5_font_size = h5_calculated
+    assign h6_font_size = h6_calculated
+  else
+    assign h5_font_size = 20
+    assign h6_font_size = 18
+  endif
 
   assign enable_rtl = settings.enable_rtl
   assign language_support_rtl = settings.language_support_rtl
@@ -145,11 +193,24 @@
   	--font-h4-desktop: {{ h4_font_size }};
   	--font-h4-tablet: {{ h4_font_size | times: 0.80 | floor }};
   	--font-h4-mobile: {{ h4_font_size | times: 0.80 | floor }};
-  	--font-h5-desktop: {{ font_body_base | times: 1.125 | floor }};
-  	--font-h5-mobile: {{ font_body_base }};
-  	--font-h6-desktop: {{ font_body_base }};
-  	--font-h6-mobile: {{ font_body_base }};
+  	--font-h5-desktop: {{ h5_font_size }};
+  	--font-h5-mobile: {{ h5_font_size | times: 0.80 | floor }};
+  	--font-h6-desktop: {{ h6_font_size }};
+  	--font-h6-mobile: {{ h6_font_size | times: 0.80 | floor }};
   	--heading-letter-spacing: {{ settings.type_header_spacing }}px;
+  	
+  	/* LINE HEIGHT RATIOS */
+  	--line-height-body-ratio: {{ body_line_height_ratio }};
+  	--line-height-heading-ratio: {{ heading_line_height_ratio }};
+  	
+  	/* CALCULATED LINE HEIGHTS */
+  	--line-height-body: {{ font_body_base | times: body_line_height_ratio | round }}px;
+  	--line-height-h1: {{ h1_font_size | times: heading_line_height_ratio | round }}px;
+  	--line-height-h2: {{ h2_font_size | times: heading_line_height_ratio | round }}px;
+  	--line-height-h3: {{ h3_font_size | times: heading_line_height_ratio | round }}px;
+  	--line-height-h4: {{ h4_font_size | times: heading_line_height_ratio | round }}px;
+  	--line-height-h5: {{ h5_font_size | times: heading_line_height_ratio | round }}px;
+  	--line-height-h6: {{ h6_font_size | times: heading_line_height_ratio | round }}px;
 
    --arrow-down-url: url({{ 'arrow-down.svg' | asset_url }});
    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});

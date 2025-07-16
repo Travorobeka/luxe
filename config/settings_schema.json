@@ -468,6 +468,187 @@
       },
       {
         "type": "header",
+        "content": "GOOGLE FONTS & FONT PAIRINGS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Choose from curated Google Font combinations or use custom Google Fonts. These options override the font selections above when enabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_google_fonts",
+        "label": "Enable Google Fonts",
+        "default": false,
+        "info": "When enabled, Google Fonts will be loaded from Google's servers for better performance"
+      },
+      {
+        "type": "select",
+        "id": "font_pairing_preset",
+        "label": "Font Pairing Preset",
+        "info": "Curated font combinations that work well together",
+        "options": [
+          {
+            "value": "custom",
+            "label": "Custom Selection"
+          },
+          {
+            "value": "elegant_classic",
+            "label": "Elegant Classic (Playfair Display + Nunito)"
+          },
+          {
+            "value": "modern_saas",
+            "label": "Modern SaaS (Inter + Inter)"
+          },
+          {
+            "value": "creative_bold",
+            "label": "Creative Bold (Oswald + Open Sans)"
+          },
+          {
+            "value": "luxury_serif",
+            "label": "Luxury Serif (Cormorant Garamond + Lato)"
+          },
+          {
+            "value": "minimalist_clean",
+            "label": "Minimalist Clean (Poppins + Poppins)"
+          },
+          {
+            "value": "editorial_classic",
+            "label": "Editorial Classic (Merriweather + Open Sans)"
+          },
+          {
+            "value": "tech_modern",
+            "label": "Tech Modern (Roboto + Roboto)"
+          },
+          {
+            "value": "artistic_creative",
+            "label": "Artistic Creative (Montserrat + Source Sans Pro)"
+          },
+          {
+            "value": "boutique_fashion",
+            "label": "Boutique Fashion (Crimson Text + Lato)"
+          },
+          {
+            "value": "startup_friendly",
+            "label": "Startup Friendly (Work Sans + Work Sans)"
+          }
+        ],
+        "default": "custom"
+      },
+      {
+        "type": "header",
+        "content": "Custom Google Fonts"
+      },
+      {
+        "type": "text",
+        "id": "google_font_heading",
+        "label": "Heading Font Name",
+        "placeholder": "Playfair Display",
+        "info": "Enter Google Font name exactly as shown on Google Fonts (e.g., 'Playfair Display', 'Open Sans')"
+      },
+      {
+        "type": "text",
+        "id": "google_font_heading_weights",
+        "label": "Heading Font Weights",
+        "placeholder": "400,500,600,700",
+        "default": "400,500,600,700",
+        "info": "Comma-separated list of font weights to load (e.g., '400,500,600,700')"
+      },
+      {
+        "type": "text",
+        "id": "google_font_body",
+        "label": "Body Font Name",
+        "placeholder": "Nunito",
+        "info": "Enter Google Font name exactly as shown on Google Fonts (e.g., 'Nunito', 'Open Sans')"
+      },
+      {
+        "type": "text",
+        "id": "google_font_body_weights",
+        "label": "Body Font Weights",
+        "placeholder": "300,400,500,600",
+        "default": "300,400,500,600",
+        "info": "Comma-separated list of font weights to load (e.g., '300,400,500,600')"
+      },
+      {
+        "type": "header",
+        "content": "Advanced Typography Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_font_display_swap",
+        "label": "Enable Font Display Swap",
+        "default": true,
+        "info": "Improves loading performance by showing fallback fonts first"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_font_preload",
+        "label": "Enable Font Preloading",
+        "default": true,
+        "info": "Preloads critical fonts for faster page rendering"
+      },
+      {
+        "type": "select",
+        "id": "typography_scale",
+        "label": "Typography Scale",
+        "info": "Predefined harmonious font size relationships",
+        "options": [
+          {
+            "value": "minor_second",
+            "label": "Minor Second (1.067)"
+          },
+          {
+            "value": "major_second",
+            "label": "Major Second (1.125)"
+          },
+          {
+            "value": "minor_third",
+            "label": "Minor Third (1.2)"
+          },
+          {
+            "value": "major_third",
+            "label": "Major Third (1.25)"
+          },
+          {
+            "value": "perfect_fourth",
+            "label": "Perfect Fourth (1.333)"
+          },
+          {
+            "value": "augmented_fourth",
+            "label": "Augmented Fourth (1.414)"
+          },
+          {
+            "value": "perfect_fifth",
+            "label": "Perfect Fifth (1.5)"
+          },
+          {
+            "value": "golden_ratio",
+            "label": "Golden Ratio (1.618)"
+          }
+        ],
+        "default": "minor_third"
+      },
+      {
+        "type": "range",
+        "id": "body_line_height_ratio",
+        "label": "Body Line Height Ratio",
+        "min": 1.2,
+        "max": 2.0,
+        "step": 0.1,
+        "default": 1.6,
+        "info": "Ratio of line height to font size for body text"
+      },
+      {
+        "type": "range",
+        "id": "heading_line_height_ratio",
+        "label": "Heading Line Height Ratio",
+        "min": 1.0,
+        "max": 1.8,
+        "step": 0.1,
+        "default": 1.2,
+        "info": "Ratio of line height to font size for headings"
+      },
+      {
+        "type": "header",
         "content": "Corner radius"
       },
       {

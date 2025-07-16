@@ -1,0 +1,97 @@
+{% comment %}
+  Typography Preview Snippet
+  Usage: {% render 'typography-preview' %}
+  
+  This snippet provides a preview of the current typography settings including:
+  - Font pairings
+  - Typography scales
+  - Line height ratios
+  - Google Fonts integration
+{% endcomment %}
+
+{% liquid
+  assign enable_google_fonts = settings.enable_google_fonts
+  assign font_pairing_preset = settings.font_pairing_preset
+  assign typography_scale = settings.typography_scale
+  assign body_line_height_ratio = settings.body_line_height_ratio | default: 1.6
+  assign heading_line_height_ratio = settings.heading_line_height_ratio | default: 1.2
+%}
+
+<div class="typography-preview" style="margin: 2rem 0; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 8px;">
+  <h2 style="margin-bottom: 1rem; color: #333;">Typography Preview</h2>
+  
+  {% if enable_google_fonts %}
+    <div class="typography-settings" style="margin-bottom: 2rem; padding: 1rem; background: #f5f5f5; border-radius: 4px;">
+      <h3 style="margin-bottom: 0.5rem; font-size: 1.1em;">Current Settings</h3>
+      <p style="margin: 0.25rem 0;"><strong>Font Pairing:</strong> {{ font_pairing_preset | replace: '_', ' ' | capitalize }}</p>
+      <p style="margin: 0.25rem 0;"><strong>Typography Scale:</strong> {{ typography_scale | replace: '_', ' ' | capitalize }}</p>
+      <p style="margin: 0.25rem 0;"><strong>Body Line Height Ratio:</strong> {{ body_line_height_ratio }}</p>
+      <p style="margin: 0.25rem 0;"><strong>Heading Line Height Ratio:</strong> {{ heading_line_height_ratio }}</p>
+    </div>
+  {% endif %}
+  
+  <div class="typography-samples">
+    <h1 style="font-family: var(--font-stack-header); line-height: var(--line-height-h1); font-size: var(--font-h1-desktop)px; margin-bottom: 1rem;">
+      Heading 1 - Main Title
+    </h1>
+    
+    <h2 style="font-family: var(--font-stack-header); line-height: var(--line-height-h2); font-size: var(--font-h2-desktop)px; margin-bottom: 1rem;">
+      Heading 2 - Section Title
+    </h2>
+    
+    <h3 style="font-family: var(--font-stack-header); line-height: var(--line-height-h3); font-size: var(--font-h3-desktop)px; margin-bottom: 1rem;">
+      Heading 3 - Subsection Title
+    </h3>
+    
+    <h4 style="font-family: var(--font-stack-header); line-height: var(--line-height-h4); font-size: var(--font-h4-desktop)px; margin-bottom: 1rem;">
+      Heading 4 - Minor Title
+    </h4>
+    
+    <h5 style="font-family: var(--font-stack-header); line-height: var(--line-height-h5); font-size: var(--font-h5-desktop)px; margin-bottom: 1rem;">
+      Heading 5 - Small Title
+    </h5>
+    
+    <h6 style="font-family: var(--font-stack-header); line-height: var(--line-height-h6); font-size: var(--font-h6-desktop)px; margin-bottom: 1rem;">
+      Heading 6 - Smallest Title
+    </h6>
+    
+    <p style="font-family: var(--font-stack-body); line-height: var(--line-height-body); font-size: var(--font-base-size)px; margin-bottom: 1rem;">
+      This is a paragraph of body text that demonstrates the chosen typography settings. The text should be readable and well-spaced according to the selected line height ratios. This sample shows how the body font pairs with the headings above, creating a harmonious typographic hierarchy.
+    </p>
+    
+    <p style="font-family: var(--font-stack-body); line-height: var(--line-height-body); font-size: var(--font-base-size)px; margin-bottom: 1rem;">
+      <strong>Bold text example</strong> and <em>italic text example</em> to show font weight and style variations. The typography scale creates consistent spacing relationships between different text elements.
+    </p>
+    
+    <div class="font-pairing-info" style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+      <h4 style="margin-bottom: 0.5rem;">Font Pairing Information</h4>
+      
+      {% case font_pairing_preset %}
+        {% when 'elegant_classic' %}
+          <p><strong>Elegant Classic:</strong> Playfair Display for headings paired with Nunito for body text. Perfect for luxury brands and sophisticated designs.</p>
+        {% when 'modern_saas' %}
+          <p><strong>Modern SaaS:</strong> Inter for both headings and body text. Clean, modern, and highly legible for tech companies.</p>
+        {% when 'creative_bold' %}
+          <p><strong>Creative Bold:</strong> Oswald for headings with Open Sans for body text. Great for creative agencies and bold branding.</p>
+        {% when 'luxury_serif' %}
+          <p><strong>Luxury Serif:</strong> Cormorant Garamond for headings with Lato for body text. Elegant serif styling for premium brands.</p>
+        {% when 'minimalist_clean' %}
+          <p><strong>Minimalist Clean:</strong> Poppins for both headings and body text. Simple, clean, and modern for minimal designs.</p>
+        {% when 'editorial_classic' %}
+          <p><strong>Editorial Classic:</strong> Merriweather for headings with Open Sans for body text. Perfect for blogs and editorial content.</p>
+        {% when 'tech_modern' %}
+          <p><strong>Tech Modern:</strong> Roboto for both headings and body text. Google's signature font for tech and modern applications.</p>
+        {% when 'artistic_creative' %}
+          <p><strong>Artistic Creative:</strong> Montserrat for headings with Source Sans Pro for body text. Versatile and creative styling.</p>
+        {% when 'boutique_fashion' %}
+          <p><strong>Boutique Fashion:</strong> Crimson Text for headings with Lato for body text. Elegant and fashion-forward styling.</p>
+        {% when 'startup_friendly' %}
+          <p><strong>Startup Friendly:</strong> Work Sans for both headings and body text. Modern and approachable for startups.</p>
+        {% when 'custom' %}
+          <p><strong>Custom Selection:</strong> Using custom Google Fonts as specified in the settings.</p>
+        {% else %}
+          <p>Using default Shopify fonts or custom uploaded fonts.</p>
+      {% endcase %}
+    </div>
+  </div>
+</div>

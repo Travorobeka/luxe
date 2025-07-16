@@ -11,6 +11,16 @@
   assign use_custom_font_body = settings.use_custom_font_body
   assign custom_heading_font = settings.custom_heading_font
   assign custom_body_font = settings.custom_body_font
+  
+  # Google Fonts Settings
+  assign enable_google_fonts = settings.enable_google_fonts
+  assign font_pairing_preset = settings.font_pairing_preset
+  assign google_font_heading = settings.google_font_heading
+  assign google_font_body = settings.google_font_body
+  assign google_font_heading_weights = settings.google_font_heading_weights
+  assign google_font_body_weights = settings.google_font_body_weights
+  assign enable_font_display_swap = settings.enable_font_display_swap
+  assign enable_font_preload = settings.enable_font_preload
 %}
 
 {%- unless use_custom_font_body or settings.type_base_font.system? -%}
@@ -26,8 +36,175 @@
   {% comment %} theme-check-enable {% endcomment %}
 {%- endunless -%}
 
+{%- comment -%} Google Fonts Integration {%- endcomment -%}
+{%- if enable_google_fonts -%}
+  {%- liquid
+    # Define font pairings
+    case font_pairing_preset
+    when 'elegant_classic'
+      assign google_heading_font = 'Playfair Display'
+      assign google_body_font = 'Nunito'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'modern_saas'
+      assign google_heading_font = 'Inter'
+      assign google_body_font = 'Inter'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'creative_bold'
+      assign google_heading_font = 'Oswald'
+      assign google_body_font = 'Open Sans'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'luxury_serif'
+      assign google_heading_font = 'Cormorant Garamond'
+      assign google_body_font = 'Lato'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'minimalist_clean'
+      assign google_heading_font = 'Poppins'
+      assign google_body_font = 'Poppins'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'editorial_classic'
+      assign google_heading_font = 'Merriweather'
+      assign google_body_font = 'Open Sans'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'tech_modern'
+      assign google_heading_font = 'Roboto'
+      assign google_body_font = 'Roboto'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'artistic_creative'
+      assign google_heading_font = 'Montserrat'
+      assign google_body_font = 'Source Sans Pro'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'boutique_fashion'
+      assign google_heading_font = 'Crimson Text'
+      assign google_body_font = 'Lato'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'startup_friendly'
+      assign google_heading_font = 'Work Sans'
+      assign google_body_font = 'Work Sans'
+      assign google_heading_weights = '400,500,600,700'
+      assign google_body_weights = '300,400,500,600'
+    when 'custom'
+      assign google_heading_font = google_font_heading
+      assign google_body_font = google_font_body
+      assign google_heading_weights = google_font_heading_weights
+      assign google_body_weights = google_font_body_weights
+    endcase
+    
+    # Build Google Fonts URL
+    assign google_fonts_url = ''
+    assign fonts_to_load = ''
+    
+    if google_heading_font != blank
+      assign heading_font_formatted = google_heading_font | replace: ' ', '+'
+      assign fonts_to_load = fonts_to_load | append: 'family=' | append: heading_font_formatted
+      if google_heading_weights != blank
+        assign fonts_to_load = fonts_to_load | append: ':wght@' | append: google_heading_weights
+      endif
+    endif
+    
+    if google_body_font != blank and google_body_font != google_heading_font
+      if fonts_to_load != blank
+        assign fonts_to_load = fonts_to_load | append: '&'
+      endif
+      assign body_font_formatted = google_body_font | replace: ' ', '+'
+      assign fonts_to_load = fonts_to_load | append: 'family=' | append: body_font_formatted
+      if google_body_weights != blank
+        assign fonts_to_load = fonts_to_load | append: ':wght@' | append: google_body_weights
+      endif
+    endif
+    
+    if fonts_to_load != blank
+      assign google_fonts_url = 'https://fonts.googleapis.com/css2?' | append: fonts_to_load
+      if enable_font_display_swap
+        assign google_fonts_url = google_fonts_url | append: '&display=swap'
+      endif
+    endif
+  -%}
+  
+  {%- if google_fonts_url != blank -%}
+    {%- if enable_font_preload -%}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {%- endif -%}
+    <link href="{{ google_fonts_url }}" rel="stylesheet">
+  {%- endif -%}
+{%- endif -%}
+
 {%- capture typo_settings -%}
-{%- if use_custom_font_heading == true and custom_heading_font != blank -%}
+{%- if enable_google_fonts and google_heading_font != blank -%}
+  {%- liquid
+    # Handle Google Fonts font stacks
+    case font_pairing_preset
+    when 'elegant_classic'
+      assign google_heading_font = 'Playfair Display'
+      assign google_body_font = 'Nunito'
+    when 'modern_saas'
+      assign google_heading_font = 'Inter'
+      assign google_body_font = 'Inter'
+    when 'creative_bold'
+      assign google_heading_font = 'Oswald'
+      assign google_body_font = 'Open Sans'
+    when 'luxury_serif'
+      assign google_heading_font = 'Cormorant Garamond'
+      assign google_body_font = 'Lato'
+    when 'minimalist_clean'
+      assign google_heading_font = 'Poppins'
+      assign google_body_font = 'Poppins'
+    when 'editorial_classic'
+      assign google_heading_font = 'Merriweather'
+      assign google_body_font = 'Open Sans'
+    when 'tech_modern'
+      assign google_heading_font = 'Roboto'
+      assign google_body_font = 'Roboto'
+    when 'artistic_creative'
+      assign google_heading_font = 'Montserrat'
+      assign google_body_font = 'Source Sans Pro'
+    when 'boutique_fashion'
+      assign google_heading_font = 'Crimson Text'
+      assign google_body_font = 'Lato'
+    when 'startup_friendly'
+      assign google_heading_font = 'Work Sans'
+      assign google_body_font = 'Work Sans'
+    when 'custom'
+      assign google_heading_font = google_font_heading
+      assign google_body_font = google_font_body
+    endcase
+    
+    # Set fallback fonts based on font type
+    assign serif_fallback = 'serif'
+    assign sans_serif_fallback = 'sans-serif'
+    assign monospace_fallback = 'monospace'
+    
+    # Determine fallback for heading font
+    assign heading_fallback = sans_serif_fallback
+    assign heading_name_lower = google_heading_font | downcase
+    if heading_name_lower contains 'playfair' or heading_name_lower contains 'merriweather' or heading_name_lower contains 'cormorant' or heading_name_lower contains 'crimson'
+      assign heading_fallback = serif_fallback
+    endif
+    
+    # Determine fallback for body font
+    assign body_fallback = sans_serif_fallback
+    assign body_name_lower = google_body_font | downcase
+    if body_name_lower contains 'playfair' or body_name_lower contains 'merriweather' or body_name_lower contains 'cormorant' or body_name_lower contains 'crimson'
+      assign body_fallback = serif_fallback
+    endif
+  -%}
+  
+  :root {
+    --font-stack-header: '{{ google_heading_font }}', {{ heading_fallback }};
+    --font-weight-header: {{ settings.custom_heading_weight | default: 400 }};
+    --font-stack-body: '{{ google_body_font }}', {{ body_fallback }};
+    --font-weight-body: {{ settings.custom_body_weight | default: 400 }};
+  }
+{%- elsif use_custom_font_heading == true and custom_heading_font != blank -%}
 {%- assign heading_fonts = custom_heading_font | newline_to_br | split: '<br />' -%}
 {%- for link in heading_fonts -%}
   {% liquid
@@ -64,7 +241,9 @@
   --font-weight-header--lighter: {{ header_font_lighter.weight | default: 400 }};
 }
 {%- endif -%}
-{%- if use_custom_font_body == true and custom_body_font != blank -%}
+{%- if enable_google_fonts and google_body_font != blank -%}
+  {%- comment -%} Google Fonts body already handled above {%- endcomment -%}
+{%- elsif use_custom_font_body == true and custom_body_font != blank -%}
 {%- assign body_fonts = custom_body_font | newline_to_br | split: '<br />' -%}
 {%- for link in body_fonts -%}
   {% liquid
