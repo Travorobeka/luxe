@@ -2339,248 +2339,77 @@
         "type": "text",
         "id": "social_line_label",
         "label": "Line label"
+      }
+    ]
+  },
+  {
+    "name": "Cart settings",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "[Watch tutorial](https://foxecom.link/CCbjqn) or [read How-to](https://foxecom.link/9pNg7s)"
       },
       {
         "type": "header",
-        "content": "Advanced Social Media Customization"
+        "content": "Cart drawer"
       },
       {
         "type": "checkbox",
-        "id": "show_social_on_header",
-        "label": "Show social icons in header",
+        "id": "enable_cart_drawer",
+        "label": "Enable cart drawer",
         "default": true
       },
       {
         "type": "checkbox",
-        "id": "show_social_on_footer",
-        "label": "Show social icons in footer",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "social_alignment",
-        "label": "Social icons alignment",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" },
-          { "value": "space-between", "label": "Space between" }
-        ],
-        "default": "left"
-      },
-      {
-        "type": "range",
-        "id": "social_icon_bg_radius",
-        "label": "Icon border radius (px)",
-        "min": 0,
-        "max": 50,
-        "step": 1,
-        "default": 50
-      },
-      {
-        "type": "color",
-        "id": "social_icon_bg_color",
-        "label": "Icon background color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "social_icon_border_color",
-        "label": "Icon border color",
-        "default": "#e5e5e5"
-      },
-      {
-        "type": "range",
-        "id": "social_icon_border_width",
-        "label": "Icon border width (px)",
-        "min": 0,
-        "max": 5,
-        "step": 1,
-        "default": 1
-      },
-      {
-        "type": "color",
-        "id": "social_icon_shadow_color",
-        "label": "Icon shadow color",
-        "default": "#000000"
-      },
-      {
-        "type": "range",
-        "id": "social_icon_shadow_blur",
-        "label": "Icon shadow blur (px)",
-        "min": 0,
-        "max": 20,
-        "step": 1,
-        "default": 0
-      },
-      {
-        "type": "select",
-        "id": "social_icon_hover_animation",
-        "label": "Icon hover animation",
-        "options": [
-          { "value": "none", "label": "None" },
-          { "value": "grow", "label": "Grow" },
-          { "value": "rotate", "label": "Rotate" },
-          { "value": "bounce", "label": "Bounce" }
-        ],
-        "default": "none"
-      },
-      {
-        "type": "checkbox",
-        "id": "social_open_in_new_tab",
-        "label": "Open social links in new tab",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "social_add_utm",
-        "label": "Add UTM parameters to social links",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "social_enable_tracking",
-        "label": "Enable click tracking for social links",
+        "id": "cart_drawer_show_accelerated_button",
+        "label": "Show accelerated checkout",
         "default": false
       },
       {
         "type": "header",
-        "content": "More Social Platforms"
-      },
-      {
-        "type": "text",
-        "id": "social_threads_link",
-        "label": "Threads link"
-      },
-      {
-        "type": "text",
-        "id": "social_telegram_link",
-        "label": "Telegram link"
-      },
-      {
-        "type": "text",
-        "id": "social_reddit_link",
-        "label": "Reddit link"
-      },
-      {
-        "type": "text",
-        "id": "social_wechat_link",
-        "label": "WeChat link"
-      },
-      {
-        "type": "text",
-        "id": "social_weibo_link",
-        "label": "Weibo link"
-      },
-      {
-        "type": "text",
-        "id": "social_vk_link",
-        "label": "VK link"
-      },
-      {
-        "type": "text",
-        "id": "social_xing_link",
-        "label": "Xing link"
-      },
-      {
-        "type": "text",
-        "id": "social_medium_link",
-        "label": "Medium link"
-      },
-      {
-        "type": "text",
-        "id": "social_custom_label",
-        "label": "Custom social label"
-      },
-      {
-        "type": "url",
-        "id": "social_custom_url",
-        "label": "Custom social URL"
-      },
-      {
-        "type": "image_picker",
-        "id": "social_custom_icon",
-        "label": "Custom social icon"
-      },
-      {
-        "type": "header",
-        "content": "Contact Info Customization"
+        "content": "Cart addons"
       },
       {
         "type": "checkbox",
-        "id": "show_contact_phone",
-        "label": "Show phone number",
+        "id": "cart_notes_enable",
+        "label": "Show cart note",
         "default": true
       },
       {
         "type": "checkbox",
-        "id": "show_contact_email",
-        "label": "Show email",
+        "id": "discount_code_enable",
+        "label": "Show discount code",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_estimate_shipping",
+        "label": "Show estimate shipping rates",
         "default": true
       },
       {
         "type": "checkbox",
-        "id": "show_contact_address",
-        "label": "Show address",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "contact_address",
-        "label": "Address"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_contact_whatsapp",
-        "label": "Show WhatsApp as contact",
+        "id": "show_delivery_days",
+        "label": "Show delivery days for estimate shipping",
         "default": false
       },
       {
         "type": "checkbox",
-        "id": "show_contact_telegram",
-        "label": "Show Telegram as contact",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "show_contact_signal",
-        "label": "Show Signal as contact",
-        "default": false
-      },
-      {
-        "type": "image_picker",
-        "id": "contact_phone_icon",
-        "label": "Phone icon"
-      },
-      {
-        "type": "image_picker",
-        "id": "contact_email_icon",
-        "label": "Email icon"
-      },
-      {
-        "type": "image_picker",
-        "id": "contact_address_icon",
-        "label": "Address icon"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_vcard_download",
-        "label": "Enable vCard download link",
+        "id": "delivery_time_enable",
+        "label": "Show delivery time",
         "default": false
       },
       {
         "type": "text",
-        "id": "vcard_url",
-        "label": "vCard file URL"
+        "id": "default_country_estimate_shipping",
+        "label": "Default country for estimate shipping",
+        "default": "United States",
+        "info": "Default country for estimate shipping rates form. Enter country name, for example: United States. Refer to the country name [here](https://zest-docs.foxecom.com/theme-settings/cart#3.-country-code)"
       },
       {
-        "type": "range",
-        "id": "social_icon_size",
-        "label": "Icon size (px)",
-        "min": 12,
-        "max": 48,
-        "step": 1,
-        "default": 20
+        "type": "image_picker",
+        "id": "cart_drawer_trust_badge",
+        "label": "Trust badge"
       }
     ]
   },

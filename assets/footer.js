@@ -57,25 +57,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-// Social icon click tracking (if enabled in settings)
-document.addEventListener('DOMContentLoaded', function() {
-  function attachSocialTracking() {
-    if (window.theme && window.theme.settings && window.theme.settings.social_enable_tracking) {
-      document.querySelectorAll('.social-media-links--item').forEach(function(link) {
-        link.addEventListener('click', function() {
-          var social = link.getAttribute('aria-label') || link.href;
-          if (window.dataLayer) {
-            window.dataLayer.push({event: 'social_click', social: social});
-          }
-        });
-      });
-    }
-  }
-  attachSocialTracking();
-  // Re-attach if social links are dynamically updated
-  const observer = new MutationObserver(attachSocialTracking);
-  document.querySelectorAll('.social-media-links').forEach(function(el) {
-    observer.observe(el, { childList: true, subtree: true });
-  });
-});
