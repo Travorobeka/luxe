@@ -688,7 +688,7 @@
             <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }}">{{ section.settings.company_title }}</h3>
           {% endif %}
           
-          {% if section.settings.company_logo != empty and (section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both') %}
+          {% if section.settings.company_logo != blank and (section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both') %}
             <div class="footer-company-logo-{{ footer_id }}">
               <img
                 src="{{ section.settings.company_logo | img_url: 'master' }}"
