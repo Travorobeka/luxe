@@ -2572,6 +2572,29 @@
         "type": "text",
         "id": "vcard_url",
         "label": "vCard file URL"
+      },
+      {
+        "type": "range",
+        "id": "social_icon_size",
+        "label": "Icon size (px)",
+        "min": 16,
+        "max": 64,
+        "step": 1,
+        "default": 32
+      },
+      {
+        "type": "select",
+        "id": "social_icon_display_type",
+        "label": "Icon display type",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "outline", "label": "Outline" },
+          { "value": "filled", "label": "Filled" },
+          { "value": "square", "label": "Square" },
+          { "value": "circle", "label": "Circle" },
+          { "value": "threed", "label": "3D" }
+        ],
+        "default": "default"
       }
     ]
   },
