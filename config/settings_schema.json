@@ -116,144 +116,174 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Watch tutorial](https://foxecom.link/mzE5th) or [read How-to](https://foxecom.link/ag2yrU)"
+        "content": "Complete typography control system with Google Fonts, Shopify fonts, and custom font support. Customize every text element individually or use our curated font pairings."
       },
       {
         "type": "header",
-        "content": "BODY TEXT"
+        "content": "FONT SOURCE SELECTION"
       },
       {
-        "type": "font_picker",
-        "id": "type_base_font",
-        "label": "Font",
-        "default": "helvetica_n4"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_custom_font_body",
-        "label": "Use custom font",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Custom font for Body text"
-      },
-      {
-        "id": "custom_body_font",
-        "type": "textarea",
-        "label": "Font URL",
-        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
-      },
-      {
-        "id": "custom_body_weight",
         "type": "select",
-        "label": "Default font weight",
-        "default": "400",
+        "id": "typography_source",
+        "label": "Font Source",
+        "info": "Choose where to load fonts from",
         "options": [
           {
-            "value": "100",
-            "label": "Thin 100"
+            "value": "shopify",
+            "label": "Shopify Fonts"
           },
           {
-            "value": "200",
-            "label": "Extra-light 200"
+            "value": "google_fonts",
+            "label": "Google Fonts"
           },
           {
-            "value": "300",
-            "label": "Light 300"
-          },
-          {
-            "value": "400",
-            "label": "Regular 400"
-          },
-          {
-            "value": "500",
-            "label": "Medium 500"
-          },
-          {
-            "value": "600",
-            "label": "Semi-bold 600"
-          },
-          {
-            "value": "700",
-            "label": "Bold 700"
-          },
-          {
-            "value": "800",
-            "label": "Extra-bold 800"
-          },
-          {
-            "value": "900",
-            "label": "Black 900"
+            "value": "custom_fonts",
+            "label": "Custom Fonts"
           }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "type_base_size",
-        "label": "Base size",
-        "default": 16,
-        "min": 14,
-        "max": 20,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "type_base_line_height",
-        "label": "Line height",
-        "default": 28,
-        "min": 14,
-        "max": 100,
-        "step": 1,
-        "unit": "px"
+        ],
+        "default": "shopify"
       },
       {
         "type": "header",
-        "content": "HEADINGS"
+        "content": "SHOPIFY FONTS"
       },
       {
         "type": "font_picker",
-        "id": "type_header_font",
-        "label": "Font",
+        "id": "shopify_header_font",
+        "label": "Headings Font",
         "default": "helvetica_n7"
       },
       {
-        "type": "checkbox",
-        "id": "use_custom_font_heading",
-        "label": "Use custom font",
-        "default": false
+        "type": "font_picker",
+        "id": "shopify_body_font",
+        "label": "Body Font",
+        "default": "helvetica_n4"
       },
       {
         "type": "header",
-        "content": "Custom font for Headings"
+        "content": "GOOGLE FONTS"
       },
       {
         "type": "paragraph",
-        "content": "Allow multiple links, each link in a new line. Please upload to [Shopify files](/admin/settings/files) and paste link here. These formats TTF, OTF, WOFF & WOFF2 are supported."
+        "content": "Use curated font pairings or select custom Google Fonts. Popular fonts: Inter, Roboto, Open Sans, Lato, Montserrat, Nunito, Poppins, Playfair Display, Merriweather, Oswald"
       },
       {
-        "id": "custom_heading_font",
-        "type": "textarea",
-        "label": "Font file URLS",
-        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
-      },
-      {
-        "id": "custom_heading_weight",
         "type": "select",
-        "label": "Default font weight",
-        "default": "400",
+        "id": "google_font_pairing_preset",
+        "label": "Font Pairing Preset",
+        "info": "Curated font combinations that work well together",
         "options": [
           {
-            "value": "100",
-            "label": "Thin 100"
+            "value": "custom",
+            "label": "Custom Selection"
           },
           {
-            "value": "200",
-            "label": "Extra-light 200"
+            "value": "elegant_classic",
+            "label": "Elegant Classic (Playfair Display + Nunito)"
           },
+          {
+            "value": "modern_saas",
+            "label": "Modern SaaS (Inter + Inter)"
+          },
+          {
+            "value": "creative_bold",
+            "label": "Creative Bold (Oswald + Open Sans)"
+          },
+          {
+            "value": "luxury_serif",
+            "label": "Luxury Serif (Cormorant Garamond + Lato)"
+          },
+          {
+            "value": "minimalist_clean",
+            "label": "Minimalist Clean (Poppins + Poppins)"
+          },
+          {
+            "value": "editorial_classic",
+            "label": "Editorial Classic (Merriweather + Open Sans)"
+          },
+          {
+            "value": "tech_modern",
+            "label": "Tech Modern (Roboto + Roboto)"
+          },
+          {
+            "value": "artistic_creative",
+            "label": "Artistic Creative (Montserrat + Source Sans Pro)"
+          },
+          {
+            "value": "boutique_fashion",
+            "label": "Boutique Fashion (Crimson Text + Lato)"
+          },
+          {
+            "value": "startup_friendly",
+            "label": "Startup Friendly (Work Sans + Work Sans)"
+          }
+        ],
+        "default": "elegant_classic"
+      },
+      {
+        "type": "text",
+        "id": "google_font_heading",
+        "label": "Custom Heading Font",
+        "placeholder": "Playfair Display",
+        "info": "Enter Google Font name exactly as shown on Google Fonts. Search at fonts.google.com"
+      },
+      {
+        "type": "text",
+        "id": "google_font_body",
+        "label": "Custom Body Font",
+        "placeholder": "Nunito",
+        "info": "Enter Google Font name exactly as shown on Google Fonts. Search at fonts.google.com"
+      },
+      {
+        "type": "text",
+        "id": "google_font_weights",
+        "label": "Font Weights to Load",
+        "placeholder": "300,400,500,600,700",
+        "default": "300,400,500,600,700",
+        "info": "Comma-separated list of font weights (e.g., '300,400,500,600,700'). Lower numbers = faster loading"
+      },
+      {
+        "type": "header",
+        "content": "CUSTOM FONTS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Upload custom fonts to [Shopify files](/admin/settings/files) and paste the URLs here. Supports TTF, OTF, WOFF, and WOFF2 formats."
+      },
+      {
+        "type": "textarea",
+        "id": "custom_heading_font_urls",
+        "label": "Heading Font URLs",
+        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/font-regular.woff2@400\nhttps://cdn.shopify.com/s/files/1/0075/1288/3285/files/font-bold.woff2@700",
+        "info": "Format: URL@weight (one per line)"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_body_font_urls",
+        "label": "Body Font URLs",
+        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/font-regular.woff2@400\nhttps://cdn.shopify.com/s/files/1/0075/1288/3285/files/font-bold.woff2@700",
+        "info": "Format: URL@weight (one per line)"
+      },
+      {
+        "type": "header",
+        "content": "BODY TEXT CUSTOMIZATION"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size",
+        "label": "Body Font Size",
+        "default": 16,
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "body_font_weight",
+        "label": "Body Font Weight",
+        "default": "400",
+        "options": [
           {
             "value": "300",
             "label": "Light 300"
@@ -269,69 +299,447 @@
           {
             "value": "600",
             "label": "Semi-bold 600"
-          },
-          {
-            "value": "700",
-            "label": "Bold 700"
-          },
-          {
-            "value": "800",
-            "label": "Extra-bold 800"
-          },
-          {
-            "value": "900",
-            "label": "Black 900"
           }
         ]
+      },
+      {
+        "type": "range",
+        "id": "body_line_height",
+        "label": "Body Line Height",
+        "default": 1.6,
+        "min": 1.2,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "body_letter_spacing",
+        "label": "Body Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H1 HEADING CUSTOMIZATION"
       },
       {
         "type": "range",
         "id": "h1_font_size",
-        "label": "H1 font size",
-        "default": 60,
+        "label": "H1 Font Size",
+        "default": 48,
         "min": 20,
         "max": 120,
         "step": 1,
         "unit": "px"
       },
       {
+        "type": "select",
+        "id": "h1_font_weight",
+        "label": "H1 Font Weight",
+        "default": "700",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h1_line_height",
+        "label": "H1 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h1_letter_spacing",
+        "label": "H1 Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H2 HEADING CUSTOMIZATION"
+      },
+      {
         "type": "range",
         "id": "h2_font_size",
-        "label": "H2 font size",
-        "default": 42,
-        "min": 20,
+        "label": "H2 Font Size",
+        "default": 36,
+        "min": 18,
         "max": 100,
         "step": 1,
         "unit": "px"
       },
       {
+        "type": "select",
+        "id": "h2_font_weight",
+        "label": "H2 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
         "type": "range",
-        "id": "type_header_base_size",
-        "label": "H3 font size",
-        "default": 36,
-        "min": 14,
+        "id": "h2_line_height",
+        "label": "H2 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h2_letter_spacing",
+        "label": "H2 Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H3 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "range",
+        "id": "h3_font_size",
+        "label": "H3 Font Size",
+        "default": 28,
+        "min": 16,
         "max": 80,
         "step": 1,
         "unit": "px"
       },
       {
+        "type": "select",
+        "id": "h3_font_weight",
+        "label": "H3 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h3_line_height",
+        "label": "H3 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h3_letter_spacing",
+        "label": "H3 Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H4 HEADING CUSTOMIZATION"
+      },
+      {
         "type": "range",
         "id": "h4_font_size",
-        "label": "H4 font size",
-        "default": 24,
+        "label": "H4 Font Size",
+        "default": 22,
         "min": 14,
         "max": 60,
         "step": 1,
         "unit": "px"
       },
       {
+        "type": "select",
+        "id": "h4_font_weight",
+        "label": "H4 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
         "type": "range",
-        "id": "type_header_spacing",
-        "label": "Letter spacing",
+        "id": "h4_line_height",
+        "label": "H4 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h4_letter_spacing",
+        "label": "H4 Letter Spacing",
         "default": 0,
-        "min": 0,
-        "max": 10,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H5 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "range",
+        "id": "h5_font_size",
+        "label": "H5 Font Size",
+        "default": 18,
+        "min": 12,
+        "max": 40,
         "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h5_font_weight",
+        "label": "H5 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h5_line_height",
+        "label": "H5 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h5_letter_spacing",
+        "label": "H5 Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "H6 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "range",
+        "id": "h6_font_size",
+        "label": "H6 Font Size",
+        "default": 16,
+        "min": 12,
+        "max": 30,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h6_font_weight",
+        "label": "H6 Font Weight",
+        "default": "600",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h6_line_height",
+        "label": "H6 Line Height",
+        "default": 1.2,
+        "min": 0.8,
+        "max": 2.0,
+        "step": 0.1,
+        "unit": "ratio"
+      },
+      {
+        "type": "range",
+        "id": "h6_letter_spacing",
+        "label": "H6 Letter Spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 0.1,
         "unit": "px"
       },
       {
@@ -468,109 +876,7 @@
       },
       {
         "type": "header",
-        "content": "GOOGLE FONTS & FONT PAIRINGS"
-      },
-      {
-        "type": "paragraph",
-        "content": "Choose from curated Google Font combinations or use custom Google Fonts. These options override the font selections above when enabled."
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_google_fonts",
-        "label": "Enable Google Fonts",
-        "default": false,
-        "info": "When enabled, Google Fonts will be loaded from Google's servers for better performance"
-      },
-      {
-        "type": "select",
-        "id": "font_pairing_preset",
-        "label": "Font Pairing Preset",
-        "info": "Curated font combinations that work well together",
-        "options": [
-          {
-            "value": "custom",
-            "label": "Custom Selection"
-          },
-          {
-            "value": "elegant_classic",
-            "label": "Elegant Classic (Playfair Display + Nunito)"
-          },
-          {
-            "value": "modern_saas",
-            "label": "Modern SaaS (Inter + Inter)"
-          },
-          {
-            "value": "creative_bold",
-            "label": "Creative Bold (Oswald + Open Sans)"
-          },
-          {
-            "value": "luxury_serif",
-            "label": "Luxury Serif (Cormorant Garamond + Lato)"
-          },
-          {
-            "value": "minimalist_clean",
-            "label": "Minimalist Clean (Poppins + Poppins)"
-          },
-          {
-            "value": "editorial_classic",
-            "label": "Editorial Classic (Merriweather + Open Sans)"
-          },
-          {
-            "value": "tech_modern",
-            "label": "Tech Modern (Roboto + Roboto)"
-          },
-          {
-            "value": "artistic_creative",
-            "label": "Artistic Creative (Montserrat + Source Sans Pro)"
-          },
-          {
-            "value": "boutique_fashion",
-            "label": "Boutique Fashion (Crimson Text + Lato)"
-          },
-          {
-            "value": "startup_friendly",
-            "label": "Startup Friendly (Work Sans + Work Sans)"
-          }
-        ],
-        "default": "custom"
-      },
-      {
-        "type": "header",
-        "content": "Custom Google Fonts"
-      },
-      {
-        "type": "text",
-        "id": "google_font_heading",
-        "label": "Heading Font Name",
-        "placeholder": "Playfair Display",
-        "info": "Enter Google Font name exactly as shown on Google Fonts (e.g., 'Playfair Display', 'Open Sans')"
-      },
-      {
-        "type": "text",
-        "id": "google_font_heading_weights",
-        "label": "Heading Font Weights",
-        "placeholder": "400,500,600,700",
-        "default": "400,500,600,700",
-        "info": "Comma-separated list of font weights to load (e.g., '400,500,600,700')"
-      },
-      {
-        "type": "text",
-        "id": "google_font_body",
-        "label": "Body Font Name",
-        "placeholder": "Nunito",
-        "info": "Enter Google Font name exactly as shown on Google Fonts (e.g., 'Nunito', 'Open Sans')"
-      },
-      {
-        "type": "text",
-        "id": "google_font_body_weights",
-        "label": "Body Font Weights",
-        "placeholder": "300,400,500,600",
-        "default": "300,400,500,600",
-        "info": "Comma-separated list of font weights to load (e.g., '300,400,500,600')"
-      },
-      {
-        "type": "header",
-        "content": "Advanced Typography Options"
+        "content": "ADVANCED OPTIONS"
       },
       {
         "type": "checkbox",
@@ -585,67 +891,6 @@
         "label": "Enable Font Preloading",
         "default": true,
         "info": "Preloads critical fonts for faster page rendering"
-      },
-      {
-        "type": "select",
-        "id": "typography_scale",
-        "label": "Typography Scale",
-        "info": "Predefined harmonious font size relationships",
-        "options": [
-          {
-            "value": "minor_second",
-            "label": "Minor Second (1.067)"
-          },
-          {
-            "value": "major_second",
-            "label": "Major Second (1.125)"
-          },
-          {
-            "value": "minor_third",
-            "label": "Minor Third (1.2)"
-          },
-          {
-            "value": "major_third",
-            "label": "Major Third (1.25)"
-          },
-          {
-            "value": "perfect_fourth",
-            "label": "Perfect Fourth (1.333)"
-          },
-          {
-            "value": "augmented_fourth",
-            "label": "Augmented Fourth (1.414)"
-          },
-          {
-            "value": "perfect_fifth",
-            "label": "Perfect Fifth (1.5)"
-          },
-          {
-            "value": "golden_ratio",
-            "label": "Golden Ratio (1.618)"
-          }
-        ],
-        "default": "minor_third"
-      },
-      {
-        "type": "range",
-        "id": "body_line_height_ratio",
-        "label": "Body Line Height Ratio",
-        "min": 1.2,
-        "max": 2.0,
-        "step": 0.1,
-        "default": 1.6,
-        "info": "Ratio of line height to font size for body text"
-      },
-      {
-        "type": "range",
-        "id": "heading_line_height_ratio",
-        "label": "Heading Line Height Ratio",
-        "min": 1.0,
-        "max": 1.8,
-        "step": 0.1,
-        "default": 1.2,
-        "info": "Ratio of line height to font size for headings"
       },
       {
         "type": "header",
