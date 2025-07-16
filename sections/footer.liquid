@@ -34,11 +34,56 @@
     grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
     gap: {{ section.settings.column_spacing }}px;
     margin-bottom: {{ section.settings.section_spacing }}px;
+    {% if section.settings.column_alignment != 'default' %}
+      align-items: {{ section.settings.column_alignment }};
+    {% endif %}
+    {% if section.settings.column_distribution != 'equal' %}
+      {% case section.settings.column_distribution %}
+        {% when 'wide_first' %}
+          grid-template-columns: 2fr repeat({{ section.settings.columns | minus: 1 }}, 1fr);
+        {% when 'wide_last' %}
+          grid-template-columns: repeat({{ section.settings.columns | minus: 1 }}, 1fr) 2fr;
+        {% when 'wide_center' %}
+          {% if section.settings.columns == '3' %}
+            grid-template-columns: 1fr 2fr 1fr;
+          {% endif %}
+        {% when 'custom' %}
+          grid-template-columns: {{ section.settings.custom_column_widths }};
+      {% endcase %}
+    {% endif %}
+    {% if section.settings.column_justify != 'default' %}
+      justify-content: {{ section.settings.column_justify }};
+    {% endif %}
+    {% if section.settings.enable_column_borders %}
+      {% for i in (1..section.settings.columns) %}
+        {% unless forloop.last %}
+          .footer-column-{{ footer_id }}:nth-child({{ i }}) {
+            border-right: {{ section.settings.column_border_width }}px {{ section.settings.column_border_style }} {{ section.settings.column_border_color }};
+            padding-right: {{ section.settings.column_border_spacing }}px;
+          }
+          .footer-column-{{ footer_id }}:nth-child({{ i | plus: 1 }}) {
+            padding-left: {{ section.settings.column_border_spacing }}px;
+          }
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
   }
 
   .footer-column-{{ footer_id }} {
     display: flex;
     flex-direction: column;
+    {% if section.settings.column_content_alignment != 'default' %}
+      align-items: {{ section.settings.column_content_alignment }};
+    {% endif %}
+    {% if section.settings.column_text_alignment != 'default' %}
+      text-align: {{ section.settings.column_text_alignment }};
+    {% endif %}
+    {% if section.settings.column_min_height > 0 %}
+      min-height: {{ section.settings.column_min_height }}px;
+    {% endif %}
+    {% if section.settings.column_max_width > 0 %}
+      max-width: {{ section.settings.column_max_width }}px;
+    {% endif %}
   }
 
   .footer-title-{{ footer_id }} {
@@ -341,11 +386,24 @@
   @media screen and (max-width: 767px) {
     .footer-grid-{{ footer_id }} {
       grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
-      gap: 0;
+      gap: {{ section.settings.mobile_column_gap | default: 20 }}px;
     }
 
     .footer-column-{{ footer_id }} {
       margin-bottom: 20px;
+      {% if section.settings.mobile_column_alignment != 'default' %}
+        text-align: {{ section.settings.mobile_column_alignment }};
+      {% endif %}
+      {% if section.settings.enable_column_borders %}
+        border-right: none !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        {% if section.settings.mobile_column_borders %}
+          border-bottom: {{ section.settings.column_border_width }}px {{ section.settings.column_border_style }} {{ section.settings.column_border_color }};
+          padding-bottom: {{ section.settings.column_border_spacing }}px;
+          margin-bottom: {{ section.settings.column_border_spacing }}px;
+        {% endif %}
+      {% endif %}
     }
 
     .footer-menu-toggle-{{ footer_id }} {
@@ -383,19 +441,94 @@
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    .footer-grid-{{ footer_id }} {
+      {% if section.settings.columns == '4' %}
+        grid-template-columns: repeat(2, 1fr) !important;
+      {% elsif section.settings.columns == '3' %}
+        grid-template-columns: repeat({{ section.settings.tablet_columns | default: 3 }}, 1fr) !important;
+      {% else %}
+        grid-template-columns: repeat({{ section.settings.columns }}, 1fr) !important;
+      {% endif %}
+      gap: {{ section.settings.tablet_column_gap | default: section.settings.column_spacing }}px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
     .footer-grid-{{ footer_id }} {
       display: grid !important;
-      grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+      {% if section.settings.column_distribution == 'equal' %}
+        grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+      {% else %}
+        {% case section.settings.column_distribution %}
+          {% when 'wide_first' %}
+            grid-template-columns: 2fr repeat({{ section.settings.columns | minus: 1 }}, 1fr);
+          {% when 'wide_last' %}
+            grid-template-columns: repeat({{ section.settings.columns | minus: 1 }}, 1fr) 2fr;
+          {% when 'wide_center' %}
+            {% if section.settings.columns == '3' %}
+              grid-template-columns: 1fr 2fr 1fr;
+            {% else %}
+              grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+            {% endif %}
+          {% when 'custom' %}
+            grid-template-columns: {{ section.settings.custom_column_widths }};
+          {% else %}
+            grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+        {% endcase %}
+      {% endif %}
       gap: {{ section.settings.column_spacing }}px;
-      align-items: stretch;
-      justify-content: space-between;
+      {% if section.settings.column_alignment == 'default' %}
+        align-items: stretch;
+      {% else %}
+        align-items: {{ section.settings.column_alignment }};
+      {% endif %}
+      {% if section.settings.column_justify == 'default' %}
+        justify-content: space-between;
+      {% else %}
+        justify-content: {{ section.settings.column_justify }};
+      {% endif %}
+      {% if section.settings.desktop_column_gap != section.settings.column_spacing %}
+        gap: {{ section.settings.desktop_column_gap }}px;
+      {% endif %}
     }
     .footer-column-{{ footer_id }} {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      {% if section.settings.column_alignment == 'stretch' or section.settings.column_alignment == 'default' %}
+        height: 100%;
+      {% endif %}
+      {% if section.settings.column_content_alignment != 'default' %}
+        align-items: {{ section.settings.column_content_alignment }};
+      {% endif %}
+      {% if section.settings.column_text_alignment != 'default' %}
+        text-align: {{ section.settings.column_text_alignment }};
+      {% endif %}
+      {% if section.settings.column_padding_x > 0 or section.settings.column_padding_y > 0 %}
+        padding: {{ section.settings.column_padding_y }}px {{ section.settings.column_padding_x }}px;
+      {% endif %}
     }
+    
+    {% if section.settings.enable_column_borders %}
+      {% for i in (1..section.settings.columns) %}
+        {% unless forloop.last %}
+          .footer-column-{{ footer_id }}:nth-child({{ i }}) {
+            border-right: {{ section.settings.column_border_width }}px {{ section.settings.column_border_style }} {{ section.settings.column_border_color }};
+            padding-right: {{ section.settings.column_border_spacing }}px;
+          }
+          .footer-column-{{ footer_id }}:nth-child({{ i | plus: 1 }}) {
+            padding-left: {{ section.settings.column_border_spacing }}px;
+          }
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+    
+    {% if section.settings.enable_hover_effects %}
+      .footer-column-{{ footer_id }}:hover {
+        transform: translateY(-{{ section.settings.hover_lift_amount }}px);
+        transition: transform 0.3s ease;
+      }
+    {% endif %}
   }
 
   .footer-newsletter-input-group {
@@ -871,6 +1004,59 @@
     },
     {
       "type": "range",
+      "id": "mobile_column_gap",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile column gap",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "mobile_column_alignment",
+      "label": "Mobile column text alignment",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_column_borders",
+      "label": "Show column borders on mobile (as bottom borders)",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Tablet Layout (768px - 1023px)"
+    },
+    {
+      "type": "select",
+      "id": "tablet_columns",
+      "label": "Columns on tablet (for 3-column layout)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ],
+      "default": "3",
+      "info": "4-column layouts automatically become 2 columns on tablet"
+    },
+    {
+      "type": "range",
+      "id": "tablet_column_gap",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Tablet column gap",
+      "default": 30
+    },
+    {
+      "type": "range",
       "id": "column_spacing",
       "min": 10,
       "max": 100,
@@ -888,6 +1074,194 @@
       "unit": "px",
       "label": "Section spacing",
       "default": 40
+    },
+    {
+      "type": "range",
+      "id": "desktop_column_gap",
+      "min": 10,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Desktop column gap (overrides column spacing on desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Column Layout & Alignment"
+    },
+    {
+      "type": "select",
+      "id": "column_distribution",
+      "label": "Column width distribution",
+      "options": [
+        { "value": "equal", "label": "Equal width" },
+        { "value": "wide_first", "label": "First column wider" },
+        { "value": "wide_last", "label": "Last column wider" },
+        { "value": "wide_center", "label": "Center column wider (3-col only)" },
+        { "value": "custom", "label": "Custom widths" }
+      ],
+      "default": "equal"
+    },
+    {
+      "type": "text",
+      "id": "custom_column_widths",
+      "label": "Custom column widths (CSS grid format)",
+      "default": "1fr 2fr 1fr",
+      "info": "Example: '1fr 2fr 1fr' or '200px 1fr 150px'. Only used when 'Custom widths' is selected."
+    },
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "label": "Column vertical alignment",
+      "options": [
+        { "value": "default", "label": "Default (stretch)" },
+        { "value": "start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Bottom" },
+        { "value": "stretch", "label": "Stretch to fill" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "column_justify",
+      "label": "Column horizontal distribution",
+      "options": [
+        { "value": "default", "label": "Default (space-between)" },
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" },
+        { "value": "space-around", "label": "Space around" },
+        { "value": "space-evenly", "label": "Space evenly" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "column_content_alignment",
+      "label": "Content alignment within columns",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "column_text_alignment",
+      "label": "Text alignment within columns",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "range",
+      "id": "column_padding_x",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Column horizontal padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "column_padding_y",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Column vertical padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "column_min_height",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Column minimum height",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "column_max_width",
+      "min": 0,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Column maximum width (0 = no limit)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Column Borders & Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_column_borders",
+      "label": "Enable column borders",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "column_border_width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "column_border_style",
+      "label": "Border style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "dashed", "label": "Dashed" },
+        { "value": "dotted", "label": "Dotted" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "column_border_color",
+      "label": "Border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "column_border_spacing",
+      "min": 5,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border spacing",
+      "default": 15
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_effects",
+      "label": "Enable column hover effects",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "hover_lift_amount",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Hover lift amount",
+      "default": 3
     },
     {
       "type": "range",
