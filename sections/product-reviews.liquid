@@ -15,7 +15,7 @@
   <div class="{{ container }}">
     {%- assign default_heading = 'products.product.product_reviews_heading' | t -%}
     <div class="m-section__header m:text-left">
-      <h2 class="m-section__heading h3{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">{{ section.settings.heading | default: default_heading }}</h2>
+      <h2 class="m-section__heading h3{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">{{ section.settings.heading | default: default_heading }}</h2>
     </div>
     {% render 'product-reviews-app__snippet', custom_liquid: section.settings.custom_liquid %}
   </div>

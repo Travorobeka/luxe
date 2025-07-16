@@ -36,7 +36,7 @@
       </p>
     {% endif %}
     {% if title != blank %}
-      <h3 class="m-lookbook__heading {{ block.settings.heading_size }} {{ heading_color }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+      <h3 class="m-lookbook__heading {{ block.settings.heading_size }} {{ heading_color }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} sub-heading" data-typography="sub-heading">
         {{ title }}
       </h3>
     {% endif %}
@@ -167,7 +167,7 @@
             </p>
           {% endif %}
           {% if title != blank %}
-            <h3 class="m-lookbook__heading {{ block.settings.heading_size }} {{ heading_color }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+            <h3 class="m-lookbook__heading {{ block.settings.heading_size }} {{ heading_color }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} sub-heading" data-typography="sub-heading">
               {{ title }}
             </h3>
           {% endif %}

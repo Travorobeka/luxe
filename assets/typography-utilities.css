@@ -1,0 +1,925 @@
+/* 
+ * Typography Utilities - Three-Tier System
+ * Luxe Theme Enhancement
+ * 
+ * This file provides utility classes for the three-tier typography system:
+ * - .main-heading (primary titles, major section headers)
+ * - .sub-heading (secondary titles, subsection headers)  
+ * - .body-text (body text, captions, small headings)
+ */
+
+/* ==========================================================================
+   MAIN HEADING UTILITIES
+   ========================================================================== */
+
+.main-heading {
+  font-family: var(--font-stack-header, var(--font-stack-body));
+  font-size: var(--font-main-heading-desktop);
+  font-weight: var(--font-weight-main-heading);
+  line-height: var(--line-height-main-heading-ratio);
+  letter-spacing: var(--letter-spacing-main-heading);
+  text-transform: var(--text-transform-main-heading);
+  text-decoration: var(--text-decoration-main-heading);
+  text-shadow: var(--text-shadow-main-heading);
+  color: rgb(var(--color-heading));
+  margin-bottom: 0.85em;
+  margin-top: 1em;
+}
+
+.main-heading:first-child {
+  margin-top: 0;
+}
+
+.main-heading:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive scaling for main headings */
+@media screen and (max-width: 1279px) {
+  .main-heading {
+    font-size: var(--font-main-heading-tablet);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-heading {
+    font-size: var(--font-main-heading-mobile);
+  }
+}
+
+/* Main heading size variants */
+.main-heading--large {
+  font-size: calc(var(--font-main-heading-desktop) * 1.2);
+}
+
+@media screen and (max-width: 1279px) {
+  .main-heading--large {
+    font-size: calc(var(--font-main-heading-tablet) * 1.2);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-heading--large {
+    font-size: calc(var(--font-main-heading-mobile) * 1.2);
+  }
+}
+
+.main-heading--small {
+  font-size: calc(var(--font-main-heading-desktop) * 0.8);
+}
+
+@media screen and (max-width: 1279px) {
+  .main-heading--small {
+    font-size: calc(var(--font-main-heading-tablet) * 0.8);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-heading--small {
+    font-size: calc(var(--font-main-heading-mobile) * 0.8);
+  }
+}
+
+/* ==========================================================================
+   SUB HEADING UTILITIES
+   ========================================================================== */
+
+.sub-heading {
+  font-family: var(--font-stack-header, var(--font-stack-body));
+  font-size: var(--font-sub-heading-desktop);
+  font-weight: var(--font-weight-sub-heading);
+  line-height: var(--line-height-sub-heading-ratio);
+  letter-spacing: var(--letter-spacing-sub-heading);
+  text-transform: var(--text-transform-sub-heading);
+  text-decoration: var(--text-decoration-sub-heading);
+  text-shadow: var(--text-shadow-sub-heading);
+  color: rgb(var(--color-heading));
+  margin-bottom: 0.75em;
+  margin-top: 0.85em;
+}
+
+.sub-heading:first-child {
+  margin-top: 0;
+}
+
+.sub-heading:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive scaling for sub headings */
+@media screen and (max-width: 1279px) {
+  .sub-heading {
+    font-size: var(--font-sub-heading-tablet);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sub-heading {
+    font-size: var(--font-sub-heading-mobile);
+  }
+}
+
+/* Sub heading size variants */
+.sub-heading--large {
+  font-size: calc(var(--font-sub-heading-desktop) * 1.2);
+}
+
+@media screen and (max-width: 1279px) {
+  .sub-heading--large {
+    font-size: calc(var(--font-sub-heading-tablet) * 1.2);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sub-heading--large {
+    font-size: calc(var(--font-sub-heading-mobile) * 1.2);
+  }
+}
+
+.sub-heading--small {
+  font-size: calc(var(--font-sub-heading-desktop) * 0.8);
+}
+
+@media screen and (max-width: 1279px) {
+  .sub-heading--small {
+    font-size: calc(var(--font-sub-heading-tablet) * 0.8);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sub-heading--small {
+    font-size: calc(var(--font-sub-heading-mobile) * 0.8);
+  }
+}
+
+/* ==========================================================================
+   BODY TEXT UTILITIES
+   ========================================================================== */
+
+.body-text {
+  font-family: var(--font-stack-body);
+  font-size: var(--font-body-text-desktop);
+  font-weight: var(--font-weight-body-text);
+  line-height: var(--line-height-body-text-ratio);
+  letter-spacing: var(--letter-spacing-body-text);
+  text-transform: var(--text-transform-body-text);
+  color: rgb(var(--color-foreground));
+  margin-bottom: 0.75em;
+  margin-top: 0.75em;
+}
+
+.body-text:first-child {
+  margin-top: 0;
+}
+
+.body-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive scaling for body text */
+@media screen and (max-width: 1279px) {
+  .body-text {
+    font-size: var(--font-body-text-tablet);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .body-text {
+    font-size: var(--font-body-text-mobile);
+  }
+}
+
+/* Body text size variants */
+.body-text--large {
+  font-size: calc(var(--font-body-text-desktop) * 1.125);
+}
+
+@media screen and (max-width: 1279px) {
+  .body-text--large {
+    font-size: calc(var(--font-body-text-tablet) * 1.125);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .body-text--large {
+    font-size: calc(var(--font-body-text-mobile) * 1.125);
+  }
+}
+
+.body-text--small {
+  font-size: calc(var(--font-body-text-desktop) * 0.875);
+}
+
+@media screen and (max-width: 1279px) {
+  .body-text--small {
+    font-size: calc(var(--font-body-text-tablet) * 0.875);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .body-text--small {
+    font-size: calc(var(--font-body-text-mobile) * 0.875);
+  }
+}
+
+/* ==========================================================================
+   BACKWARD COMPATIBILITY CLASSES - DISRUPTIVE OVERRIDE
+   ========================================================================== */
+
+/* OVERRIDE: Map legacy H1-H6 classes to new three-tier system with !important */
+.h1,
+.h2 {
+  /* H1 and H2 map to main-heading */
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.85em !important;
+  margin-top: 1em !important;
+}
+
+.h3,
+.h4 {
+  /* H3 and H4 map to sub-heading */
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-sub-heading-desktop) !important;
+  font-weight: var(--font-weight-sub-heading) !important;
+  line-height: var(--line-height-sub-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-sub-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.85em !important;
+}
+
+.h5,
+.h6 {
+  /* H5 and H6 map to body-text */
+  font-family: var(--font-stack-body) !important;
+  font-size: var(--font-body-text-desktop) !important;
+  font-weight: var(--font-weight-body-text) !important;
+  line-height: var(--line-height-body-text-ratio) !important;
+  letter-spacing: var(--letter-spacing-body-text) !important;
+  color: rgb(var(--color-foreground)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.75em !important;
+}
+
+/* ==========================================================================
+   COMPONENT-SPECIFIC HEADING OVERRIDES
+   ========================================================================== */
+
+/* DISRUPTIVE: Override all existing component heading styles */
+
+/* Main heading components - force to use main-heading styles */
+.m-account__title,
+.m-activate-account__heading,
+.m-age-verifier__title,
+.m-article__title,
+.m-cart-drawer__title,
+.m-collection-banner__title,
+.m-collection-page-header__title,
+.m-collection-showcase__heading,
+.m-complementary-products__heading,
+.m-contact-form__heading,
+.m-featured-collection__heading,
+.m-hero__title,
+.m-newsletter__heading,
+.m-page-header__title,
+.m-product__title,
+.m-section__heading,
+.gift-card__heading {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  text-transform: var(--text-transform-main-heading) !important;
+  text-decoration: var(--text-decoration-main-heading) !important;
+  text-shadow: var(--text-shadow-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.85em !important;
+  margin-top: 1em !important;
+}
+
+/* Sub heading components - force to use sub-heading styles */
+.m-account__title--medium,
+.m-age-verifier__subtitle,
+.m-article-card__title,
+.m-collage-tab--heading,
+.m-collection-card__title,
+.m-contact-form__subheading,
+.m-featured-product__title,
+.m-newsletter__subheading,
+.m-product-card__title,
+.m-section__subheading,
+.m-testimonial__title {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-sub-heading-desktop) !important;
+  font-weight: var(--font-weight-sub-heading) !important;
+  line-height: var(--line-height-sub-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-sub-heading) !important;
+  text-transform: var(--text-transform-sub-heading) !important;
+  text-decoration: var(--text-decoration-sub-heading) !important;
+  text-shadow: var(--text-shadow-sub-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.85em !important;
+}
+
+/* Body text components - force to use body-text styles */
+.m-product-card__description,
+.m-article-card__excerpt,
+.m-collection-card__description,
+.m-newsletter__description,
+.m-section__description,
+.m-testimonial__content,
+.body-text {
+  font-family: var(--font-stack-body) !important;
+  font-size: var(--font-body-text-desktop) !important;
+  font-weight: var(--font-weight-body-text) !important;
+  line-height: var(--line-height-body-text-ratio) !important;
+  letter-spacing: var(--letter-spacing-body-text) !important;
+  text-transform: var(--text-transform-body-text) !important;
+  color: rgb(var(--color-foreground)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.75em !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES FOR COMPONENTS
+   ========================================================================== */
+
+/* Responsive scaling for component overrides */
+@media screen and (max-width: 1279px) {
+  /* Main heading components */
+  .m-account__title,
+  .m-activate-account__heading,
+  .m-age-verifier__title,
+  .m-article__title,
+  .m-cart-drawer__title,
+  .m-collection-banner__title,
+  .m-collection-page-header__title,
+  .m-collection-showcase__heading,
+  .m-complementary-products__heading,
+  .m-contact-form__heading,
+  .m-featured-collection__heading,
+  .m-hero__title,
+  .m-newsletter__heading,
+  .m-page-header__title,
+  .m-product__title,
+  .m-section__heading,
+  .gift-card__heading,
+  .h1, .h2 {
+    font-size: var(--font-main-heading-tablet) !important;
+  }
+  
+  /* Sub heading components */
+  .m-account__title--medium,
+  .m-age-verifier__subtitle,
+  .m-article-card__title,
+  .m-collage-tab--heading,
+  .m-collection-card__title,
+  .m-contact-form__subheading,
+  .m-featured-product__title,
+  .m-newsletter__subheading,
+  .m-product-card__title,
+  .m-section__subheading,
+  .m-testimonial__title,
+  .h3, .h4 {
+    font-size: var(--font-sub-heading-tablet) !important;
+  }
+  
+  /* Body text components */
+  .m-product-card__description,
+  .m-article-card__excerpt,
+  .m-collection-card__description,
+  .m-newsletter__description,
+  .m-section__description,
+  .m-testimonial__content,
+  .body-text,
+  .h5, .h6 {
+    font-size: var(--font-body-text-tablet) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Main heading components */
+  .m-account__title,
+  .m-activate-account__heading,
+  .m-age-verifier__title,
+  .m-article__title,
+  .m-cart-drawer__title,
+  .m-collection-banner__title,
+  .m-collection-page-header__title,
+  .m-collection-showcase__heading,
+  .m-complementary-products__heading,
+  .m-contact-form__heading,
+  .m-featured-collection__heading,
+  .m-hero__title,
+  .m-newsletter__heading,
+  .m-page-header__title,
+  .m-product__title,
+  .m-section__heading,
+  .gift-card__heading,
+  .h1, .h2 {
+    font-size: var(--font-main-heading-mobile) !important;
+  }
+  
+  /* Sub heading components */
+  .m-account__title--medium,
+  .m-age-verifier__subtitle,
+  .m-article-card__title,
+  .m-collage-tab--heading,
+  .m-collection-card__title,
+  .m-contact-form__subheading,
+  .m-featured-product__title,
+  .m-newsletter__subheading,
+  .m-product-card__title,
+  .m-section__subheading,
+  .m-testimonial__title,
+  .h3, .h4 {
+    font-size: var(--font-sub-heading-mobile) !important;
+  }
+  
+  /* Body text components */
+  .m-product-card__description,
+  .m-article-card__excerpt,
+  .m-collection-card__description,
+  .m-newsletter__description,
+  .m-section__description,
+  .m-testimonial__content,
+  .body-text,
+  .h5, .h6 {
+    font-size: var(--font-body-text-mobile) !important;
+  }
+}
+
+/* ==========================================================================
+   SEMANTIC HTML ELEMENT STYLES - DISRUPTIVE OVERRIDE
+   ========================================================================== */
+
+/* OVERRIDE: Apply three-tier system to ALL semantic HTML elements */
+h1, h2 {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  text-transform: var(--text-transform-main-heading) !important;
+  text-decoration: var(--text-decoration-main-heading) !important;
+  text-shadow: var(--text-shadow-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.85em !important;
+  margin-top: 1em !important;
+}
+
+h3, h4 {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-sub-heading-desktop) !important;
+  font-weight: var(--font-weight-sub-heading) !important;
+  line-height: var(--line-height-sub-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-sub-heading) !important;
+  text-transform: var(--text-transform-sub-heading) !important;
+  text-decoration: var(--text-decoration-sub-heading) !important;
+  text-shadow: var(--text-shadow-sub-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.85em !important;
+}
+
+h5, h6 {
+  font-family: var(--font-stack-body) !important;
+  font-size: var(--font-body-text-desktop) !important;
+  font-weight: var(--font-weight-body-text) !important;
+  line-height: var(--line-height-body-text-ratio) !important;
+  letter-spacing: var(--letter-spacing-body-text) !important;
+  text-transform: var(--text-transform-body-text) !important;
+  color: rgb(var(--color-foreground)) !important;
+  margin-bottom: 0.75em !important;
+  margin-top: 0.75em !important;
+}
+
+/* Responsive overrides for semantic elements */
+@media screen and (max-width: 1279px) {
+  h1, h2 {
+    font-size: var(--font-main-heading-tablet) !important;
+  }
+  
+  h3, h4 {
+    font-size: var(--font-sub-heading-tablet) !important;
+  }
+  
+  h5, h6 {
+    font-size: var(--font-body-text-tablet) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h1, h2 {
+    font-size: var(--font-main-heading-mobile) !important;
+  }
+  
+  h3, h4 {
+    font-size: var(--font-sub-heading-mobile) !important;
+  }
+  
+  h5, h6 {
+    font-size: var(--font-body-text-mobile) !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .main-heading,
+  .sub-heading,
+  .body-text,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .main-heading,
+  .sub-heading,
+  .body-text,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  h1, h2, h3, h4, h5, h6 {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.main-heading:focus,
+.sub-heading:focus,
+.body-text:focus,
+.h1:focus, .h2:focus, .h3:focus, .h4:focus, .h5:focus, .h6:focus,
+h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus {
+  outline: 2px solid rgb(var(--color-button));
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   FLUID TYPOGRAPHY SUPPORT
+   ========================================================================== */
+
+/* Enable fluid typography when setting is enabled */
+@supports (font-size: clamp(1rem, 1vw, 2rem)) {
+  .typography-fluid .main-heading {
+    font-size: clamp(
+      var(--font-main-heading-mobile),
+      calc(var(--font-main-heading-mobile) + (var(--font-main-heading-desktop) - var(--font-main-heading-mobile)) * ((100vw - var(--fluid-typography-min-width)) / (var(--fluid-typography-max-width) - var(--fluid-typography-min-width)))),
+      var(--font-main-heading-desktop)
+    );
+  }
+  
+  .typography-fluid .sub-heading {
+    font-size: clamp(
+      var(--font-sub-heading-mobile),
+      calc(var(--font-sub-heading-mobile) + (var(--font-sub-heading-desktop) - var(--font-sub-heading-mobile)) * ((100vw - var(--fluid-typography-min-width)) / (var(--fluid-typography-max-width) - var(--fluid-typography-min-width)))),
+      var(--font-sub-heading-desktop)
+    );
+  }
+  
+  .typography-fluid .body-text {
+    font-size: clamp(
+      var(--font-body-text-mobile),
+      calc(var(--font-body-text-mobile) + (var(--font-body-text-desktop) - var(--font-body-text-mobile)) * ((100vw - var(--fluid-typography-min-width)) / (var(--fluid-typography-max-width) - var(--fluid-typography-min-width)))),
+      var(--font-body-text-desktop)
+    );
+  }
+}
+
+/* ==========================================================================
+   UTILITY MODIFIERS
+   ========================================================================== */
+
+/* Text alignment utilities */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* Font weight utilities */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* Text transform utilities */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* Color utilities */
+.text-primary { color: rgb(var(--color-foreground)); }
+.text-secondary { color: rgb(var(--color-foreground-secondary)); }
+.text-heading { color: rgb(var(--color-heading)); }
+
+/* ==========================================================================
+   DEPRECATION WARNINGS (Development Mode Only)
+   ========================================================================== */
+
+/* Add visual indicators for deprecated classes in development */
+.shopify-design-mode .h1::before,
+.shopify-design-mode .h2::before,
+.shopify-design-mode .h3::before,
+.shopify-design-mode .h4::before,
+.shopify-design-mode .h5::before,
+.shopify-design-mode .h6::before {
+  content: "⚠️ Consider using .main-heading, .sub-heading, or .body-text classes";
+  display: block;
+  font-size: 12px;
+  color: #ff6b35;
+  font-weight: normal;
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+
+
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY DISRUPTION - NUCLEAR OPTION
+   ========================================================================== */
+
+/* DISRUPTIVE: Override ALL possible heading-related utility classes */
+
+/* Override Tailwind/utility-first heading classes */
+.text-xs, .text-sm, .text-base, .text-lg, .text-xl, 
+.text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl,
+.text-7xl, .text-8xl, .text-9xl {
+  font-size: var(--font-body-text-desktop) !important;
+  font-weight: var(--font-weight-body-text) !important;
+  line-height: var(--line-height-body-text-ratio) !important;
+}
+
+/* Force large text classes to use main-heading */
+.text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl {
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+/* Force medium text classes to use sub-heading */
+.text-xl, .text-2xl, .text-3xl {
+  font-size: var(--font-sub-heading-desktop) !important;
+  font-weight: var(--font-weight-sub-heading) !important;
+  line-height: var(--line-height-sub-heading-ratio) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+/* Override any font-size utilities */
+[class*="text-"], [class*="font-size"], [class*="fs-"] {
+  font-family: var(--font-stack-body) !important;
+}
+
+/* Override heading-specific utility classes */
+[class*="heading"], [class*="title"], [class*="display"] {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+/* ==========================================================================
+   SECTION-SPECIFIC OVERRIDES
+   ========================================================================== */
+
+/* Override section heading patterns */
+.section-heading,
+.section-title,
+.block-heading,
+.block-title,
+.card-heading,
+.card-title,
+.hero-heading,
+.hero-title,
+.banner-heading,
+.banner-title {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  text-transform: var(--text-transform-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+/* Override product-specific headings */
+.product-title,
+.product-heading,
+.collection-title,
+.collection-heading,
+.article-title,
+.article-heading {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+/* ==========================================================================
+   SHOPIFY-SPECIFIC OVERRIDES
+   ========================================================================== */
+
+/* Override Shopify's default heading classes */
+.shopify-section h1,
+.shopify-section h2,
+.shopify-section h3,
+.shopify-section h4,
+.shopify-section h5,
+.shopify-section h6 {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+}
+
+/* Override any remaining legacy font size variables */
+.shopify-section [style*="font-size"] {
+  font-size: inherit !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES FOR UTILITY CLASSES
+   ========================================================================== */
+
+@media screen and (max-width: 1279px) {
+  .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl,
+  .section-heading, .section-title, .block-heading, .block-title,
+  .card-heading, .card-title, .hero-heading, .hero-title,
+  .banner-heading, .banner-title, .product-title, .product-heading,
+  .collection-title, .collection-heading, .article-title, .article-heading {
+    font-size: var(--font-main-heading-tablet) !important;
+  }
+  
+  .text-xl, .text-2xl, .text-3xl {
+    font-size: var(--font-sub-heading-tablet) !important;
+  }
+  
+  .text-xs, .text-sm, .text-base, .text-lg {
+    font-size: var(--font-body-text-tablet) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .text-4xl, .text-5xl, .text-6xl, .text-7xl, .text-8xl, .text-9xl,
+  .section-heading, .section-title, .block-heading, .block-title,
+  .card-heading, .card-title, .hero-heading, .hero-title,
+  .banner-heading, .banner-title, .product-title, .product-heading,
+  .collection-title, .collection-heading, .article-title, .article-heading {
+    font-size: var(--font-main-heading-mobile) !important;
+  }
+  
+  .text-xl, .text-2xl, .text-3xl {
+    font-size: var(--font-sub-heading-mobile) !important;
+  }
+  
+  .text-xs, .text-sm, .text-base, .text-lg {
+    font-size: var(--font-body-text-mobile) !important;
+  }
+}
+
+/* ==========================================================================
+   THEME-SPECIFIC PATTERN OVERRIDES
+   ========================================================================== */
+
+/* Override any remaining theme-specific patterns */
+[class*="m-"] h1, [class*="m-"] h2, [class*="m-"] h3, 
+[class*="m-"] h4, [class*="m-"] h5, [class*="m-"] h6,
+[class*="f-"] h1, [class*="f-"] h2, [class*="f-"] h3,
+[class*="f-"] h4, [class*="f-"] h5, [class*="f-"] h6,
+[class*="sf-"] h1, [class*="sf-"] h2, [class*="sf-"] h3,
+[class*="sf-"] h4, [class*="sf-"] h5, [class*="sf-"] h6 {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+}
+
+/* ==========================================================================
+   FINAL NUCLEAR OVERRIDE
+   ========================================================================== */
+
+/* Last resort: Override everything with data attributes */
+[data-typography="main-heading"],
+[data-heading-level="1"],
+[data-heading-level="2"] {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-main-heading-desktop) !important;
+  font-weight: var(--font-weight-main-heading) !important;
+  line-height: var(--line-height-main-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-main-heading) !important;
+  text-transform: var(--text-transform-main-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+[data-typography="sub-heading"],
+[data-heading-level="3"],
+[data-heading-level="4"] {
+  font-family: var(--font-stack-header, var(--font-stack-body)) !important;
+  font-size: var(--font-sub-heading-desktop) !important;
+  font-weight: var(--font-weight-sub-heading) !important;
+  line-height: var(--line-height-sub-heading-ratio) !important;
+  letter-spacing: var(--letter-spacing-sub-heading) !important;
+  text-transform: var(--text-transform-sub-heading) !important;
+  color: rgb(var(--color-heading)) !important;
+}
+
+[data-typography="body-text"],
+[data-heading-level="5"],
+[data-heading-level="6"] {
+  font-family: var(--font-stack-body) !important;
+  font-size: var(--font-body-text-desktop) !important;
+  font-weight: var(--font-weight-body-text) !important;
+  line-height: var(--line-height-body-text-ratio) !important;
+  letter-spacing: var(--letter-spacing-body-text) !important;
+  text-transform: var(--text-transform-body-text) !important;
+  color: rgb(var(--color-foreground)) !important;
+}
+
+/* ==========================================================================
+   PERFORMANCE OPTIMIZATION
+   ========================================================================== */
+
+/* Optimize rendering by containing layout shifts */
+.main-heading, .sub-heading, .body-text,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  contain: layout style;
+  will-change: auto;
+}
+
+/* Prevent font loading layout shifts */
+.main-heading, .sub-heading, .body-text,
+h1, h2, h3, h4, h5, h6 {
+  font-display: var(--font-display-strategy, swap);
+}
+
+/* ==========================================================================
+   DEVELOPER NOTICES
+   ========================================================================== */
+
+/* Add visual indicators in development mode */
+.shopify-design-mode .main-heading::after,
+.shopify-design-mode .sub-heading::after,
+.shopify-design-mode .body-text::after {
+  content: " ✓ New Typography System";
+  display: inline-block;
+  font-size: 10px;
+  color: #00c851;
+  font-weight: normal;
+  margin-left: 8px;
+  opacity: 0.7;
+  vertical-align: super;
+}
+
+/* Success indicator for properly implemented headings */
+.shopify-design-mode h1::after,
+.shopify-design-mode h2::after {
+  content: " → Main Heading";
+  display: inline-block;
+  font-size: 10px;
+  color: #007bff;
+  font-weight: normal;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+
+.shopify-design-mode h3::after,
+.shopify-design-mode h4::after {
+  content: " → Sub Heading";
+  display: inline-block;
+  font-size: 10px;
+  color: #6f42c1;
+  font-weight: normal;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+
+.shopify-design-mode h5::after,
+.shopify-design-mode h6::after {
+  content: " → Body Text";
+  display: inline-block;
+  font-size: 10px;
+  color: #6c757d;
+  font-weight: normal;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+

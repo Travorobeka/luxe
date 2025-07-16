@@ -829,6 +829,153 @@
       },
       {
         "type": "header",
+        "content": "DISRUPTIVE TYPOGRAPHY OVERRIDES"
+      },
+      {
+        "type": "paragraph",
+        "content": "⚠️ ADVANCED: These settings will aggressively override existing typography throughout the theme to enforce the new three-tier system."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_typography_disruption",
+        "label": "Enable Typography Disruption",
+        "default": true,
+        "info": "Override ALL existing heading styles with the new three-tier system"
+      },
+      {
+        "type": "checkbox",
+        "id": "override_utility_classes",
+        "label": "Override Utility Classes",
+        "default": true,
+        "info": "Force utility classes (text-xl, text-2xl, etc.) to use three-tier system"
+      },
+      {
+        "type": "checkbox",
+        "id": "override_component_styles",
+        "label": "Override Component Styles",
+        "default": true,
+        "info": "Force all component-specific heading styles to use three-tier system"
+      },
+      {
+        "type": "checkbox",
+        "id": "override_semantic_elements",
+        "label": "Override Semantic Elements",
+        "default": true,
+        "info": "Force all H1-H6 elements to use three-tier system with !important"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_typography_indicators",
+        "label": "Show Typography Indicators",
+        "default": true,
+        "info": "Show visual indicators in theme editor for new typography system"
+      },
+      {
+        "type": "select",
+        "id": "disruption_level",
+        "label": "Disruption Level",
+        "default": "aggressive",
+        "options": [
+          {
+            "value": "gentle",
+            "label": "Gentle (Preserve some existing styles)"
+          },
+          {
+            "value": "moderate",
+            "label": "Moderate (Override most styles)"
+          },
+          {
+            "value": "aggressive",
+            "label": "Aggressive (Override everything)"
+          },
+          {
+            "value": "nuclear",
+            "label": "Nuclear (Force all typography)"
+          }
+        ],
+        "info": "How aggressively to override existing typography styles"
+      },
+      {
+        "type": "header",
+        "content": "THREE-TIER SYSTEM MAPPING"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure how existing heading elements map to the new three-tier system"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h1_main_heading",
+        "label": "Force H1 → Main Heading",
+        "default": true,
+        "info": "All H1 elements use main heading styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h2_main_heading",
+        "label": "Force H2 → Main Heading",
+        "default": true,
+        "info": "All H2 elements use main heading styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h3_sub_heading",
+        "label": "Force H3 → Sub Heading",
+        "default": true,
+        "info": "All H3 elements use sub heading styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h4_sub_heading",
+        "label": "Force H4 → Sub Heading",
+        "default": true,
+        "info": "All H4 elements use sub heading styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h5_body_text",
+        "label": "Force H5 → Body Text",
+        "default": true,
+        "info": "All H5 elements use body text styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "force_h6_body_text",
+        "label": "Force H6 → Body Text",
+        "default": true,
+        "info": "All H6 elements use body text styles"
+      },
+      {
+        "type": "header",
+        "content": "LEGACY COMPATIBILITY"
+      },
+      {
+        "type": "paragraph",
+        "content": "Maintain compatibility with existing customizations while enforcing the new system"
+      },
+      {
+        "type": "checkbox",
+        "id": "preserve_custom_classes",
+        "label": "Preserve Custom Classes",
+        "default": false,
+        "info": "Allow custom CSS classes to override the three-tier system"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_legacy_warnings",
+        "label": "Enable Legacy Warnings",
+        "default": true,
+        "info": "Show warnings in theme editor for deprecated typography classes"
+      },
+      {
+        "type": "textarea",
+        "id": "typography_override_css",
+        "label": "Custom Typography Override CSS",
+        "placeholder": "/* Add custom CSS to override specific typography styles */\n.my-custom-heading {\n  font-size: 32px !important;\n}",
+        "info": "Custom CSS that will be applied after the three-tier system"
+      },
+      {
+        "type": "header",
         "content": "BUTTONS"
       },
       {

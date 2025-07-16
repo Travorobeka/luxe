@@ -136,7 +136,7 @@
       <div class="{{ container }} m-section-my m-section-py">
         {% if show_countdown %}
           <div class="m-section__header{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
-            <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}">
+            <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }} main-heading" data-typography="main-heading">
               <a href="{{ current_collection.url }}">{{ section.settings.heading }}</a>
             </h2>
             <div

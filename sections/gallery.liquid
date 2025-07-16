@@ -68,7 +68,7 @@
           </p>
         {% endif %}
         {% if section.settings.heading != blank %}
-          <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+          <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">
             {{ section.settings.heading }}
           </h2>
         {% endif %}
@@ -114,7 +114,7 @@
               </p>
             {% endif %}
             {% if section.settings.heading != blank %}
-              <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+              <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">
                 {{ section.settings.heading }}
               </h2>
             {% endif %}

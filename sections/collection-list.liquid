@@ -125,7 +125,7 @@
         <p class="m-section__subheading{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">{{ section.settings.subheading }}</p>
       {% endif %}
       {% if section.settings.heading != blank %}
-        <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">{{ section.settings.heading }}</h2>
+        <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">{{ section.settings.heading }}</h2>
       {% endif %}
       {% if section.settings.description != blank %}
         <div class="m-section__description{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">{{ section.settings.description }}</div>
@@ -214,7 +214,7 @@
                     <div class="m-collection-banner__inner m:text-center" style="--aspect-ratio: {{ first_ratio | default: '1' }}; background: {{ block.settings.item_bg }}">
                       <div class="m-collection-banner__content">
                         <a href="{{ collection.url | default: "#" }}" class="m-hidden-link"></a>
-                        <h3 class="m-collection-banner__title" style="color: {{ block.settings.item_text_color }}">{{ block.settings.title }}</h3>
+                        <h3 class="m-collection-banner__title sub-heading" data-typography="sub-heading" style="color: {{ block.settings.item_text_color }}">{{ block.settings.title }}</h3>
                         <p class="m-collection-banner__description" style="color: {{ block.settings.item_text_color }}">{{ block.settings.description }}</p>
                       </div>
                     </div>

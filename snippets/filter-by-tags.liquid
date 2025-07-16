@@ -37,7 +37,7 @@
           assign show_image = block.settings.show_image
         %}
         <div class="m-filter--widget m-filter--widget-{{ block.type }}{% if use_accordion %} m-accordion--item{% endif %}{% if use_accordion and open_filtergroup %} open{% endif %}" data-block-type="collections">
-          <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %}">
+          <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %} sub-heading" data-typography="sub-heading">
             {{ block.settings.title }}
             {% if use_accordion %}
               <span class="m-accordion--item-icon">
@@ -104,7 +104,7 @@
         %}
         {% if tags_list.size > 0 and has_tags %}
           <div class="m-filter--widget{% if use_accordion %} m-accordion--item{% endif %}{% if use_accordion and open_filtergroup %} open{% endif %}">
-            <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %}">
+            <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %} sub-heading" data-typography="sub-heading">
               {{ block.settings.title }}
               {% if use_accordion %}
                 <span class="m-accordion--item-icon">

@@ -16,7 +16,7 @@
     {%- endif -%}
     {%- if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 -%}
       <div class="">
-        <h2 id="m-predictive-search-queries" class="m-search-result__heading h5">
+        <h2 id="m-predictive-search-queries" class="m-search-result__heading h5 main-heading" data-typography="main-heading">
           {{- 'general.search.suggestions' | t -}}
         </h2>
         <ul
@@ -63,7 +63,7 @@
     {%- endif -%}
     {%- if predictive_search.resources.articles.size > 0 or predictive_search.resources.pages.size > 0 -%}
       <div class="m-predictive-search__pages-wrapper">
-        <h2 id="m-predictive-search-pages-desktop" class="m-search-result__heading h5">
+        <h2 id="m-predictive-search-pages-desktop" class="m-search-result__heading h5 main-heading" data-typography="main-heading">
           {{- 'general.search.page_article' | t -}}
         </h2>
         <ul
@@ -113,7 +113,7 @@
       <div class="m-search-result__group">
         {%- if predictive_search.resources.products.size > 0 -%}
           <div class="m-search-result__products">
-            <h2 id="m-predictive-search-products" class="m-search-result__heading h5">
+            <h2 id="m-predictive-search-products" class="m-search-result__heading h5 main-heading" data-typography="main-heading">
               {{- 'general.search.products' | t -}}
             </h2>
             <div class="m-search-result__products-list">

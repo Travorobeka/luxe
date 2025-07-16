@@ -10,7 +10,7 @@
 <div class="m-customer-forms">
   <div class="container">
     <div id="recover" class="m-recover-form">
-      <h3>{{ 'customer.recover_password.title' | t }}</h3>
+      <h3 class="sub-heading" data-typography="sub-heading">{{ 'customer.recover_password.title' | t }}</h3>
       <p>{{ 'customer.recover_password.subtext' | t }}</p>
 
       <div data-recover-form>
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div id="login" class="m-login-form">
-      <h3>{{ 'customer.login.title' | t }}</h3>
+      <h3 class="sub-heading" data-typography="sub-heading">{{ 'customer.login.title' | t }}</h3>
       {%- if shop.features.login_with_shop_classic_customer_accounts? -%}
         <section name="sign-in-with-shop-provider">
           {{ shop | login_button: hide_button: hide_shop_login_button }}
@@ -88,7 +88,7 @@
       {% endform %}
     </div>
     <div class="m-sign-up">
-      <h3>{{ 'customer.login.new_customer' | t }}</h3>
+      <h3 class="sub-heading" data-typography="sub-heading">{{ 'customer.login.new_customer' | t }}</h3>
       <p>{{ 'customer.register.description' | t }}</p>
       <a class="m-button m-button--primary" href="{{ routes.account_register_url }}">
         {{- 'customer.register.title' | t -}}

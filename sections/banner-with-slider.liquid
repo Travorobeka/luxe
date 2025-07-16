@@ -179,7 +179,7 @@
                     {% endif %}
 
                     {% if block.settings.heading != blank %}
-                      <h2 class="m-richtext__title m-slide__title {{ heading_color }} {{ block.settings.text_size }}">
+                      <h2 class="main-heading m-richtext__title m-slide__title {{ heading_color }} {{ block.settings.text_size }} main-heading" data-typography="main-heading" data-typography="main-heading">
                         {{ block.settings.heading }}
                       </h2>
                     {% endif %}
@@ -373,7 +373,7 @@
             <div class="m-banner-with-slider__banner-content{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
               {% if section.settings.button_text_1 != blank %}
                 {% if section.settings.use_scroll_mobile %}
-                  <h4 class="h6">{{ section.settings.button_text_1 }}</h4>
+                  <h4 class="body-text h6 sub-heading" data-typography="sub-heading" data-typography="body-text">{{ section.settings.button_text_1 }}</h4>
                 {% else %}
                   <a
                     href="{{ section.settings.button_link_1 | default: '#' }}"
@@ -435,7 +435,7 @@
             <div class="m-banner-with-slider__banner-content{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
               {% if section.settings.button_text_2 != blank %}
                 {% if section.settings.use_scroll_mobile %}
-                  <h4 class="h6">{{ section.settings.button_text_2 }}</h4>
+                  <h4 class="body-text h6 sub-heading" data-typography="sub-heading" data-typography="body-text">{{ section.settings.button_text_2 }}</h4>
                 {% else %}
                   <a
                     href="{{ section.settings.button_link_2 | default: '#' }}"
@@ -497,7 +497,7 @@
             <div class="m-banner-with-slider__banner-content{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
               {% if section.settings.button_text_3 != blank %}
                 {% if section.settings.use_scroll_mobile %}
-                  <h4 class="h6">{{ section.settings.button_text_3 }}</h4>
+                  <h4 class="body-text h6 sub-heading" data-typography="sub-heading" data-typography="body-text">{{ section.settings.button_text_3 }}</h4>
                 {% else %}
                   <a
                     href="{{ section.settings.button_link_3 | default: '#' }}"
@@ -574,7 +574,7 @@
                   {% endif %}
 
                   {% if block.settings.heading != blank %}
-                    <h2 class="m-richtext__title m-slide__title {{ heading_color }} {{ block.settings.text_size }}">
+                    <h2 class="main-heading m-richtext__title m-slide__title {{ heading_color }} {{ block.settings.text_size }} main-heading" data-typography="main-heading" data-typography="main-heading">
                       {{ block.settings.heading }}
                     </h2>
                   {% endif %}

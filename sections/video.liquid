@@ -82,7 +82,7 @@
                 </svg>
               </span>
               {%- unless section.settings.video_title == blank -%}
-                <h2 class="m-video__title m-video__title--{{ section.settings.text_size }} m:hidden md:m:block m:text-{{ section.settings.text_color }}">
+                <h2 class="m-video__title m-video__title--{{ section.settings.text_size }} m:hidden md:m:block m:text-{{ section.settings.text_color }} main-heading" data-typography="main-heading">
                   {{ section.settings.video_title }}
                 </h2>
               {%- endunless -%}

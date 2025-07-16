@@ -70,7 +70,7 @@
   <div class="{{ container }} m-section-my m-section-py">
     {% assign default_heading = 'products.product.recently_viewed_products' | t %}
     <div class="m-section__header m:text-{{ section.settings.text_align | default: 'left' }}">
-      <h2 class="m-section__heading {{ section.settings.heading_size }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+      <h2 class="m-section__heading {{ section.settings.heading_size }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">
         {{ section.settings.heading | default: default_heading }}
       </h2>
     </div>

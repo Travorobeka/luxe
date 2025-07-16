@@ -31,7 +31,7 @@
         class="m-cascading-product-card__title"
         href="{{ product.url | default: "#" }}"
       >
-        <h4 class="h6">{{ product.title | default: 'Product title' }}</h4>
+        <h4 class="h6 sub-heading" data-typography="sub-heading">{{ product.title | default: 'Product title' }}</h4>
       </a>
       <div class="m-cascading-product-card__price">{% render 'product-prices', product: product %}</div>
     </div>

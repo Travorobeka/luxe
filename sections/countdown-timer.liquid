@@ -135,7 +135,7 @@
         {% if section.settings.heading != blank or section.settings.description != blank %}
           <div class="m-countdown__header">
             {% if section.settings.heading != blank %}
-              <h2 class="m-countdown__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+              <h2 class="m-countdown__heading {{ section.settings.heading_size }} main-heading" data-typography="main-heading">{{ section.settings.heading }}</h2>
             {% endif %}
             {% if section.settings.description != blank %}
               <div class="m-coutdown__description rte m:text-color-subtext">{{ section.settings.description }}</div>

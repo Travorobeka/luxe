@@ -12,7 +12,7 @@
 
 <div class="m-page-header m-page-header--template-{{ template.name | handle }} m:text-center{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
   <div class="container">
-    <h1 class="m-page-header__title">{{ 'customer.account.title' | t }}</h1>
+    <h1 class="m-page-header__title main-heading" data-typography="main-heading">{{ 'customer.account.title' | t }}</h1>
     <a href="/account" class="m-breadcrumb--item m-text-link">{{ 'customer.account.return' | t }}</a>
   </div>
 </div>
@@ -22,7 +22,7 @@
     <div class="m-row">
       <div class="m:w-full lg:m:w-8/12">
         <div class="m-customer-order-detail__header">
-          <h2>{{ 'customer.order.title' | t: name: order.name }}</h2>
+          <h2 class="main-heading" data-typography="main-heading">{{ 'customer.order.title' | t: name: order.name }}</h2>
           <p>{{ 'customer.order.date' | t: date: order.created_at | date: "%B %d, %Y %I:%M%p" }}</p>
         </div>
 
@@ -192,12 +192,12 @@
       </div>
       <div class="m-customer-order-detail__address m:w-full lg:m:w-4/12">
         <div class="m-customer-order-detail__billing-address">
-          <h3>{{ 'customer.order.billing_address' | t }}</h3>
+          <h3 class="sub-heading" data-typography="sub-heading">{{ 'customer.order.billing_address' | t }}</h3>
           <p>{{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}</p>
           <div>{{ order.billing_address | format_address }}</div>
         </div>
         <div class="m-customer-order-detail__shipping-address">
-          <h3>{{ 'customer.order.shipping_address' | t }}</h3>
+          <h3 class="sub-heading" data-typography="sub-heading">{{ 'customer.order.shipping_address' | t }}</h3>
           <p>{{ 'customer.order.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
           <div>{{ order.shipping_address | format_address }}</div>
         </div>

@@ -51,7 +51,7 @@
           <article>
             <div class="m-article__header m:text-center">
               <a class="m-article__blog" href="{{ blog.url }}">{{ blog.title }}</a>
-              <h1 class="m-article__title">{{ article.title }}</h1>
+              <h1 class="main-heading m-article__title main-heading" data-typography="main-heading" data-typography="main-heading">{{ article.title }}</h1>
               {% if section.settings.blog_show_author or section.settings.blog_show_date %}
                 <div class="m-article__meta">
                   {% if section.settings.blog_show_author %}
@@ -136,7 +136,7 @@
             {%- comment -%}Related Posts{%- endcomment -%}
             {% if section.settings.show_related_articles %}
               <div class="m-related-posts">
-                <h3 class="m-related-posts__heading">{{ 'blogs.article.related_title' | t }}</h3>
+                <h3 class="sub-heading m-related-posts__heading sub-heading" data-typography="sub-heading" data-typography="sub-heading">{{ 'blogs.article.related_title' | t }}</h3>
                 <div class="m-related-posts__wrapper m-mixed-layout m-mixed-layout--mobile-scroll">
                   <div class="m-mixed-layout__inner m:grid m:grid-2-cols md:m:grid-3-cols">
                     {% liquid
@@ -193,7 +193,7 @@
 
               {% if number_of_comments > 0 %}
                 <div class="m-comment-section">
-                  <h3 class="m-comment-section__heading">
+                  <h3 class="sub-heading m-comment-section__heading sub-heading" data-typography="sub-heading" data-typography="sub-heading">
                     {{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}
                   </h3>
                   {% paginate article.comments by 5 %}
@@ -253,7 +253,7 @@
               <div class="m-comment-form" id="m-leave-comment">
                 {% form 'new_comment', article %}
                   <div class="m-comment-form__header m:text-center">
-                    <h3 class="m-comment-form__heading">{{ 'blogs.comments.title' | t }}</h3>
+                    <h3 class="sub-heading m-comment-form__heading sub-heading" data-typography="sub-heading" data-typography="sub-heading">{{ 'blogs.comments.title' | t }}</h3>
                     <p class="m-comment-form__text">{{ 'blogs.comments.sub_title' | t }}</p>
                   </div>
 

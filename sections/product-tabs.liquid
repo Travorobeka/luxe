@@ -167,14 +167,14 @@
 
         {% if tab_header == 'horizontal' %}
           {% if section.settings.heading != blank %}
-            <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+            <h2 class="m-section__heading {{ section.settings.heading_size | default: 'h3' }}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">
               {{ section.settings.heading }}
             </h2>
           {% endif %}
         {% else %}
           <div class="m-section__heading {% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
             {% if section.settings.heading != blank %}
-              <h2 class="{{ section.settings.heading_size | default: 'h3' }}">{{ section.settings.heading }}&nbsp;</h2>
+              <h2 class="{{ section.settings.heading_size | default: 'h3' }} main-heading" data-typography="main-heading">{{ section.settings.heading }}&nbsp;</h2>
             {% endif %}
             {{ dropdown }}
           </div>

@@ -356,7 +356,7 @@
         <span class="m-product-card__vendor">{{ product.vendor }}</span>
       {%- endif -%}
       {% if show_title == true %}
-        <h3 class="m-product-card__title sub-heading">
+        <h3 class="m-product-card__title sub-heading sub-heading" data-typography="sub-heading">
           <a
             href="{{ product_url }}"
             class="m-product-card__name{% if settings.uppercase_prd_name %} m:uppercase{% endif %}"

@@ -35,7 +35,7 @@
     </button>
     <div class="m:flex m:flex-col m:h-full" id="MinimogCartDrawerHeader">
       <div class="m-cart-drawer__header">
-        <h3 class="m-cart-drawer__title m:text-xl md:m:text-2xl m:font-medium">{{ 'cart.general.title' | t }}</h3>
+        <h3 class="m-cart-drawer__title m:text-xl md:m:text-2xl m:font-medium sub-heading" data-typography="sub-heading">{{ 'cart.general.title' | t }}</h3>
         {% if template.name != 'cart' %}
           <foxkit-cart-countdown></foxkit-cart-countdown>
         {% endif %}

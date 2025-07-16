@@ -4,7 +4,7 @@
 {% render 'page-title', title: page_title %}
 <div class="m-activate-account">
   <div class="container-narrow">
-    <h4 class="m-activate-account__heading">{{ 'customer.activate_account.subtext' | t }}</h4>
+    <h4 class="m-activate-account__heading sub-heading" data-typography="sub-heading">{{ 'customer.activate_account.subtext' | t }}</h4>
     {% form 'activate_customer_password' %}
       {{ form.errors | default_errors }}
       <div class="form-group">

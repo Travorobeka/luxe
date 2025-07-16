@@ -60,7 +60,7 @@
                       </div>
                       <div class="m-mega-banner__inner">
                         <div class="m-mega-banner__conntent">
-                          <h4 class="m-mega-banner__title">{{ banner_title }}</h4>
+                          <h4 class="m-mega-banner__title sub-heading" data-typography="sub-heading">{{ banner_title }}</h4>
                           <p class="m-mega-banner__description">{{ banner_desc }}</p>
                         </div>
                         {% if banner_link != blank and banner_button_text != blank %}
@@ -109,7 +109,7 @@
                   <div class="m-mega-product-list" data-id="{{ block.id }}">
                     {%- assign collection = collections[block.settings.collection] -%}
                     <div class="m-mega-product-list__header">
-                      <h3 class="m-mega-product-list__heading">{{ collection.title }}</h3>
+                      <h3 class="m-mega-product-list__heading sub-heading" data-typography="sub-heading">{{ collection.title }}</h3>
                       {% if block.settings.limit > block.settings.columns %}
                         <div id="m-slider-controls-{{ block.id }}" class="m-slider-controls m:flex m:items-center">
                           <button class="m-slider-controls__button m-slider-controls__button-prev" aria-label="Previous">
@@ -148,7 +148,7 @@
                               </div>
                               <div class="m-product-card__content m:text-left">
                                 <div class="m-product-card__info">
-                                  <h3 class="m-product-card__title">
+                                  <h3 class="m-product-card__title sub-heading" data-typography="sub-heading">
                                     <a href="{{ product.url }}" class="m-product-card__name">
                                       {{ product.title }}
                                     </a>
@@ -216,7 +216,7 @@
                                   {% endif %}
                                 </a>
                                 <div class="m-collection-card__info m:text-left">
-                                  <h3 class="m-collection-card__title">
+                                  <h3 class="m-collection-card__title sub-heading" data-typography="sub-heading">
                                     <a href="{{ collection.url | default: "#" }}" class="m-collection-card__link m:block">
                                       {{ title | default: collection.title }}
                                       <sup>{{ all_products_count }}</sup>

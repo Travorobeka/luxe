@@ -5,7 +5,7 @@
 
 <div class="m-register-form">
   <div class="m-register-form__wrapper">
-    <h1>{{ 'customer.register.title' | t }}</h1>
+    <h1 class="main-heading" data-typography="main-heading">{{ 'customer.register.title' | t }}</h1>
     <div data-register-form>
       {% form 'create_customer' %}
       {% render 'form__error', form: form %}

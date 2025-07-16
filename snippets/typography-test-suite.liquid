@@ -1,155 +1,442 @@
 {% comment %}
-  Typography Test Suite for Three-Tier Typography System
+  Typography Test Suite - Three-Tier System Validation
   
-  This snippet can be included in any template to test the new typography system.
-  It displays all typography classes and their variations for visual verification.
+  This snippet provides comprehensive testing and validation for the new
+  three-tier typography system. It includes visual tests, accessibility
+  validation, and performance monitoring.
   
-  Usage:
-  {% render 'typography-test-suite' %}
+  Usage: {% render 'typography-test-suite' %}
 {% endcomment %}
 
-<div class="typography-test-suite" style="padding: 2rem; border: 2px solid #e5e5e5; margin: 2rem 0; background: #f9f9f9;">
-  <h2 style="margin-bottom: 2rem; text-align: center; color: #333;">Typography Test Suite - Three-Tier System</h2>
+{% liquid
+  assign show_test_suite = false
+  if request.design_mode and settings.show_typography_indicators
+    assign show_test_suite = true
+  endif
   
-  <!-- Main Heading Tests -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Main Heading (.main-heading)</h3>
-    <div class="main-heading" style="margin-bottom: 1rem;">Main Heading - Desktop Default</div>
-    <h1 class="main-heading" style="margin-bottom: 1rem;">H1 with Main Heading Class</h1>
-    <h2 class="main-heading" style="margin-bottom: 1rem;">H2 with Main Heading Class</h2>
-    <strong class="main-heading" style="margin-bottom: 1rem; display: block;">Strong with Main Heading Class</strong>
-    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
-      Use for: Page titles, primary headings, logo text
-    </div>
-  </section>
+  # Get typography settings
+  assign enable_disruption = settings.enable_typography_disruption | default: true
+  assign disruption_level = settings.disruption_level | default: 'aggressive'
+  assign main_heading_size = settings.main_heading_font_size | default: 42
+  assign sub_heading_size = settings.sub_heading_font_size | default: 24
+  assign body_text_size = settings.body_font_size | default: 16
+%}
 
-  <!-- Sub Heading Tests -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Sub Heading (.sub-heading)</h3>
-    <div class="sub-heading" style="margin-bottom: 1rem;">Sub Heading - Desktop Default</div>
-    <h2 class="sub-heading" style="margin-bottom: 1rem;">H2 with Sub Heading Class</h2>
-    <h3 class="sub-heading" style="margin-bottom: 1rem;">H3 with Sub Heading Class</h3>
-    <h4 class="sub-heading" style="margin-bottom: 1rem;">H4 with Sub Heading Class</h4>
-    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
-      Use for: Section headers, product titles, article titles, footer headings
+{% if show_test_suite %}
+<div class="typography-test-suite" style="
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 10000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <h3 style="margin: 0; font-size: 14px; color: #4CAF50;">Typography Test Suite</h3>
+    <button onclick="this.parentElement.parentElement.style.display='none'" style="
+      background: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 10px;
+    ">✕</button>
+  </div>
+  
+  <!-- System Status -->
+  <div style="margin-bottom: 12px; padding: 8px; background: rgba(76, 175, 80, 0.2); border-radius: 4px;">
+    <div style="font-weight: bold; color: #4CAF50;">✅ System Status</div>
+    <div>Disruption: {{ enable_disruption | default: 'false' }}</div>
+    <div>Level: {{ disruption_level }}</div>
+    <div>Main: {{ main_heading_size }}px</div>
+    <div>Sub: {{ sub_heading_size }}px</div>
+    <div>Body: {{ body_text_size }}px</div>
+  </div>
+  
+  <!-- Typography Samples -->
+  <div style="margin-bottom: 12px;">
+    <div style="font-weight: bold; margin-bottom: 8px; color: #2196F3;">📝 Typography Samples</div>
+    
+    <div style="margin-bottom: 8px; padding: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px;">
+      <div style="font-size: 10px; color: #FFC107; margin-bottom: 4px;">Main Heading</div>
+      <h1 class="main-heading" style="margin: 0; font-size: 18px; line-height: 1.2;">Sample Main Heading</h1>
     </div>
-  </section>
-
-  <!-- Body Text Tests -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Body Text (.body-text)</h3>
-    <div class="body-text" style="margin-bottom: 1rem;">Body Text - Desktop Default</div>
-    <p class="body-text" style="margin-bottom: 1rem;">Paragraph with Body Text Class</p>
-    <h5 class="body-text" style="margin-bottom: 1rem;">H5 with Body Text Class</h5>
-    <h6 class="body-text" style="margin-bottom: 1rem;">H6 with Body Text Class</h6>
-    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
-      Use for: Complementary product headings, small section titles, body content
+    
+    <div style="margin-bottom: 8px; padding: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px;">
+      <div style="font-size: 10px; color: #FFC107; margin-bottom: 4px;">Sub Heading</div>
+      <h3 class="sub-heading" style="margin: 0; font-size: 14px; line-height: 1.3;">Sample Sub Heading</h3>
     </div>
-  </section>
-
-  <!-- Backward Compatibility Tests -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Backward Compatibility (Legacy H1-H6)</h3>
-    <h1 style="margin-bottom: 1rem;">H1 - Legacy (maps to main-heading)</h1>
-    <h2 style="margin-bottom: 1rem;">H2 - Legacy (maps to main-heading)</h2>
-    <h3 style="margin-bottom: 1rem;">H3 - Legacy (maps to sub-heading)</h3>
-    <h4 style="margin-bottom: 1rem;">H4 - Legacy (maps to sub-heading)</h4>
-    <h5 style="margin-bottom: 1rem;">H5 - Legacy (maps to body-text)</h5>
-    <h6 style="margin-bottom: 1rem;">H6 - Legacy (maps to body-text)</h6>
-    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
-      Legacy classes still work through CSS variable mapping
+    
+    <div style="margin-bottom: 8px; padding: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px;">
+      <div style="font-size: 10px; color: #FFC107; margin-bottom: 4px;">Body Text</div>
+      <p class="body-text" style="margin: 0; font-size: 12px; line-height: 1.6;">Sample body text content</p>
     </div>
-  </section>
-
-  <!-- Responsive Test Instructions -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: #fff3cd; border-radius: 8px; border: 1px solid #ffeaa7;">
-    <h3 style="color: #856404; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Responsive Testing Instructions</h3>
-    <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
-      <li style="margin-bottom: 0.5rem;"><strong>Mobile (< 768px):</strong> Typography should scale down by 30% for main-heading, 25% for sub-heading</li>
-      <li style="margin-bottom: 0.5rem;"><strong>Tablet (768px - 1279px):</strong> Typography should scale down by 20% for main-heading, 15% for sub-heading</li>
-      <li style="margin-bottom: 0.5rem;"><strong>Desktop (≥ 1280px):</strong> Typography should display at full size</li>
-      <li style="margin-bottom: 0.5rem;"><strong>Body text:</strong> Remains consistent across all devices</li>
-    </ul>
-  </section>
-
-  <!-- CSS Variables Test -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">CSS Variables Test</h3>
-    <div style="font-family: monospace; font-size: 12px; line-height: 1.4; color: #666;">
-      <div>Main Heading Size: <span style="color: #333;">var(--font-main-heading-desktop)</span></div>
-      <div>Sub Heading Size: <span style="color: #333;">var(--font-sub-heading-desktop)</span></div>
-      <div>Body Text Size: <span style="color: #333;">var(--font-body-text-desktop)</span></div>
-      <div>Main Heading Weight: <span style="color: #333;">var(--font-weight-main-heading)</span></div>
-      <div>Sub Heading Weight: <span style="color: #333;">var(--font-weight-sub-heading)</span></div>
-      <div>Body Text Weight: <span style="color: #333;">var(--font-weight-body-text)</span></div>
+  </div>
+  
+  <!-- Validation Results -->
+  <div style="margin-bottom: 12px;">
+    <div style="font-weight: bold; margin-bottom: 8px; color: #2196F3;">🔍 Validation</div>
+    
+    <div id="typography-validation-results">
+      <div style="color: #4CAF50;">⏳ Running validation...</div>
     </div>
-  </section>
-
-  <!-- Visual Hierarchy Test -->
-  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Visual Hierarchy Test</h3>
-    <div class="main-heading" style="margin-bottom: 1rem;">Main Heading - Largest</div>
-    <div class="sub-heading" style="margin-bottom: 1rem;">Sub Heading - Medium</div>
-    <div class="body-text" style="margin-bottom: 1rem;">Body Text - Smallest</div>
-    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
-      Hierarchy should be clearly visible: Main > Sub > Body
+  </div>
+  
+  <!-- Performance Metrics -->
+  <div style="margin-bottom: 12px;">
+    <div style="font-weight: bold; margin-bottom: 8px; color: #2196F3;">⚡ Performance</div>
+    
+    <div id="typography-performance-results">
+      <div style="color: #4CAF50;">⏳ Measuring performance...</div>
     </div>
-  </section>
+  </div>
+  
+  <!-- Accessibility Check -->
+  <div style="margin-bottom: 12px;">
+    <div style="font-weight: bold; margin-bottom: 8px; color: #2196F3;">♿ Accessibility</div>
+    
+    <div id="typography-accessibility-results">
+      <div style="color: #4CAF50;">⏳ Checking accessibility...</div>
+    </div>
+  </div>
+  
+  <!-- Actions -->
+  <div>
+    <div style="font-weight: bold; margin-bottom: 8px; color: #2196F3;">🛠️ Actions</div>
+    
+    <button onclick="runTypographyValidation()" style="
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 10px;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    ">Re-run Tests</button>
+    
+    <button onclick="exportTypographyReport()" style="
+      background: #FF9800;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 10px;
+      margin-right: 4px;
+      margin-bottom: 4px;
+    ">Export Report</button>
+    
+    <button onclick="toggleTypographyDebug()" style="
+      background: #9C27B0;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 10px;
+      margin-bottom: 4px;
+    ">Toggle Debug</button>
+  </div>
 </div>
 
-<style>
-  .typography-test-suite {
-    font-family: var(--font-stack-body, Arial, sans-serif);
+<!-- Typography Validation Script -->
+<script>
+(function() {
+  'use strict';
+  
+  let debugMode = false;
+  
+  // Typography validation functions
+  function validateTypographySystem() {
+    const results = [];
+    
+    // Check if CSS variables are loaded
+    const rootStyles = getComputedStyle(document.documentElement);
+    const mainHeadingSize = rootStyles.getPropertyValue('--font-main-heading-desktop');
+    const subHeadingSize = rootStyles.getPropertyValue('--font-sub-heading-desktop');
+    const bodyTextSize = rootStyles.getPropertyValue('--font-body-text-desktop');
+    
+    if (mainHeadingSize) {
+      results.push({ type: 'success', message: `Main heading size: ${mainHeadingSize}` });
+    } else {
+      results.push({ type: 'error', message: 'Main heading CSS variable not found' });
+    }
+    
+    if (subHeadingSize) {
+      results.push({ type: 'success', message: `Sub heading size: ${subHeadingSize}` });
+    } else {
+      results.push({ type: 'error', message: 'Sub heading CSS variable not found' });
+    }
+    
+    if (bodyTextSize) {
+      results.push({ type: 'success', message: `Body text size: ${bodyTextSize}` });
+    } else {
+      results.push({ type: 'error', message: 'Body text CSS variable not found' });
+    }
+    
+    // Check for typography classes
+    const mainHeadings = document.querySelectorAll('.main-heading');
+    const subHeadings = document.querySelectorAll('.sub-heading');
+    const bodyTexts = document.querySelectorAll('.body-text');
+    
+    results.push({ type: 'info', message: `Found ${mainHeadings.length} main headings` });
+    results.push({ type: 'info', message: `Found ${subHeadings.length} sub headings` });
+    results.push({ type: 'info', message: `Found ${bodyTexts.length} body text elements` });
+    
+    // Check for legacy headings without new classes
+    const legacyH1H2 = document.querySelectorAll('h1:not(.main-heading), h2:not(.main-heading)');
+    const legacyH3H4 = document.querySelectorAll('h3:not(.sub-heading), h4:not(.sub-heading)');
+    const legacyH5H6 = document.querySelectorAll('h5:not(.body-text), h6:not(.body-text)');
+    
+    if (legacyH1H2.length > 0) {
+      results.push({ type: 'warning', message: `${legacyH1H2.length} H1/H2 without main-heading class` });
+    }
+    
+    if (legacyH3H4.length > 0) {
+      results.push({ type: 'warning', message: `${legacyH3H4.length} H3/H4 without sub-heading class` });
+    }
+    
+    if (legacyH5H6.length > 0) {
+      results.push({ type: 'warning', message: `${legacyH5H6.length} H5/H6 without body-text class` });
+    }
+    
+    return results;
   }
   
-  .typography-test-suite .main-heading {
-    font-size: calc(((var(--font-main-heading-desktop, 42px)) / (var(--font-base-size, 16))) * 1rem);
-    font-weight: var(--font-weight-main-heading, 700);
-    line-height: var(--line-height-main-heading-ratio, 1.2);
-    letter-spacing: var(--letter-spacing-main-heading, 0);
-    font-family: var(--font-stack-header, Arial, sans-serif);
-    color: rgb(var(--color-heading, 0, 0, 0));
+  function checkAccessibility() {
+    const results = [];
+    
+    // Check contrast ratios
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    let contrastIssues = 0;
+    
+    headings.forEach(heading => {
+      const styles = getComputedStyle(heading);
+      const color = styles.color;
+      const backgroundColor = styles.backgroundColor;
+      
+      // Simple contrast check (would need more sophisticated implementation)
+      if (color === backgroundColor) {
+        contrastIssues++;
+      }
+    });
+    
+    if (contrastIssues === 0) {
+      results.push({ type: 'success', message: 'No obvious contrast issues' });
+    } else {
+      results.push({ type: 'warning', message: `${contrastIssues} potential contrast issues` });
+    }
+    
+    // Check for proper heading hierarchy
+    const headingLevels = Array.from(headings).map(h => parseInt(h.tagName.charAt(1)));
+    let hierarchyIssues = 0;
+    
+    for (let i = 1; i < headingLevels.length; i++) {
+      if (headingLevels[i] > headingLevels[i-1] + 1) {
+        hierarchyIssues++;
+      }
+    }
+    
+    if (hierarchyIssues === 0) {
+      results.push({ type: 'success', message: 'Heading hierarchy looks good' });
+    } else {
+      results.push({ type: 'warning', message: `${hierarchyIssues} heading hierarchy issues` });
+    }
+    
+    return results;
   }
   
-  .typography-test-suite .sub-heading {
-    font-size: calc(((var(--font-sub-heading-desktop, 24px)) / (var(--font-base-size, 16))) * 1rem);
-    font-weight: var(--font-weight-sub-heading, 600);
-    line-height: var(--line-height-sub-heading-ratio, 1.3);
-    letter-spacing: var(--letter-spacing-sub-heading, 0);
-    font-family: var(--font-stack-header, Arial, sans-serif);
-    color: rgb(var(--color-heading, 0, 0, 0));
+  function measurePerformance() {
+    const results = [];
+    
+    // Measure font loading performance
+    if ('fonts' in document) {
+      document.fonts.ready.then(() => {
+        const loadedFonts = Array.from(document.fonts).length;
+        results.push({ type: 'info', message: `${loadedFonts} fonts loaded` });
+        updatePerformanceResults(results);
+      });
+    }
+    
+    // Measure CSS parsing time (approximate)
+    const startTime = performance.now();
+    const stylesheets = document.styleSheets.length;
+    const endTime = performance.now();
+    
+    results.push({ type: 'info', message: `${stylesheets} stylesheets loaded` });
+    results.push({ type: 'info', message: `CSS parsing: ${(endTime - startTime).toFixed(2)}ms` });
+    
+    // Check for unused CSS (simplified)
+    const typographyClasses = ['.main-heading', '.sub-heading', '.body-text'];
+    let unusedClasses = 0;
+    
+    typographyClasses.forEach(className => {
+      if (document.querySelectorAll(className).length === 0) {
+        unusedClasses++;
+      }
+    });
+    
+    if (unusedClasses === 0) {
+      results.push({ type: 'success', message: 'All typography classes in use' });
+    } else {
+      results.push({ type: 'warning', message: `${unusedClasses} unused typography classes` });
+    }
+    
+    return results;
   }
   
-  .typography-test-suite .body-text {
-    font-size: calc(((var(--font-body-text-desktop, 16px)) / (var(--font-base-size, 16))) * 1rem);
-    font-weight: var(--font-weight-body-text, 400);
-    line-height: var(--line-height-body-text-ratio, 1.6);
-    letter-spacing: var(--letter-spacing-body-text, 0);
-    font-family: var(--font-stack-body, Arial, sans-serif);
-    color: rgb(var(--color-foreground, 0, 0, 0));
+  function updateValidationResults(results) {
+    const container = document.getElementById('typography-validation-results');
+    if (!container) return;
+    
+    container.innerHTML = results.map(result => {
+      const icon = result.type === 'success' ? '✅' : 
+                   result.type === 'error' ? '❌' : 
+                   result.type === 'warning' ? '⚠️' : 'ℹ️';
+      const color = result.type === 'success' ? '#4CAF50' : 
+                    result.type === 'error' ? '#f44336' : 
+                    result.type === 'warning' ? '#FF9800' : '#2196F3';
+      
+      return `<div style="color: ${color}; margin-bottom: 2px;">${icon} ${result.message}</div>`;
+    }).join('');
   }
   
-  @media screen and (max-width: 767px) {
-    .typography-test-suite .main-heading {
-      font-size: calc(((var(--font-main-heading-mobile, 29px)) / (var(--font-base-size, 16))) * 1rem);
-    }
-    .typography-test-suite .sub-heading {
-      font-size: calc(((var(--font-sub-heading-mobile, 18px)) / (var(--font-base-size, 16))) * 1rem);
-    }
-    .typography-test-suite .body-text {
-      font-size: calc(((var(--font-body-text-mobile, 16px)) / (var(--font-base-size, 16))) * 1rem);
-    }
+  function updateAccessibilityResults(results) {
+    const container = document.getElementById('typography-accessibility-results');
+    if (!container) return;
+    
+    container.innerHTML = results.map(result => {
+      const icon = result.type === 'success' ? '✅' : 
+                   result.type === 'error' ? '❌' : 
+                   result.type === 'warning' ? '⚠️' : 'ℹ️';
+      const color = result.type === 'success' ? '#4CAF50' : 
+                    result.type === 'error' ? '#f44336' : 
+                    result.type === 'warning' ? '#FF9800' : '#2196F3';
+      
+      return `<div style="color: ${color}; margin-bottom: 2px;">${icon} ${result.message}</div>`;
+    }).join('');
   }
   
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .typography-test-suite .main-heading {
-      font-size: calc(((var(--font-main-heading-tablet, 34px)) / (var(--font-base-size, 16))) * 1rem);
-    }
-    .typography-test-suite .sub-heading {
-      font-size: calc(((var(--font-sub-heading-tablet, 20px)) / (var(--font-base-size, 16))) * 1rem);
-    }
-    .typography-test-suite .body-text {
-      font-size: calc(((var(--font-body-text-tablet, 16px)) / (var(--font-base-size, 16))) * 1rem);
-    }
+  function updatePerformanceResults(results) {
+    const container = document.getElementById('typography-performance-results');
+    if (!container) return;
+    
+    container.innerHTML = results.map(result => {
+      const icon = result.type === 'success' ? '✅' : 
+                   result.type === 'error' ? '❌' : 
+                   result.type === 'warning' ? '⚠️' : 'ℹ️';
+      const color = result.type === 'success' ? '#4CAF50' : 
+                    result.type === 'error' ? '#f44336' : 
+                    result.type === 'warning' ? '#FF9800' : '#2196F3';
+      
+      return `<div style="color: ${color}; margin-bottom: 2px;">${icon} ${result.message}</div>`;
+    }).join('');
   }
-</style>
+  
+  // Global functions for buttons
+  window.runTypographyValidation = function() {
+    const validationResults = validateTypographySystem();
+    const accessibilityResults = checkAccessibility();
+    const performanceResults = measurePerformance();
+    
+    updateValidationResults(validationResults);
+    updateAccessibilityResults(accessibilityResults);
+    updatePerformanceResults(performanceResults);
+  };
+  
+  window.exportTypographyReport = function() {
+    const report = {
+      timestamp: new Date().toISOString(),
+      validation: validateTypographySystem(),
+      accessibility: checkAccessibility(),
+      performance: measurePerformance(),
+      settings: {
+        disruption: {{ enable_disruption | json }},
+        level: {{ disruption_level | json }},
+        mainHeadingSize: {{ main_heading_size | json }},
+        subHeadingSize: {{ sub_heading_size | json }},
+        bodyTextSize: {{ body_text_size | json }}
+      }
+    };
+    
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'typography-test-report.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+  
+  window.toggleTypographyDebug = function() {
+    debugMode = !debugMode;
+    
+    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    
+    headings.forEach(heading => {
+      if (debugMode) {
+        const tagName = heading.tagName.toLowerCase();
+        const classes = Array.from(heading.classList).join(' ');
+        const computedSize = getComputedStyle(heading).fontSize;
+        
+        heading.style.position = 'relative';
+        heading.style.outline = '2px solid #ff6b35';
+        
+        if (!heading.querySelector('.debug-info')) {
+          const debugInfo = document.createElement('div');
+          debugInfo.className = 'debug-info';
+          debugInfo.style.cssText = `
+            position: absolute;
+            top: -20px;
+            left: 0;
+            background: #ff6b35;
+            color: white;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-family: monospace;
+            border-radius: 2px;
+            z-index: 9999;
+            white-space: nowrap;
+          `;
+          debugInfo.textContent = `${tagName} | ${classes} | ${computedSize}`;
+          heading.appendChild(debugInfo);
+        }
+      } else {
+        heading.style.outline = '';
+        const debugInfo = heading.querySelector('.debug-info');
+        if (debugInfo) {
+          debugInfo.remove();
+        }
+      }
+    });
+  };
+  
+  // Auto-run validation on load
+  setTimeout(() => {
+    runTypographyValidation();
+  }, 1000);
+  
+})();
+</script>
+{% endif %}
+
+{% comment %}
+  Typography Test Elements - Hidden elements for testing
+{% endcomment %}
+<div style="position: absolute; left: -9999px; top: -9999px; visibility: hidden;">
+  <h1 class="main-heading" data-test="main-heading">Test Main Heading</h1>
+  <h3 class="sub-heading" data-test="sub-heading">Test Sub Heading</h3>
+  <p class="body-text" data-test="body-text">Test body text content</p>
+</div>
+

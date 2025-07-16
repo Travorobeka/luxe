@@ -9,7 +9,7 @@
     {% render 'customer-navs' %}
     <div class="m-account__content m-customer">
       <div class="m-customer__header">
-        <h2 class="m-account__title">{{ 'customer.addresses.your_addresses' | t }} ({{ customer.addresses_count }})</h2>
+        <h2 class="m-account__title main-heading" data-typography="main-heading">{{ 'customer.addresses.your_addresses' | t }} ({{ customer.addresses_count }})</h2>
         <button class="m-customer__add-new-btn m-button m-button--primary">{{ 'customer.addresses.add_new' | t }}</button>
         <div data-address-form>
           {% form 'customer_address', customer.new_address %}
@@ -95,7 +95,7 @@
           <div data-address class="m-customer-address">
             <div class="m-customer-address__info m-customer-info">
               {% if address.address1 != blank %}
-                <h3 class="m-account__title--medium">
+                <h3 class="m-account__title--medium sub-heading" data-typography="sub-heading">
                   {{ address.address1 }}
                   {% if address == customer.default_address %}
                     <span>({{ 'customer.addresses.default' | t }})</span>

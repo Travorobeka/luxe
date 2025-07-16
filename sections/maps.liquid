@@ -53,7 +53,7 @@
               {% case block.type %}
                 {% when 'heading' %}
                   {% if block.settings.heading != blank %}
-                    <h2 class="m-section__heading h3">{{ block.settings.heading }}</h2>
+                    <h2 class="m-section__heading h3 main-heading" data-typography="main-heading">{{ block.settings.heading }}</h2>
                   {% endif %}
                 {% when 'subheading' %}
                   {% if block.settings.subheading != blank %}

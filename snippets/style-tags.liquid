@@ -2,6 +2,23 @@
   assign custom_css = settings.custom_css
   assign typography_source = settings.typography_source | default: 'shopify'
 
+  # DISRUPTIVE TYPOGRAPHY SETTINGS
+  assign enable_typography_disruption = settings.enable_typography_disruption | default: true
+  assign override_utility_classes = settings.override_utility_classes | default: true
+  assign override_component_styles = settings.override_component_styles | default: true
+  assign override_semantic_elements = settings.override_semantic_elements | default: true
+  assign show_typography_indicators = settings.show_typography_indicators | default: true
+  assign disruption_level = settings.disruption_level | default: 'aggressive'
+  assign force_h1_main_heading = settings.force_h1_main_heading | default: true
+  assign force_h2_main_heading = settings.force_h2_main_heading | default: true
+  assign force_h3_sub_heading = settings.force_h3_sub_heading | default: true
+  assign force_h4_sub_heading = settings.force_h4_sub_heading | default: true
+  assign force_h5_body_text = settings.force_h5_body_text | default: true
+  assign force_h6_body_text = settings.force_h6_body_text | default: true
+  assign preserve_custom_classes = settings.preserve_custom_classes | default: false
+  assign enable_legacy_warnings = settings.enable_legacy_warnings | default: true
+  assign typography_override_css = settings.typography_override_css | default: ''
+
   # Get font sizes from new three-tier typography system
   assign body_font_size = settings.body_font_size | default: 16
   assign main_heading_font_size = settings.main_heading_font_size | default: 42
@@ -358,6 +375,22 @@
   	/* TYPOGRAPHY PRESET */
   	--typography-preset: {{ typography_preset }};
   	
+  	/* DISRUPTIVE TYPOGRAPHY SETTINGS */
+  	--enable-typography-disruption: {{ enable_typography_disruption }};
+  	--override-utility-classes: {{ override_utility_classes }};
+  	--override-component-styles: {{ override_component_styles }};
+  	--override-semantic-elements: {{ override_semantic_elements }};
+  	--show-typography-indicators: {{ show_typography_indicators }};
+  	--disruption-level: {{ disruption_level }};
+  	--force-h1-main-heading: {{ force_h1_main_heading }};
+  	--force-h2-main-heading: {{ force_h2_main_heading }};
+  	--force-h3-sub-heading: {{ force_h3_sub_heading }};
+  	--force-h4-sub-heading: {{ force_h4_sub_heading }};
+  	--force-h5-body-text: {{ force_h5_body_text }};
+  	--force-h6-body-text: {{ force_h6_body_text }};
+  	--preserve-custom-classes: {{ preserve_custom_classes }};
+  	--enable-legacy-warnings: {{ enable_legacy_warnings }};
+  	
   	/* Legacy H1-H6 Letter Spacing for Backward Compatibility */
   	--letter-spacing-h1: {{ h1_letter_spacing }}px;
   	--letter-spacing-h2: {{ h2_letter_spacing }}px;
@@ -472,6 +505,12 @@
 {%- style -%}
   {%- if custom_css != blank -%}
     {{ custom_css | strip_newlines }}
+  {%- endif -%}
+  
+  {%- comment -%} Custom Typography Override CSS {%- endcomment -%}
+  {%- if typography_override_css != blank -%}
+    /* CUSTOM TYPOGRAPHY OVERRIDES */
+    {{ typography_override_css | strip_newlines }}
   {%- endif -%}
 {%- endstyle -%}
 

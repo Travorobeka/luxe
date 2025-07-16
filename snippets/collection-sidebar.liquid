@@ -13,7 +13,7 @@
   <div class="m-sidebar{% unless show_filter %} m:hidden{% endunless %}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}" data-type="{{ position }}">
     <div class="m-sidebar--content{% if sidebar_title == blank %} m-sidebar--blank-title{% endif %}">
       {%- if sidebar_title != blank -%}
-        <h3 class="m-sidebar--title">{{ sidebar_title }}</h3>
+        <h3 class="m-sidebar--title sub-heading" data-typography="sub-heading">{{ sidebar_title }}</h3>
       {%- endif -%}
       <div class="m-sidebar--close{% if position != 'fixed' %} xl:m:hidden{% endif %}">
         <svg class="m-svg-icon--large" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -33,7 +33,7 @@
                   data-block-type="collections"
                   style="order: {{ forloop.index }}"
                 >
-                  <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %}">
+                  <h4 class="m-filter--widget-title h5{% if use_accordion %} m-accordion--item-button {% endif %} sub-heading" data-typography="sub-heading">
                     {{ block.settings.title }}
                     {% if use_accordion %}
                       <span class="m-accordion--item-icon">

@@ -62,7 +62,7 @@
             </div>
           </a>
           <div class="m-collection-card__info m:text-{{ text_alignment }}">
-            <h3 class="m-collection-card__title sub-heading">
+            <h3 class="m-collection-card__title sub-heading sub-heading" data-typography="sub-heading">
               <a
                 class="m-collection-card__link m:block"
                 href="{{ collection.url | default: "#" }}"
@@ -109,7 +109,7 @@
             </div>
           </a>
           <div class="m-collection-card__info m:text-{{ text_alignment }}">
-            <h3 class="m-collection-card__title sub-heading m:visually-hidden">
+            <h3 class="m-collection-card__title sub-heading m:visually-hidden sub-heading" data-typography="sub-heading">
               {{ title | default: collection.title }}
             </h3>
             <a
@@ -121,7 +121,7 @@
           </div>
 
         {% when 'boxed' %}
-          <h3 class="m-collection-card__title sub-heading m:text-{{ text_alignment }}">
+          <h3 class="m-collection-card__title sub-heading m:text-{{ text_alignment }} sub-heading" data-typography="sub-heading">
             <a href="{{ collection.url | default: "#" }}" class="m-collection-card__link">
               {{ title | default: collection.title }}
             </a>
@@ -165,7 +165,7 @@
             </div>
           </a>
           <div class="m-collection-card__info m:text-{{ text_alignment }}">
-            <h3 class="m-collection-card__title sub-heading">
+            <h3 class="m-collection-card__title sub-heading sub-heading" data-typography="sub-heading">
               <a
                 class="m-collection-card__link m:block"
                 href="{{ collection.url | default: "#" }}"

@@ -20,7 +20,7 @@
     <div class="m-row{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
       <div class="m-contact-form__main{% if section.blocks.size > 0 %} xl:m:w-8/12 m:w-full{% else %} m-contact-form__main--full xl:m:w-6/12 m:w-full{% endif %}">
         {%- if st.title != blank -%}
-        <h3 class="m-contact-form__heading">{{ st.title }}</h3>
+        <h3 class="m-contact-form__heading sub-heading" data-typography="sub-heading">{{ st.title }}</h3>
         {%- endif -%}
         {%- if st.description != blank -%}
         <div class="m-contact-form__description rte">{{ st.description }}</div>
@@ -77,7 +77,7 @@
       <div class="m-contact-form__info m:flex m:flex-wrap m:w-full xl:m:w-4/12">
         {% for block in section.blocks %}
           <div class="m-info-box m:column m:w-full md:m:w-1/2 lg:m:w-3/12 xl:m:w-full">
-            <h3>{{ block.settings.title }}</h3>
+            <h3 class="sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
             {% case block.type %}
               {% when 'textblock' %}
                 <div class="m-info-box__content rte">{{ block.settings.content }}</div>

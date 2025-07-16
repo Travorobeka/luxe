@@ -113,7 +113,7 @@ m-section m-image-with-text {{ section.settings.custom_class }} m-section-{{ sec
             </p>
           {% endif %}
           {% if section.settings.title != blank %}
-            <h3 class="m-richtext__title m-content-box__heading {{ heading_size }}">{{ section.settings.title }}</h3>
+            <h3 class="m-richtext__title m-content-box__heading {{ heading_size }} sub-heading" data-typography="sub-heading">{{ section.settings.title }}</h3>
           {% endif %}
           {% if section.settings.text != blank %}
             <div class="m-richtext__description rte m-content-box__description {{ subtext_size }}">

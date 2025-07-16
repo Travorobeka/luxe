@@ -5,7 +5,7 @@
       {%- assign blogs_name = block.settings.list_blog -%}
       {%- if blogs_name != blank -%}
         <div class="m-widget">
-          <h3 class="m-widget__title">{{ block.settings.title }}</h3>
+          <h3 class="m-widget__title sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
           <div class="m-widget__content">
             <ul class="m-link-lists">
               {% for link in linklists[blogs_name].links %}
@@ -29,7 +29,7 @@
     {%- when 'tags' -%}
       {%- if blog.all_tags != blank -%}
         <div class="m-widget">
-          <h3 class="m-widget__title">{{ block.settings.title }}</h3>
+          <h3 class="m-widget__title sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
           <div class="m-widget__content">
             <ul class="m-link-lists m-link-lists--inline">
               {%- for tag in blog.all_tags -%}
@@ -49,7 +49,7 @@
       %}
       {%- if name_collection != blank -%}
         <div class="m-widget">
-          <h3 class="m-widget__title">{{ block.settings.title }}</h3>
+          <h3 class="m-widget__title sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
           <div class="m-widget__content">
             <div class="m-recent-posts">
               {%- for article in selected_blog.articles limit: length -%}

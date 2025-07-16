@@ -218,7 +218,7 @@
                         </p>
                       {% endif %}
                       {% if block.settings.title != blank %}
-                        <h3 class="m-richtext__title {{ heading_color }} {{ heading_size }}">
+                        <h3 class="m-richtext__title {{ heading_color }} {{ heading_size }} sub-heading" data-typography="sub-heading">
                           {{ block.settings.title }}
                         </h3>
                       {% endif %}
@@ -284,7 +284,7 @@
                                   </svg>
                                 </span>
                                 {%- unless block.settings.video_title == blank -%}
-                                  <h2 class="m-video__title m:text-xl {% if block.settings.text_size == 'medium' %}sm:m:text-3xl{% else %}sm:m:text-5xl{% endif %} m:text-{{ block.settings.text_color }}">
+                                  <h2 class="m-video__title m:text-xl {% if block.settings.text_size == 'medium' %}sm:m:text-3xl{% else %}sm:m:text-5xl{% endif %} m:text-{{ block.settings.text_color }} main-heading" data-typography="main-heading">
                                     {{ block.settings.video_title }}
                                   </h2>
                                 {%- endunless -%}
@@ -565,7 +565,7 @@
                           </span>
                         {% endif %}
                         {% if block.settings.title != blank %}
-                          <h3 class="m-richtext__title {{ block.settings.text_size }}">{{ block.settings.title }}</h3>
+                          <h3 class="m-richtext__title {{ block.settings.text_size }} sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
                         {% endif %}
                       </div>
                       <div class="product-bundles__list">
@@ -612,7 +612,7 @@
                               </div>
                               <div class="product-bundles__item-info m:display-flex m:flex-wrap md:m:flex-nowrap">
                                 <div class="product-bundles__item-details m:w-full">
-                                  <h3 class="h6">{{ 'homepage.onboarding.product_title' | t }}</h3>
+                                  <h3 class="h6 sub-heading" data-typography="sub-heading">{{ 'homepage.onboarding.product_title' | t }}</h3>
                                 </div>
                                 <div class="product-bundles__item-prices md:m:text-right m:color-price-regular">
                                   <p>
@@ -681,7 +681,7 @@
                           </p>
                         {% endif %}
                         {% if block.settings.heading != blank %}
-                          <h3 class="m-richtext__title m-countdown__heading {{ block.settings.heading_size }}">
+                          <h3 class="m-richtext__title m-countdown__heading {{ block.settings.heading_size }} sub-heading" data-typography="sub-heading">
                             {{ block.settings.heading }}
                           </h3>
                         {% endif %}
@@ -723,7 +723,7 @@
                       {% endif %}
                     >
                       {% if block.settings.heading != blank %}
-                        <h3 class="newsletter-form__title {{ block.settings.text_size }}">
+                        <h3 class="newsletter-form__title {{ block.settings.text_size }} sub-heading" data-typography="sub-heading">
                           {{ block.settings.heading }}
                         </h3>
                       {% endif %}
@@ -751,7 +751,7 @@
                       {% endif %}
                     >
                       {% if block.settings.heading != blank %}
-                        <h3 class="social-profiles__title">{{ block.settings.heading }}</h3>
+                        <h3 class="social-profiles__title sub-heading" data-typography="sub-heading">{{ block.settings.heading }}</h3>
                       {% endif %}
                       {% if block.settings.description != blank %}
                         <div class="social-profiles__description rte m:text-color-subtext">
@@ -822,7 +822,7 @@
                               <p class="m-richtext__subtitle {{ subtext_size }}">{{ block.settings.sub_title }}</p>
                             {% endif %}
                             {% if block.settings.title != blank %}
-                              <h3 class="m-richtext__title rte {{ heading_size }}">{{ block.settings.title }}</h3>
+                              <h3 class="m-richtext__title rte {{ heading_size }} sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
                             {% endif %}
                             {% if block.settings.text != blank %}
                               <div class="m-richtext__description m:text-color-subtext rte {{ subtext_size }}">
@@ -873,7 +873,7 @@
                       </div>
                       <div class="text-card-with-image__content m-richtext m-richtext--small m:text-{{ block.settings.text_alignment }}">
                         {% if block.settings.title != blank %}
-                          <h3 class="m-richtext__title rte {{ heading_size }}">{{ block.settings.title }}</h3>
+                          <h3 class="m-richtext__title rte {{ heading_size }} sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
                         {% endif %}
                         {% if block.settings.text != blank %}
                           <div class="m-richtext__description m:text-color-subtext rte">
@@ -949,7 +949,7 @@
                             <p class="m-richtext__subtitle {{ subtext_size }}">{{ block.settings.subtitle }}</p>
                           {% endif %}
                           {% if block.settings.title != blank %}
-                            <h3 class="m-richtext__title rte {{ heading_size }}">{{ block.settings.title }}</h3>
+                            <h3 class="m-richtext__title rte {{ heading_size }} sub-heading" data-typography="sub-heading">{{ block.settings.title }}</h3>
                           {% endif %}
                           {% if block.settings.text != blank %}
                             <div class="m-richtext__description rte m:text-color-subtext {{ subtext_size }}">
@@ -1081,7 +1081,7 @@
                             </p>
                           {% endif %}
                           {% if block.settings.title != blank %}
-                            <h3 class="m-richtext__title rte {{ heading_size }} {{ heading_color }}">
+                            <h3 class="m-richtext__title rte {{ heading_size }} {{ heading_color }} sub-heading" data-typography="sub-heading">
                               {{ block.settings.title }}
                             </h3>
                           {% endif %}
@@ -1253,7 +1253,7 @@
                       </m-image-comparison>
                       {% if product != blank %}
                         <div class="m-image-comparison__product{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
-                          <h4 class="h6 m-image-comparison__product-title">
+                          <h4 class="h6 m-image-comparison__product-title sub-heading" data-typography="sub-heading">
                             <a class="m-link-underline" href="{{ product.url }}">{{ product.title }}</a>
                           </h4>
                           <div class="m-image-comparison__product-price">

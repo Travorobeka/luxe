@@ -17,7 +17,7 @@
     <collection-image-showcase class="m-collection-image-showcase__wrapper m:block" data-section-id="{{ section.id }}">
       {% if section.settings.heading != blank %}
         <div class="m-section__header m:text-center{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
-          <h2 class="m-section__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+          <h2 class="m-section__heading {{ section.settings.heading_size }} main-heading" data-typography="main-heading">{{ section.settings.heading }}</h2>
         </div>
       {% endif %}
       {% if section.blocks.size > 0 %}

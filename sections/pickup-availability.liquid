@@ -67,7 +67,7 @@
         tabindex="-1"
       >
         <div class="m-drawer__header m-pickup-availability__drawer--header">
-          <h3 class="m-drawer__title m:text-xl md:m:text-2xl m:font-medium" id="PickupAvailabilityHeading">
+          <h3 class="m-drawer__title m:text-xl md:m:text-2xl m:font-medium sub-heading" data-typography="sub-heading" id="PickupAvailabilityHeading">
             {{ product_variant.product.title | escape }}
           </h3>
           {%- unless product_variant.product.has_only_default_variant -%}
@@ -103,7 +103,7 @@
           <ul class="m-pickup-availability__items" role="list" data-store-availability-drawer-content>
             {%- for availability in pick_up_availabilities -%}
               <li class="m-pickup-availability__item">
-                <h4 class="m:text-xl m:font-medium">{{ availability.location.name | escape }}</h4>
+                <h4 class="m:text-xl m:font-medium sub-heading" data-typography="sub-heading">{{ availability.location.name | escape }}</h4>
                 <p class="m-pickup-availability__item--time m:flex m:items-center">
                   {%- if availability.available -%}
                     <svg

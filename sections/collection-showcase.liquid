@@ -136,7 +136,7 @@
                   </p>
                 {% endif %}
                 {% if heading != blank %}
-                  <h2 class="m-collection-showcase__heading {{ heading_size }}">
+                  <h2 class="m-collection-showcase__heading {{ heading_size }} main-heading" data-typography="main-heading">
                     {{ heading }}
                   </h2>
                 {% endif %}
@@ -181,7 +181,7 @@
                                   </div>
                                 {% endif %}
                               </div>
-                              <h3 class="m:text-sm">{{ product.title }}</h3>
+                              <h3 class="m:text-sm sub-heading" data-typography="sub-heading">{{ product.title }}</h3>
                             </div>
                           </div>
                         {% endfor %}
@@ -197,7 +197,7 @@
                                   | placeholder_svg_tag: 'm-placeholder-svg m:object-cover m:w-full m:h-full'
                                 }}
                               </div>
-                              <h3 class="m:text-sm">{{ 'homepage.onboarding.product_title' | t }}</h3>
+                              <h3 class="m:text-sm sub-heading" data-typography="sub-heading">{{ 'homepage.onboarding.product_title' | t }}</h3>
                             </div>
                           </div>
                         {% endfor %}

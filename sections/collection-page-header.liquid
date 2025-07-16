@@ -145,7 +145,7 @@
               animation_effect: animation_effect
             %}
           {% endif %}
-          <h1 class="m-collection-page-header__title h2 {{ heading_color }}{% if section.settings.upper_title %} m:uppercase{% else %} m:capitalize{% endif %}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+          <h1 class="m-collection-page-header__title h2 {{ heading_color }}{% if section.settings.upper_title %} m:uppercase{% else %} m:capitalize{% endif %}{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %} main-heading" data-typography="main-heading">
             {{ collection.title }}
           </h1>
           {% if section.settings.show_desc and collection_desc != blank %}

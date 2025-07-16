@@ -77,7 +77,7 @@
                     {% if block.settings.heading != blank or block.settings.description != blank %}
                       <div class="m-featured-slider__product-content m:text-center{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
                         {% if block.settings.heading != blank %}
-                          <h3>{{ block.settings.heading }}</h3>
+                          <h3 class="sub-heading" data-typography="sub-heading">{{ block.settings.heading }}</h3>
                         {% endif %}
                         {% if block.settings.description != blank %}
                           <div class="m-rte rte">{{ block.settings.description }}</div>

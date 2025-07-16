@@ -108,7 +108,7 @@
     </div>
     <div class="m-scaling-logo__content">
       {% if heading != blank %}
-        <h2 class="m-scaling-logo__heading">{{ heading }}</h2>
+        <h2 class="m-scaling-logo__heading main-heading" data-typography="main-heading">{{ heading }}</h2>
       {% endif %}
       {% if button_label != blank %}
         <a href="{{ button_link | default: "#" }}" class="m-scaling-logo__button m-button {{ button_style }}">
