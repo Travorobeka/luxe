@@ -574,7 +574,8 @@
                   show_twitter: section.settings.show_twitter,
                   show_instagram: section.settings.show_instagram,
                   show_pinterest: section.settings.show_pinterest,
-                  show_youtube: section.settings.show_youtube
+                  show_youtube: section.settings.show_youtube,
+                  show_snapchat: section.settings.show_snapchat
                 %}
               </div>
             {% endif %}
@@ -1531,7 +1532,7 @@
     {
       "type": "range",
       "id": "social_icon_size",
-      "min": 24,
+      "min": 10,
       "max": 60,
       "step": 2,
       "unit": "px",
@@ -1648,6 +1649,12 @@
       "type": "checkbox",
       "id": "show_youtube",
       "label": "Show YouTube",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_snapchat",
+      "label": "Show Snapchat",
       "default": true
     },
     {
