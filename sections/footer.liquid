@@ -690,12 +690,12 @@
           
           {% unless section.settings.company_logo == blank %}
             {% if section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both' %}
-              <div class="footer-company-logo-{{ footer_id }}">
-                {% if section.settings.company_logo contains 'cdn.shopify.com' %}
-                  <img src="{{ section.settings.company_logo }}" alt="{{ section.settings.company_title }}">
-                {% else %}
-                  <img src="{{ section.settings.company_logo | img_url: 'master' }}" alt="{{ section.settings.company_title }}">
-                {% endif %}
+              <div class="footer-company-logo-{{ footer_id }}" style="text-align: {{ section.settings.company_logo_align }}; margin: {{ section.settings.company_logo_margin }}px 0; padding: 16px;">
+                <img
+                  src="{{ section.settings.company_logo | img_url: 'master' }}"
+                  alt="{{ section.settings.company_title }}"
+                  style="max-width: {{ section.settings.company_logo_size }}px; height: auto; border-radius: {{ section.settings.company_logo_border_radius }}px; display: inline-block;"
+                >
               </div>
             {% endif %}
           {% endunless %}
