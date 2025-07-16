@@ -129,12 +129,15 @@
   }
 
   .footer-social-{{ footer_id }} {
-    display: flex;
-    gap: {{ section.settings.social_icon_spacing }}px;
     margin-top: 20px;
   }
 
-  .footer-social-link-{{ footer_id }} {
+  .footer-social-{{ footer_id }} .social-media-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-social-{{ footer_id }} .social-media-links--item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,9 +147,10 @@
     background-color: {{ section.settings.social_bg_color }};
     color: {{ section.settings.social_icon_color }};
     transition: all {{ section.settings.social_hover_transition }}s ease;
+    text-decoration: none;
   }
 
-  .footer-social-link-{{ footer_id }}:hover {
+  .footer-social-{{ footer_id }} .social-media-links--item:hover {
     background-color: {{ section.settings.social_hover_bg_color }};
     color: {{ section.settings.social_hover_icon_color }};
     {% if section.settings.social_hover_scale > 1 %}
@@ -173,7 +177,7 @@
     max-width: {% if section.settings.menu_max_width > 0 %}{{ section.settings.menu_max_width }}px{% else %}initial{% endif %};
   }
 
-  .footer-social-icon-{{ footer_id }} {
+  .footer-social-{{ footer_id }} .social-media-links--item svg {
     width: {{ section.settings.social_icon_inner_size }}px;
     height: {{ section.settings.social_icon_inner_size }}px;
   }
@@ -565,18 +569,25 @@
             {% if section.settings.show_social_icons %}
               <div class="footer-social-{{ footer_id }}">
                 {% render 'social-media-links',
-                  icon_size: section.settings.social_icon_size,
-                  icon_height: section.settings.social_icon_size,
+                  icon_size: section.settings.social_icon_inner_size,
+                  icon_gap: section.settings.social_icon_spacing,
                   icon_color: section.settings.social_icon_color,
                   icon_color_hover: section.settings.social_hover_icon_color,
-                  icon_gap: section.settings.social_icon_spacing,
+                  extra_classes: 'footer-social-links-wrapper',
                   show_facebook: section.settings.show_facebook,
                   show_twitter: section.settings.show_twitter,
                   show_instagram: section.settings.show_instagram,
                   show_pinterest: section.settings.show_pinterest,
                   show_youtube: section.settings.show_youtube,
                   show_snapchat: section.settings.show_snapchat,
-                  social_alignment: section.settings.social_alignment
+                  show_tumblr: section.settings.show_tumblr,
+                  show_vimeo: section.settings.show_vimeo,
+                  show_tiktok: section.settings.show_tiktok,
+                  show_discord: section.settings.show_discord,
+                  show_whatsapp: section.settings.show_whatsapp,
+                  show_spotify: section.settings.show_spotify,
+                  show_linkedin: section.settings.show_linkedin,
+                  show_line: section.settings.show_line
                 %}
               </div>
             {% endif %}
@@ -1533,7 +1544,7 @@
     {
       "type": "range",
       "id": "social_icon_size",
-      "min": 10,
+      "min": 24,
       "max": 60,
       "step": 2,
       "unit": "px",
@@ -1623,6 +1634,10 @@
       "default": 0
     },
     {
+      "type": "paragraph",
+      "content": "Social media links are configured in Theme Settings > Store Contact > Social Links. Use the toggles below to control which icons appear in the footer."
+    },
+    {
       "type": "checkbox",
       "id": "show_facebook",
       "label": "Show Facebook",
@@ -1656,18 +1671,55 @@
       "type": "checkbox",
       "id": "show_snapchat",
       "label": "Show Snapchat",
-      "default": true
+      "default": false
     },
     {
-      "type": "select",
-      "id": "social_alignment",
-      "label": "Social icons alignment",
-      "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
-      ],
-      "default": "left"
+      "type": "checkbox",
+      "id": "show_tumblr",
+      "label": "Show Tumblr",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vimeo",
+      "label": "Show Vimeo",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tiktok",
+      "label": "Show TikTok",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discord",
+      "label": "Show Discord",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "label": "Show WhatsApp",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_spotify",
+      "label": "Show Spotify",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_linkedin",
+      "label": "Show LinkedIn",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Line",
+      "default": false
     },
     {
       "type": "header",
