@@ -244,8 +244,8 @@
         "label": "Mobile Scale Factor",
         "min": 0.7,
         "max": 1.0,
-        "step": 0.05,
-        "default": 0.85,
+        "step": 0.1,
+        "default": 0.8,
         "info": "How much to scale text on mobile devices"
       }
     ]
