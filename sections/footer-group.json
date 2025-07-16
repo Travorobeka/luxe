@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -85,27 +94,31 @@
         "contact_title": "Contact Us",
         "contact_info": "<p>123 Main Street<br/>City, State 12345<br/>Phone: (555) 123-4567<br/>Email: info@example.com</p>",
         "show_social_icons": true,
-        "social_icon_size": 36,
+        "social_icon_size": 26,
         "social_icon_inner_size": 18,
         "social_icon_spacing": 15,
         "social_icon_border_radius": 18,
-        "social_bg_color": "#eeeeee",
+        "social_bg_color": "#f8f2ea",
         "social_icon_color": "#333333",
         "social_hover_bg_color": "#000000",
-        "social_hover_icon_color": "#ffffff",
+        "social_hover_icon_color": "#f8f2ea",
         "social_hover_transition": 0.2,
         "social_hover_scale": 1,
-        "social_hover_rotate": 0,
+        "social_hover_rotate": 360,
         "show_facebook": true,
-        "facebook_link": "",
-        "show_twitter": true,
-        "twitter_link": "",
+        "show_twitter": false,
         "show_instagram": true,
-        "instagram_link": "",
         "show_pinterest": true,
-        "pinterest_link": "",
         "show_youtube": true,
-        "youtube_link": "",
+        "show_snapchat": false,
+        "show_tumblr": false,
+        "show_vimeo": false,
+        "show_tiktok": true,
+        "show_discord": false,
+        "show_whatsapp": false,
+        "show_spotify": false,
+        "show_linkedin": false,
+        "show_line": false,
         "copyright_text": "<p>© 2024 Your Store. All rights reserved.</p>",
         "show_payment_icons": true,
         "payment_icon_size": 30,
