@@ -688,13 +688,23 @@
             <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }}">{{ section.settings.company_title }}</h3>
           {% endif %}
           
-          {% unless section.settings.company_logo == blank %}
+          {% if section.settings.company_logo != blank and section.settings.company_logo != '' %}
             {% if section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both' %}
               <div class="footer-company-logo-{{ footer_id }}">
-                <img src="{{ section.settings.company_logo | img_url: 'master' }}" alt="{{ section.settings.company_title }}">
+                {% liquid
+                  assign logo_url = section.settings.company_logo | img_url: 'master'
+                  if section.settings.company_logo contains 'shopify://'
+                    assign logo_url = section.settings.company_logo | img_url: 'master'
+                  elsif section.settings.company_logo contains 'http'
+                    assign logo_url = section.settings.company_logo
+                  else
+                    assign logo_url = section.settings.company_logo | img_url: 'master'
+                  endif
+                %}
+                <img src="{{ logo_url }}" alt="{{ section.settings.company_title | escape }}" loading="lazy">
               </div>
             {% endif %}
-          {% endunless %}
+          {% endif %}
           
           <div class="footer-company-info-{{ footer_id }}">
             {{ section.settings.company_info }}
