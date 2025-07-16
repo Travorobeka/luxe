@@ -58,8 +58,10 @@
   {% comment %} Render all social platforms, including new ones {% endcomment %}
   {% assign platforms = "pinterest,facebook,instagram,twitter,linkedin,snapchat,tumblr,youtube,vimeo,tiktok,discord,whatsapp,spotify,threads,telegram,reddit,wechat,weibo,vk,xing,medium" | split: "," %}
   {% for platform in platforms %}
-    {% assign link = settings["social_" | append: platform | append: "_link"] %}
-    {% assign label = settings["social_" | append: platform | append: "_label"] | default: platform | capitalize %}
+    {% assign link_key = 'social_' | append: platform | append: '_link' %}
+    {% assign label_key = 'social_' | append: platform | append: '_label' %}
+    {% assign link = settings[link_key] %}
+    {% assign label = settings[label_key] | default: platform | capitalize %}
     {% if link != blank %}
       <a
         target="{{ link_target }}"
