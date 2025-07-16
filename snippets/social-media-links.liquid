@@ -58,25 +58,29 @@
   {% comment %} Render all social platforms, including new ones {% endcomment %}
   {% assign platforms = "pinterest,facebook,instagram,twitter,linkedin,snapchat,tumblr,youtube,vimeo,tiktok,discord,whatsapp,spotify,threads,telegram,reddit,wechat,weibo,vk,xing,medium" | split: "," %}
   {% for platform in platforms %}
-    {% assign link_key = 'social_' | append: platform | append: '_link' %}
-    {% assign label_key = 'social_' | append: platform | append: '_label' %}
-    {% assign link = settings[link_key] %}
-    {% assign label = settings[label_key] | default: platform | capitalize %}
-    {% if link != blank %}
-      <a
-        target="{{ link_target }}"
-        class="social-media-links--item"
-        href="{{ link }}{{ utm }}"
-        rel="noreferrer"
-        aria-label="{{ label }}"
-        style="{{ icon_bg_style }}"
-        {% if settings.social_enable_tracking %}onclick="window.dataLayer && dataLayer.push({event: 'social_click', social: '{{ platform }}'});"{% endif %}
-      >
-        {% render 'social-icon', platform: platform, size: size, style: icon_style %}
-        {% if label != blank and show_label %}
-          <span class="social-media-links--label">{{ label }}</span>
-        {% endif %}
-      </a>
+    {% assign show_toggle = 'show_' | append: platform %}
+    {% if show_toggle contains 'show_' %}
+      {% assign show = false %}
+      {% if show_toggle == 'show_facebook' %}
+        {% assign show = show_facebook %}
+      {% elsif show_toggle == 'show_twitter' %}
+        {% assign show = show_twitter %}
+      {% elsif show_toggle == 'show_instagram' %}
+        {% assign show = show_instagram %}
+      {% elsif show_toggle == 'show_pinterest' %}
+        {% assign show = show_pinterest %}
+      {% elsif show_toggle == 'show_youtube' %}
+        {% assign show = show_youtube %}
+      {% elsif show_toggle == 'show_snapchat' %}
+        {% assign show = show_snapchat %}
+      {% else %}
+        {% assign show = true %}
+      {% endif %}
+      {% if show %}
+        <span class="social-media-links--item">
+          {% render 'social-icon', platform: platform, size: size, style: icon_style %}
+        </span>
+      {% endif %}
     {% endif %}
   {% endfor %}
   {% if settings.social_custom_url != blank and settings.social_custom_icon != blank %}
