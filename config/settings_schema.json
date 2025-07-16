@@ -2572,6 +2572,15 @@
         "type": "text",
         "id": "vcard_url",
         "label": "vCard file URL"
+      },
+      {
+        "type": "range",
+        "id": "social_icon_size",
+        "label": "Icon size (px)",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "default": 20
       }
     ]
   },
