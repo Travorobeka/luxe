@@ -691,11 +691,7 @@
           {% unless section.settings.company_logo == blank %}
             {% if section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both' %}
               <div class="footer-company-logo-{{ footer_id }}">
-                {% if section.settings.company_logo contains 'cdn.shopify.com' %}
-                  <img src="{{ section.settings.company_logo }}" alt="{{ section.settings.company_title }}">
-                {% else %}
-                  <img src="{{ section.settings.company_logo | img_url: 'master' }}" alt="{{ section.settings.company_title }}">
-                {% endif %}
+                <img src="{{ section.settings.company_logo | img_url: 'master' }}" alt="{{ section.settings.company_title }}">
               </div>
             {% endif %}
           {% endunless %}
