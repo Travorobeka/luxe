@@ -122,7 +122,7 @@
         "copyright_text": "<p>© 2024 Your Store. All rights reserved.</p>",
         "show_payment_icons": true,
         "payment_icon_size": 30,
-        "footer_bottom_alignment": "center"
+        "footer_bottom_alignment": "left-right"
       }
     },
     "mobile-sticky-bar": {
