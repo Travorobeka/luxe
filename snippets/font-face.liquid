@@ -165,6 +165,7 @@
 
 {%- comment -%} Shopify Fonts Integration {%- endcomment -%}
 {%- if typography_source == 'shopify' -%}
+<style>
   {{ shopify_header_font | font_face: font_display: 'swap' }}
   {{ shopify_header_font_bolder | font_face: font_display: 'swap' }}
   {{ shopify_header_font_lighter | font_face: font_display: 'swap' }}
@@ -173,6 +174,7 @@
   {{ shopify_body_font_bolder | font_face: font_display: 'swap' }}
   {{ shopify_body_font_italic | font_face: font_display: 'swap' }}
   {{ shopify_body_font_bold_italic | font_face: font_display: 'swap' }}
+</style>
 {%- endif -%}
 
 {%- capture typo_settings -%}
