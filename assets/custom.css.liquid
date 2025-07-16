@@ -2,3 +2,181 @@
   All custom CSS in this file will be kept when updating the theme
   Write your custom CSS below
 {% endcomment %}
+
+/* ========================================
+   MODULAR TYPOGRAPHY SYSTEM
+   A fast, responsive, and accessible typography system
+   ======================================== */
+
+/* Base Typography Styles */
+body, 
+.body-text {
+  font-family: var(--font-stack-body);
+  font-size: var(--font-base-size);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6,
+.heading,
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4,
+.heading-5,
+.heading-6 {
+  font-family: var(--font-stack-header);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  margin: 0 0 1rem 0;
+}
+
+/* Individual Heading Sizes */
+h1, .heading-1 { font-size: var(--font-h1-size); }
+h2, .heading-2 { font-size: var(--font-h2-size); }
+h3, .heading-3 { font-size: var(--font-h3-size); }
+h4, .heading-4 { font-size: var(--font-h4-size); }
+h5, .heading-5 { font-size: var(--font-h5-size); }
+h6, .heading-6 { font-size: var(--font-h6-size); }
+
+/* Responsive Typography */
+{% if settings.enable_responsive_typography %}
+@media screen and (max-width: 767px) {
+  h1, .heading-1 { font-size: calc(var(--font-h1-size) * var(--mobile-scale)); }
+  h2, .heading-2 { font-size: calc(var(--font-h2-size) * var(--mobile-scale)); }
+  h3, .heading-3 { font-size: calc(var(--font-h3-size) * var(--mobile-scale)); }
+  h4, .heading-4 { font-size: calc(var(--font-h4-size) * var(--mobile-scale)); }
+  h5, .heading-5 { font-size: calc(var(--font-h5-size) * var(--mobile-scale)); }
+  h6, .heading-6 { font-size: calc(var(--font-h6-size) * var(--mobile-scale)); }
+  
+  body, .body-text {
+    font-size: calc(var(--font-base-size) * var(--mobile-scale));
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  h1, .heading-1 { font-size: calc(var(--font-h1-size) * 0.9); }
+  h2, .heading-2 { font-size: calc(var(--font-h2-size) * 0.9); }
+  h3, .heading-3 { font-size: calc(var(--font-h3-size) * 0.9); }
+  h4, .heading-4 { font-size: calc(var(--font-h4-size) * 0.95); }
+}
+{% endif %}
+
+/* Utility Classes */
+.text-small { font-size: calc(var(--font-base-size) * 0.875); }
+.text-large { font-size: calc(var(--font-base-size) * 1.125); }
+.text-xl { font-size: calc(var(--font-base-size) * 1.25); }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+.line-height-tight { line-height: 1.2; }
+.line-height-normal { line-height: 1.5; }
+.line-height-loose { line-height: 1.8; }
+
+/* Theme-specific element styling */
+.product-card__title,
+.collection-card__title,
+.article-card__title {
+  font-family: var(--font-stack-header);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+}
+
+.product-card__description,
+.collection-card__description,
+.article-card__excerpt {
+  font-family: var(--font-stack-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+}
+
+/* Button typography */
+.btn, 
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: var(--font-stack-body);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+/* Form typography */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  font-family: var(--font-stack-body);
+  font-size: var(--font-base-size);
+  font-weight: var(--font-weight-body);
+}
+
+/* Navigation typography */
+.main-menu a,
+.footer-menu a,
+.breadcrumb a {
+  font-family: var(--font-stack-body);
+  font-weight: var(--font-weight-body);
+}
+
+/* Price typography */
+.price,
+.price__current,
+.price__original {
+  font-family: var(--font-stack-header);
+  font-weight: var(--font-weight-heading);
+}
+
+/* Performance optimizations */
+* {
+  /* Optimize text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  h1, h2, h3, h4, h5, h6,
+  .heading,
+  .heading-1, .heading-2, .heading-3,
+  .heading-4, .heading-5, .heading-6 {
+    font-weight: 700;
+  }
+  
+  body, .body-text {
+    font-weight: 500;
+  }
+}
+
+/* Print styles */
+@media print {
+  body, .body-text {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, .heading-1 { font-size: 24pt; }
+  h2, .heading-2 { font-size: 20pt; }
+  h3, .heading-3 { font-size: 16pt; }
+  h4, .heading-4 { font-size: 14pt; }
+  h5, .heading-5 { font-size: 12pt; }
+  h6, .heading-6 { font-size: 11pt; }
+}

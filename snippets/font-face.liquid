@@ -1,290 +1,93 @@
 {% liquid
-  # Get typography source selection
-  assign typography_source = settings.typography_source | default: 'shopify'
-  
-  # Shopify fonts
-  assign shopify_header_font = settings.shopify_header_font
-  assign shopify_body_font = settings.shopify_body_font
-  assign shopify_header_font_bolder = shopify_header_font | font_modify: 'weight', 'bolder'
-  assign shopify_header_font_lighter = shopify_header_font | font_modify: 'weight', '-100'
-  assign shopify_body_font_bolder = shopify_body_font | font_modify: 'weight', 'bolder'
-  assign shopify_body_font_bold = shopify_body_font | font_modify: 'weight', 'bold'
-  assign shopify_body_font_italic = shopify_body_font | font_modify: 'style', 'italic'
-  assign shopify_body_font_bold_italic = shopify_body_font_bold | font_modify: 'style', 'italic'
-  
-  # Google Fonts settings
-  assign google_font_pairing_preset = settings.google_font_pairing_preset
-  assign google_font_heading = settings.google_font_heading
-  assign google_font_body = settings.google_font_body
-  assign google_font_weights = settings.google_font_weights
-  assign enable_font_display_swap = settings.enable_font_display_swap
-  assign enable_font_preload = settings.enable_font_preload
-  
-  # Custom fonts settings
-  assign custom_heading_font_urls = settings.custom_heading_font_urls
-  assign custom_body_font_urls = settings.custom_body_font_urls
-  # Enterprise typography settings
-  assign enable_dyslexia_friendly_font = settings.enable_dyslexia_friendly_font | default: false
-  assign fallback_font_stack = settings.fallback_font_stack | default: 'system-ui, Arial, sans-serif'
+  # New Simplified Typography System
+  assign heading_font = settings.heading_font
+  assign body_font = settings.body_font
+  assign heading_font_bolder = heading_font | font_modify: 'weight', 'bolder'
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 %}
 
 {%- comment -%} Font Preloading {%- endcomment -%}
-{%- if typography_source == 'shopify' -%}
-  {%- unless shopify_body_font.system? -%}
-    {% comment %} theme-check-disable {% endcomment %}
-    <link rel="preload" as="font" href="{{ shopify_body_font | font_url }}" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="{{ shopify_body_font_bold | font_url }}" type="font/woff2" crossorigin>
-    {% comment %} theme-check-enable {% endcomment %}
-  {%- endunless -%}
-  {%- unless shopify_header_font.system? -%}
-    {% comment %} theme-check-disable {% endcomment %}
-    <link rel="preload" as="font" href="{{ shopify_header_font | font_url }}" type="font/woff2" crossorigin>
-    {% comment %} theme-check-enable {% endcomment %}
-  {%- endunless -%}
-{%- endif -%}
+{%- unless body_font.system? -%}
+  {% comment %} theme-check-disable {% endcomment %}
+  <link rel="preload" as="font" href="{{ body_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ body_font_bold | font_url }}" type="font/woff2" crossorigin>
+  {% comment %} theme-check-enable {% endcomment %}
+{%- endunless -%}
+{%- unless heading_font.system? -%}
+  {% comment %} theme-check-disable {% endcomment %}
+  <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+  {% comment %} theme-check-enable {% endcomment %}
+{%- endunless -%}
 
-{%- comment -%} Google Fonts Integration {%- endcomment -%}
-{%- if typography_source == 'google_fonts' -%}
-  {%- liquid
-    # Define font pairings
-    case google_font_pairing_preset
-    when 'elegant_classic'
-      assign google_heading_font = 'Playfair Display'
-      assign google_body_font = 'Nunito'
-    when 'modern_saas'
-      assign google_heading_font = 'Inter'
-      assign google_body_font = 'Inter'
-    when 'creative_bold'
-      assign google_heading_font = 'Oswald'
-      assign google_body_font = 'Open Sans'
-    when 'luxury_serif'
-      assign google_heading_font = 'Cormorant Garamond'
-      assign google_body_font = 'Lato'
-    when 'minimalist_clean'
-      assign google_heading_font = 'Poppins'
-      assign google_body_font = 'Poppins'
-    when 'editorial_classic'
-      assign google_heading_font = 'Merriweather'
-      assign google_body_font = 'Open Sans'
-    when 'tech_modern'
-      assign google_heading_font = 'Roboto'
-      assign google_body_font = 'Roboto'
-    when 'artistic_creative'
-      assign google_heading_font = 'Montserrat'
-      assign google_body_font = 'Source Sans Pro'
-    when 'boutique_fashion'
-      assign google_heading_font = 'Crimson Text'
-      assign google_body_font = 'Lato'
-    when 'startup_friendly'
-      assign google_heading_font = 'Work Sans'
-      assign google_body_font = 'Work Sans'
-    when 'custom'
-      # Use custom font names from settings
-    endcase
-    
-    # Build Google Fonts URL
-    assign google_fonts_url = ''
-    assign fonts_to_load = ''
-    assign font_weights_to_load = google_font_weights | default: '300,400,500,600,700'
-    
-    if google_heading_font != blank
-      assign heading_font_formatted = google_heading_font | replace: ' ', '+'
-      assign fonts_to_load = fonts_to_load | append: 'family=' | append: heading_font_formatted | append: ':wght@' | append: font_weights_to_load
-    endif
-    
-    if google_body_font != blank and google_body_font != google_heading_font
-      if fonts_to_load != blank
-        assign fonts_to_load = fonts_to_load | append: '&'
-      endif
-      assign body_font_formatted = google_body_font | replace: ' ', '+'
-      assign fonts_to_load = fonts_to_load | append: 'family=' | append: body_font_formatted | append: ':wght@' | append: font_weights_to_load
-    endif
-    
-    if fonts_to_load != blank
-      assign google_fonts_url = 'https://fonts.googleapis.com/css2?' | append: fonts_to_load
-      if enable_font_display_swap
-        assign google_fonts_url = google_fonts_url | append: '&display=swap'
-      endif
-    endif
-  -%}
-  
-  {%- if google_fonts_url != blank -%}
-    {%- if enable_font_preload -%}
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {%- endif -%}
-    <link href="{{ google_fonts_url }}" rel="stylesheet">
-  {%- endif -%}
-{%- endif -%}
-
-{%- comment -%} Custom Fonts Integration {%- endcomment -%}
-{%- if typography_source == 'custom_fonts' -%}
-  {%- if custom_heading_font_urls != blank -%}
-    {%- assign heading_fonts = custom_heading_font_urls | newline_to_br | split: '<br />' -%}
-    {%- for link in heading_fonts -%}
-      {%- liquid
-        assign link_data = link | split: '@'
-        assign font_url = link_data | first | strip_newlines
-        assign weight = link_data | last
-        assign font_type = font_url | split: '.' | last
-        if font_type contains '?v='
-          assign font_type = font_type | split: '?v=' | first
-        endif
-      -%}
+{%- comment -%} Font Face Declarations {%- endcomment -%}
 <style>
-@font-face {
-  font-family: M-Heading-Font;
-  font-weight: {{- weight -}};
-  src: url({{- font_url -}});
-  font-display: swap;
-}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ heading_font_bolder | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
 </style>
-    {% endfor %}
-  {%- endif -%}
-  
-  {%- if custom_body_font_urls != blank -%}
-    {%- assign body_fonts = custom_body_font_urls | newline_to_br | split: '<br />' -%}
-    {%- for link in body_fonts -%}
-      {%- liquid
-        assign link_data = link | split: '@'
-        assign font_url = link_data | first | strip_newlines
-        assign weight = link_data | last
-        assign font_type = font_url | split: '.' | last
-        if font_type contains '?v='
-          assign font_type = font_type | split: '?v=' | first
-        endif
-      -%}
-<style>
-@font-face {
-  font-family: M-Body-Font;
-  font-weight: {{- weight -}};
-  src: url({{- font_url -}});
-  font-display: swap;
-}
-</style>
-    {% endfor %}
-  {%- endif -%}
-{%- endif -%}
-
-{%- comment -%} Shopify Fonts Integration {%- endcomment -%}
-{%- if typography_source == 'shopify' -%}
-<style>
-  {{ shopify_header_font | font_face: font_display: 'swap' }}
-  {{ shopify_header_font_bolder | font_face: font_display: 'swap' }}
-  {{ shopify_header_font_lighter | font_face: font_display: 'swap' }}
-  {{ shopify_body_font | font_face: font_display: 'swap' }}
-  {{ shopify_body_font_bold | font_face: font_display: 'swap' }}
-  {{ shopify_body_font_bolder | font_face: font_display: 'swap' }}
-  {{ shopify_body_font_italic | font_face: font_display: 'swap' }}
-  {{ shopify_body_font_bold_italic | font_face: font_display: 'swap' }}
-</style>
-{%- endif -%}
-
-{%- if enable_dyslexia_friendly_font -%}
-  <link rel="preload" as="font" href="https://cdn.jsdelivr.net/npm/open-dyslexic-fonts@1.0.0/otf/OpenDyslexic-Regular.otf" type="font/otf" crossorigin>
-  <style>
-    @font-face {
-      font-family: 'OpenDyslexic';
-      src: url('https://cdn.jsdelivr.net/npm/open-dyslexic-fonts@1.0.0/otf/OpenDyslexic-Regular.otf') format('opentype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
-{%- endif -%}
 
 {%- capture typo_settings -%}
 {%- liquid
-  # Generate font stacks based on typography source and dyslexia setting
-  if enable_dyslexia_friendly_font
-    assign font_stack_header = "'OpenDyslexic', " | append: fallback_font_stack
-    assign font_stack_body = "'OpenDyslexic', " | append: fallback_font_stack
-  else
-    case typography_source
-    when 'google_fonts'
-      # Handle Google Fonts font stacks
-      case google_font_pairing_preset
-      when 'elegant_classic'
-        assign google_heading_font = 'Playfair Display'
-        assign google_body_font = 'Nunito'
-      when 'modern_saas'
-        assign google_heading_font = 'Inter'
-        assign google_body_font = 'Inter'
-      when 'creative_bold'
-        assign google_heading_font = 'Oswald'
-        assign google_body_font = 'Open Sans'
-      when 'luxury_serif'
-        assign google_heading_font = 'Cormorant Garamond'
-        assign google_body_font = 'Lato'
-      when 'minimalist_clean'
-        assign google_heading_font = 'Poppins'
-        assign google_body_font = 'Poppins'
-      when 'editorial_classic'
-        assign google_heading_font = 'Merriweather'
-        assign google_body_font = 'Open Sans'
-      when 'tech_modern'
-        assign google_heading_font = 'Roboto'
-        assign google_body_font = 'Roboto'
-      when 'artistic_creative'
-        assign google_heading_font = 'Montserrat'
-        assign google_body_font = 'Source Sans Pro'
-      when 'boutique_fashion'
-        assign google_heading_font = 'Crimson Text'
-        assign google_body_font = 'Lato'
-      when 'startup_friendly'
-        assign google_heading_font = 'Work Sans'
-        assign google_body_font = 'Work Sans'
-      when 'custom'
-        # Use custom font names from settings
-      endcase
-      
-      # Set fallback fonts based on font type
-      assign serif_fallback = 'serif'
-      assign sans_serif_fallback = 'sans-serif'
-      
-      # Determine fallback for heading font
-      assign heading_fallback = sans_serif_fallback
-      assign heading_name_lower = google_heading_font | downcase
-      if heading_name_lower contains 'playfair' or heading_name_lower contains 'merriweather' or heading_name_lower contains 'cormorant' or heading_name_lower contains 'crimson'
-        assign heading_fallback = serif_fallback
-      endif
-      
-      # Determine fallback for body font
-      assign body_fallback = sans_serif_fallback
-      assign body_name_lower = google_body_font | downcase
-      if body_name_lower contains 'playfair' or body_name_lower contains 'merriweather' or body_name_lower contains 'cormorant' or body_name_lower contains 'crimson'
-        assign body_fallback = serif_fallback
-      endif
-      
-      assign font_stack_header = "'" | append: google_heading_font | append: "', " | append: heading_fallback
-      assign font_stack_body = "'" | append: google_body_font | append: "', " | append: body_fallback
-    when 'custom_fonts'
-      assign font_stack_header = "'M-Heading-Font', " | append: fallback_font_stack
-      assign font_stack_body = "'M-Body-Font', " | append: fallback_font_stack
-    when 'shopify'
-      assign font_stack_header = shopify_header_font.family | append: ', ' | append: fallback_font_stack
-      assign font_stack_body = shopify_body_font.family | append: ', ' | append: fallback_font_stack
-    endcase
-  endif
+  # Generate font stacks
+  assign font_stack_header = heading_font.family | append: ', system-ui, Arial, sans-serif'
+  assign font_stack_body = body_font.family | append: ', system-ui, Arial, sans-serif'
+  
+  # Get typography settings
+  assign heading_size_scale = settings.heading_size_scale | default: 1.5
+  assign body_size = settings.body_size | default: 16
+  assign heading_weight = settings.heading_weight | default: '600'
+  assign body_weight = settings.body_weight | default: '400'
+  assign heading_line_height = settings.heading_line_height | default: 1.2
+  assign body_line_height = settings.body_line_height | default: 1.6
+  assign heading_letter_spacing = settings.heading_letter_spacing | default: 0
+  assign body_letter_spacing = settings.body_letter_spacing | default: 0
+  assign enable_responsive_typography = settings.enable_responsive_typography | default: true
+  assign mobile_scale_factor = settings.mobile_scale_factor | default: 0.85
+  
+  # Calculate heading sizes based on scale
+  assign h1_size = body_size | times: heading_size_scale | times: 1.8
+  assign h2_size = body_size | times: heading_size_scale | times: 1.5
+  assign h3_size = body_size | times: heading_size_scale | times: 1.3
+  assign h4_size = body_size | times: heading_size_scale | times: 1.1
+  assign h5_size = body_size | times: heading_size_scale
+  assign h6_size = body_size | times: 0.9
 -%}
 
 :root {
+  /* Font Stacks */
   --font-stack-header: {{ font_stack_header }};
   --font-stack-body: {{ font_stack_body }};
   
-  {%- if typography_source == 'shopify' -%}
-    --font-style-header: {{ shopify_header_font.style }};
-    --font-weight-header: {{ shopify_header_font.weight }};
-    --font-weight-header--bolder: {{ shopify_header_font_bolder.weight | default: 700 }};
-    --font-weight-header--lighter: {{ shopify_header_font_lighter.weight | default: 400 }};
-    --font-weight-body--bold: {{ shopify_body_font_bold.weight | default: 700 }};
-    --font-weight-body--bolder: {{ shopify_body_font_bolder.weight | default: 700 }};
-    --font-style-body: {{ shopify_body_font.style }};
-    --font-weight-body: {{ shopify_body_font.weight }};
-  {%- else -%}
-    --font-weight-header: {{ settings.h1_font_weight | default: 700 }};
-    --font-weight-body: {{ settings.body_font_weight | default: 400 }};
-  {%- endif -%}
+  /* Base Typography */
+  --font-base-size: {{ body_size }}px;
+  --font-weight-heading: {{ heading_weight }};
+  --font-weight-body: {{ body_weight }};
+  --line-height-heading: {{ heading_line_height }};
+  --line-height-body: {{ body_line_height }};
+  --letter-spacing-heading: {{ heading_letter_spacing }}px;
+  --letter-spacing-body: {{ body_letter_spacing }}px;
+  
+  /* Heading Sizes */
+  --font-h1-size: {{ h1_size | round }}px;
+  --font-h2-size: {{ h2_size | round }}px;
+  --font-h3-size: {{ h3_size | round }}px;
+  --font-h4-size: {{ h4_size | round }}px;
+  --font-h5-size: {{ h5_size | round }}px;
+  --font-h6-size: {{ h6_size | round }}px;
+  
+  /* Responsive scaling */
+  {% if enable_responsive_typography %}
+  --mobile-scale: {{ mobile_scale_factor }};
+  {% endif %}
+  
+  /* Legacy support */
+  --font-stack-heading: var(--font-stack-header);
+  --font-stack-text: var(--font-stack-body);
 }
 {%- endcapture -%}
 
