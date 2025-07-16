@@ -115,34 +115,104 @@
     "name": "Typography",
     "settings": [
       {
+        "type": "paragraph",
+        "content": "Customize the typography throughout your store with this simplified but powerful system. Changes will apply to all headings, body text, and UI elements."
+      },
+      {
         "type": "header",
-        "content": "Font Selection"
+        "content": "🎨 Font Selection"
       },
       {
         "type": "font_picker",
-        "id": "heading_font",
+        "id": "type_header_font",
         "label": "Heading Font",
-        "default": "helvetica_n7"
+        "default": "helvetica_n7",
+        "info": "Font used for all headings, titles, and important text throughout the theme"
       },
       {
         "type": "font_picker",
-        "id": "body_font",
+        "id": "type_body_font",
         "label": "Body Font",
-        "default": "helvetica_n4"
+        "default": "helvetica_n4",
+        "info": "Font used for body text, descriptions, and general content"
       },
       {
         "type": "header",
-        "content": "Font Sizes"
+        "content": "📏 Main Heading Sizes (H1 & H2)"
       },
       {
         "type": "range",
-        "id": "heading_size_scale",
-        "label": "Heading Size Scale",
-        "min": 1.2,
-        "max": 2.0,
-        "step": 0.1,
-        "default": 1.5,
-        "info": "Multiplier for heading sizes relative to body text"
+        "id": "h1_size",
+        "label": "H1 Size (Hero Titles)",
+        "min": 32,
+        "max": 72,
+        "step": 2,
+        "unit": "px",
+        "default": 48,
+        "info": "Used for page titles, hero sections, and main product titles"
+      },
+      {
+        "type": "range",
+        "id": "h2_size",
+        "label": "H2 Size (Section Headings)",
+        "min": 24,
+        "max": 48,
+        "step": 2,
+        "unit": "px",
+        "default": 32,
+        "info": "Used for section headings, collection titles, and secondary headlines"
+      },
+      {
+        "type": "header",
+        "content": "📑 Subheading Sizes (H3 & H4)"
+      },
+      {
+        "type": "range",
+        "id": "h3_size",
+        "label": "H3 Size (Card Titles)",
+        "min": 18,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "default": 24,
+        "info": "Used for product card titles, article headlines, and subsection headings"
+      },
+      {
+        "type": "range",
+        "id": "h4_size",
+        "label": "H4 Size (Widget Titles)",
+        "min": 16,
+        "max": 28,
+        "step": 1,
+        "unit": "px",
+        "default": 20,
+        "info": "Used for sidebar titles, form labels, and smaller headings"
+      },
+      {
+        "type": "header",
+        "content": "📝 Small Text Sizes (H5, H6 & Body)"
+      },
+      {
+        "type": "range",
+        "id": "h5_size",
+        "label": "H5 Size (Captions)",
+        "min": 14,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "default": 18,
+        "info": "Used for captions, meta information, and small headings"
+      },
+      {
+        "type": "range",
+        "id": "h6_size",
+        "label": "H6 Size (Tags)",
+        "min": 12,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "default": 16,
+        "info": "Used for tags, labels, and the smallest headings"
       },
       {
         "type": "range",
@@ -152,38 +222,105 @@
         "max": 20,
         "step": 1,
         "unit": "px",
-        "default": 16
+        "default": 16,
+        "info": "Base size for paragraphs, descriptions, and general content"
       },
       {
         "type": "header",
-        "content": "Font Weights"
+        "content": "💪 Font Weights"
       },
       {
         "type": "select",
-        "id": "heading_weight",
-        "label": "Heading Weight",
+        "id": "h1_weight",
+        "label": "H1 Weight",
+        "options": [
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra Bold"}
+        ],
+        "default": "700",
+        "info": "Weight for main titles and hero text"
+      },
+      {
+        "type": "select",
+        "id": "h2_weight",
+        "label": "H2 Weight",
         "options": [
           {"value": "400", "label": "Regular"},
           {"value": "500", "label": "Medium"},
           {"value": "600", "label": "Semi-bold"},
           {"value": "700", "label": "Bold"}
         ],
-        "default": "600"
+        "default": "600",
+        "info": "Weight for section headings"
+      },
+      {
+        "type": "select",
+        "id": "h3_weight",
+        "label": "H3 Weight",
+        "options": [
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"}
+        ],
+        "default": "600",
+        "info": "Weight for card titles and subsections"
+      },
+      {
+        "type": "select",
+        "id": "h4_weight",
+        "label": "H4 Weight",
+        "options": [
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"}
+        ],
+        "default": "500",
+        "info": "Weight for widget titles and smaller headings"
+      },
+      {
+        "type": "select",
+        "id": "h5_weight",
+        "label": "H5 Weight",
+        "options": [
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"}
+        ],
+        "default": "500",
+        "info": "Weight for captions and meta text"
+      },
+      {
+        "type": "select",
+        "id": "h6_weight",
+        "label": "H6 Weight",
+        "options": [
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"}
+        ],
+        "default": "500",
+        "info": "Weight for tags and labels"
       },
       {
         "type": "select",
         "id": "body_weight",
-        "label": "Body Weight",
+        "label": "Body Text Weight",
         "options": [
           {"value": "300", "label": "Light"},
           {"value": "400", "label": "Regular"},
           {"value": "500", "label": "Medium"}
         ],
-        "default": "400"
+        "default": "400",
+        "info": "Weight for paragraphs and body content"
       },
       {
         "type": "header",
-        "content": "Line Height"
+        "content": "📐 Line Heights & Spacing"
       },
       {
         "type": "range",
@@ -192,7 +329,8 @@
         "min": 1.0,
         "max": 1.6,
         "step": 0.1,
-        "default": 1.2
+        "default": 1.3,
+        "info": "Line spacing for all headings - tighter values create more impact"
       },
       {
         "type": "range",
@@ -201,11 +339,8 @@
         "min": 1.3,
         "max": 2.0,
         "step": 0.1,
-        "default": 1.6
-      },
-      {
-        "type": "header",
-        "content": "Letter Spacing"
+        "default": 1.6,
+        "info": "Line spacing for body text - higher values improve readability"
       },
       {
         "type": "range",
@@ -215,7 +350,8 @@
         "max": 4,
         "step": 0.1,
         "unit": "px",
-        "default": 0
+        "default": 0,
+        "info": "Space between letters in headings - negative values tighten, positive values loosen"
       },
       {
         "type": "range",
@@ -225,18 +361,19 @@
         "max": 2,
         "step": 0.1,
         "unit": "px",
-        "default": 0
+        "default": 0,
+        "info": "Space between letters in body text - usually kept at 0 for optimal readability"
       },
       {
         "type": "header",
-        "content": "Responsive Options"
+        "content": "📱 Responsive Typography"
       },
       {
         "type": "checkbox",
         "id": "enable_responsive_typography",
         "label": "Enable Responsive Typography",
         "default": true,
-        "info": "Automatically scale typography on smaller screens"
+        "info": "Automatically scale all typography on smaller screens for better mobile experience"
       },
       {
         "type": "range",
@@ -246,7 +383,49 @@
         "max": 1.0,
         "step": 0.1,
         "default": 0.8,
-        "info": "How much to scale text on mobile devices"
+        "info": "How much to reduce text size on mobile devices (0.8 = 20% smaller)"
+      },
+      {
+        "type": "header",
+        "content": "🎯 Text Styling Options"
+      },
+      {
+        "type": "select",
+        "id": "heading_text_transform",
+        "label": "Heading Text Transform",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "default": "none",
+        "info": "Text transformation applied to all headings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_heading_underline",
+        "label": "Enable Heading Underlines",
+        "default": false,
+        "info": "Add subtle underlines to section headings for visual emphasis"
+      },
+      {
+        "type": "header",
+        "content": "⚡ Performance & Accessibility"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_font_optimization",
+        "label": "Enable Font Loading Optimization",
+        "default": true,
+        "info": "Optimize font loading for better performance and reduced layout shift"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_accessibility_features",
+        "label": "Enable Accessibility Features",
+        "default": true,
+        "info": "Enhance typography for users with visual impairments and reading difficulties"
       }
     ]
   },  {
