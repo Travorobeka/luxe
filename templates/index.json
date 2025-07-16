@@ -226,7 +226,7 @@
         "162251092958fcda7c-1"
       ],
       "custom_css": [
-        ".m-section__header {--m-section-header-spacing-bottom: 60px;}"
+        ".m-section__header {--m-section-header-spacing-bottom: 30px;}"
       ],
       "settings": {
         "heading": "You are in",
