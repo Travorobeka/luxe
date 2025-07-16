@@ -689,12 +689,13 @@
           {% endif %}
           
           {% unless section.settings.company_logo == blank %}
+            <pre>company_logo value: {{ section.settings.company_logo | json }}</pre>
+            <pre>company_logo type: {{ section.settings.company_logo | class }}</pre>
             {% if section.settings.company_display_option == 'logo_only' or section.settings.company_display_option == 'both' %}
-              <div class="footer-company-logo-{{ footer_id }}" style="text-align: {{ section.settings.company_logo_align }}; margin: {{ section.settings.company_logo_margin }}px 0; padding: 16px;">
+              <div class="footer-company-logo-{{ footer_id }}">
                 <img
                   src="{{ section.settings.company_logo | img_url: 'master' }}"
                   alt="{{ section.settings.company_title }}"
-                  style="max-width: {{ section.settings.company_logo_size }}px; height: auto; border-radius: {{ section.settings.company_logo_border_radius }}px; display: inline-block;"
                 >
               </div>
             {% endif %}
