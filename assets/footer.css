@@ -82,29 +82,47 @@
   }
 }
 
-.footer-grid[data-responsive-breakpoints] {
-  /* JS will parse and apply breakpoints for column count */
+/* Social Media Icon Customizations */
+.social-media-links {
+  display: flex;
+  align-items: center;
 }
-.footer-column {
-  box-sizing: border-box;
-  min-width: 0;
-  /* Allow for per-column padding and alignment via inline styles */
+.align-left { justify-content: flex-start; }
+.align-center { justify-content: center; }
+.align-right { justify-content: flex-end; }
+.align-space-between { justify-content: space-between; }
+
+.social-media-links--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, border 0.2s;
+  margin: 0;
+  padding: 0;
 }
-.footer-grid {
-  align-items: stretch;
+.social-media-links--item img,
+.social-media-links--item svg {
+  display: block;
 }
-@media screen and (max-width: 1200px) {
-  .footer-grid[data-responsive-breakpoints*="1200:4"] {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
+
+/* Animation: Grow */
+.social-anim--grow .social-media-links--item:hover {
+  transform: scale(1.15);
 }
-@media screen and (max-width: 900px) {
-  .footer-grid[data-responsive-breakpoints*="900:3"] {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
+/* Animation: Rotate */
+.social-anim--rotate .social-media-links--item:hover {
+  transform: rotate(-15deg) scale(1.1);
 }
-@media screen and (max-width: 600px) {
-  .footer-grid[data-responsive-breakpoints*="600:2"] {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+/* Animation: Bounce */
+.social-anim--bounce .social-media-links--item:hover {
+  animation: social-bounce 0.4s;
 }
+@keyframes social-bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+/* Utility: Icon background, border, radius, shadow are inline via style attribute from settings */
