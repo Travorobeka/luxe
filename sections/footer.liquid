@@ -415,6 +415,11 @@
     display: inline-block;
     vertical-align: middle;
   }
+
+  .footer-payment-{{ footer_id }} svg {
+    width: {{ section.settings.payment_icon_size }}px;
+    height: auto;
+  }
 {% endstyle %}
 
 <footer class="footer-{{ footer_id }}" {{ section.shopify_attributes }}>
