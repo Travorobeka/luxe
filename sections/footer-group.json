@@ -83,6 +83,7 @@
         "company_title": "About Us",
         "company_info": "<p>We're dedicated to providing quality products and exceptional service to our customers.</p>",
         "company_display_option": "logo_only",
+        "company_logo": "shopify://shop_images/Luxe_Woman_Logo.svg",
         "company_logo_size": 150,
         "company_logo_align": "center",
         "company_logo_margin": 20,
