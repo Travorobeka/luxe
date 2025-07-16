@@ -48,8 +48,8 @@
   if settings.social_add_utm
     assign utm = '?utm_source=shop&utm_medium=social'
   endif
-  {% assign icon_size = settings.social_icon_size | default: 32 %}
-  {% assign display_type = settings.social_icon_display_type | default: 'default' %}
+  assign icon_size = settings.social_icon_size | default: 32
+  assign display_type = settings.social_icon_display_type | default: 'default'
 -%}
 <div class="social-media-links social-anim--{{ settings.social_icon_hover_animation }} align-{{ settings.social_alignment }} display-{{ display_type }}">
   <style>
