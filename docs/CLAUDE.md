@@ -106,6 +106,50 @@ Based on `read.md`, the theme supports extensive customization:
 - Icon snippets use consistent `icon-` prefix
 - Product-related snippets clearly identified
 
+## Typography System
+
+### Three-Tier Typography Structure (Updated January 2025)
+The theme now uses a simplified three-tier typography system instead of the previous six-level H1-H6 structure:
+
+#### 1. Main Heading (.main-heading)
+- **Purpose**: Primary page titles, logo text, hero headings
+- **Default**: 42px (desktop), 34px (tablet), 29px (mobile)
+- **Usage**: Apply to H1 elements and primary content headings
+
+#### 2. Sub Heading (.sub-heading)
+- **Purpose**: Section headers, product titles, article headings
+- **Default**: 24px (desktop), 20px (tablet), 18px (mobile)
+- **Usage**: Apply to H2-H4 elements and secondary content headings
+
+#### 3. Body Text (.body-text)
+- **Purpose**: Content text, complementary headings, small sections
+- **Default**: 16px (all devices)
+- **Usage**: Apply to H5-H6 elements, paragraph text, and captions
+
+### Implementation Guidelines
+```liquid
+<!-- Primary page title -->
+<h1 class="main-heading">{{ page.title }}</h1>
+
+<!-- Section header -->
+<h2 class="sub-heading">{{ section.settings.title }}</h2>
+
+<!-- Product title in cards -->
+<h3 class="product-title sub-heading">{{ product.title }}</h3>
+
+<!-- Small section heading -->
+<h4 class="body-text">{{ block.settings.subtitle }}</h4>
+```
+
+### Typography Testing
+Use the typography test suite for visual validation:
+```liquid
+{% render 'typography-test-suite' %}
+```
+
+### Backward Compatibility
+All legacy H1-H6 classes continue to work through CSS variable mapping. The system maintains full backward compatibility while providing a cleaner structure for new development.
+
 ## Testing & Validation
 
 Since this is a Shopify theme, testing should focus on:
@@ -114,6 +158,7 @@ Since this is a Shopify theme, testing should focus on:
 - Mobile responsiveness validation
 - Performance testing with Shopify's tools
 - Accessibility compliance verification
+- Typography system validation using the test suite
 
 ## Important Notes
 

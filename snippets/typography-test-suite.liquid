@@ -1,0 +1,155 @@
+{% comment %}
+  Typography Test Suite for Three-Tier Typography System
+  
+  This snippet can be included in any template to test the new typography system.
+  It displays all typography classes and their variations for visual verification.
+  
+  Usage:
+  {% render 'typography-test-suite' %}
+{% endcomment %}
+
+<div class="typography-test-suite" style="padding: 2rem; border: 2px solid #e5e5e5; margin: 2rem 0; background: #f9f9f9;">
+  <h2 style="margin-bottom: 2rem; text-align: center; color: #333;">Typography Test Suite - Three-Tier System</h2>
+  
+  <!-- Main Heading Tests -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Main Heading (.main-heading)</h3>
+    <div class="main-heading" style="margin-bottom: 1rem;">Main Heading - Desktop Default</div>
+    <h1 class="main-heading" style="margin-bottom: 1rem;">H1 with Main Heading Class</h1>
+    <h2 class="main-heading" style="margin-bottom: 1rem;">H2 with Main Heading Class</h2>
+    <strong class="main-heading" style="margin-bottom: 1rem; display: block;">Strong with Main Heading Class</strong>
+    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
+      Use for: Page titles, primary headings, logo text
+    </div>
+  </section>
+
+  <!-- Sub Heading Tests -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Sub Heading (.sub-heading)</h3>
+    <div class="sub-heading" style="margin-bottom: 1rem;">Sub Heading - Desktop Default</div>
+    <h2 class="sub-heading" style="margin-bottom: 1rem;">H2 with Sub Heading Class</h2>
+    <h3 class="sub-heading" style="margin-bottom: 1rem;">H3 with Sub Heading Class</h3>
+    <h4 class="sub-heading" style="margin-bottom: 1rem;">H4 with Sub Heading Class</h4>
+    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
+      Use for: Section headers, product titles, article titles, footer headings
+    </div>
+  </section>
+
+  <!-- Body Text Tests -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Body Text (.body-text)</h3>
+    <div class="body-text" style="margin-bottom: 1rem;">Body Text - Desktop Default</div>
+    <p class="body-text" style="margin-bottom: 1rem;">Paragraph with Body Text Class</p>
+    <h5 class="body-text" style="margin-bottom: 1rem;">H5 with Body Text Class</h5>
+    <h6 class="body-text" style="margin-bottom: 1rem;">H6 with Body Text Class</h6>
+    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
+      Use for: Complementary product headings, small section titles, body content
+    </div>
+  </section>
+
+  <!-- Backward Compatibility Tests -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Backward Compatibility (Legacy H1-H6)</h3>
+    <h1 style="margin-bottom: 1rem;">H1 - Legacy (maps to main-heading)</h1>
+    <h2 style="margin-bottom: 1rem;">H2 - Legacy (maps to main-heading)</h2>
+    <h3 style="margin-bottom: 1rem;">H3 - Legacy (maps to sub-heading)</h3>
+    <h4 style="margin-bottom: 1rem;">H4 - Legacy (maps to sub-heading)</h4>
+    <h5 style="margin-bottom: 1rem;">H5 - Legacy (maps to body-text)</h5>
+    <h6 style="margin-bottom: 1rem;">H6 - Legacy (maps to body-text)</h6>
+    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
+      Legacy classes still work through CSS variable mapping
+    </div>
+  </section>
+
+  <!-- Responsive Test Instructions -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: #fff3cd; border-radius: 8px; border: 1px solid #ffeaa7;">
+    <h3 style="color: #856404; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Responsive Testing Instructions</h3>
+    <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
+      <li style="margin-bottom: 0.5rem;"><strong>Mobile (< 768px):</strong> Typography should scale down by 30% for main-heading, 25% for sub-heading</li>
+      <li style="margin-bottom: 0.5rem;"><strong>Tablet (768px - 1279px):</strong> Typography should scale down by 20% for main-heading, 15% for sub-heading</li>
+      <li style="margin-bottom: 0.5rem;"><strong>Desktop (≥ 1280px):</strong> Typography should display at full size</li>
+      <li style="margin-bottom: 0.5rem;"><strong>Body text:</strong> Remains consistent across all devices</li>
+    </ul>
+  </section>
+
+  <!-- CSS Variables Test -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">CSS Variables Test</h3>
+    <div style="font-family: monospace; font-size: 12px; line-height: 1.4; color: #666;">
+      <div>Main Heading Size: <span style="color: #333;">var(--font-main-heading-desktop)</span></div>
+      <div>Sub Heading Size: <span style="color: #333;">var(--font-sub-heading-desktop)</span></div>
+      <div>Body Text Size: <span style="color: #333;">var(--font-body-text-desktop)</span></div>
+      <div>Main Heading Weight: <span style="color: #333;">var(--font-weight-main-heading)</span></div>
+      <div>Sub Heading Weight: <span style="color: #333;">var(--font-weight-sub-heading)</span></div>
+      <div>Body Text Weight: <span style="color: #333;">var(--font-weight-body-text)</span></div>
+    </div>
+  </section>
+
+  <!-- Visual Hierarchy Test -->
+  <section style="margin-bottom: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+    <h3 style="color: #666; margin-bottom: 1rem; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Visual Hierarchy Test</h3>
+    <div class="main-heading" style="margin-bottom: 1rem;">Main Heading - Largest</div>
+    <div class="sub-heading" style="margin-bottom: 1rem;">Sub Heading - Medium</div>
+    <div class="body-text" style="margin-bottom: 1rem;">Body Text - Smallest</div>
+    <div style="font-size: 12px; color: #999; margin-top: 0.5rem;">
+      Hierarchy should be clearly visible: Main > Sub > Body
+    </div>
+  </section>
+</div>
+
+<style>
+  .typography-test-suite {
+    font-family: var(--font-stack-body, Arial, sans-serif);
+  }
+  
+  .typography-test-suite .main-heading {
+    font-size: calc(((var(--font-main-heading-desktop, 42px)) / (var(--font-base-size, 16))) * 1rem);
+    font-weight: var(--font-weight-main-heading, 700);
+    line-height: var(--line-height-main-heading-ratio, 1.2);
+    letter-spacing: var(--letter-spacing-main-heading, 0);
+    font-family: var(--font-stack-header, Arial, sans-serif);
+    color: rgb(var(--color-heading, 0, 0, 0));
+  }
+  
+  .typography-test-suite .sub-heading {
+    font-size: calc(((var(--font-sub-heading-desktop, 24px)) / (var(--font-base-size, 16))) * 1rem);
+    font-weight: var(--font-weight-sub-heading, 600);
+    line-height: var(--line-height-sub-heading-ratio, 1.3);
+    letter-spacing: var(--letter-spacing-sub-heading, 0);
+    font-family: var(--font-stack-header, Arial, sans-serif);
+    color: rgb(var(--color-heading, 0, 0, 0));
+  }
+  
+  .typography-test-suite .body-text {
+    font-size: calc(((var(--font-body-text-desktop, 16px)) / (var(--font-base-size, 16))) * 1rem);
+    font-weight: var(--font-weight-body-text, 400);
+    line-height: var(--line-height-body-text-ratio, 1.6);
+    letter-spacing: var(--letter-spacing-body-text, 0);
+    font-family: var(--font-stack-body, Arial, sans-serif);
+    color: rgb(var(--color-foreground, 0, 0, 0));
+  }
+  
+  @media screen and (max-width: 767px) {
+    .typography-test-suite .main-heading {
+      font-size: calc(((var(--font-main-heading-mobile, 29px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+    .typography-test-suite .sub-heading {
+      font-size: calc(((var(--font-sub-heading-mobile, 18px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+    .typography-test-suite .body-text {
+      font-size: calc(((var(--font-body-text-mobile, 16px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    .typography-test-suite .main-heading {
+      font-size: calc(((var(--font-main-heading-tablet, 34px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+    .typography-test-suite .sub-heading {
+      font-size: calc(((var(--font-sub-heading-tablet, 20px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+    .typography-test-suite .body-text {
+      font-size: calc(((var(--font-body-text-tablet, 16px)) / (var(--font-base-size, 16))) * 1rem);
+    }
+  }
+</style>

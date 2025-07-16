@@ -45,7 +45,7 @@
     {%- if article_show_date -%}
       <span class="m-article-card__date m:text-color-body">{{ date }}</span>
     {%- endif -%}
-    <h3 class="m-article-card__title">
+    <h3 class="m-article-card__title sub-heading">
       <a href="{{ article.url }}">{{ article.title }}</a>
     </h3>
     {%- if article_show_excerpt and article_excerpt != blank -%}

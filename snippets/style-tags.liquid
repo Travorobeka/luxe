@@ -2,41 +2,57 @@
   assign custom_css = settings.custom_css
   assign typography_source = settings.typography_source | default: 'shopify'
 
-  # Get font sizes from individual controls
+  # Get font sizes from new three-tier typography system
   assign body_font_size = settings.body_font_size | default: 16
-  assign h1_font_size = settings.h1_font_size | default: 48
-  assign h2_font_size = settings.h2_font_size | default: 36
-  assign h3_font_size = settings.h3_font_size | default: 28
-  assign h4_font_size = settings.h4_font_size | default: 22
-  assign h5_font_size = settings.h5_font_size | default: 18
-  assign h6_font_size = settings.h6_font_size | default: 16
+  assign main_heading_font_size = settings.main_heading_font_size | default: 42
+  assign sub_heading_font_size = settings.sub_heading_font_size | default: 24
   
-  # Get font weights from individual controls
+  # Map legacy H1-H6 settings to new three-tier system for backward compatibility
+  assign h1_font_size = main_heading_font_size
+  assign h2_font_size = main_heading_font_size
+  assign h3_font_size = sub_heading_font_size
+  assign h4_font_size = sub_heading_font_size
+  assign h5_font_size = body_font_size
+  assign h6_font_size = body_font_size
+  
+  # Get font weights from new three-tier typography system
   assign body_font_weight = settings.body_font_weight | default: 400
-  assign h1_font_weight = settings.h1_font_weight | default: 700
-  assign h2_font_weight = settings.h2_font_weight | default: 600
-  assign h3_font_weight = settings.h3_font_weight | default: 600
-  assign h4_font_weight = settings.h4_font_weight | default: 600
-  assign h5_font_weight = settings.h5_font_weight | default: 600
-  assign h6_font_weight = settings.h6_font_weight | default: 600
+  assign main_heading_font_weight = settings.main_heading_font_weight | default: 700
+  assign sub_heading_font_weight = settings.sub_heading_font_weight | default: 600
   
-  # Get line heights from individual controls
+  # Map legacy H1-H6 weights to new three-tier system for backward compatibility
+  assign h1_font_weight = main_heading_font_weight
+  assign h2_font_weight = main_heading_font_weight
+  assign h3_font_weight = sub_heading_font_weight
+  assign h4_font_weight = sub_heading_font_weight
+  assign h5_font_weight = body_font_weight
+  assign h6_font_weight = body_font_weight
+  
+  # Get line heights from new three-tier typography system
   assign body_line_height = settings.body_line_height | default: 1.6
-  assign h1_line_height = settings.h1_line_height | default: 1.2
-  assign h2_line_height = settings.h2_line_height | default: 1.2
-  assign h3_line_height = settings.h3_line_height | default: 1.2
-  assign h4_line_height = settings.h4_line_height | default: 1.2
-  assign h5_line_height = settings.h5_line_height | default: 1.2
-  assign h6_line_height = settings.h6_line_height | default: 1.2
+  assign main_heading_line_height = settings.main_heading_line_height | default: 1.2
+  assign sub_heading_line_height = settings.sub_heading_line_height | default: 1.3
   
-  # Get letter spacing from individual controls
+  # Map legacy H1-H6 line heights to new three-tier system for backward compatibility
+  assign h1_line_height = main_heading_line_height
+  assign h2_line_height = main_heading_line_height
+  assign h3_line_height = sub_heading_line_height
+  assign h4_line_height = sub_heading_line_height
+  assign h5_line_height = body_line_height
+  assign h6_line_height = body_line_height
+  
+  # Get letter spacing from new three-tier typography system
   assign body_letter_spacing = settings.body_letter_spacing | default: 0
-  assign h1_letter_spacing = settings.h1_letter_spacing | default: 0
-  assign h2_letter_spacing = settings.h2_letter_spacing | default: 0
-  assign h3_letter_spacing = settings.h3_letter_spacing | default: 0
-  assign h4_letter_spacing = settings.h4_letter_spacing | default: 0
-  assign h5_letter_spacing = settings.h5_letter_spacing | default: 0
-  assign h6_letter_spacing = settings.h6_letter_spacing | default: 0
+  assign main_heading_letter_spacing = settings.main_heading_letter_spacing | default: 0
+  assign sub_heading_letter_spacing = settings.sub_heading_letter_spacing | default: 0
+  
+  # Map legacy H1-H6 letter spacing to new three-tier system for backward compatibility
+  assign h1_letter_spacing = main_heading_letter_spacing
+  assign h2_letter_spacing = main_heading_letter_spacing
+  assign h3_letter_spacing = sub_heading_letter_spacing
+  assign h4_letter_spacing = sub_heading_letter_spacing
+  assign h5_letter_spacing = body_letter_spacing
+  assign h6_letter_spacing = body_letter_spacing
   
   # Legacy support for existing settings
   if typography_source == 'shopify'
@@ -170,10 +186,27 @@
   	--bg-card-placeholder: rgba(243,243,243,1);
   	--arrow-select-box: url({{ 'ar-down.svg' | asset_url }});
 
-  	/* FONT SIZES */
+  	/* FONT SIZES - New Three-Tier Typography System */
   	--font-base-size: {{ body_font_size }}px;
   	--font-btn-size: {{ settings.btn_base_size }}px;
   	--font-btn-weight: {{ settings.btn_weight }};
+  	
+  	/* Main Heading Variables */
+  	--font-main-heading-desktop: {{ main_heading_font_size }}px;
+  	--font-main-heading-tablet: {{ main_heading_font_size | times: 0.80 | floor }}px;
+  	--font-main-heading-mobile: {{ main_heading_font_size | times: 0.70 | floor }}px;
+  	
+  	/* Sub Heading Variables */
+  	--font-sub-heading-desktop: {{ sub_heading_font_size }}px;
+  	--font-sub-heading-tablet: {{ sub_heading_font_size | times: 0.85 | floor }}px;
+  	--font-sub-heading-mobile: {{ sub_heading_font_size | times: 0.75 | floor }}px;
+  	
+  	/* Body Text Variables */
+  	--font-body-text-desktop: {{ body_font_size }}px;
+  	--font-body-text-tablet: {{ body_font_size }}px;
+  	--font-body-text-mobile: {{ body_font_size }}px;
+  	
+  	/* Legacy H1-H6 Variables for Backward Compatibility */
   	--font-h1-desktop: {{ h1_font_size }}px;
   	--font-h1-tablet: {{ h1_font_size | times: 0.70 | floor }}px;
   	--font-h1-mobile: {{ h1_font_size | times: 0.60 | floor }}px;
@@ -193,8 +226,13 @@
   	--font-h6-tablet: {{ h6_font_size | times: 0.80 | floor }}px;
   	--font-h6-mobile: {{ h6_font_size | times: 0.80 | floor }}px;
   	
-  	/* FONT WEIGHTS */
+  	/* FONT WEIGHTS - New Three-Tier Typography System */
   	--font-weight-body: {{ body_font_weight }};
+  	--font-weight-main-heading: {{ main_heading_font_weight }};
+  	--font-weight-sub-heading: {{ sub_heading_font_weight }};
+  	--font-weight-body-text: {{ body_font_weight }};
+  	
+  	/* Legacy H1-H6 Font Weights for Backward Compatibility */
   	--font-weight-h1: {{ h1_font_weight }};
   	--font-weight-h2: {{ h2_font_weight }};
   	--font-weight-h3: {{ h3_font_weight }};
@@ -202,9 +240,17 @@
   	--font-weight-h5: {{ h5_font_weight }};
   	--font-weight-h6: {{ h6_font_weight }};
   	
-  	/* LINE HEIGHTS */
+  	/* LINE HEIGHTS - New Three-Tier Typography System */
   	--line-height-body: {{ body_font_size | times: body_line_height | round }}px;
   	--line-height-body-ratio: {{ body_line_height }};
+  	--line-height-main-heading: {{ main_heading_font_size | times: main_heading_line_height | round }}px;
+  	--line-height-main-heading-ratio: {{ main_heading_line_height }};
+  	--line-height-sub-heading: {{ sub_heading_font_size | times: sub_heading_line_height | round }}px;
+  	--line-height-sub-heading-ratio: {{ sub_heading_line_height }};
+  	--line-height-body-text: {{ body_font_size | times: body_line_height | round }}px;
+  	--line-height-body-text-ratio: {{ body_line_height }};
+  	
+  	/* Legacy H1-H6 Line Heights for Backward Compatibility */
   	--line-height-h1: {{ h1_font_size | times: h1_line_height | round }}px;
   	--line-height-h1-ratio: {{ h1_line_height }};
   	--line-height-h2: {{ h2_font_size | times: h2_line_height | round }}px;
@@ -218,8 +264,13 @@
   	--line-height-h6: {{ h6_font_size | times: h6_line_height | round }}px;
   	--line-height-h6-ratio: {{ h6_line_height }};
   	
-  	/* LETTER SPACING */
+  	/* LETTER SPACING - New Three-Tier Typography System */
   	--letter-spacing-body: {{ body_letter_spacing }}px;
+  	--letter-spacing-main-heading: {{ main_heading_letter_spacing }}px;
+  	--letter-spacing-sub-heading: {{ sub_heading_letter_spacing }}px;
+  	--letter-spacing-body-text: {{ body_letter_spacing }}px;
+  	
+  	/* Legacy H1-H6 Letter Spacing for Backward Compatibility */
   	--letter-spacing-h1: {{ h1_letter_spacing }}px;
   	--letter-spacing-h2: {{ h2_letter_spacing }}px;
   	--letter-spacing-h3: {{ h3_letter_spacing }}px;

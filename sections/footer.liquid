@@ -564,7 +564,7 @@
     {% comment %} Newsletter Section {% endcomment %}
     {% if section.settings.show_newsletter %}
       <div class="footer-newsletter-{{ footer_id }}">
-        <h3 class="footer-title-{{ footer_id }} footer-newsletter-title-{{ footer_id }}">{{ section.settings.newsletter_title }}</h3>
+        <h3 class="footer-title-{{ footer_id }} footer-newsletter-title-{{ footer_id }} sub-heading">{{ section.settings.newsletter_title }}</h3>
         <p class="footer-newsletter-text-{{ footer_id }}">{{ section.settings.newsletter_text }}</p>
         
         {% form 'customer' %}
@@ -685,7 +685,7 @@
       {% if section.settings.show_company_info %}
         <div class="footer-column-{{ footer_id }}">
           {% if section.settings.company_display_option == 'title_only' or section.settings.company_display_option == 'both' %}
-            <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }}">{{ section.settings.company_title }}</h3>
+            <h3 class="footer-title-{{ footer_id }} footer-company-title-{{ footer_id }} sub-heading">{{ section.settings.company_title }}</h3>
           {% endif %}
           
           {% if section.settings.company_logo != blank and section.settings.company_logo != '' %}
@@ -749,7 +749,7 @@
               {% assign menu_display_title = section.settings[menu_title_key] | default: linklists[section.settings[menu_key]].title %}
               
               <div class="footer-menu-heading-{{ footer_id }}">
-                <h3 class="footer-title-{{ footer_id }} footer-menu-title-{{ footer_id }}">{{ menu_display_title }}</h3>
+                <h3 class="footer-title-{{ footer_id }} footer-menu-title-{{ footer_id }} sub-heading">{{ menu_display_title }}</h3>
                 <button
                   class="footer-menu-toggle-{{ footer_id }}"
                   aria-expanded="false"
@@ -795,7 +795,7 @@
         <div class="footer-column-{{ footer_id }}">
           <div class="footer-menu-wrapper-{{ footer_id }}">
             <div class="footer-menu-heading-{{ footer_id }}">
-              <h3 class="footer-title-{{ footer_id }}">{{ section.settings.contact_title }}</h3>
+              <h3 class="footer-title-{{ footer_id }} sub-heading">{{ section.settings.contact_title }}</h3>
               <button
                 class="footer-menu-toggle-{{ footer_id }}"
                 aria-expanded="false"
