@@ -1,0 +1,282 @@
+/* Advanced Typography Features */
+
+/* Font Loading Optimization */
+.fonts-loading body {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fonts-loaded body {
+  opacity: 1;
+}
+
+/* Variable Font Support */
+@supports (font-variation-settings: normal) {
+  .variable-font-enabled {
+    font-variation-settings: 
+      'wght' var(--font-weight-body, 400),
+      'wdth' var(--font-width, 100),
+      'slnt' var(--font-slant, 0);
+  }
+  
+  .variable-font-enabled h1,
+  .variable-font-enabled h2,
+  .variable-font-enabled h3,
+  .variable-font-enabled h4,
+  .variable-font-enabled h5,
+  .variable-font-enabled h6 {
+    font-variation-settings: 
+      'wght' var(--font-weight-header, 700),
+      'wdth' var(--font-width-header, 100),
+      'slnt' var(--font-slant-header, 0);
+  }
+}
+
+/* Advanced OpenType Features */
+.opentype-enabled {
+  /* Common ligatures */
+  font-variant-ligatures: common-ligatures;
+  
+  /* Kerning */
+  font-kerning: normal;
+  
+  /* Numeric variants */
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+/* Professional Typography Classes */
+.typography-professional {
+  /* Improved readability */
+  text-rendering: optimizeLegibility;
+  
+  /* Better spacing */
+  letter-spacing: -0.01em;
+  
+  /* Optical sizing for variable fonts */
+  font-optical-sizing: auto;
+}
+
+/* Heading Hierarchy with Dynamic Scaling */
+.dynamic-typography h1 {
+  font-size: clamp(
+    calc(var(--h1-font-size-min, 32px) * var(--typography-scale, 1)),
+    calc(var(--h1-font-size, 60px) * var(--typography-scale, 1)),
+    calc(var(--h1-font-size-max, 72px) * var(--typography-scale, 1))
+  );
+  line-height: 1.1;
+}
+
+.dynamic-typography h2 {
+  font-size: clamp(
+    calc(var(--h2-font-size-min, 24px) * var(--typography-scale, 1)),
+    calc(var(--h2-font-size, 42px) * var(--typography-scale, 1)),
+    calc(var(--h2-font-size-max, 56px) * var(--typography-scale, 1))
+  );
+  line-height: 1.2;
+}
+
+.dynamic-typography h3 {
+  font-size: clamp(
+    calc(var(--h3-font-size-min, 20px) * var(--typography-scale, 1)),
+    calc(var(--h3-font-size, 36px) * var(--typography-scale, 1)),
+    calc(var(--h3-font-size-max, 42px) * var(--typography-scale, 1))
+  );
+  line-height: 1.3;
+}
+
+.dynamic-typography h4 {
+  font-size: clamp(
+    calc(var(--h4-font-size-min, 18px) * var(--typography-scale, 1)),
+    calc(var(--h4-font-size, 24px) * var(--typography-scale, 1)),
+    calc(var(--h4-font-size-max, 32px) * var(--typography-scale, 1))
+  );
+  line-height: 1.4;
+}
+
+/* Responsive Line Height */
+.responsive-line-height {
+  line-height: calc(1em + 0.5rem);
+}
+
+/* Typography Presets */
+.typography-preset-compact {
+  --base-font-size: 14px;
+  --line-height-ratio: 1.4;
+  --paragraph-spacing: 0.75em;
+  --heading-spacing: 0.5em;
+}
+
+.typography-preset-comfortable {
+  --base-font-size: 18px;
+  --line-height-ratio: 1.8;
+  --paragraph-spacing: 1.5em;
+  --heading-spacing: 1em;
+}
+
+.typography-preset-accessible {
+  --base-font-size: 18px;
+  --line-height-ratio: 1.75;
+  --paragraph-spacing: 1.5em;
+  --heading-spacing: 1.2em;
+  --min-touch-target: 44px;
+}
+
+/* Font Pairing Styles */
+.font-pairing-modern-minimal {
+  --heading-letter-spacing: -0.02em;
+  --body-letter-spacing: -0.01em;
+  --heading-text-transform: none;
+}
+
+.font-pairing-classic-serif {
+  --heading-letter-spacing: -0.01em;
+  --body-letter-spacing: 0;
+  --heading-text-transform: none;
+  --drop-cap-enabled: true;
+}
+
+.font-pairing-elegant-fashion {
+  --heading-letter-spacing: 0.05em;
+  --body-letter-spacing: 0.02em;
+  --heading-text-transform: uppercase;
+}
+
+.font-pairing-luxury-premium {
+  --heading-letter-spacing: 0.1em;
+  --body-letter-spacing: 0.05em;
+  --heading-text-transform: uppercase;
+  --heading-font-weight: 300;
+}
+
+/* Drop Caps for Editorial Style */
+.drop-cap-enabled > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-stack-header);
+  font-size: 4em;
+  line-height: 0.8;
+  margin: 0.1em 0.1em 0 0;
+  font-weight: var(--font-weight-header--bolder, 700);
+}
+
+/* Advanced Text Utilities */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Optical Alignment */
+.optical-alignment-enabled h1,
+.optical-alignment-enabled h2,
+.optical-alignment-enabled h3,
+.optical-alignment-enabled blockquote {
+  hanging-punctuation: first last;
+}
+
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .fonts-loading body,
+  .fonts-loaded body {
+    transition: none;
+  }
+}
+
+/* Print Typography */
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+/* Dark Mode Typography Adjustments */
+@media (prefers-color-scheme: dark) {
+  .auto-adjust-contrast {
+    font-weight: calc(var(--font-weight-body, 400) - 100);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Accessibility Features */
+.high-contrast-mode {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+.dyslexia-friendly {
+  font-family: 'OpenDyslexic', sans-serif;
+  letter-spacing: 0.1em;
+  word-spacing: 0.2em;
+  line-height: 2;
+}
+
+/* Custom Font Loading States */
+.font-loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
+  background-size: 200% 100%;
+  animation: font-loading 1.5s ease-in-out infinite;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.fonts-loading .font-loading-indicator {
+  opacity: 1;
+}
+
+@keyframes font-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Typography Debug Mode */
+.typography-debug * {
+  outline: 1px dashed rgba(255, 0, 0, 0.3);
+}
+
+.typography-debug p {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.typography-debug h1,
+.typography-debug h2,
+.typography-debug h3,
+.typography-debug h4,
+.typography-debug h5,
+.typography-debug h6 {
+  background: rgba(0, 0, 255, 0.1);
+}
+
+/* Fluid Typography Utilities */
+.fluid-text-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+.fluid-text-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+.fluid-text-base { font-size: clamp(1rem, 3vw, 1.125rem); }
+.fluid-text-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
+.fluid-text-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+.fluid-text-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
+.fluid-text-3xl { font-size: clamp(2rem, 6vw, 3rem); }
+.fluid-text-4xl { font-size: clamp(2.5rem, 8vw, 4rem); }
+.fluid-text-5xl { font-size: clamp(3rem, 10vw, 5rem); }

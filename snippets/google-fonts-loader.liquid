@@ -1,0 +1,211 @@
+{% comment %}
+  Google Fonts Loader
+  Handles loading Google Fonts and font pairing templates
+{% endcomment %}
+
+{% liquid
+  assign font_source = settings.font_source | default: 'shopify'
+  assign font_template = settings.font_template | default: 'modern_minimal'
+  assign font_loading_strategy = settings.font_loading_strategy | default: 'swap'
+  
+  # Font pairing templates
+  case font_template
+    when 'modern_minimal'
+      assign template_heading_font = 'Inter:wght@400;500;600;700;800'
+      assign template_body_font = 'Inter:wght@300;400;500;600'
+      assign template_heading_family = 'Inter'
+      assign template_body_family = 'Inter'
+    when 'classic_serif'
+      assign template_heading_font = 'Playfair+Display:wght@400;700;900'
+      assign template_body_font = 'Source+Sans+Pro:wght@300;400;600;700'
+      assign template_heading_family = 'Playfair Display'
+      assign template_body_family = 'Source Sans Pro'
+    when 'tech_modern'
+      assign template_heading_font = 'Roboto:wght@300;400;500;700;900'
+      assign template_body_font = 'Roboto+Mono:wght@300;400;500;700'
+      assign template_heading_family = 'Roboto'
+      assign template_body_family = 'Roboto Mono'
+    when 'elegant_fashion'
+      assign template_heading_font = 'Cormorant+Garamond:wght@300;400;500;600;700'
+      assign template_body_font = 'Montserrat:wght@300;400;500;600'
+      assign template_heading_family = 'Cormorant Garamond'
+      assign template_body_family = 'Montserrat'
+    when 'playful_creative'
+      assign template_heading_font = 'Fredoka:wght@400;500;600;700'
+      assign template_body_font = 'Open+Sans:wght@300;400;600;700'
+      assign template_heading_family = 'Fredoka'
+      assign template_body_family = 'Open Sans'
+    when 'professional_corporate'
+      assign template_heading_font = 'Merriweather:wght@300;400;700;900'
+      assign template_body_font = 'Lato:wght@300;400;700;900'
+      assign template_heading_family = 'Merriweather'
+      assign template_body_family = 'Lato'
+    when 'luxury_premium'
+      assign template_heading_font = 'Bodoni+Moda:wght@400;500;600;700;800;900'
+      assign template_body_font = 'Raleway:wght@300;400;500;600;700'
+      assign template_heading_family = 'Bodoni Moda'
+      assign template_body_family = 'Raleway'
+    when 'clean_swiss'
+      assign template_heading_font = 'Work+Sans:wght@300;400;500;600;700;800'
+      assign template_body_font = 'Work+Sans:wght@300;400;500;600'
+      assign template_heading_family = 'Work Sans'
+      assign template_body_family = 'Work Sans'
+  endcase
+%}
+
+{% if font_source == 'google' %}
+  {% comment %} Load custom Google Fonts {% endcomment %}
+  {% liquid
+    assign google_heading_font = settings.google_font_heading | default: 'Roboto'
+    assign google_heading_weights = settings.google_font_heading_weights | default: '300,400,500,700'
+    assign google_body_font = settings.google_font_body | default: 'Open Sans'
+    assign google_body_weights = settings.google_font_body_weights | default: '300,400,600,700'
+    
+    # Format font names for URL
+    assign heading_font_url = google_heading_font | replace: ' ', '+'
+    assign body_font_url = google_body_font | replace: ' ', '+'
+    
+    # Format weights
+    assign heading_weights_formatted = google_heading_weights | split: ',' | join: ';'
+    assign body_weights_formatted = google_body_weights | split: ',' | join: ';'
+  %}
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  {% if google_heading_font == google_body_font %}
+    <link href="https://fonts.googleapis.com/css2?family={{ heading_font_url }}:wght@{{ heading_weights_formatted }};{{ body_weights_formatted }}&display={{ font_loading_strategy }}" rel="stylesheet">
+  {% else %}
+    <link href="https://fonts.googleapis.com/css2?family={{ heading_font_url }}:wght@{{ heading_weights_formatted }}&family={{ body_font_url }}:wght@{{ body_weights_formatted }}&display={{ font_loading_strategy }}" rel="stylesheet">
+  {% endif %}
+  
+  <style>
+    :root {
+      --font-stack-header: '{{ google_heading_font }}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-stack-body: '{{ google_body_font }}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-weight-header: {{ settings.custom_heading_weight | default: 400 }};
+      --font-weight-body: {{ settings.custom_body_weight | default: 400 }};
+    }
+  </style>
+
+{% elsif font_source == 'template' %}
+  {% comment %} Load font template {% endcomment %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  {% if template_heading_family == template_body_family %}
+    <link href="https://fonts.googleapis.com/css2?family={{ template_heading_font }}&display={{ font_loading_strategy }}" rel="stylesheet">
+  {% else %}
+    <link href="https://fonts.googleapis.com/css2?family={{ template_heading_font }}&family={{ template_body_font }}&display={{ font_loading_strategy }}" rel="stylesheet">
+  {% endif %}
+  
+  <style>
+    :root {
+      --font-stack-header: '{{ template_heading_family }}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-stack-body: '{{ template_body_family }}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-weight-header: {{ settings.custom_heading_weight | default: 400 }};
+      --font-weight-body: {{ settings.custom_body_weight | default: 400 }};
+    }
+  </style>
+{% endif %}
+
+{% comment %} Advanced typography features {% endcomment %}
+{% if settings.enable_font_smoothing %}
+  <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+{% endif %}
+
+{% if settings.enable_opentype_features %}
+  <style>
+    body {
+      font-feature-settings: {{ settings.opentype_features | default: 'liga, kern' }};
+    }
+  </style>
+{% endif %}
+
+{% if settings.enable_responsive_typography %}
+  <style>
+    {% assign min_scale = settings.responsive_scale_min | default: 0.8 %}
+    {% assign max_scale = settings.responsive_scale_max | default: 1.2 %}
+    
+    @media (max-width: 768px) {
+      :root {
+        --typography-scale: {{ min_scale }};
+      }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1440px) {
+      :root {
+        --typography-scale: 1;
+      }
+    }
+    
+    @media (min-width: 1441px) {
+      :root {
+        --typography-scale: {{ max_scale }};
+      }
+    }
+    
+    body {
+      font-size: calc({{ settings.type_base_size }}px * var(--typography-scale, 1));
+    }
+    
+    h1 { font-size: calc({{ settings.h1_font_size }}px * var(--typography-scale, 1)); }
+    h2 { font-size: calc({{ settings.h2_font_size }}px * var(--typography-scale, 1)); }
+    h3 { font-size: calc({{ settings.type_header_base_size }}px * var(--typography-scale, 1)); }
+    h4 { font-size: calc({{ settings.h4_font_size }}px * var(--typography-scale, 1)); }
+  </style>
+{% endif %}
+
+{% comment %} Typography presets {% endcomment %}
+{% if settings.enable_typography_presets %}
+  {% case settings.typography_preset %}
+    {% when 'compact' %}
+      <style>
+        :root {
+          --preset-base-size: 14px;
+          --preset-line-height-multiplier: 1.4;
+          --preset-heading-scale: 0.9;
+          --preset-spacing-scale: 0.8;
+        }
+      </style>
+    {% when 'comfortable' %}
+      <style>
+        :root {
+          --preset-base-size: 18px;
+          --preset-line-height-multiplier: 1.8;
+          --preset-heading-scale: 1.2;
+          --preset-spacing-scale: 1.3;
+        }
+      </style>
+    {% when 'accessible' %}
+      <style>
+        :root {
+          --preset-base-size: 18px;
+          --preset-line-height-multiplier: 1.75;
+          --preset-heading-scale: 1.15;
+          --preset-spacing-scale: 1.2;
+          --preset-min-contrast: 7;
+        }
+        
+        body {
+          font-size: var(--preset-base-size);
+          line-height: calc(var(--preset-base-size) * var(--preset-line-height-multiplier));
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+          line-height: 1.2;
+          margin-top: 1.5em;
+          margin-bottom: 0.75em;
+        }
+        
+        p {
+          margin-bottom: 1.5em;
+        }
+      </style>
+  {% endcase %}
+{% endif %}

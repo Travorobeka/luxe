@@ -555,6 +555,144 @@
       },
       {
         "type": "header",
+        "content": "ADVANCED TYPOGRAPHY"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_font_smoothing",
+        "label": "Enable font smoothing",
+        "default": true,
+        "info": "Improves font rendering on screens"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_responsive_typography",
+        "label": "Enable responsive typography",
+        "default": true,
+        "info": "Automatically adjust font sizes based on screen size"
+      },
+      {
+        "type": "range",
+        "id": "responsive_scale_min",
+        "label": "Minimum scale factor",
+        "default": 0.8,
+        "min": 0.5,
+        "max": 1,
+        "step": 0.05,
+        "info": "Scale factor for mobile devices"
+      },
+      {
+        "type": "range",
+        "id": "responsive_scale_max",
+        "label": "Maximum scale factor",
+        "default": 1.2,
+        "min": 1,
+        "max": 2,
+        "step": 0.05,
+        "info": "Scale factor for large screens"
+      },
+      {
+        "type": "header",
+        "content": "TYPOGRAPHY PRESETS"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_typography_presets",
+        "label": "Enable typography presets",
+        "default": false,
+        "info": "Override individual settings with preset configurations"
+      },
+      {
+        "type": "select",
+        "id": "typography_preset",
+        "label": "Typography style",
+        "default": "balanced",
+        "options": [
+          {
+            "value": "compact",
+            "label": "Compact - Smaller sizes, tighter spacing"
+          },
+          {
+            "value": "balanced",
+            "label": "Balanced - Default sizing"
+          },
+          {
+            "value": "comfortable",
+            "label": "Comfortable - Larger sizes, relaxed spacing"
+          },
+          {
+            "value": "accessible",
+            "label": "Accessible - WCAG AAA compliant sizing"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "FONT LOADING"
+      },
+      {
+        "type": "select",
+        "id": "font_loading_strategy",
+        "label": "Font loading strategy",
+        "default": "swap",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto - Browser decides"
+          },
+          {
+            "value": "block",
+            "label": "Block - Hide text until font loads"
+          },
+          {
+            "value": "swap",
+            "label": "Swap - Show fallback, then swap"
+          },
+          {
+            "value": "fallback",
+            "label": "Fallback - Quick swap with short block"
+          },
+          {
+            "value": "optional",
+            "label": "Optional - Use font only if cached"
+          }
+        ],
+        "info": "Controls how fonts are displayed while loading"
+      },
+      {
+        "type": "checkbox",
+        "id": "preload_fonts",
+        "label": "Preload critical fonts",
+        "default": true,
+        "info": "Improves performance by loading fonts early"
+      },
+      {
+        "type": "header",
+        "content": "FONT FEATURES"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_opentype_features",
+        "label": "Enable OpenType features",
+        "default": true,
+        "info": "Enables advanced typography features like ligatures"
+      },
+      {
+        "type": "text",
+        "id": "opentype_features",
+        "label": "OpenType feature settings",
+        "default": "liga, kern",
+        "info": "Comma-separated list (e.g., liga, kern, calt)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_variable_fonts",
+        "label": "Use variable fonts when available",
+        "default": false,
+        "info": "Enables smoother weight transitions and smaller file sizes"
+      },
+      {
+        "type": "header",
         "content": "INPUTS"
       },
       {

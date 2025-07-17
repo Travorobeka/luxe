@@ -1,4 +1,5 @@
 {% liquid
+  assign font_source = settings.font_source | default: 'shopify'
   assign header_font = settings.type_header_font
   assign header_font_bolder = header_font | font_modify: 'weight', 'bolder'
   assign header_font_lighter = header_font | font_modify: 'weight', '-100'
@@ -13,20 +14,28 @@
   assign custom_body_font = settings.custom_body_font
 %}
 
-{%- unless use_custom_font_body or settings.type_base_font.system? -%}
-  {% comment %} theme-check-disable {% endcomment %}
-  <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
-  <link rel="preload" as="font" href="{{ base_font_bold | font_url }}" type="font/woff2" crossorigin>
-  {% comment %} theme-check-enable {% endcomment %}
-{%- endunless -%}
+{% comment %} Include Google Fonts loader if needed {% endcomment %}
+{% if font_source == 'google' or font_source == 'template' %}
+  {% render 'google-fonts-loader' %}
+{% endif %}
 
-{%- unless use_custom_font_heading or settings.type_header_font.system? -%}
-  {% comment %} theme-check-disable {% endcomment %}
-  <link rel="preload" as="font" href="{{ header_font | font_url }}" type="font/woff2" crossorigin>
-  {% comment %} theme-check-enable {% endcomment %}
-{%- endunless -%}
+{% if font_source == 'shopify' or font_source == 'custom' %}
+  {%- unless use_custom_font_body or settings.type_base_font.system? -%}
+    {% comment %} theme-check-disable {% endcomment %}
+    <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" href="{{ base_font_bold | font_url }}" type="font/woff2" crossorigin>
+    {% comment %} theme-check-enable {% endcomment %}
+  {%- endunless -%}
+
+  {%- unless use_custom_font_heading or settings.type_header_font.system? -%}
+    {% comment %} theme-check-disable {% endcomment %}
+    <link rel="preload" as="font" href="{{ header_font | font_url }}" type="font/woff2" crossorigin>
+    {% comment %} theme-check-enable {% endcomment %}
+  {%- endunless -%}
+{% endif %}
 
 {%- capture typo_settings -%}
+{% if font_source == 'shopify' or font_source == 'custom' %}
 {%- if use_custom_font_heading == true and custom_heading_font != blank -%}
 {%- assign heading_fonts = custom_heading_font | newline_to_br | split: '<br />' -%}
 {%- for link in heading_fonts -%}
@@ -103,6 +112,7 @@
   --font-weight-body: {{ base_font.weight }};
 }
 {%- endif -%}
+{% endif %}
 {%- endcapture -%}
 
 <style>
