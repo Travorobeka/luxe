@@ -197,9 +197,11 @@
   <noscript>{{ 'gift-wrapping.css' | asset_url | stylesheet_tag }}</noscript>
 {%- endif -%}
 <link rel="stylesheet" href="{{ 'typography-advanced.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'typography-overrides.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'typography-advanced.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'typography-overrides.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'custom-style.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'custom.css' | asset_url | stylesheet_tag }}</noscript>
 

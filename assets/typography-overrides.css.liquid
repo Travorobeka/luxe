@@ -1,0 +1,420 @@
+{% comment %}
+  Typography Override System
+  This file applies typography customizations from theme settings
+  and overrides any hardcoded styles in sections, snippets, and templates
+{% endcomment %}
+
+{%- liquid
+  assign override_enabled = settings.enable_typography_override
+  assign override_priority = settings.typography_override_priority
+  
+  if override_priority == 'important'
+    assign important = ' !important'
+  else
+    assign important = ''
+  endif
+-%}
+
+{% if override_enabled %}
+/* ============================================
+   TYPOGRAPHY OVERRIDE SYSTEM
+   ============================================ */
+
+/* Base Typography Variables */
+:root {
+  /* Heading (H1-H2) Variables */
+  --heading-font-size-h1: {{ settings.h1_font_size }}px;
+  --heading-font-size-h2: {{ settings.h2_font_size }}px;
+  --heading-font-weight: {{ settings.heading_font_weight }};
+  --heading-letter-spacing: {{ settings.heading_letter_spacing }}px;
+  --heading-text-transform: {{ settings.heading_text_transform }};
+  --heading-text-align: {{ settings.heading_text_align }};
+  --heading-padding-top: {{ settings.heading_padding_top }}px;
+  --heading-padding-bottom: {{ settings.heading_padding_bottom }}px;
+  
+  /* Subheading (H3-H4) Variables */
+  --subheading-font-size-h3: {{ settings.type_header_base_size }}px;
+  --subheading-font-size-h4: {{ settings.h4_font_size }}px;
+  --subheading-font-weight: {{ settings.subheading_font_weight }};
+  --subheading-letter-spacing: {{ settings.subheading_letter_spacing }}px;
+  --subheading-text-transform: {{ settings.subheading_text_transform }};
+  --subheading-text-align: {{ settings.subheading_text_align }};
+  --subheading-padding-top: {{ settings.subheading_padding_top }}px;
+  --subheading-padding-bottom: {{ settings.subheading_padding_bottom }}px;
+  
+  /* Description/Text (H5-H6, P, SPAN) Variables */
+  --text-font-size-h5: {{ settings.h5_font_size }}px;
+  --text-font-size-h6: {{ settings.h6_font_size }}px;
+  --text-font-size-base: {{ settings.type_base_size }}px;
+  --text-font-weight: {{ settings.text_font_weight }};
+  --text-letter-spacing: {{ settings.text_letter_spacing }}px;
+  --text-text-transform: {{ settings.text_text_transform }};
+  --text-text-align: {{ settings.text_text_align }};
+  --text-padding-top: {{ settings.text_padding_top }}px;
+  --text-padding-bottom: {{ settings.text_padding_bottom }}px;
+  --text-line-height: {{ settings.type_base_line_height }}px;
+}
+
+/* ============================================
+   HEADING STYLES (H1-H2)
+   ============================================ */
+
+/* H1 Overrides */
+h1,
+.h1,
+[class*="heading"] h1,
+[class*="title"] h1,
+[class*="hero"] h1,
+[class*="banner"] h1,
+section h1,
+div h1,
+header h1,
+main h1,
+article h1 {
+  font-size: var(--heading-font-size-h1){{ important }};
+  font-weight: var(--heading-font-weight){{ important }};
+  letter-spacing: var(--heading-letter-spacing){{ important }};
+  text-transform: var(--heading-text-transform){{ important }};
+  text-align: var(--heading-text-align){{ important }};
+  padding-top: var(--heading-padding-top){{ important }};
+  padding-bottom: var(--heading-padding-bottom){{ important }};
+}
+
+/* H2 Overrides */
+h2,
+.h2,
+[class*="heading"] h2,
+[class*="title"] h2,
+[class*="subtitle"] h2,
+[class*="section"] h2,
+section h2,
+div h2,
+header h2,
+main h2,
+article h2 {
+  font-size: var(--heading-font-size-h2){{ important }};
+  font-weight: var(--heading-font-weight){{ important }};
+  letter-spacing: var(--heading-letter-spacing){{ important }};
+  text-transform: var(--heading-text-transform){{ important }};
+  text-align: var(--heading-text-align){{ important }};
+  padding-top: var(--heading-padding-top){{ important }};
+  padding-bottom: var(--heading-padding-bottom){{ important }};
+}
+
+/* ============================================
+   SUBHEADING STYLES (H3-H4)
+   ============================================ */
+
+/* H3 Overrides */
+h3,
+.h3,
+[class*="subheading"] h3,
+[class*="subtitle"] h3,
+[class*="card"] h3,
+[class*="product"] h3,
+section h3,
+div h3,
+header h3,
+main h3,
+article h3 {
+  font-size: var(--subheading-font-size-h3){{ important }};
+  font-weight: var(--subheading-font-weight){{ important }};
+  letter-spacing: var(--subheading-letter-spacing){{ important }};
+  text-transform: var(--subheading-text-transform){{ important }};
+  text-align: var(--subheading-text-align){{ important }};
+  padding-top: var(--subheading-padding-top){{ important }};
+  padding-bottom: var(--subheading-padding-bottom){{ important }};
+}
+
+/* H4 Overrides */
+h4,
+.h4,
+[class*="subheading"] h4,
+[class*="subtitle"] h4,
+[class*="card"] h4,
+[class*="product"] h4,
+section h4,
+div h4,
+header h4,
+main h4,
+article h4 {
+  font-size: var(--subheading-font-size-h4){{ important }};
+  font-weight: var(--subheading-font-weight){{ important }};
+  letter-spacing: var(--subheading-letter-spacing){{ important }};
+  text-transform: var(--subheading-text-transform){{ important }};
+  text-align: var(--subheading-text-align){{ important }};
+  padding-top: var(--subheading-padding-top){{ important }};
+  padding-bottom: var(--subheading-padding-bottom){{ important }};
+}
+
+/* ============================================
+   DESCRIPTION/TEXT STYLES (H5-H6, P, SPAN)
+   ============================================ */
+
+/* H5 Overrides */
+h5,
+.h5,
+[class*="description"] h5,
+[class*="text"] h5,
+[class*="content"] h5,
+section h5,
+div h5,
+header h5,
+main h5,
+article h5 {
+  font-size: var(--text-font-size-h5){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  text-align: var(--text-text-align){{ important }};
+  padding-top: var(--text-padding-top){{ important }};
+  padding-bottom: var(--text-padding-bottom){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+/* H6 Overrides */
+h6,
+.h6,
+[class*="description"] h6,
+[class*="text"] h6,
+[class*="content"] h6,
+section h6,
+div h6,
+header h6,
+main h6,
+article h6 {
+  font-size: var(--text-font-size-h6){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  text-align: var(--text-text-align){{ important }};
+  padding-top: var(--text-padding-top){{ important }};
+  padding-bottom: var(--text-padding-bottom){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+/* Paragraph Overrides */
+p,
+.p,
+[class*="description"] p,
+[class*="text"] p,
+[class*="content"] p,
+[class*="body"] p,
+[class*="excerpt"] p,
+section p,
+div p,
+header p,
+main p,
+article p,
+li p,
+td p,
+blockquote p {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  text-align: var(--text-text-align){{ important }};
+  padding-top: var(--text-padding-top){{ important }};
+  padding-bottom: var(--text-padding-bottom){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+/* Span and General Text Overrides */
+span,
+.text,
+[class*="text-"] span,
+[class*="description"] span,
+[class*="content"] span,
+[class*="body"] span,
+section span,
+div span,
+header span,
+main span,
+article span,
+li span,
+td span,
+a span,
+button span,
+label span {
+  font-size: inherit{{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+}
+
+/* List Item Text */
+li,
+ul li,
+ol li,
+[class*="list"] li,
+[class*="menu"] li,
+nav li {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+/* Table Cell Text */
+td,
+th,
+table td,
+table th,
+[class*="table"] td,
+[class*="table"] th {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+}
+
+/* ============================================
+   SPECIFIC OVERRIDES FOR COMMON PATTERNS
+   ============================================ */
+
+/* Product Titles */
+.product-title,
+.product__title,
+.product-card__title,
+[class*="product"] [class*="title"],
+[class*="product"] h1,
+[class*="product"] h2,
+[class*="product"] h3 {
+  font-weight: var(--subheading-font-weight){{ important }};
+  letter-spacing: var(--subheading-letter-spacing){{ important }};
+  text-transform: var(--subheading-text-transform){{ important }};
+  text-align: var(--subheading-text-align){{ important }};
+}
+
+/* Section Headings */
+.section-header__title,
+.section__title,
+[class*="section"] [class*="title"],
+[class*="section"] > h1,
+[class*="section"] > h2 {
+  font-weight: var(--heading-font-weight){{ important }};
+  letter-spacing: var(--heading-letter-spacing){{ important }};
+  text-transform: var(--heading-text-transform){{ important }};
+  text-align: var(--heading-text-align){{ important }};
+  padding-top: var(--heading-padding-top){{ important }};
+  padding-bottom: var(--heading-padding-bottom){{ important }};
+}
+
+/* Card Content */
+.card__content,
+.card__description,
+[class*="card"] p,
+[class*="card"] span {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+/* Hero/Banner Text */
+.hero__title,
+.banner__title,
+[class*="hero"] h1,
+[class*="banner"] h1 {
+  font-size: var(--heading-font-size-h1){{ important }};
+  font-weight: var(--heading-font-weight){{ important }};
+  letter-spacing: var(--heading-letter-spacing){{ important }};
+  text-transform: var(--heading-text-transform){{ important }};
+  text-align: var(--heading-text-align){{ important }};
+}
+
+/* Footer Text */
+.footer__content,
+footer p,
+footer span,
+footer li,
+[class*="footer"] p,
+[class*="footer"] span {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+}
+
+/* Navigation Text */
+.nav__link,
+.navigation__link,
+[class*="nav"] a,
+[class*="menu"] a {
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+}
+
+/* Form Labels and Inputs */
+label,
+.label,
+[class*="form"] label,
+input::placeholder,
+textarea::placeholder {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+
+@media screen and (max-width: 749px) {
+  :root {
+    /* Reduce font sizes on mobile */
+    --heading-font-size-h1: {{ settings.h1_font_size | times: 0.8 }}px;
+    --heading-font-size-h2: {{ settings.h2_font_size | times: 0.8 }}px;
+    --subheading-font-size-h3: {{ settings.type_header_base_size | times: 0.85 }}px;
+    --subheading-font-size-h4: {{ settings.h4_font_size | times: 0.85 }}px;
+    --text-font-size-h5: {{ settings.h5_font_size | times: 0.9 }}px;
+    --text-font-size-h6: {{ settings.h6_font_size | times: 0.9 }}px;
+    --text-font-size-base: {{ settings.type_base_size | times: 0.9 }}px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  :root {
+    /* Increase font sizes on large screens */
+    --heading-font-size-h1: {{ settings.h1_font_size | times: 1.1 }}px;
+    --heading-font-size-h2: {{ settings.h2_font_size | times: 1.1 }}px;
+    --subheading-font-size-h3: {{ settings.type_header_base_size | times: 1.05 }}px;
+    --subheading-font-size-h4: {{ settings.h4_font_size | times: 1.05 }}px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Force typography styles */
+.force-heading-style {
+  font-size: var(--heading-font-size-h1){{ important }};
+  font-weight: var(--heading-font-weight){{ important }};
+  letter-spacing: var(--heading-letter-spacing){{ important }};
+  text-transform: var(--heading-text-transform){{ important }};
+  text-align: var(--heading-text-align){{ important }};
+}
+
+.force-subheading-style {
+  font-size: var(--subheading-font-size-h3){{ important }};
+  font-weight: var(--subheading-font-weight){{ important }};
+  letter-spacing: var(--subheading-letter-spacing){{ important }};
+  text-transform: var(--subheading-text-transform){{ important }};
+  text-align: var(--subheading-text-align){{ important }};
+}
+
+.force-text-style {
+  font-size: var(--text-font-size-base){{ important }};
+  font-weight: var(--text-font-weight){{ important }};
+  letter-spacing: var(--text-letter-spacing){{ important }};
+  text-transform: var(--text-text-transform){{ important }};
+  text-align: var(--text-text-align){{ important }};
+  line-height: var(--text-line-height){{ important }};
+}
+
+{% endif %}

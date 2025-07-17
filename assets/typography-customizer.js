@@ -16,6 +16,7 @@ class TypographyCustomizer {
       document.addEventListener('shopify:section:load', () => this.updateTypography());
       document.addEventListener('shopify:section:select', () => this.updateTypography());
       this.setupFontPreview();
+      this.setupTypographyOverridePreview();
     }
   }
 
@@ -241,6 +242,63 @@ class TypographyCustomizer {
       console.error('Error fetching Google Fonts:', error);
       return [];
     }
+  }
+
+  setupTypographyOverridePreview() {
+    // Listen for changes to typography override settings
+    if (!window.Shopify || !window.Shopify.designMode) return;
+
+    // Create a style element for dynamic updates
+    const styleId = 'typography-override-preview';
+    let styleEl = document.getElementById(styleId);
+    
+    if (!styleEl) {
+      styleEl = document.createElement('style');
+      styleEl.id = styleId;
+      document.head.appendChild(styleEl);
+    }
+
+    // Function to update CSS variables
+    const updateTypographyVariables = () => {
+      const settings = window.theme?.settings || {};
+      
+      // Update CSS variables for live preview
+      const cssVars = `
+        :root {
+          /* Heading Variables */
+          --heading-font-weight: ${settings.heading_font_weight || '700'};
+          --heading-letter-spacing: ${settings.heading_letter_spacing || '0'}px;
+          --heading-text-transform: ${settings.heading_text_transform || 'none'};
+          --heading-text-align: ${settings.heading_text_align || 'left'};
+          --heading-padding-top: ${settings.heading_padding_top || '0'}px;
+          --heading-padding-bottom: ${settings.heading_padding_bottom || '20'}px;
+          
+          /* Subheading Variables */
+          --subheading-font-weight: ${settings.subheading_font_weight || '600'};
+          --subheading-letter-spacing: ${settings.subheading_letter_spacing || '0'}px;
+          --subheading-text-transform: ${settings.subheading_text_transform || 'none'};
+          --subheading-text-align: ${settings.subheading_text_align || 'left'};
+          --subheading-padding-top: ${settings.subheading_padding_top || '0'}px;
+          --subheading-padding-bottom: ${settings.subheading_padding_bottom || '15'}px;
+          
+          /* Text Variables */
+          --text-font-weight: ${settings.text_font_weight || '400'};
+          --text-letter-spacing: ${settings.text_letter_spacing || '0'}px;
+          --text-text-transform: ${settings.text_text_transform || 'none'};
+          --text-text-align: ${settings.text_text_align || 'left'};
+          --text-padding-top: ${settings.text_padding_top || '0'}px;
+          --text-padding-bottom: ${settings.text_padding_bottom || '10'}px;
+        }
+      `;
+      
+      styleEl.textContent = cssVars;
+    };
+
+    // Initial update
+    updateTypographyVariables();
+
+    // Listen for setting changes
+    document.addEventListener('shopify:settings:update', updateTypographyVariables);
   }
 }
 
