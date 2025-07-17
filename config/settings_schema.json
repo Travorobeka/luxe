@@ -120,6 +120,117 @@
       },
       {
         "type": "header",
+        "content": "FONT SOURCE"
+      },
+      {
+        "type": "radio",
+        "id": "font_source",
+        "label": "Font source",
+        "default": "shopify",
+        "options": [
+          {
+            "value": "shopify",
+            "label": "Shopify fonts"
+          },
+          {
+            "value": "google",
+            "label": "Google fonts"
+          },
+          {
+            "value": "custom",
+            "label": "Custom fonts"
+          },
+          {
+            "value": "template",
+            "label": "Font pairing templates"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "FONT PAIRING TEMPLATES",
+        "info": "Professional font combinations that work well together"
+      },
+      {
+        "type": "select",
+        "id": "font_template",
+        "label": "Select font pairing",
+        "default": "modern_minimal",
+        "options": [
+          {
+            "value": "modern_minimal",
+            "label": "Modern Minimal - Inter + Inter"
+          },
+          {
+            "value": "classic_serif",
+            "label": "Classic Editorial - Playfair Display + Source Sans Pro"
+          },
+          {
+            "value": "tech_modern",
+            "label": "Tech Modern - Roboto + Roboto Mono"
+          },
+          {
+            "value": "elegant_fashion",
+            "label": "Elegant Fashion - Cormorant Garamond + Montserrat"
+          },
+          {
+            "value": "playful_creative",
+            "label": "Playful Creative - Fredoka + Open Sans"
+          },
+          {
+            "value": "professional_corporate",
+            "label": "Professional Corporate - Lato + Merriweather"
+          },
+          {
+            "value": "luxury_premium",
+            "label": "Luxury Premium - Bodoni Moda + Raleway"
+          },
+          {
+            "value": "clean_swiss",
+            "label": "Clean Swiss - Helvetica Neue + Helvetica Neue"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "GOOGLE FONTS"
+      },
+      {
+        "type": "text",
+        "id": "google_fonts_api_key",
+        "label": "Google Fonts API Key (Optional)",
+        "info": "Get your API key from Google Fonts Developer API. Leave empty to use default fonts."
+      },
+      {
+        "type": "text",
+        "id": "google_font_heading",
+        "label": "Heading font family",
+        "default": "Roboto",
+        "info": "Enter Google Font name exactly as shown on Google Fonts"
+      },
+      {
+        "type": "text",
+        "id": "google_font_heading_weights",
+        "label": "Heading font weights",
+        "default": "300,400,500,700",
+        "info": "Comma-separated weights (e.g., 300,400,700)"
+      },
+      {
+        "type": "text",
+        "id": "google_font_body",
+        "label": "Body font family",
+        "default": "Open Sans",
+        "info": "Enter Google Font name exactly as shown on Google Fonts"
+      },
+      {
+        "type": "text",
+        "id": "google_font_body_weights",
+        "label": "Body font weights",
+        "default": "300,400,600,700",
+        "info": "Comma-separated weights (e.g., 300,400,700)"
+      },
+      {
+        "type": "header",
         "content": "BODY TEXT"
       },
       {
