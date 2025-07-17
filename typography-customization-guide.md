@@ -1,191 +1,171 @@
-# Typography Customization Guide
+# Typography Customization Guide - Streamlined Version
 
 ## Overview
 
-This Shopify theme now includes comprehensive typography customization features that allow you to control the appearance of all text elements throughout your store. These settings override any hardcoded typography styles in sections, snippets, and templates.
+This Shopify theme includes a comprehensive yet streamlined typography customization system that provides powerful control over all text elements while maintaining simplicity and performance.
 
-## Typography Hierarchy
+## Key Features
 
-The typography system is organized into three main categories:
+### 1. **Unified Typography Control**
+- Single location for all typography settings
+- Intelligent inheritance system reduces redundancy
+- Global settings that cascade throughout the theme
 
-1. **Headings (H1-H2)**: Primary page titles and major section headings
-2. **Subheadings (H3-H4)**: Secondary titles and subsection headings
-3. **Description/Text (H5-H6, P, SPAN)**: Body text, descriptions, and general content
+### 2. **Smart Defaults**
+- "Inherit" options prevent unnecessary overrides
+- Responsive scaling built-in
+- Performance-optimized CSS output
+
+### 3. **Flexible Override System**
+- Enable/disable global overrides
+- Option to force override inline styles
+- Utility classes for exceptions
 
 ## Accessing Typography Settings
 
-1. Go to your Shopify Admin
-2. Navigate to **Online Store > Themes**
-3. Click **Customize** on your active theme
-4. Go to **Theme Settings > Typography**
-5. Scroll down to find the **COMPREHENSIVE TYPOGRAPHY CUSTOMIZATION** section
+1. Go to **Online Store > Themes**
+2. Click **Customize**
+3. Navigate to **Theme Settings > Typography**
+4. Scroll to **ADVANCED TYPOGRAPHY CUSTOMIZATION**
 
-## Available Settings
+## Settings Structure
 
-### For Each Typography Category
+### Font Sizes
+All heading sizes (H1-H6) are controlled in the main typography section:
+- **H1-H4**: Already present in original settings
+- **H5-H6**: Added for complete control
 
-Each category (Headings, Subheadings, Description/Text) includes the following customization options:
+### Global Typography Styles
+Universal settings that apply to all text:
+- **Text Transform**: Apply uppercase, lowercase, or capitalize globally
+- **Text Alignment**: Set default alignment (with "inherit" option)
 
-1. **Font Size**: Control the size of the text
-   - H1: 20-120px
-   - H2: 20-100px
-   - H3: 14-80px
-   - H4: 14-60px
-   - H5: 12-40px
-   - H6: 12-36px
-   - Base text: 14-20px
+### Heading Styles (H1-H4)
+Applies to all heading elements:
+- **Font Weight**: With "Use font default" option
+- **Letter Spacing**: -2px to 5px
+- **Text Transform**: Can inherit from global or override
 
-2. **Font Weight**: Choose from 9 weight options
-   - 100 (Thin)
-   - 200 (Extra-light)
-   - 300 (Light)
-   - 400 (Regular)
-   - 500 (Medium)
-   - 600 (Semi-bold)
-   - 700 (Bold)
-   - 800 (Extra-bold)
-   - 900 (Black)
+### Body Text Styles
+Controls paragraphs and general text:
+- **Font Weight Override**: Only when needed
+- **Letter Spacing**: Subtle adjustments (-1px to 2px)
 
-3. **Letter Spacing**: Adjust the space between characters
-   - Headings: -5px to 10px
-   - Subheadings: -5px to 10px
-   - Text: -2px to 5px
+### Spacing
+Simplified spacing controls:
+- **Space below headings**: Universal heading margin
+- **Space between paragraphs**: Consistent paragraph spacing
 
-4. **Text Transform**: Control capitalization
-   - None (default)
-   - UPPERCASE
-   - lowercase
-   - Capitalize
-
-5. **Text Alignment**: Set text alignment
-   - Left
-   - Center
-   - Right
-   - Justify
-
-6. **Padding**: Control spacing above and below text
-   - Top padding: 0-50px (varies by category)
-   - Bottom padding: 0-50px (varies by category)
-
-### Typography Override Settings
-
-1. **Enable Typography Override**: Toggle to activate/deactivate the override system
-2. **Override Priority**: Choose how styles are applied
-   - Normal: Uses CSS specificity
-   - Important: Uses !important declarations (recommended)
+### Override Controls
+- **Enable global typography override**: Master on/off switch
+- **Override inline styles**: Use with caution for stubborn elements
 
 ## How It Works
 
-### Override System
+### Inheritance Hierarchy
 
-When enabled, the typography override system:
+1. **Global Settings** → Apply to all elements
+2. **Category Settings** → Override globals for specific element types
+3. **Element Defaults** → Fallback to theme/browser defaults
 
-1. Applies your custom settings to ALL matching elements throughout the theme
-2. Overrides any hardcoded styles in sections, snippets, and templates
-3. Maintains consistency across your entire store
+### Smart CSS Generation
 
-### Elements Affected
+The system only generates CSS for:
+- Settings that differ from defaults
+- Non-"inherit" values
+- Enabled override options
 
-The system automatically applies settings to:
-
-- All heading tags (h1-h6)
-- Paragraphs and spans
-- Product titles and descriptions
-- Section headings
-- Card content
-- Navigation text
-- Footer content
-- Form labels
-- List items
-- Table cells
+This results in smaller CSS files and better performance.
 
 ### Responsive Behavior
 
-Typography automatically adjusts for different screen sizes:
-
-- **Mobile (< 750px)**: Font sizes reduced by 10-20%
-- **Desktop**: Uses your configured sizes
-- **Large screens (> 1920px)**: Font sizes increased by 5-10%
+Automatic adjustments:
+- **Mobile**: 15% reduction in font sizes
+- **Large screens**: 10% increase for headings
+- **Spacing**: Proportional scaling
 
 ## Best Practices
 
-### 1. Maintain Hierarchy
+### 1. Start with Globals
+Set global text transform and alignment first, then override only where needed.
 
-Ensure your font sizes create a clear visual hierarchy:
-- H1 should be the largest
-- Each subsequent heading level should be smaller
-- Body text should be easily readable
+### 2. Use "Inherit" Wisely
+Leave settings on "inherit" unless you specifically need to change them.
 
-### 2. Consider Readability
+### 3. Test Responsively
+Always preview on mobile, tablet, and desktop to ensure readability.
 
-- Use appropriate line height for body text (1.5-1.8x font size)
-- Avoid extreme letter spacing values
-- Test on multiple devices
+### 4. Avoid Over-Styling
+Less is more - too many customizations can harm readability and brand consistency.
 
-### 3. Brand Consistency
+## Utility Classes
 
-- Choose font weights that match your brand personality
-- Use text transform sparingly (uppercase can reduce readability)
-- Maintain consistent alignment patterns
+For manual control in specific situations:
 
-### 4. Performance
+```html
+<!-- Force heading style -->
+<div class="force-heading-style">Styled like a heading</div>
 
-- The override system uses CSS custom properties for optimal performance
-- Changes apply instantly without page reload
-- No JavaScript required for basic functionality
+<!-- Force body style -->
+<div class="force-body-style">Styled like body text</div>
+
+<!-- Reset all typography -->
+<div class="typography-reset">Back to defaults</div>
+```
 
 ## Troubleshooting
 
-### Changes Not Appearing
+### Settings Not Applying
 
-1. Ensure "Enable typography override" is checked
-2. Clear your browser cache
-3. Check that "Override priority" is set to "Important"
+1. Check "Enable global typography override" is ON
+2. Clear browser cache
+3. Verify the element isn't using inline styles
 
-### Specific Elements Not Updating
+### Inline Styles Not Overriding
 
-Some third-party apps or custom code may use inline styles. In these cases:
-1. Contact the app developer
-2. Use the utility classes provided (see below)
+1. Enable "Override inline styles" (use sparingly)
+2. Use utility classes for specific elements
+3. Contact app developers for third-party content
 
-### Utility Classes
+### Performance Issues
 
-For manual override of specific elements, use these classes:
+1. Disable unused features
+2. Use "inherit" for unchanged values
+3. Minimize use of "Override inline styles"
 
-- `.force-heading-style`: Apply heading typography
-- `.force-subheading-style`: Apply subheading typography
-- `.force-text-style`: Apply text typography
+## CSS Variables Reference
 
-Example:
-```html
-<div class="force-heading-style">This will use heading typography</div>
-```
-
-## Advanced Usage
-
-### Custom CSS
-
-You can reference the CSS variables in your custom CSS:
+Access these in custom CSS:
 
 ```css
-.my-custom-element {
-  font-size: var(--heading-font-size-h1);
-  font-weight: var(--heading-font-weight);
-  letter-spacing: var(--heading-letter-spacing);
-}
+/* Global */
+--global-text-transform
+--global-text-align
+
+/* Headings */
+--heading-font-weight
+--heading-letter-spacing
+--heading-text-transform
+--heading-margin-bottom
+
+/* Body Text */
+--body-font-weight
+--body-letter-spacing
+--paragraph-margin-bottom
+
+/* Font Sizes */
+--heading-font-size-h1 through h6
+--text-font-size-base
+--text-line-height
 ```
 
-### Available CSS Variables
+## Migration from Previous Version
 
-- `--heading-font-size-h1`
-- `--heading-font-size-h2`
-- `--subheading-font-size-h3`
-- `--subheading-font-size-h4`
-- `--text-font-size-h5`
-- `--text-font-size-h6`
-- `--text-font-size-base`
-- And many more...
+If upgrading from the complex version:
+1. Previous font size settings are preserved
+2. Simplified controls replace repetitive options
+3. Better performance with same flexibility
 
 ## Support
 
-For additional help or to report issues with the typography customization system, please contact your theme developer or Shopify support.
+For assistance with the typography system, please refer to your theme documentation or contact Shopify support.

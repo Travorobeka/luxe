@@ -435,16 +435,7 @@
         "step": 1,
         "unit": "px"
       },
-      {
-        "type": "range",
-        "id": "type_header_spacing",
-        "label": "Letter spacing",
-        "default": 0,
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
+
       {
         "type": "header",
         "content": "BUTTONS"
@@ -753,15 +744,15 @@
       },
       {
         "type": "header",
-        "content": "COMPREHENSIVE TYPOGRAPHY CUSTOMIZATION"
+        "content": "ADVANCED TYPOGRAPHY CUSTOMIZATION"
       },
       {
         "type": "paragraph",
-        "content": "Advanced typography controls for headings, subheadings, descriptions, and text throughout the theme."
+        "content": "Comprehensive controls for all text elements. Enable override to apply these settings throughout your entire theme."
       },
       {
         "type": "header",
-        "content": "H5 & H6 (Description/Text) Settings"
+        "content": "FONT SIZES"
       },
       {
         "type": "range",
@@ -785,7 +776,37 @@
       },
       {
         "type": "header",
-        "content": "HEADING TYPOGRAPHY (H1-H2)"
+        "content": "GLOBAL TYPOGRAPHY STYLES"
+      },
+      {
+        "type": "select",
+        "id": "global_text_transform",
+        "label": "Text transform",
+        "default": "none",
+        "options": [
+          { "value": "none", "label": "None" },
+          { "value": "uppercase", "label": "UPPERCASE" },
+          { "value": "lowercase", "label": "lowercase" },
+          { "value": "capitalize", "label": "Capitalize" }
+        ],
+        "info": "Apply to all text elements"
+      },
+      {
+        "type": "select",
+        "id": "global_text_align",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" },
+          { "value": "inherit", "label": "Inherit (default)" }
+        ],
+        "info": "Default alignment for all text"
+      },
+      {
+        "type": "header",
+        "content": "HEADING STYLES (H1-H4)"
       },
       {
         "type": "select",
@@ -793,8 +814,7 @@
         "label": "Heading font weight",
         "default": "700",
         "options": [
-          { "value": "100", "label": "Thin 100" },
-          { "value": "200", "label": "Extra-light 200" },
+          { "value": "inherit", "label": "Use font default" },
           { "value": "300", "label": "Light 300" },
           { "value": "400", "label": "Regular 400" },
           { "value": "500", "label": "Medium 500" },
@@ -809,203 +829,75 @@
         "id": "heading_letter_spacing",
         "label": "Heading letter spacing",
         "default": 0,
-        "min": -5,
-        "max": 10,
+        "min": -2,
+        "max": 5,
         "step": 0.5,
-        "unit": "px"
+        "unit": "px",
+        "info": "Applies to H1-H4"
       },
       {
         "type": "select",
         "id": "heading_text_transform",
         "label": "Heading text transform",
-        "default": "none",
+        "default": "inherit",
         "options": [
+          { "value": "inherit", "label": "Use global setting" },
           { "value": "none", "label": "None" },
           { "value": "uppercase", "label": "UPPERCASE" },
-          { "value": "lowercase", "label": "lowercase" },
           { "value": "capitalize", "label": "Capitalize" }
         ]
       },
       {
+        "type": "header",
+        "content": "BODY TEXT STYLES"
+      },
+      {
         "type": "select",
-        "id": "heading_text_align",
-        "label": "Heading alignment",
-        "default": "left",
+        "id": "body_font_weight",
+        "label": "Body text weight override",
+        "default": "inherit",
         "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" },
-          { "value": "justify", "label": "Justify" }
-        ]
+          { "value": "inherit", "label": "Use font default" },
+          { "value": "300", "label": "Light 300" },
+          { "value": "400", "label": "Regular 400" },
+          { "value": "500", "label": "Medium 500" },
+          { "value": "600", "label": "Semi-bold 600" }
+        ],
+        "info": "Applies to paragraphs, lists, and general text"
       },
       {
         "type": "range",
-        "id": "heading_padding_top",
-        "label": "Heading padding top",
+        "id": "body_letter_spacing",
+        "label": "Body letter spacing",
         "default": 0,
-        "min": 0,
-        "max": 50,
-        "step": 1,
+        "min": -1,
+        "max": 2,
+        "step": 0.5,
         "unit": "px"
       },
       {
+        "type": "header",
+        "content": "SPACING"
+      },
+      {
         "type": "range",
-        "id": "heading_padding_bottom",
-        "label": "Heading padding bottom",
+        "id": "heading_margin_bottom",
+        "label": "Space below headings",
         "default": 20,
         "min": 0,
         "max": 50,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "SUBHEADING TYPOGRAPHY (H3-H4)"
-      },
-      {
-        "type": "select",
-        "id": "subheading_font_weight",
-        "label": "Subheading font weight",
-        "default": "600",
-        "options": [
-          { "value": "100", "label": "Thin 100" },
-          { "value": "200", "label": "Extra-light 200" },
-          { "value": "300", "label": "Light 300" },
-          { "value": "400", "label": "Regular 400" },
-          { "value": "500", "label": "Medium 500" },
-          { "value": "600", "label": "Semi-bold 600" },
-          { "value": "700", "label": "Bold 700" },
-          { "value": "800", "label": "Extra-bold 800" },
-          { "value": "900", "label": "Black 900" }
-        ]
+        "step": 5,
+        "unit": "px",
+        "info": "Margin below H1-H6"
       },
       {
         "type": "range",
-        "id": "subheading_letter_spacing",
-        "label": "Subheading letter spacing",
-        "default": 0,
-        "min": -5,
-        "max": 10,
-        "step": 0.5,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "subheading_text_transform",
-        "label": "Subheading text transform",
-        "default": "none",
-        "options": [
-          { "value": "none", "label": "None" },
-          { "value": "uppercase", "label": "UPPERCASE" },
-          { "value": "lowercase", "label": "lowercase" },
-          { "value": "capitalize", "label": "Capitalize" }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "subheading_text_align",
-        "label": "Subheading alignment",
-        "default": "left",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" },
-          { "value": "justify", "label": "Justify" }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "subheading_padding_top",
-        "label": "Subheading padding top",
-        "default": 0,
+        "id": "paragraph_margin_bottom",
+        "label": "Space between paragraphs",
+        "default": 16,
         "min": 0,
         "max": 40,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "subheading_padding_bottom",
-        "label": "Subheading padding bottom",
-        "default": 15,
-        "min": 0,
-        "max": 40,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "DESCRIPTION/TEXT TYPOGRAPHY (H5-H6, P, SPAN)"
-      },
-      {
-        "type": "select",
-        "id": "text_font_weight",
-        "label": "Text font weight",
-        "default": "400",
-        "options": [
-          { "value": "100", "label": "Thin 100" },
-          { "value": "200", "label": "Extra-light 200" },
-          { "value": "300", "label": "Light 300" },
-          { "value": "400", "label": "Regular 400" },
-          { "value": "500", "label": "Medium 500" },
-          { "value": "600", "label": "Semi-bold 600" },
-          { "value": "700", "label": "Bold 700" },
-          { "value": "800", "label": "Extra-bold 800" },
-          { "value": "900", "label": "Black 900" }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "text_letter_spacing",
-        "label": "Text letter spacing",
-        "default": 0,
-        "min": -2,
-        "max": 5,
-        "step": 0.5,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "text_text_transform",
-        "label": "Text transform",
-        "default": "none",
-        "options": [
-          { "value": "none", "label": "None" },
-          { "value": "uppercase", "label": "UPPERCASE" },
-          { "value": "lowercase", "label": "lowercase" },
-          { "value": "capitalize", "label": "Capitalize" }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "text_text_align",
-        "label": "Text alignment",
-        "default": "left",
-        "options": [
-          { "value": "left", "label": "Left" },
-          { "value": "center", "label": "Center" },
-          { "value": "right", "label": "Right" },
-          { "value": "justify", "label": "Justify" }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "text_padding_top",
-        "label": "Text padding top",
-        "default": 0,
-        "min": 0,
-        "max": 30,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "text_padding_bottom",
-        "label": "Text padding bottom",
-        "default": 10,
-        "min": 0,
-        "max": 30,
-        "step": 1,
+        "step": 4,
         "unit": "px"
       },
       {
@@ -1015,20 +907,16 @@
       {
         "type": "checkbox",
         "id": "enable_typography_override",
-        "label": "Enable typography override",
+        "label": "Enable global typography override",
         "default": true,
-        "info": "When enabled, these settings will override all hardcoded typography styles in sections, snippets, and templates"
+        "info": "Apply these settings to all text elements throughout the theme"
       },
       {
-        "type": "select",
-        "id": "typography_override_priority",
-        "label": "Override priority",
-        "default": "important",
-        "options": [
-          { "value": "normal", "label": "Normal (higher specificity)" },
-          { "value": "important", "label": "Important (!important)" }
-        ],
-        "info": "Choose how to override existing styles"
+        "type": "checkbox",
+        "id": "override_inline_styles",
+        "label": "Override inline styles",
+        "default": false,
+        "info": "Force override of hardcoded inline styles (use with caution)"
       }
     ]
   },

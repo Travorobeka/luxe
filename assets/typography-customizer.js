@@ -265,29 +265,20 @@ class TypographyCustomizer {
       // Update CSS variables for live preview
       const cssVars = `
         :root {
-          /* Heading Variables */
+          /* Global Typography */
+          --global-text-transform: ${settings.global_text_transform || 'none'};
+          --global-text-align: ${settings.global_text_align || 'left'};
+          
+          /* Heading Styles */
           --heading-font-weight: ${settings.heading_font_weight || '700'};
           --heading-letter-spacing: ${settings.heading_letter_spacing || '0'}px;
-          --heading-text-transform: ${settings.heading_text_transform || 'none'};
-          --heading-text-align: ${settings.heading_text_align || 'left'};
-          --heading-padding-top: ${settings.heading_padding_top || '0'}px;
-          --heading-padding-bottom: ${settings.heading_padding_bottom || '20'}px;
+          --heading-text-transform: ${settings.heading_text_transform || 'inherit'};
+          --heading-margin-bottom: ${settings.heading_margin_bottom || '20'}px;
           
-          /* Subheading Variables */
-          --subheading-font-weight: ${settings.subheading_font_weight || '600'};
-          --subheading-letter-spacing: ${settings.subheading_letter_spacing || '0'}px;
-          --subheading-text-transform: ${settings.subheading_text_transform || 'none'};
-          --subheading-text-align: ${settings.subheading_text_align || 'left'};
-          --subheading-padding-top: ${settings.subheading_padding_top || '0'}px;
-          --subheading-padding-bottom: ${settings.subheading_padding_bottom || '15'}px;
-          
-          /* Text Variables */
-          --text-font-weight: ${settings.text_font_weight || '400'};
-          --text-letter-spacing: ${settings.text_letter_spacing || '0'}px;
-          --text-text-transform: ${settings.text_text_transform || 'none'};
-          --text-text-align: ${settings.text_text_align || 'left'};
-          --text-padding-top: ${settings.text_padding_top || '0'}px;
-          --text-padding-bottom: ${settings.text_padding_bottom || '10'}px;
+          /* Body Text Styles */
+          --body-font-weight: ${settings.body_font_weight || 'inherit'};
+          --body-letter-spacing: ${settings.body_letter_spacing || '0'}px;
+          --paragraph-margin-bottom: ${settings.paragraph_margin_bottom || '16'}px;
         }
       `;
       
