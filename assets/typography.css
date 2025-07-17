@@ -1,0 +1,319 @@
+/**
+ * UNIFIED TYPOGRAPHY SYSTEM
+ * =========================
+ * 
+ * This file combines all typography functionality into a single, comprehensive system.
+ * It includes:
+ * - Three-tier typography system (Main Heading, Sub Heading, Body Text)
+ * - Responsive typography with fluid scaling
+ * - Accessibility features
+ * - Performance optimizations
+ * - Legacy compatibility
+ * - Utility classes and modifiers
+ */
+
+/* CSS CUSTOM PROPERTIES FOR TYPOGRAPHY SYSTEM */
+/* =========================================== */
+
+:root {
+  /* Font Stacks */
+  --font-stack-header: var(--type_header_font, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+  --font-stack-body: var(--type_body_font, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+  
+  /* Three-Tier System Variables */
+  --font-size-main-heading: var(--main_heading_font_size, 42px);
+  --font-size-sub-heading: var(--sub_heading_font_size, 24px);
+  --font-size-body-text: var(--body_font_size, 16px);
+  
+  --font-weight-main-heading: var(--main_heading_font_weight, 700);
+  --font-weight-sub-heading: var(--sub_heading_font_weight, 600);
+  --font-weight-body-text: var(--body_font_weight, 400);
+  
+  --line-height-main-heading: var(--main_heading_line_height, 1.2);
+  --line-height-sub-heading: var(--sub_heading_line_height, 1.3);
+  --line-height-body-text: var(--body_line_height, 1.5);
+  
+  --letter-spacing-main-heading: var(--main_heading_letter_spacing, 0px);
+  --letter-spacing-sub-heading: var(--sub_heading_letter_spacing, 0px);
+  --letter-spacing-body-text: var(--body_letter_spacing, 0px);
+  
+  /* Responsive Scaling */
+  --mobile-typography-scale: var(--mobile_typography_scale, 0.8);
+  --tablet-typography-scale: var(--tablet_typography_scale, 0.9);
+  
+  /* Accessibility */
+  --minimum-readable-font-size: var(--minimum_readable_font_size, 14px);
+  --minimum-line-height-ratio: var(--minimum_line_height_ratio, 1.4);
+  
+  /* Performance */
+  --font-loading-timeout: var(--font_loading_timeout, 3000ms);
+  
+  /* Fluid Typography */
+  --fluid-typography-min-width: 320px;
+  --fluid-typography-max-width: 1200px;
+}
+
+/* THREE-TIER TYPOGRAPHY SYSTEM */
+/* ============================ */
+
+/* Main Heading - Primary titles and major section headers */
+.main-heading {
+  font-family: var(--font-stack-header);
+  font-size: var(--font-size-main-heading);
+  font-weight: var(--font-weight-main-heading);
+  line-height: var(--line-height-main-heading);
+  letter-spacing: var(--letter-spacing-main-heading);
+  font-display: swap;
+  margin: 0 0 1rem 0;
+  color: var(--color-heading, inherit);
+}
+
+/* Sub Heading - Secondary titles and section headers */
+.sub-heading {
+  font-family: var(--font-stack-header);
+  font-size: var(--font-size-sub-heading);
+  font-weight: var(--font-weight-sub-heading);
+  line-height: var(--line-height-sub-heading);
+  letter-spacing: var(--letter-spacing-sub-heading);
+  font-display: swap;
+  margin: 0 0 0.75rem 0;
+  color: var(--color-heading, inherit);
+}
+
+/* Body Text - Paragraphs and general content */
+.body-text {
+  font-family: var(--font-stack-body);
+  font-size: var(--font-size-body-text);
+  font-weight: var(--font-weight-body-text);
+  line-height: var(--line-height-body-text);
+  letter-spacing: var(--letter-spacing-body-text);
+  font-display: swap;
+  margin: 0 0 1rem 0;
+  color: var(--color-foreground, inherit);
+}
+
+/* RESPONSIVE TYPOGRAPHY */
+/* ===================== */
+
+/* Tablet Scaling */
+@media screen and (max-width: 1023px) {
+  .main-heading {
+    font-size: calc(var(--font-size-main-heading) * var(--tablet-typography-scale));
+  }
+  
+  .sub-heading {
+    font-size: calc(var(--font-size-sub-heading) * var(--tablet-typography-scale));
+  }
+  
+  .body-text {
+    font-size: calc(var(--font-size-body-text) * var(--tablet-typography-scale));
+  }
+}
+
+/* Mobile Scaling */
+@media screen and (max-width: 767px) {
+  .main-heading {
+    font-size: calc(var(--font-size-main-heading) * var(--mobile-typography-scale));
+  }
+  
+  .sub-heading {
+    font-size: calc(var(--font-size-sub-heading) * var(--mobile-typography-scale));
+  }
+  
+  .body-text {
+    font-size: calc(var(--font-size-body-text) * var(--mobile-typography-scale));
+  }
+}
+
+/* Fluid typography scaling based on viewport width */
+@media screen and (min-width: 320px) and (max-width: 1200px) {
+  .main-heading {
+    font-size: clamp(
+      calc(var(--font-size-main-heading) * var(--mobile-typography-scale)),
+      5vw,
+      var(--font-size-main-heading)
+    );
+  }
+  
+  .sub-heading {
+    font-size: clamp(
+      calc(var(--font-size-sub-heading) * var(--mobile-typography-scale)),
+      3vw,
+      var(--font-size-sub-heading)
+    );
+  }
+  
+  .body-text {
+    font-size: clamp(
+      calc(var(--font-size-body-text) * var(--mobile-typography-scale)),
+      1.5vw,
+      var(--font-size-body-text)
+    );
+  }
+}
+
+/* ACCESSIBILITY FEATURES */
+/* ====================== */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    color: #000000 !important;
+  }
+  
+  .body-text {
+    color: #000000 !important;
+  }
+}
+
+/* Minimum Readable Font Size Enforcement */
+.main-heading,
+.sub-heading,
+.body-text {
+  font-size: max(var(--minimum-readable-font-size), var(--font-size-main-heading));
+}
+
+/* UTILITY CLASSES */
+/* =============== */
+
+/* Size Modifiers */
+.main-heading--large { font-size: calc(var(--font-size-main-heading) * 1.2); }
+.main-heading--small { font-size: calc(var(--font-size-main-heading) * 0.8); }
+.sub-heading--large { font-size: calc(var(--font-size-sub-heading) * 1.2); }
+.sub-heading--small { font-size: calc(var(--font-size-sub-heading) * 0.8); }
+.body-text--large { font-size: calc(var(--font-size-body-text) * 1.125); }
+.body-text--small { font-size: calc(var(--font-size-body-text) * 0.875); }
+
+/* Weight Modifiers */
+.typography--light { font-weight: 300; }
+.typography--normal { font-weight: 400; }
+.typography--medium { font-weight: 500; }
+.typography--semibold { font-weight: 600; }
+.typography--bold { font-weight: 700; }
+.typography--extrabold { font-weight: 800; }
+
+/* Color Modifiers */
+.typography--muted { color: var(--color-foreground-secondary, #666666); }
+.typography--accent { color: var(--color-accent, #007acc); }
+.typography--inverse { color: var(--color-background, #ffffff); }
+
+/* Text Transform Modifiers */
+.typography--uppercase { text-transform: uppercase; }
+.typography--lowercase { text-transform: lowercase; }
+.typography--capitalize { text-transform: capitalize; }
+
+/* Text Alignment Modifiers */
+.typography--left { text-align: left; }
+.typography--center { text-align: center; }
+.typography--right { text-align: right; }
+.typography--justify { text-align: justify; }
+
+/* LEGACY COMPATIBILITY */
+/* ==================== */
+
+/* Legacy H1-H6 Support */
+h1, .h1 { @extend .main-heading; }
+h2, .h2 { @extend .main-heading; }
+h3, .h3 { @extend .sub-heading; }
+h4, .h4 { @extend .sub-heading; }
+h5, .h5 { @extend .body-text; }
+h6, .h6 { @extend .body-text; }
+
+/* Legacy Font Size Classes */
+.font-size--small { font-size: var(--font-size-body-text); }
+.font-size--medium { font-size: var(--font-size-sub-heading); }
+.font-size--large { font-size: var(--font-size-main-heading); }
+
+/* PERFORMANCE OPTIMIZATIONS */
+/* ========================= */
+
+/* Font Display Optimization */
+.main-heading,
+.sub-heading,
+.body-text {
+  font-display: swap;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Critical Typography Loading */
+@media (max-width: 767px) {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    font-display: block;
+  }
+}
+
+/* ANALYTICS AND DEBUGGING */
+/* ======================= */
+
+/* Typography Debug Mode */
+.typography-debug .main-heading::before,
+.typography-debug .sub-heading::before,
+.typography-debug .body-text::before {
+  content: attr(class);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 10px;
+  color: red;
+  background: yellow;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 9999;
+}
+
+/* PERFORMANCE MONITORING */
+/* ====================== */
+
+/* Font Loading Performance */
+@supports (font-display: swap) {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    font-display: swap;
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (font-display: swap) {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    font-display: auto;
+  }
+}
+
+/* PRINT STYLES */
+/* ============ */
+
+@media print {
+  .main-heading,
+  .sub-heading,
+  .body-text {
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    color: #000000 !important;
+    font-display: auto !important;
+  }
+  
+  .main-heading { font-size: 18pt !important; }
+  .sub-heading { font-size: 14pt !important; }
+  .body-text { font-size: 12pt !important; }
+} 
