@@ -96,6 +96,8 @@
     {% if template.name == 'product' %}
       data-product-id="{{ product.id }}"
     {% endif %}
+    data-link-decoration="{{ settings.link_text_decoration }}"
+    data-drop-caps="{{ settings.enable_drop_caps }}"
   >
     {%- liquid
       render 'page-transition'

@@ -501,6 +501,225 @@
           }
         ],
         "default": "square"
+      },
+      {
+        "type": "header",
+        "content": "ADVANCED TYPOGRAPHY"
+      },
+      {
+        "type": "paragraph",
+        "content": "Fine-tune your typography with advanced customization options."
+      },
+      {
+        "type": "header",
+        "content": "Paragraph Settings"
+      },
+      {
+        "type": "range",
+        "id": "paragraph_spacing",
+        "label": "Paragraph spacing",
+        "default": 16,
+        "min": 8,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "info": "Space between paragraphs"
+      },
+      {
+        "type": "range",
+        "id": "paragraph_indent",
+        "label": "First line indent",
+        "default": 0,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Text Styling"
+      },
+      {
+        "type": "select",
+        "id": "text_transform_headings",
+        "label": "Heading text transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "uppercase",
+            "label": "UPPERCASE"
+          },
+          {
+            "value": "lowercase",
+            "label": "lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "heading_font_style",
+        "label": "Heading font style",
+        "default": "normal",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "italic",
+            "label": "Italic"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "heading_line_height",
+        "label": "Heading line height",
+        "default": 1.2,
+        "min": 1,
+        "max": 2,
+        "step": 0.1,
+        "info": "Multiplier of font size"
+      },
+      {
+        "type": "header",
+        "content": "Link Styling"
+      },
+      {
+        "type": "select",
+        "id": "link_text_decoration",
+        "label": "Link decoration",
+        "default": "underline",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "underline",
+            "label": "Underline"
+          },
+          {
+            "value": "underline-hover",
+            "label": "Underline on hover"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "link_bold",
+        "label": "Bold links",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Small Text & Captions"
+      },
+      {
+        "type": "range",
+        "id": "small_text_size",
+        "label": "Small text size",
+        "default": 14,
+        "min": 10,
+        "max": 16,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "caption_text_size",
+        "label": "Caption text size",
+        "default": 12,
+        "min": 10,
+        "max": 14,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "caption_text_transform",
+        "label": "Caption text transform",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "uppercase",
+            "label": "UPPERCASE"
+          },
+          {
+            "value": "lowercase",
+            "label": "lowercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile Typography"
+      },
+      {
+        "type": "range",
+        "id": "mobile_font_scale",
+        "label": "Mobile font scale",
+        "default": 0.9,
+        "min": 0.7,
+        "max": 1.1,
+        "step": 0.05,
+        "info": "Scale factor for mobile devices"
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_reduce_line_height",
+        "label": "Reduce line height on mobile",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Special Effects"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_drop_caps",
+        "label": "Enable drop caps",
+        "default": false,
+        "info": "Large first letter in article paragraphs"
+      },
+      {
+        "type": "range",
+        "id": "drop_cap_size",
+        "label": "Drop cap size",
+        "default": 3,
+        "min": 2,
+        "max": 5,
+        "step": 0.5,
+        "info": "Multiplier of line height"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_text_shadow",
+        "label": "Enable text shadow on headings",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "text_shadow_style",
+        "label": "Text shadow style",
+        "default": "2px 2px 4px rgba(0,0,0,0.1)",
+        "info": "CSS text-shadow value"
       }
     ]
   },

@@ -151,6 +151,22 @@
   	--font-h6-mobile: {{ font_body_base }};
   	--heading-letter-spacing: {{ settings.type_header_spacing }}px;
 
+  	/* ADVANCED TYPOGRAPHY */
+  	--paragraph-spacing: {{ settings.paragraph_spacing }}px;
+  	--paragraph-indent: {{ settings.paragraph_indent }}px;
+  	--text-transform-headings: {{ settings.text_transform_headings }};
+  	--heading-font-style: {{ settings.heading_font_style }};
+  	--heading-line-height: {{ settings.heading_line_height }};
+  	--link-text-decoration: {{ settings.link_text_decoration }};
+  	--link-font-weight: {% if settings.link_bold %}700{% else %}inherit{% endif %};
+  	--small-text-size: {{ settings.small_text_size }}px;
+  	--caption-text-size: {{ settings.caption_text_size }}px;
+  	--caption-text-transform: {{ settings.caption_text_transform }};
+  	--mobile-font-scale: {{ settings.mobile_font_scale }};
+  	--mobile-line-height-reduction: {% if settings.mobile_reduce_line_height %}0.9{% else %}1{% endif %};
+  	--drop-cap-size: {{ settings.drop_cap_size }}em;
+  	--text-shadow: {% if settings.enable_text_shadow %}{{ settings.text_shadow_style }}{% else %}none{% endif %};
+
    --arrow-down-url: url({{ 'arrow-down.svg' | asset_url }});
    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});
    --product-title-line-clamp: {{ settings.pcard_title_line_clamp }};
@@ -198,8 +214,10 @@
 {%- endif -%}
 <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'typography-advanced.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'custom-style.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'custom.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'typography-advanced.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   {%- if custom_css != blank -%}
