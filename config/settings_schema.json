@@ -720,6 +720,380 @@
         "label": "Text shadow style",
         "default": "2px 2px 4px rgba(0,0,0,0.1)",
         "info": "CSS text-shadow value"
+      },
+      {
+        "type": "header",
+        "content": "INDIVIDUAL HEADING CONTROLS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Fine-tune each heading level independently for maximum control."
+      },
+      {
+        "type": "header",
+        "content": "H1 Customization"
+      },
+      {
+        "type": "select",
+        "id": "h1_font_weight",
+        "label": "H1 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h1_letter_spacing",
+        "label": "H1 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h1_text_transform",
+        "label": "H1 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "H2 Customization"
+      },
+      {
+        "type": "select",
+        "id": "h2_font_weight",
+        "label": "H2 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h2_letter_spacing",
+        "label": "H2 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h2_text_transform",
+        "label": "H2 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "H3 Customization"
+      },
+      {
+        "type": "select",
+        "id": "h3_font_weight",
+        "label": "H3 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h3_letter_spacing",
+        "label": "H3 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h3_text_transform",
+        "label": "H3 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "H4 Customization"
+      },
+      {
+        "type": "select",
+        "id": "h4_font_weight",
+        "label": "H4 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h4_letter_spacing",
+        "label": "H4 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h4_text_transform",
+        "label": "H4 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "H5 & H6 Customization"
+      },
+      {
+        "type": "range",
+        "id": "h5_font_size",
+        "label": "H5 font size",
+        "default": 18,
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h5_font_weight",
+        "label": "H5 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "h6_font_size",
+        "label": "H6 font size",
+        "default": 16,
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "h6_font_weight",
+        "label": "H6 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "ADVANCED BODY TEXT"
+      },
+      {
+        "type": "paragraph",
+        "content": "Detailed controls for body text appearance and behavior."
+      },
+      {
+        "type": "range",
+        "id": "body_letter_spacing",
+        "label": "Body letter spacing",
+        "default": 0,
+        "min": -2,
+        "max": 5,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "body_text_transform",
+        "label": "Body text transform",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "body_word_spacing",
+        "label": "Word spacing",
+        "default": 0,
+        "min": -5,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "body_text_align",
+        "label": "Default text alignment",
+        "default": "left",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Center"},
+          {"value": "right", "label": "Right"},
+          {"value": "justify", "label": "Justify"}
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "body_font_smoothing",
+        "label": "Enable font smoothing",
+        "default": true,
+        "info": "Improves font rendering on screens"
+      },
+      {
+        "type": "header",
+        "content": "LIST STYLING"
+      },
+      {
+        "type": "select",
+        "id": "list_style_type",
+        "label": "List bullet style",
+        "default": "disc",
+        "options": [
+          {"value": "disc", "label": "• Disc"},
+          {"value": "circle", "label": "○ Circle"},
+          {"value": "square", "label": "■ Square"},
+          {"value": "decimal", "label": "1. Numbers"},
+          {"value": "none", "label": "None"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "list_indent",
+        "label": "List indentation",
+        "default": 20,
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "list_item_spacing",
+        "label": "List item spacing",
+        "default": 8,
+        "min": 0,
+        "max": 20,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "BLOCKQUOTE STYLING"
+      },
+      {
+        "type": "checkbox",
+        "id": "blockquote_italic",
+        "label": "Italic blockquotes",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "blockquote_font_size",
+        "label": "Blockquote font size",
+        "default": 18,
+        "min": 14,
+        "max": 24,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "blockquote_border_color",
+        "label": "Blockquote border color",
+        "default": "#cccccc"
+      },
+      {
+        "type": "range",
+        "id": "blockquote_border_width",
+        "label": "Blockquote border width",
+        "default": 3,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
       }
     ]
   },

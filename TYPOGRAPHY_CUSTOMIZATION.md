@@ -43,6 +43,36 @@ The advanced typography system provides extensive control over your store's text
 - **Drop Caps**: Enable large first letters in article paragraphs
 - **Drop Cap Size**: Control the size of drop caps (2-5x line height)
 
+### 7. Individual Heading Controls (H1-H6)
+Each heading level can be customized independently:
+
+#### H1-H4 Settings:
+- **Font Weight**: Choose from Thin (100) to Black (900)
+- **Letter Spacing**: Adjust spacing between letters (-5 to 10px)
+- **Text Transform**: Apply specific transform per heading level
+
+#### H5-H6 Settings:
+- **Font Size**: Custom sizes for smaller headings
+- **Font Weight**: Same weight options as other headings
+
+### 8. Advanced Body Text
+- **Letter Spacing**: Fine-tune letter spacing (-2 to 5px)
+- **Text Transform**: Apply transform to all body text
+- **Word Spacing**: Adjust space between words (-5 to 20px)
+- **Text Alignment**: Set default alignment (left, center, right, justify)
+- **Font Smoothing**: Enable/disable for better screen rendering
+
+### 9. List Styling
+- **Bullet Style**: Choose from disc, circle, square, numbers, or none
+- **Indentation**: Control list indent (0-40px)
+- **Item Spacing**: Space between list items (0-20px)
+
+### 10. Blockquote Styling
+- **Italic Style**: Toggle italic for blockquotes
+- **Font Size**: Set blockquote text size (14-24px)
+- **Border Color**: Customize the left border color
+- **Border Width**: Adjust border thickness (0-10px)
+
 ## Usage
 
 ### Theme Customizer
@@ -98,6 +128,34 @@ The system includes utility classes for manual typography control:
 - `.hyphens-auto` - Automatic hyphenation
 - `.break-words` - Break long words
 - `.whitespace-nowrap` - Prevent text wrapping
+
+#### Advanced List Styles
+- `.list-style-check` - ✓ Checkmark bullets
+- `.list-style-arrow` - → Arrow bullets
+- `.list-style-star` - ★ Star bullets
+- `.list-counter-roman` - Roman numerals
+- `.list-counter-alpha` - Alphabetical
+- `.list-counter-leading-zero` - Numbers with leading zeros
+
+#### Text Decoration
+- `.text-decoration-wavy` - Wavy underline
+- `.text-decoration-double` - Double underline
+- `.text-decoration-dotted` - Dotted underline
+- `.text-decoration-dashed` - Dashed underline
+
+#### Text Utilities
+- `.text-indent-sm/md/lg` - Text indentation
+- `.text-truncate` - Single line ellipsis
+- `.text-truncate-2/3` - Multi-line truncation
+- `.text-columns-2/3` - Multi-column text
+- `.reading-mode` - Optimized reading width
+- `.text-balance` - Better line breaks
+- `.smart-quotes` - Typographic quotes
+- `.hanging-punctuation` - Professional punctuation
+
+#### First Letter Styles
+- `.first-letter-bold` - Bold first letter
+- `.first-letter-color` - Colored first letter
 
 ### Responsive Classes
 
@@ -191,6 +249,66 @@ Some advanced features (like text-wrap: balance) gracefully degrade in older bro
 </article>
 ```
 
+### Individual Heading Customization
+```html
+<!-- Each heading level respects its own settings -->
+<h1>Main Title (with H1 specific styles)</h1>
+<h2>Subtitle (with H2 specific styles)</h2>
+<h3>Section Header (with H3 specific styles)</h3>
+```
+
+### Advanced List Example
+```html
+<ul class="list-style-check">
+  <li>Completed task</li>
+  <li>Another completed task</li>
+</ul>
+
+<ol class="list-counter-roman">
+  <li>First item</li>
+  <li>Second item</li>
+</ol>
+```
+
+### Reading Mode Article
+```html
+<article class="reading-mode smart-quotes">
+  <h1 class="text-balance">Article Title That Breaks Nicely</h1>
+  <p class="first-letter-bold">Article content with enhanced readability...</p>
+</article>
+```
+
+### Multi-Column Layout
+```html
+<div class="text-columns-2">
+  <p>This text will flow in two columns on desktop...</p>
+  <p>And automatically become single column on mobile...</p>
+</div>
+```
+
+## Advanced Features
+
+### Vertical Rhythm
+Apply consistent spacing throughout a section:
+```html
+<div class="vertical-rhythm">
+  <h2>Heading</h2>
+  <p>Paragraph with consistent spacing...</p>
+  <ul>
+    <li>List items also follow the rhythm</li>
+  </ul>
+</div>
+```
+
+### Custom Blockquotes
+Blockquotes now respect all customization settings:
+```html
+<blockquote>
+  "This quote will use your custom font size, border color, 
+  and width settings from the theme customizer."
+</blockquote>
+```
+
 ## Support
 
 For issues or questions:
@@ -201,4 +319,4 @@ For issues or questions:
 ---
 
 Last updated: [Current Date]
-Version: 1.0.0
+Version: 1.1.0

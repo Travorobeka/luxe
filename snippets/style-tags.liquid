@@ -167,6 +167,42 @@
   	--drop-cap-size: {{ settings.drop_cap_size }}em;
   	--text-shadow: {% if settings.enable_text_shadow %}{{ settings.text_shadow_style }}{% else %}none{% endif %};
 
+  	/* INDIVIDUAL HEADING CONTROLS */
+  	--h1-font-weight: {{ settings.h1_font_weight }};
+  	--h1-letter-spacing: {{ settings.h1_letter_spacing }}px;
+  	--h1-text-transform: {{ settings.h1_text_transform }};
+  	--h2-font-weight: {{ settings.h2_font_weight }};
+  	--h2-letter-spacing: {{ settings.h2_letter_spacing }}px;
+  	--h2-text-transform: {{ settings.h2_text_transform }};
+  	--h3-font-weight: {{ settings.h3_font_weight }};
+  	--h3-letter-spacing: {{ settings.h3_letter_spacing }}px;
+  	--h3-text-transform: {{ settings.h3_text_transform }};
+  	--h4-font-weight: {{ settings.h4_font_weight }};
+  	--h4-letter-spacing: {{ settings.h4_letter_spacing }}px;
+  	--h4-text-transform: {{ settings.h4_text_transform }};
+  	--h5-font-size: {{ settings.h5_font_size }}px;
+  	--h5-font-weight: {{ settings.h5_font_weight }};
+  	--h6-font-size: {{ settings.h6_font_size }}px;
+  	--h6-font-weight: {{ settings.h6_font_weight }};
+  	
+  	/* ADVANCED BODY TEXT */
+  	--body-letter-spacing: {{ settings.body_letter_spacing }}px;
+  	--body-text-transform: {{ settings.body_text_transform }};
+  	--body-word-spacing: {{ settings.body_word_spacing }}px;
+  	--body-text-align: {{ settings.body_text_align }};
+  	--body-font-smoothing: {% if settings.body_font_smoothing %}antialiased{% else %}auto{% endif %};
+  	
+  	/* LIST STYLING */
+  	--list-style-type: {{ settings.list_style_type }};
+  	--list-indent: {{ settings.list_indent }}px;
+  	--list-item-spacing: {{ settings.list_item_spacing }}px;
+  	
+  	/* BLOCKQUOTE STYLING */
+  	--blockquote-font-style: {% if settings.blockquote_italic %}italic{% else %}normal{% endif %};
+  	--blockquote-font-size: {{ settings.blockquote_font_size }}px;
+  	--blockquote-border-color: {{ settings.blockquote_border_color }};
+  	--blockquote-border-width: {{ settings.blockquote_border_width }}px;
+
    --arrow-down-url: url({{ 'arrow-down.svg' | asset_url }});
    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});
    --product-title-line-clamp: {{ settings.pcard_title_line_clamp }};
