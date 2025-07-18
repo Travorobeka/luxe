@@ -116,34 +116,36 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "[Watch tutorial](https://foxecom.link/mzE5th) or [read How-to](https://foxecom.link/ag2yrU)"
+        "content": "Customize every aspect of your store's typography. Settings are organized by element type for easy navigation."
       },
       {
         "type": "header",
-        "content": "BODY TEXT"
+        "content": "🔤 BODY TEXT SETTINGS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the main text that appears in paragraphs, descriptions, and general content."
       },
       {
         "type": "font_picker",
         "id": "type_base_font",
-        "label": "Font",
-        "default": "helvetica_n4"
+        "label": "Body font family",
+        "default": "helvetica_n4",
+        "info": "Select the primary font for body text"
       },
       {
         "type": "checkbox",
         "id": "use_custom_font_body",
         "label": "Use custom font",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Custom font for Body text"
+        "default": false,
+        "info": "Enable to use your own font files instead of system fonts"
       },
       {
         "id": "custom_body_font",
         "type": "textarea",
-        "label": "Font URL",
+        "label": "Custom font URL",
         "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
+        "info": "Upload font to Shopify Files. Format: Link_to_font@font_weight"
       },
       {
         "id": "custom_body_weight",
@@ -151,825 +153,38 @@
         "label": "Default font weight",
         "default": "400",
         "options": [
-          {
-            "value": "100",
-            "label": "Thin 100"
-          },
-          {
-            "value": "200",
-            "label": "Extra-light 200"
-          },
-          {
-            "value": "300",
-            "label": "Light 300"
-          },
-          {
-            "value": "400",
-            "label": "Regular 400"
-          },
-          {
-            "value": "500",
-            "label": "Medium 500"
-          },
-          {
-            "value": "600",
-            "label": "Semi-bold 600"
-          },
-          {
-            "value": "700",
-            "label": "Bold 700"
-          },
-          {
-            "value": "800",
-            "label": "Extra-bold 800"
-          },
-          {
-            "value": "900",
-            "label": "Black 900"
-          }
+          {"value": "100", "label": "Thin 100"},
+          {"value": "200", "label": "Extra-light 200"},
+          {"value": "300", "label": "Light 300"},
+          {"value": "400", "label": "Regular 400"},
+          {"value": "500", "label": "Medium 500"},
+          {"value": "600", "label": "Semi-bold 600"},
+          {"value": "700", "label": "Bold 700"},
+          {"value": "800", "label": "Extra-bold 800"},
+          {"value": "900", "label": "Black 900"}
         ]
       },
       {
         "type": "range",
         "id": "type_base_size",
-        "label": "Base size",
+        "label": "Body font size",
         "default": 16,
         "min": 14,
         "max": 20,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "info": "Base font size for paragraphs and general text"
       },
       {
         "type": "range",
         "id": "type_base_line_height",
-        "label": "Line height",
+        "label": "Body line height",
         "default": 28,
         "min": 14,
         "max": 100,
         "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "HEADINGS"
-      },
-      {
-        "type": "font_picker",
-        "id": "type_header_font",
-        "label": "Font",
-        "default": "helvetica_n7"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_custom_font_heading",
-        "label": "Use custom font",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Custom font for Headings"
-      },
-      {
-        "type": "paragraph",
-        "content": "Allow multiple links, each link in a new line. Please upload to [Shopify files](/admin/settings/files) and paste link here. These formats TTF, OTF, WOFF & WOFF2 are supported."
-      },
-      {
-        "id": "custom_heading_font",
-        "type": "textarea",
-        "label": "Font file URLS",
-        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
-        "info": "Format: Link_to_font@font_weight"
-      },
-      {
-        "id": "custom_heading_weight",
-        "type": "select",
-        "label": "Default font weight",
-        "default": "400",
-        "options": [
-          {
-            "value": "100",
-            "label": "Thin 100"
-          },
-          {
-            "value": "200",
-            "label": "Extra-light 200"
-          },
-          {
-            "value": "300",
-            "label": "Light 300"
-          },
-          {
-            "value": "400",
-            "label": "Regular 400"
-          },
-          {
-            "value": "500",
-            "label": "Medium 500"
-          },
-          {
-            "value": "600",
-            "label": "Semi-bold 600"
-          },
-          {
-            "value": "700",
-            "label": "Bold 700"
-          },
-          {
-            "value": "800",
-            "label": "Extra-bold 800"
-          },
-          {
-            "value": "900",
-            "label": "Black 900"
-          }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h1_font_size",
-        "label": "H1 font size",
-        "default": 60,
-        "min": 20,
-        "max": 120,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "h2_font_size",
-        "label": "H2 font size",
-        "default": 42,
-        "min": 20,
-        "max": 100,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "type_header_base_size",
-        "label": "H3 font size",
-        "default": 36,
-        "min": 14,
-        "max": 80,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "h4_font_size",
-        "label": "H4 font size",
-        "default": 24,
-        "min": 14,
-        "max": 60,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "type_header_spacing",
-        "label": "Letter spacing",
-        "default": 0,
-        "min": 0,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "BUTTONS"
-      },
-      {
-        "type": "paragraph",
-        "content": "The button font is inherited from body text."
-      },
-      {
-        "type": "checkbox",
-        "id": "btn_uppercase_text",
-        "label": "Uppercase text label",
-        "default": false
-      },
-      {
-        "type": "range",
-        "id": "btn_base_size",
-        "label": "Font size",
-        "default": 16,
-        "min": 14,
-        "max": 20,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "btn_letter_spacing",
-        "label": "Letter spacing",
-        "default": 0,
-        "min": 0,
-        "max": 20,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "btn_border_width",
-        "label": "Border width",
-        "default": 1,
-        "min": 1,
-        "max": 5,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "btn_border_radius",
-        "label": "Border radius",
-        "default": 5,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "btn_line_height",
-        "label": "Line height",
-        "default": 23,
-        "min": 1,
-        "max": 50,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "id": "btn_weight",
-        "type": "select",
-        "label": "Font weight",
-        "default": "500",
-        "options": [
-          {
-            "value": "100",
-            "label": "Thin 100"
-          },
-          {
-            "value": "200",
-            "label": "Extra-light 200"
-          },
-          {
-            "value": "300",
-            "label": "Light 300"
-          },
-          {
-            "value": "400",
-            "label": "Regular 400"
-          },
-          {
-            "value": "500",
-            "label": "Medium 500"
-          },
-          {
-            "value": "600",
-            "label": "Semi-bold 600"
-          },
-          {
-            "value": "700",
-            "label": "Bold 700"
-          },
-          {
-            "value": "800",
-            "label": "Extra-bold 800"
-          },
-          {
-            "value": "900",
-            "label": "Black 900"
-          }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "INPUTS"
-      },
-      {
-        "type": "range",
-        "id": "inputs_border_thickness",
-        "label": "Thickness",
-        "min": 0,
-        "max": 12,
-        "step": 1,
         "unit": "px",
-        "default": 1
-      },
-      {
-        "type": "range",
-        "id": "inputs_border_radius",
-        "label": "Corner radius",
-        "min": 0,
-        "max": 60,
-        "step": 1,
-        "unit": "px",
-        "default": 5
-      },
-      {
-        "type": "header",
-        "content": "Corner radius"
-      },
-      {
-        "type": "select",
-        "id": "blocks_corner_radius",
-        "label": "Blocks",
-        "options": [
-          {
-            "label": "Square",
-            "value": "square"
-          },
-          {
-            "label": "Rounded",
-            "value": "round"
-          }
-        ],
-        "default": "square"
-      },
-      {
-        "type": "select",
-        "id": "pcard_corner_radius",
-        "label": "Product card",
-        "options": [
-          {
-            "label": "Square",
-            "value": "square"
-          },
-          {
-            "label": "Rounded",
-            "value": "round"
-          }
-        ],
-        "default": "square"
-      },
-      {
-        "type": "header",
-        "content": "ADVANCED TYPOGRAPHY"
-      },
-      {
-        "type": "paragraph",
-        "content": "Fine-tune your typography with advanced customization options."
-      },
-      {
-        "type": "header",
-        "content": "Paragraph Settings"
-      },
-      {
-        "type": "range",
-        "id": "paragraph_spacing",
-        "label": "Paragraph spacing",
-        "default": 16,
-        "min": 8,
-        "max": 32,
-        "step": 2,
-        "unit": "px",
-        "info": "Space between paragraphs"
-      },
-      {
-        "type": "range",
-        "id": "paragraph_indent",
-        "label": "First line indent",
-        "default": 0,
-        "min": 0,
-        "max": 50,
-        "step": 5,
-        "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "Text Styling"
-      },
-      {
-        "type": "select",
-        "id": "text_transform_headings",
-        "label": "Heading text transform",
-        "default": "none",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "uppercase",
-            "label": "UPPERCASE"
-          },
-          {
-            "value": "lowercase",
-            "label": "lowercase"
-          },
-          {
-            "value": "capitalize",
-            "label": "Capitalize"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "heading_font_style",
-        "label": "Heading font style",
-        "default": "normal",
-        "options": [
-          {
-            "value": "normal",
-            "label": "Normal"
-          },
-          {
-            "value": "italic",
-            "label": "Italic"
-          }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "heading_line_height",
-        "label": "Heading line height",
-        "default": 1.2,
-        "min": 1,
-        "max": 2,
-        "step": 0.1,
-        "info": "Multiplier of font size"
-      },
-      {
-        "type": "header",
-        "content": "Link Styling"
-      },
-      {
-        "type": "select",
-        "id": "link_text_decoration",
-        "label": "Link decoration",
-        "default": "underline",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "underline",
-            "label": "Underline"
-          },
-          {
-            "value": "underline-hover",
-            "label": "Underline on hover"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "link_bold",
-        "label": "Bold links",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "Small Text & Captions"
-      },
-      {
-        "type": "range",
-        "id": "small_text_size",
-        "label": "Small text size",
-        "default": 14,
-        "min": 10,
-        "max": 16,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "caption_text_size",
-        "label": "Caption text size",
-        "default": 12,
-        "min": 10,
-        "max": 14,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "caption_text_transform",
-        "label": "Caption text transform",
-        "default": "none",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "uppercase",
-            "label": "UPPERCASE"
-          },
-          {
-            "value": "lowercase",
-            "label": "lowercase"
-          },
-          {
-            "value": "capitalize",
-            "label": "Capitalize"
-          }
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Mobile Typography"
-      },
-      {
-        "type": "range",
-        "id": "mobile_font_scale",
-        "label": "Mobile font scale",
-        "default": 0.9,
-        "min": 0.7,
-        "max": 1.1,
-        "step": 0.1,
-        "info": "Scale factor for mobile devices"
-      },
-      {
-        "type": "checkbox",
-        "id": "mobile_reduce_line_height",
-        "label": "Reduce line height on mobile",
-        "default": true
-      },
-      {
-        "type": "header",
-        "content": "Special Effects"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_drop_caps",
-        "label": "Enable drop caps",
-        "default": false,
-        "info": "Large first letter in article paragraphs"
-      },
-      {
-        "type": "range",
-        "id": "drop_cap_size",
-        "label": "Drop cap size",
-        "default": 3,
-        "min": 2,
-        "max": 5,
-        "step": 0.5,
-        "info": "Multiplier of line height"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_text_shadow",
-        "label": "Enable text shadow on headings",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "text_shadow_style",
-        "label": "Text shadow style",
-        "default": "2px 2px 4px rgba(0,0,0,0.1)",
-        "info": "CSS text-shadow value"
-      },
-      {
-        "type": "header",
-        "content": "INDIVIDUAL HEADING CONTROLS"
-      },
-      {
-        "type": "paragraph",
-        "content": "Fine-tune each heading level independently for maximum control."
-      },
-      {
-        "type": "header",
-        "content": "H1 Customization"
-      },
-      {
-        "type": "select",
-        "id": "h1_font_weight",
-        "label": "H1 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h1_letter_spacing",
-        "label": "H1 letter spacing",
-        "default": 0,
-        "min": -5,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h1_text_transform",
-        "label": "H1 text transform",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "none", "label": "None"},
-          {"value": "uppercase", "label": "UPPERCASE"},
-          {"value": "lowercase", "label": "lowercase"},
-          {"value": "capitalize", "label": "Capitalize"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "H2 Customization"
-      },
-      {
-        "type": "select",
-        "id": "h2_font_weight",
-        "label": "H2 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h2_letter_spacing",
-        "label": "H2 letter spacing",
-        "default": 0,
-        "min": -5,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h2_text_transform",
-        "label": "H2 text transform",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "none", "label": "None"},
-          {"value": "uppercase", "label": "UPPERCASE"},
-          {"value": "lowercase", "label": "lowercase"},
-          {"value": "capitalize", "label": "Capitalize"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "H3 Customization"
-      },
-      {
-        "type": "select",
-        "id": "h3_font_weight",
-        "label": "H3 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h3_letter_spacing",
-        "label": "H3 letter spacing",
-        "default": 0,
-        "min": -5,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h3_text_transform",
-        "label": "H3 text transform",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "none", "label": "None"},
-          {"value": "uppercase", "label": "UPPERCASE"},
-          {"value": "lowercase", "label": "lowercase"},
-          {"value": "capitalize", "label": "Capitalize"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "H4 Customization"
-      },
-      {
-        "type": "select",
-        "id": "h4_font_weight",
-        "label": "H4 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h4_letter_spacing",
-        "label": "H4 letter spacing",
-        "default": 0,
-        "min": -5,
-        "max": 10,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h4_text_transform",
-        "label": "H4 text transform",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "none", "label": "None"},
-          {"value": "uppercase", "label": "UPPERCASE"},
-          {"value": "lowercase", "label": "lowercase"},
-          {"value": "capitalize", "label": "Capitalize"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "H5 & H6 Customization"
-      },
-      {
-        "type": "range",
-        "id": "h5_font_size",
-        "label": "H5 font size",
-        "default": 18,
-        "min": 12,
-        "max": 40,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h5_font_weight",
-        "label": "H5 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "h6_font_size",
-        "label": "H6 font size",
-        "default": 16,
-        "min": 12,
-        "max": 32,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "select",
-        "id": "h6_font_weight",
-        "label": "H6 font weight",
-        "default": "inherit",
-        "options": [
-          {"value": "inherit", "label": "Default"},
-          {"value": "100", "label": "Thin"},
-          {"value": "300", "label": "Light"},
-          {"value": "400", "label": "Regular"},
-          {"value": "500", "label": "Medium"},
-          {"value": "600", "label": "Semi-bold"},
-          {"value": "700", "label": "Bold"},
-          {"value": "800", "label": "Extra-bold"},
-          {"value": "900", "label": "Black"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "ADVANCED BODY TEXT"
-      },
-      {
-        "type": "paragraph",
-        "content": "Detailed controls for body text appearance and behavior."
+        "info": "Space between lines of text"
       },
       {
         "type": "range",
@@ -979,7 +194,19 @@
         "min": -2,
         "max": 5,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "info": "Space between individual letters"
+      },
+      {
+        "type": "range",
+        "id": "body_word_spacing",
+        "label": "Body word spacing",
+        "default": 0,
+        "min": -5,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "info": "Space between words"
       },
       {
         "type": "select",
@@ -991,17 +218,8 @@
           {"value": "uppercase", "label": "UPPERCASE"},
           {"value": "lowercase", "label": "lowercase"},
           {"value": "capitalize", "label": "Capitalize"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "body_word_spacing",
-        "label": "Word spacing",
-        "default": 0,
-        "min": -5,
-        "max": 20,
-        "step": 1,
-        "unit": "px"
+        ],
+        "info": "Transform how body text appears"
       },
       {
         "type": "select",
@@ -1013,18 +231,503 @@
           {"value": "center", "label": "Center"},
           {"value": "right", "label": "Right"},
           {"value": "justify", "label": "Justify"}
-        ]
+        ],
+        "info": "Default alignment for body text blocks"
       },
       {
         "type": "checkbox",
         "id": "body_font_smoothing",
         "label": "Enable font smoothing",
         "default": true,
-        "info": "Improves font rendering on screens"
+        "info": "Improves font rendering on screens for sharper text"
       },
       {
         "type": "header",
-        "content": "LIST STYLING"
+        "content": "📝 PARAGRAPH SETTINGS"
+      },
+      {
+        "type": "range",
+        "id": "paragraph_spacing",
+        "label": "Paragraph spacing",
+        "default": 16,
+        "min": 8,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "info": "Vertical space between paragraphs"
+      },
+      {
+        "type": "range",
+        "id": "paragraph_indent",
+        "label": "First line indent",
+        "default": 0,
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "unit": "px",
+        "info": "Indent the first line of each paragraph"
+      },
+      {
+        "type": "header",
+        "content": "🎯 HEADING FONT SETTINGS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the font family and global settings for all headings (H1-H6)."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font family",
+        "default": "helvetica_n7",
+        "info": "Font used for all heading levels"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font_heading",
+        "label": "Use custom font for headings",
+        "default": false,
+        "info": "Enable to use your own font files"
+      },
+      {
+        "id": "custom_heading_font",
+        "type": "textarea",
+        "label": "Custom heading font URLs",
+        "placeholder": "https://cdn.shopify.com/s/files/1/0075/1288/3285/files/roboto.woff2@400",
+        "info": "Multiple weights allowed, one per line. Format: Link_to_font@font_weight"
+      },
+      {
+        "id": "custom_heading_weight",
+        "type": "select",
+        "label": "Default heading weight",
+        "default": "400",
+        "options": [
+          {"value": "100", "label": "Thin 100"},
+          {"value": "200", "label": "Extra-light 200"},
+          {"value": "300", "label": "Light 300"},
+          {"value": "400", "label": "Regular 400"},
+          {"value": "500", "label": "Medium 500"},
+          {"value": "600", "label": "Semi-bold 600"},
+          {"value": "700", "label": "Bold 700"},
+          {"value": "800", "label": "Extra-bold 800"},
+          {"value": "900", "label": "Black 900"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "🎨 GLOBAL HEADING STYLES"
+      },
+      {
+        "type": "paragraph",
+        "content": "These settings apply to all heading levels unless overridden individually."
+      },
+      {
+        "type": "range",
+        "id": "type_header_spacing",
+        "label": "Global heading letter spacing",
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "info": "Default letter spacing for all headings"
+      },
+      {
+        "type": "select",
+        "id": "text_transform_headings",
+        "label": "Global heading text transform",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Transform all headings unless individually set"
+      },
+      {
+        "type": "select",
+        "id": "heading_font_style",
+        "label": "Global heading font style",
+        "default": "normal",
+        "options": [
+          {"value": "normal", "label": "Normal"},
+          {"value": "italic", "label": "Italic"}
+        ],
+        "info": "Apply italic style to all headings"
+      },
+      {
+        "type": "range",
+        "id": "heading_line_height",
+        "label": "Global heading line height",
+        "default": 1.2,
+        "min": 1,
+        "max": 2,
+        "step": 0.1,
+        "info": "Line height multiplier for all headings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_text_shadow",
+        "label": "Enable text shadow on headings",
+        "default": false,
+        "info": "Add shadow effect to all headings"
+      },
+      {
+        "type": "text",
+        "id": "text_shadow_style",
+        "label": "Text shadow style",
+        "default": "2px 2px 4px rgba(0,0,0,0.1)",
+        "info": "CSS shadow: offset-x offset-y blur color"
+      },
+      {
+        "type": "header",
+        "content": "H1 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize your main page titles and largest headings."
+      },
+      {
+        "type": "range",
+        "id": "h1_font_size",
+        "label": "H1 font size",
+        "default": 60,
+        "min": 20,
+        "max": 120,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for main page titles"
+      },
+      {
+        "type": "select",
+        "id": "h1_font_weight",
+        "label": "H1 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H1 only"
+      },
+      {
+        "type": "range",
+        "id": "h1_letter_spacing",
+        "label": "H1 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "info": "Override letter spacing for H1"
+      },
+      {
+        "type": "select",
+        "id": "h1_text_transform",
+        "label": "H1 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use global setting"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Override text transform for H1"
+      },
+      {
+        "type": "header",
+        "content": "H2 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize your section headings and subtitles."
+      },
+      {
+        "type": "range",
+        "id": "h2_font_size",
+        "label": "H2 font size",
+        "default": 42,
+        "min": 20,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for section headings"
+      },
+      {
+        "type": "select",
+        "id": "h2_font_weight",
+        "label": "H2 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H2 only"
+      },
+      {
+        "type": "range",
+        "id": "h2_letter_spacing",
+        "label": "H2 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "info": "Override letter spacing for H2"
+      },
+      {
+        "type": "select",
+        "id": "h2_text_transform",
+        "label": "H2 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use global setting"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Override text transform for H2"
+      },
+      {
+        "type": "header",
+        "content": "H3 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize your subsection headings."
+      },
+      {
+        "type": "range",
+        "id": "type_header_base_size",
+        "label": "H3 font size",
+        "default": 36,
+        "min": 14,
+        "max": 80,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for subsection headings"
+      },
+      {
+        "type": "select",
+        "id": "h3_font_weight",
+        "label": "H3 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H3 only"
+      },
+      {
+        "type": "range",
+        "id": "h3_letter_spacing",
+        "label": "H3 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "info": "Override letter spacing for H3"
+      },
+      {
+        "type": "select",
+        "id": "h3_text_transform",
+        "label": "H3 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use global setting"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Override text transform for H3"
+      },
+      {
+        "type": "header",
+        "content": "H4 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize your smaller headings and product titles."
+      },
+      {
+        "type": "range",
+        "id": "h4_font_size",
+        "label": "H4 font size",
+        "default": 24,
+        "min": 14,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for smaller headings"
+      },
+      {
+        "type": "select",
+        "id": "h4_font_weight",
+        "label": "H4 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H4 only"
+      },
+      {
+        "type": "range",
+        "id": "h4_letter_spacing",
+        "label": "H4 letter spacing",
+        "default": 0,
+        "min": -5,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "info": "Override letter spacing for H4"
+      },
+      {
+        "type": "select",
+        "id": "h4_text_transform",
+        "label": "H4 text transform",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use global setting"},
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Override text transform for H4"
+      },
+      {
+        "type": "header",
+        "content": "H5 & H6 HEADING CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize your smallest headings and captions."
+      },
+      {
+        "type": "range",
+        "id": "h5_font_size",
+        "label": "H5 font size",
+        "default": 18,
+        "min": 12,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for H5 headings"
+      },
+      {
+        "type": "select",
+        "id": "h5_font_weight",
+        "label": "H5 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H5 only"
+      },
+      {
+        "type": "range",
+        "id": "h6_font_size",
+        "label": "H6 font size",
+        "default": 16,
+        "min": 12,
+        "max": 32,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for H6 headings"
+      },
+      {
+        "type": "select",
+        "id": "h6_font_weight",
+        "label": "H6 font weight",
+        "default": "inherit",
+        "options": [
+          {"value": "inherit", "label": "Use default"},
+          {"value": "100", "label": "Thin"},
+          {"value": "300", "label": "Light"},
+          {"value": "400", "label": "Regular"},
+          {"value": "500", "label": "Medium"},
+          {"value": "600", "label": "Semi-bold"},
+          {"value": "700", "label": "Bold"},
+          {"value": "800", "label": "Extra-bold"},
+          {"value": "900", "label": "Black"}
+        ],
+        "info": "Override weight for H6 only"
+      },
+      {
+        "type": "header",
+        "content": "🔗 LINK STYLING"
+      },
+      {
+        "type": "paragraph",
+        "content": "Customize how links appear throughout your store."
+      },
+      {
+        "type": "select",
+        "id": "link_text_decoration",
+        "label": "Link decoration style",
+        "default": "underline",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "underline", "label": "Always underlined"},
+          {"value": "underline-hover", "label": "Underline on hover"}
+        ],
+        "info": "How links are decorated"
+      },
+      {
+        "type": "checkbox",
+        "id": "link_bold",
+        "label": "Make links bold",
+        "default": false,
+        "info": "Apply bold weight to all links"
+      },
+      {
+        "type": "header",
+        "content": "📋 LIST STYLING"
+      },
+      {
+        "type": "paragraph",
+        "content": "Control the appearance of bulleted and numbered lists."
       },
       {
         "type": "select",
@@ -1032,12 +735,13 @@
         "label": "List bullet style",
         "default": "disc",
         "options": [
-          {"value": "disc", "label": "• Disc"},
+          {"value": "disc", "label": "• Disc (default)"},
           {"value": "circle", "label": "○ Circle"},
           {"value": "square", "label": "■ Square"},
           {"value": "decimal", "label": "1. Numbers"},
-          {"value": "none", "label": "None"}
-        ]
+          {"value": "none", "label": "No bullets"}
+        ],
+        "info": "Default style for unordered lists"
       },
       {
         "type": "range",
@@ -1047,27 +751,34 @@
         "min": 0,
         "max": 40,
         "step": 5,
-        "unit": "px"
+        "unit": "px",
+        "info": "How far lists are indented from the left"
       },
       {
         "type": "range",
         "id": "list_item_spacing",
-        "label": "List item spacing",
+        "label": "Space between list items",
         "default": 8,
         "min": 0,
         "max": 20,
         "step": 2,
-        "unit": "px"
+        "unit": "px",
+        "info": "Vertical spacing between items"
       },
       {
         "type": "header",
-        "content": "BLOCKQUOTE STYLING"
+        "content": "💬 BLOCKQUOTE STYLING"
+      },
+      {
+        "type": "paragraph",
+        "content": "Style quoted text and testimonials."
       },
       {
         "type": "checkbox",
         "id": "blockquote_italic",
         "label": "Italic blockquotes",
-        "default": true
+        "default": true,
+        "info": "Display quotes in italic style"
       },
       {
         "type": "range",
@@ -1077,13 +788,15 @@
         "min": 14,
         "max": 24,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "info": "Size of quoted text"
       },
       {
         "type": "color",
         "id": "blockquote_border_color",
         "label": "Blockquote border color",
-        "default": "#cccccc"
+        "default": "#cccccc",
+        "info": "Left border accent color"
       },
       {
         "type": "range",
@@ -1093,39 +806,233 @@
         "min": 0,
         "max": 10,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "info": "Thickness of the left border"
       },
       {
         "type": "header",
-        "content": "ADVANCED BUTTON CUSTOMIZATION"
+        "content": "📱 MOBILE TYPOGRAPHY"
       },
       {
         "type": "paragraph",
-        "content": "Comprehensive controls for button appearance and behavior."
+        "content": "Optimize text display for mobile devices."
+      },
+      {
+        "type": "range",
+        "id": "mobile_font_scale",
+        "label": "Mobile font scale",
+        "default": 0.9,
+        "min": 0.7,
+        "max": 1.1,
+        "step": 0.1,
+        "info": "Scale all fonts on mobile (0.9 = 90% of desktop size)"
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_reduce_line_height",
+        "label": "Reduce line height on mobile",
+        "default": true,
+        "info": "Automatically tighten line spacing for mobile"
       },
       {
         "type": "header",
-        "content": "Button Sizes"
+        "content": "✨ SPECIAL TEXT EFFECTS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Add visual interest with special typography effects."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_drop_caps",
+        "label": "Enable drop caps",
+        "default": false,
+        "info": "Large decorative first letter in article paragraphs"
+      },
+      {
+        "type": "range",
+        "id": "drop_cap_size",
+        "label": "Drop cap size",
+        "default": 3,
+        "min": 2,
+        "max": 5,
+        "step": 0.5,
+        "info": "Size multiplier for the first letter (3 = 3x line height)"
+      },
+      {
+        "type": "header",
+        "content": "📏 SMALL TEXT & CAPTIONS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Settings for fine print and caption text."
+      },
+      {
+        "type": "range",
+        "id": "small_text_size",
+        "label": "Small text size",
+        "default": 14,
+        "min": 10,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for small text elements"
+      },
+      {
+        "type": "range",
+        "id": "caption_text_size",
+        "label": "Caption text size",
+        "default": 12,
+        "min": 10,
+        "max": 14,
+        "step": 1,
+        "unit": "px",
+        "info": "Size for image captions and labels"
+      },
+      {
+        "type": "select",
+        "id": "caption_text_transform",
+        "label": "Caption text transform",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "uppercase", "label": "UPPERCASE"},
+          {"value": "lowercase", "label": "lowercase"},
+          {"value": "capitalize", "label": "Capitalize"}
+        ],
+        "info": "Transform style for captions"
+      },
+      {
+        "type": "header",
+        "content": "🔘 BUTTON TYPOGRAPHY"
+      },
+      {
+        "type": "paragraph",
+        "content": "Button text inherits from body font. Customize text appearance here."
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_uppercase_text",
+        "label": "Uppercase button text",
+        "default": false,
+        "info": "Display button labels in uppercase"
+      },
+      {
+        "type": "range",
+        "id": "btn_base_size",
+        "label": "Button font size",
+        "default": 16,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "info": "Text size for buttons"
+      },
+      {
+        "type": "range",
+        "id": "btn_letter_spacing",
+        "label": "Button letter spacing",
+        "default": 0,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "info": "Space between letters in buttons"
+      },
+      {
+        "type": "select",
+        "id": "btn_weight",
+        "label": "Button font weight",
+        "default": "500",
+        "options": [
+          {"value": "100", "label": "Thin 100"},
+          {"value": "200", "label": "Extra-light 200"},
+          {"value": "300", "label": "Light 300"},
+          {"value": "400", "label": "Regular 400"},
+          {"value": "500", "label": "Medium 500"},
+          {"value": "600", "label": "Semi-bold 600"},
+          {"value": "700", "label": "Bold 700"},
+          {"value": "800", "label": "Extra-bold 800"},
+          {"value": "900", "label": "Black 900"}
+        ],
+        "info": "Text weight for button labels"
+      },
+      {
+        "type": "range",
+        "id": "btn_line_height",
+        "label": "Button line height",
+        "default": 23,
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "info": "Height of text line in buttons"
+      },
+      {
+        "type": "header",
+        "content": "🎨 BUTTON APPEARANCE"
+      },
+      {
+        "type": "paragraph",
+        "content": "Control the visual style of buttons including borders, corners, and spacing."
+      },
+      {
+        "type": "range",
+        "id": "btn_border_width",
+        "label": "Button border width",
+        "default": 1,
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "unit": "px",
+        "info": "Thickness of button borders"
+      },
+      {
+        "type": "range",
+        "id": "btn_border_radius",
+        "label": "Button corner radius",
+        "default": 5,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "info": "Roundness of button corners (0 = square, 100 = pill)"
+      },
+      {
+        "type": "select",
+        "id": "btn_border_style",
+        "label": "Button border style",
+        "default": "solid",
+        "options": [
+          {"value": "solid", "label": "Solid"},
+          {"value": "dashed", "label": "Dashed"},
+          {"value": "dotted", "label": "Dotted"},
+          {"value": "double", "label": "Double"},
+          {"value": "none", "label": "No border"}
+        ],
+        "info": "Style of button borders"
       },
       {
         "type": "range",
         "id": "btn_padding_x",
-        "label": "Horizontal padding",
+        "label": "Button horizontal padding",
         "default": 30,
         "min": 10,
         "max": 60,
         "step": 5,
-        "unit": "px"
+        "unit": "px",
+        "info": "Left and right padding inside buttons"
       },
       {
         "type": "range",
         "id": "btn_padding_y",
-        "label": "Vertical padding",
+        "label": "Button vertical padding",
         "default": 12,
         "min": 5,
         "max": 25,
         "step": 1,
-        "unit": "px"
+        "unit": "px",
+        "info": "Top and bottom padding inside buttons"
       },
       {
         "type": "range",
@@ -1136,11 +1043,15 @@
         "max": 200,
         "step": 10,
         "unit": "px",
-        "info": "Set to 0 for auto width"
+        "info": "Minimum width for buttons (0 = auto width)"
       },
       {
         "type": "header",
-        "content": "Button Shadows & Effects"
+        "content": "🌟 BUTTON EFFECTS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Add visual effects and animations to buttons."
       },
       {
         "type": "select",
@@ -1148,28 +1059,29 @@
         "label": "Button shadow",
         "default": "none",
         "options": [
-          {"value": "none", "label": "None"},
-          {"value": "sm", "label": "Small"},
-          {"value": "md", "label": "Medium"},
-          {"value": "lg", "label": "Large"},
-          {"value": "xl", "label": "Extra Large"},
-          {"value": "inner", "label": "Inner Shadow"},
-          {"value": "custom", "label": "Custom"}
-        ]
+          {"value": "none", "label": "No shadow"},
+          {"value": "sm", "label": "Small shadow"},
+          {"value": "md", "label": "Medium shadow"},
+          {"value": "lg", "label": "Large shadow"},
+          {"value": "xl", "label": "Extra large shadow"},
+          {"value": "inner", "label": "Inner shadow"},
+          {"value": "custom", "label": "Custom shadow"}
+        ],
+        "info": "Drop shadow effect for buttons"
       },
       {
         "type": "text",
         "id": "btn_custom_shadow",
-        "label": "Custom shadow",
+        "label": "Custom shadow value",
         "default": "0 4px 6px rgba(0,0,0,0.1)",
-        "info": "CSS box-shadow value (used when shadow is set to Custom)"
+        "info": "CSS box-shadow (only when 'Custom shadow' is selected)"
       },
       {
         "type": "checkbox",
         "id": "btn_hover_lift",
         "label": "Lift button on hover",
         "default": false,
-        "info": "Adds upward movement on hover"
+        "info": "Button moves up slightly when hovered"
       },
       {
         "type": "range",
@@ -1178,55 +1090,8 @@
         "default": 1,
         "min": 0.9,
         "max": 1.1,
-        "step": 0.1,
-        "info": "Button scale on hover (1 = no scale)"
-      },
-      {
-        "type": "header",
-        "content": "Button Borders"
-      },
-      {
-        "type": "select",
-        "id": "btn_border_style",
-        "label": "Border style",
-        "default": "solid",
-        "options": [
-          {"value": "solid", "label": "Solid"},
-          {"value": "dashed", "label": "Dashed"},
-          {"value": "dotted", "label": "Dotted"},
-          {"value": "double", "label": "Double"},
-          {"value": "none", "label": "None"}
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "btn_gradient_border",
-        "label": "Enable gradient border",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "btn_gradient_border_colors",
-        "label": "Gradient border colors",
-        "default": "linear-gradient(45deg, #ff6b6b, #4ecdc4)",
-        "info": "CSS gradient value"
-      },
-      {
-        "type": "header",
-        "content": "Button Backgrounds"
-      },
-      {
-        "type": "checkbox",
-        "id": "btn_gradient_bg",
-        "label": "Enable gradient background",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "btn_gradient_bg_colors",
-        "label": "Gradient background",
-        "default": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        "info": "CSS gradient value"
+        "step": 0.05,
+        "info": "Button size on hover (1 = no change, 1.1 = 10% larger)"
       },
       {
         "type": "select",
@@ -1234,23 +1099,118 @@
         "label": "Hover background effect",
         "default": "darken",
         "options": [
-          {"value": "darken", "label": "Darken"},
-          {"value": "lighten", "label": "Lighten"},
+          {"value": "darken", "label": "Darken background"},
+          {"value": "lighten", "label": "Lighten background"},
           {"value": "invert", "label": "Invert colors"},
-          {"value": "slide", "label": "Slide fill"},
-          {"value": "pulse", "label": "Pulse"},
-          {"value": "none", "label": "None"}
-        ]
+          {"value": "slide", "label": "Slide fill effect"},
+          {"value": "pulse", "label": "Pulse animation"},
+          {"value": "none", "label": "No effect"}
+        ],
+        "info": "Background change on hover"
       },
       {
         "type": "header",
-        "content": "Icon Settings"
+        "content": "🎨 BUTTON GRADIENTS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Create gradient effects for button backgrounds and borders."
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_gradient_bg",
+        "label": "Enable gradient background",
+        "default": false,
+        "info": "Use gradient instead of solid color"
+      },
+      {
+        "type": "text",
+        "id": "btn_gradient_bg_colors",
+        "label": "Background gradient",
+        "default": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "info": "CSS gradient value for background"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_gradient_border",
+        "label": "Enable gradient border",
+        "default": false,
+        "info": "Use gradient for button borders"
+      },
+      {
+        "type": "text",
+        "id": "btn_gradient_border_colors",
+        "label": "Border gradient",
+        "default": "linear-gradient(45deg, #ff6b6b, #4ecdc4)",
+        "info": "CSS gradient value for borders"
+      },
+      {
+        "type": "header",
+        "content": "🎯 BUTTON ANIMATIONS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Interactive animations and loading states for buttons."
+      },
+      {
+        "type": "select",
+        "id": "btn_click_animation",
+        "label": "Click animation",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "No animation"},
+          {"value": "ripple", "label": "Ripple effect"},
+          {"value": "pulse", "label": "Pulse effect"},
+          {"value": "bounce", "label": "Bounce"},
+          {"value": "shake", "label": "Shake"}
+        ],
+        "info": "Animation when button is clicked"
+      },
+      {
+        "type": "range",
+        "id": "btn_transition_duration",
+        "label": "Animation speed",
+        "default": 250,
+        "min": 100,
+        "max": 600,
+        "step": 50,
+        "unit": "ms",
+        "info": "Duration of hover and click animations"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_loading_spinner",
+        "label": "Show loading spinner",
+        "default": true,
+        "info": "Display spinner during loading states"
+      },
+      {
+        "type": "select",
+        "id": "btn_loading_style",
+        "label": "Loading animation style",
+        "default": "spinner",
+        "options": [
+          {"value": "spinner", "label": "Spinning circle"},
+          {"value": "dots", "label": "Three dots"},
+          {"value": "pulse", "label": "Pulsing button"},
+          {"value": "progress", "label": "Progress bar"}
+        ],
+        "info": "Style of loading indicator"
+      },
+      {
+        "type": "header",
+        "content": "🔄 BUTTON ICONS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure icons that appear in buttons."
       },
       {
         "type": "checkbox",
         "id": "btn_icon_animation",
         "label": "Animate icons on hover",
-        "default": true
+        "default": true,
+        "info": "Icons move or rotate on button hover"
       },
       {
         "type": "select",
@@ -1258,9 +1218,10 @@
         "label": "Default icon position",
         "default": "right",
         "options": [
-          {"value": "left", "label": "Left"},
-          {"value": "right", "label": "Right"}
-        ]
+          {"value": "left", "label": "Before text"},
+          {"value": "right", "label": "After text"}
+        ],
+        "info": "Where icons appear relative to text"
       },
       {
         "type": "range",
@@ -1270,40 +1231,23 @@
         "min": 4,
         "max": 20,
         "step": 2,
-        "unit": "px"
+        "unit": "px",
+        "info": "Space between icon and text"
       },
       {
         "type": "header",
-        "content": "Loading States"
+        "content": "🎭 BUTTON STATES"
       },
       {
-        "type": "checkbox",
-        "id": "btn_loading_spinner",
-        "label": "Show loading spinner",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "btn_loading_style",
-        "label": "Loading animation style",
-        "default": "spinner",
-        "options": [
-          {"value": "spinner", "label": "Spinner"},
-          {"value": "dots", "label": "Dots"},
-          {"value": "pulse", "label": "Pulse"},
-          {"value": "progress", "label": "Progress bar"}
-        ]
-      },
-      {
-        "type": "header",
-        "content": "Secondary Button Styles"
+        "type": "paragraph",
+        "content": "Appearance of buttons in different states."
       },
       {
         "type": "checkbox",
         "id": "btn_secondary_ghost",
         "label": "Ghost style for secondary buttons",
         "default": false,
-        "info": "Transparent background with border"
+        "info": "Secondary buttons have transparent background"
       },
       {
         "type": "range",
@@ -1312,38 +1256,8 @@
         "default": 1,
         "min": 0.5,
         "max": 1,
-        "step": 0.1
-      },
-      {
-        "type": "header",
-        "content": "Button Animations"
-      },
-      {
-        "type": "select",
-        "id": "btn_click_animation",
-        "label": "Click animation",
-        "default": "none",
-        "options": [
-          {"value": "none", "label": "None"},
-          {"value": "ripple", "label": "Ripple effect"},
-          {"value": "pulse", "label": "Pulse"},
-          {"value": "bounce", "label": "Bounce"},
-          {"value": "shake", "label": "Shake"}
-        ]
-      },
-      {
-        "type": "range",
-        "id": "btn_transition_duration",
-        "label": "Transition duration",
-        "default": 250,
-        "min": 100,
-        "max": 600,
-        "step": 50,
-        "unit": "ms"
-      },
-      {
-        "type": "header",
-        "content": "Disabled State"
+        "step": 0.1,
+        "info": "Transparency of secondary buttons"
       },
       {
         "type": "range",
@@ -1352,13 +1266,75 @@
         "default": 0.5,
         "min": 0.3,
         "max": 0.8,
-        "step": 0.1
+        "step": 0.1,
+        "info": "Transparency of disabled buttons"
       },
       {
         "type": "checkbox",
         "id": "btn_disabled_cursor",
         "label": "Show not-allowed cursor",
-        "default": true
+        "default": true,
+        "info": "Display 'not-allowed' cursor on disabled buttons"
+      },
+      {
+        "type": "header",
+        "content": "📐 INPUT FIELDS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Style form inputs and text fields."
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_thickness",
+        "label": "Input border thickness",
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "unit": "px",
+        "default": 1,
+        "info": "Border width for input fields"
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_radius",
+        "label": "Input corner radius",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "unit": "px",
+        "default": 5,
+        "info": "Roundness of input field corners"
+      },
+      {
+        "type": "header",
+        "content": "🔲 CORNER RADIUS PRESETS"
+      },
+      {
+        "type": "paragraph",
+        "content": "Quick settings for common UI elements."
+      },
+      {
+        "type": "select",
+        "id": "blocks_corner_radius",
+        "label": "Block elements",
+        "options": [
+          {"label": "Square corners", "value": "square"},
+          {"label": "Rounded corners", "value": "round"}
+        ],
+        "default": "square",
+        "info": "Corner style for content blocks"
+      },
+      {
+        "type": "select",
+        "id": "pcard_corner_radius",
+        "label": "Product cards",
+        "options": [
+          {"label": "Square corners", "value": "square"},
+          {"label": "Rounded corners", "value": "round"}
+        ],
+        "default": "square",
+        "info": "Corner style for product cards"
       }
     ]
   },
