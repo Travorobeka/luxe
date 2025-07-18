@@ -58,6 +58,7 @@
     "btn_shadow_style": "sm",
     "btn_hover_lift": true,
     "btn_loading_style": "pulse",
+    "btn_secondary_ghost": true,
     "btn_click_animation": "pulse",
     "img_overlay_opacity": 20,
     "spacing_sections": 0,
