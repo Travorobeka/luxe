@@ -103,6 +103,47 @@
   	{% if settings.btn_uppercase_text %}
   	--btn-text-transform: uppercase;
   	{% endif %}
+  	
+  	/* ADVANCED BUTTON CUSTOMIZATION */
+  	--btn-padding-x: {{ settings.btn_padding_x }}px;
+  	--btn-padding-y: {{ settings.btn_padding_y }}px;
+  	--btn-min-width: {{ settings.btn_min_width }}px;
+  	--btn-transition-duration: {{ settings.btn_transition_duration }}ms;
+  	
+  	/* Button Shadows */
+  	{% case settings.btn_shadow_style %}
+  	  {% when 'sm' %}
+  	    --btn-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  	  {% when 'md' %}
+  	    --btn-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  	  {% when 'lg' %}
+  	    --btn-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  	  {% when 'xl' %}
+  	    --btn-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  	  {% when 'inner' %}
+  	    --btn-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  	  {% when 'custom' %}
+  	    --btn-shadow: {{ settings.btn_custom_shadow }};
+  	  {% else %}
+  	    --btn-shadow: none;
+  	{% endcase %}
+  	
+  	--btn-hover-lift: {% if settings.btn_hover_lift %}translateY(-2px){% else %}translateY(0){% endif %};
+  	--btn-hover-scale: {{ settings.btn_hover_scale }};
+  	--btn-border-style: {{ settings.btn_border_style }};
+  	--btn-gradient-bg: {% if settings.btn_gradient_bg %}{{ settings.btn_gradient_bg_colors }}{% else %}none{% endif %};
+  	--btn-gradient-border: {% if settings.btn_gradient_border %}{{ settings.btn_gradient_border_colors }}{% else %}none{% endif %};
+  	--btn-hover-effect: {{ settings.btn_hover_effect }};
+  	--btn-icon-spacing: {{ settings.btn_icon_spacing }}px;
+  	--btn-icon-position: {{ settings.btn_icon_position }};
+  	--btn-icon-animation: {% if settings.btn_icon_animation %}true{% else %}false{% endif %};
+  	--btn-loading-spinner: {% if settings.btn_loading_spinner %}true{% else %}false{% endif %};
+  	--btn-loading-style: {{ settings.btn_loading_style }};
+  	--btn-secondary-ghost: {% if settings.btn_secondary_ghost %}true{% else %}false{% endif %};
+  	--btn-secondary-opacity: {{ settings.btn_secondary_opacity }};
+  	--btn-click-animation: {{ settings.btn_click_animation }};
+  	--btn-disabled-opacity: {{ settings.btn_disabled_opacity }};
+  	--btn-disabled-cursor: {% if settings.btn_disabled_cursor %}not-allowed{% else %}default{% endif %};
 
   	/* COUNT BUBBLE */
   	--color-cart-wishlist-count: {{ settings.color_cart_wishlist_count }};
@@ -251,9 +292,11 @@
 <link rel="stylesheet" href="{{ 'custom-style.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'typography-advanced.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'buttons-advanced.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'custom-style.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'custom.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'typography-advanced.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'buttons-advanced.css' | asset_url | stylesheet_tag }}</noscript>
 
 {%- style -%}
   {%- if custom_css != blank -%}

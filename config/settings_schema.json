@@ -1094,6 +1094,271 @@
         "max": 10,
         "step": 1,
         "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "ADVANCED BUTTON CUSTOMIZATION"
+      },
+      {
+        "type": "paragraph",
+        "content": "Comprehensive controls for button appearance and behavior."
+      },
+      {
+        "type": "header",
+        "content": "Button Sizes"
+      },
+      {
+        "type": "range",
+        "id": "btn_padding_x",
+        "label": "Horizontal padding",
+        "default": 30,
+        "min": 10,
+        "max": 60,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_padding_y",
+        "label": "Vertical padding",
+        "default": 12,
+        "min": 5,
+        "max": 25,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_min_width",
+        "label": "Minimum button width",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px",
+        "info": "Set to 0 for auto width"
+      },
+      {
+        "type": "header",
+        "content": "Button Shadows & Effects"
+      },
+      {
+        "type": "select",
+        "id": "btn_shadow_style",
+        "label": "Button shadow",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "sm", "label": "Small"},
+          {"value": "md", "label": "Medium"},
+          {"value": "lg", "label": "Large"},
+          {"value": "xl", "label": "Extra Large"},
+          {"value": "inner", "label": "Inner Shadow"},
+          {"value": "custom", "label": "Custom"}
+        ]
+      },
+      {
+        "type": "text",
+        "id": "btn_custom_shadow",
+        "label": "Custom shadow",
+        "default": "0 4px 6px rgba(0,0,0,0.1)",
+        "info": "CSS box-shadow value (used when shadow is set to Custom)"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_hover_lift",
+        "label": "Lift button on hover",
+        "default": false,
+        "info": "Adds upward movement on hover"
+      },
+      {
+        "type": "range",
+        "id": "btn_hover_scale",
+        "label": "Hover scale effect",
+        "default": 1,
+        "min": 0.9,
+        "max": 1.1,
+        "step": 0.1,
+        "info": "Button scale on hover (1 = no scale)"
+      },
+      {
+        "type": "header",
+        "content": "Button Borders"
+      },
+      {
+        "type": "select",
+        "id": "btn_border_style",
+        "label": "Border style",
+        "default": "solid",
+        "options": [
+          {"value": "solid", "label": "Solid"},
+          {"value": "dashed", "label": "Dashed"},
+          {"value": "dotted", "label": "Dotted"},
+          {"value": "double", "label": "Double"},
+          {"value": "none", "label": "None"}
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_gradient_border",
+        "label": "Enable gradient border",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "btn_gradient_border_colors",
+        "label": "Gradient border colors",
+        "default": "linear-gradient(45deg, #ff6b6b, #4ecdc4)",
+        "info": "CSS gradient value"
+      },
+      {
+        "type": "header",
+        "content": "Button Backgrounds"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_gradient_bg",
+        "label": "Enable gradient background",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "btn_gradient_bg_colors",
+        "label": "Gradient background",
+        "default": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "info": "CSS gradient value"
+      },
+      {
+        "type": "select",
+        "id": "btn_hover_effect",
+        "label": "Hover background effect",
+        "default": "darken",
+        "options": [
+          {"value": "darken", "label": "Darken"},
+          {"value": "lighten", "label": "Lighten"},
+          {"value": "invert", "label": "Invert colors"},
+          {"value": "slide", "label": "Slide fill"},
+          {"value": "pulse", "label": "Pulse"},
+          {"value": "none", "label": "None"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Icon Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_icon_animation",
+        "label": "Animate icons on hover",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "btn_icon_position",
+        "label": "Default icon position",
+        "default": "right",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "right", "label": "Right"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "btn_icon_spacing",
+        "label": "Icon spacing",
+        "default": 8,
+        "min": 4,
+        "max": 20,
+        "step": 2,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Loading States"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_loading_spinner",
+        "label": "Show loading spinner",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "btn_loading_style",
+        "label": "Loading animation style",
+        "default": "spinner",
+        "options": [
+          {"value": "spinner", "label": "Spinner"},
+          {"value": "dots", "label": "Dots"},
+          {"value": "pulse", "label": "Pulse"},
+          {"value": "progress", "label": "Progress bar"}
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Secondary Button Styles"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_secondary_ghost",
+        "label": "Ghost style for secondary buttons",
+        "default": false,
+        "info": "Transparent background with border"
+      },
+      {
+        "type": "range",
+        "id": "btn_secondary_opacity",
+        "label": "Secondary button opacity",
+        "default": 1,
+        "min": 0.5,
+        "max": 1,
+        "step": 0.1
+      },
+      {
+        "type": "header",
+        "content": "Button Animations"
+      },
+      {
+        "type": "select",
+        "id": "btn_click_animation",
+        "label": "Click animation",
+        "default": "none",
+        "options": [
+          {"value": "none", "label": "None"},
+          {"value": "ripple", "label": "Ripple effect"},
+          {"value": "pulse", "label": "Pulse"},
+          {"value": "bounce", "label": "Bounce"},
+          {"value": "shake", "label": "Shake"}
+        ]
+      },
+      {
+        "type": "range",
+        "id": "btn_transition_duration",
+        "label": "Transition duration",
+        "default": 250,
+        "min": 100,
+        "max": 600,
+        "step": 50,
+        "unit": "ms"
+      },
+      {
+        "type": "header",
+        "content": "Disabled State"
+      },
+      {
+        "type": "range",
+        "id": "btn_disabled_opacity",
+        "label": "Disabled button opacity",
+        "default": 0.5,
+        "min": 0.3,
+        "max": 0.8,
+        "step": 0.1
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_disabled_cursor",
+        "label": "Show not-allowed cursor",
+        "default": true
       }
     ]
   },
